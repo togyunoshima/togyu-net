@@ -9,37 +9,48 @@
         body { margin: 0; padding: 2px; background-color: #050505; color: #eee; font-family: 'Kaisei Tokumin', serif; text-align: center; }
         .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('IMG_8395.jpg'); background-size: cover; background-position: center; opacity: 0.15; z-index: -1; }
 
-        /* メニューバー (3列 + 2列構成) */
-        .nav-container { background: #fff; margin-bottom: 15px; padding: 5px 0; }
-        .nav-row { display: flex; justify-content: center; gap: 15px; padding: 5px 0; }
-        .nav-row a { color: #000; text-decoration: none; font-size: 0.75rem; font-weight: bold; }
+        /* メニューバー (3列 + 2列：対戦表ページと完全一致) */
+        .nav-container { background: #fff; margin-bottom: 15px; padding: 2px 0; }
+        .nav-row { display: flex; justify-content: center; border-bottom: 1px solid #ddd; }
+        .nav-row:last-child { border-bottom: none; }
+        .nav-row a { 
+            flex: 1; 
+            color: #000; 
+            text-decoration: none; 
+            font-size: 0.7rem; 
+            font-weight: 800; 
+            padding: 10px 0;
+            border-right: 1px solid #ddd;
+        }
+        .nav-row a:last-child { border-right: none; }
 
-        /* 大会詳細 (以前のスタイル) */
-        h1 { font-family: 'Yuji Syuku', serif; font-size: clamp(0.9rem, 3.5vw, 1.4rem); color: #fff; margin: 10px auto; text-shadow: 2px 2px 0 #e60000; }
-        .taikai-info { max-width: 98%; margin: 0 auto 10px auto; background: rgba(255,255,255,0.08); border: 1px solid #444; padding: 8px; font-size: 0.65rem; text-align: left; line-height: 1.5; }
+        /* 大会詳細 (画像通りの配置・余白) */
+        .taikai-header { max-width: 98%; margin: 0 auto; text-align: left; padding: 0 5px; }
+        h1 { font-family: 'Yuji Syuku', serif; font-size: 1.15rem; color: #fff; margin: 12px 0 8px 0; line-height: 1.4; border-left: 4px solid #e60000; padding-left: 8px; }
+        .details { font-size: 0.65rem; line-height: 1.6; color: #ccc; margin-bottom: 15px; }
 
-        /* 取組表 */
+        /* 取組表：文字サイズと幅の均一化 */
         .match-table { width: 100%; border-collapse: collapse; table-layout: fixed; background: rgba(0, 0, 0, 0.9); border: 1.5px solid #666; }
-        .match-table th, .match-table td { border: 1px solid #444; padding: 8px 1px; vertical-align: middle; }
+        .match-table th, .match-table td { border: 1px solid #444; padding: 8px 0; vertical-align: middle; }
         
-        .col-res-area { width: 10%; font-size: 0.6rem; color: #bbb; } /* 地区列 */
-        .col-cow { width: 35%; }
-        .col-center { width: 20%; } /* 番付＋結果 */
+        .col-area { width: 8%; font-size: 0.6rem; color: #bbb; line-height: 1.1; } /* 地区幅をさらに縮小 */
+        .col-cow { width: 34%; }
+        .col-center { width: 16%; } /* 番付＋結果 */
 
-        /* 牛名デザイン (三代目なども含めて一つの名前) */
-        .cow-meta { font-size: 0.52rem; color: #f1c40f; display: block; margin-bottom: 2px; }
-        .cow-name { font-size: 1.1rem; font-weight: 900; color: #fff; display: block; white-space: nowrap; }
-        .cow-owner { font-size: 0.45rem; color: #aaa; display: block; margin-top: 2px; line-height: 1.1; }
+        .table-head th { background: #222; font-size: 0.6rem; padding: 6px 0; color: #aaa; font-weight: normal; }
+        .head-east { background: #e60000 !important; color: #fff; font-weight: bold !important; }
+        .head-west { background: #eee !important; color: #000; font-weight: bold !important; }
 
-        /* 番付＋結果 (○ タイム ○) */
-        .bantuke-text { font-size: 0.8rem; color: #f1c40f; font-weight: 900; display: block; margin-bottom: 5px; }
-        .result-row { display: grid; grid-template-columns: 1fr 2fr 1fr; border-top: 1px solid #555; padding-top: 5px; align-items: center; }
-        .res-win { font-size: 1.2rem; font-weight: bold; color: #e60000; }
-        .res-time { font-family: 'Oswald', sans-serif; font-size: 0.75rem; color: #fff; border-left: 1px solid #444; border-right: 1px solid #444; }
-        
-        .table-head th { background: #222; font-size: 0.65rem; padding: 6px 0; }
-        .head-east { background: #e60000 !important; color: #fff; }
-        .head-west { background: #eee !important; color: #000; }
+        /* 牛名：三代目なども含めてバランスよく */
+        .cow-meta { font-size: 0.5rem; color: #f1c40f; display: block; margin-bottom: 2px; transform: scale(0.95); }
+        .cow-name { font-size: 1.05rem; font-weight: 900; color: #fff; display: block; line-height: 1.2; letter-spacing: -0.02em; }
+        .cow-owner { font-size: 0.45rem; color: #999; display: block; margin-top: 3px; transform: scale(0.9); }
+
+        /* 結果入力エリア (3分割固定) */
+        .bantuke-text { font-size: 0.75rem; color: #f1c40f; font-weight: 900; display: block; margin-bottom: 6px; }
+        .result-row { display: flex; border-top: 1px solid #444; padding-top: 5px; align-items: center; justify-content: center; width: 90%; margin: 0 auto; }
+        .res-win { width: 25%; font-size: 1rem; font-weight: bold; color: #e60000; }
+        .res-time { width: 50%; font-family: 'Oswald', sans-serif; font-size: 0.65rem; color: #fff; border-left: 1px solid #333; border-right: 1px solid #333; }
     </style>
 </head>
 <body>
@@ -58,13 +69,14 @@
     </div>
 </nav>
 
-<h1>玉城千春(kiroro)スペシャルミニライブ＆<br>平成19・20年生卒業記念ナイター闘牛大会</h1>
-
-<div class="taikai-info">
-    日　時：令和8年3月8日　午後6時30分対戦開始<br>
-    場　所：なくさみ館<br>
-    主　催：平成19・20年生卒業生を祝う絆会<br>
-    入場料：大人2500円　小人1000円　小学生以下無料
+<div class="taikai-header">
+    <h1>玉城千春(kiroro)スペシャルミニライブ＆<br>平成19・20年生卒業記念ナイター闘牛大会</h1>
+    <div class="details">
+        日　時：令和8年3月8日　午後6時30分対戦開始<br>
+        場　所：なくさみ館<br>
+        主　催：平成19・20年生卒業生を祝う絆会<br>
+        入場料：大人2500円　小人1000円　小学生以下無料
+    </div>
 </div>
 
 <table class="match-table">
@@ -77,7 +89,7 @@
     </tr>
 
     <tr>
-        <td class="col-res-area">徳和瀬</td>
+        <td class="col-area">徳和瀬</td>
         <td class="col-cow">
             <span class="cow-meta">牧山青空・琉輝卒業記念</span>
             <span class="cow-name">牛若琉輝丸</span>
@@ -95,11 +107,11 @@
             <span class="cow-name">耀</span>
             <span class="cow-owner">沖縄3番1枚</span>
         </td>
-        <td class="col-res-area">沖縄</td>
+        <td class="col-area">沖縄</td>
     </tr>
 
     <tr>
-        <td class="col-res-area">徳之島</td>
+        <td class="col-area">徳之島</td>
         <td class="col-cow">
             <span class="cow-meta">窪田勇心・郷健太卒業記念</span>
             <span class="cow-name">三代目 八Hatsuki輝</span>
@@ -117,11 +129,11 @@
             <span class="cow-name">希 爛</span>
             <span class="cow-owner">元 希龍</span>
         </td>
-        <td class="col-res-area">石垣</td>
+        <td class="col-area">石垣</td>
     </tr>
 
     <tr>
-        <td class="col-res-area">山天願</td>
+        <td class="col-area">山天願</td>
         <td class="col-cow">
             <span class="cow-meta">あゆら卒業記念</span>
             <span class="cow-name">石原大宝</span>
@@ -140,7 +152,7 @@
             <span class="cow-name">飛 魚</span>
             <span class="cow-owner">デビュー戦(牛主：恵子69kg)</span>
         </td>
-        <td class="col-res-area">前泊</td>
+        <td class="col-area">前泊</td>
     </tr>
 
     <tr>
