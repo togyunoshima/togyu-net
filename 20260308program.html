@@ -25,66 +25,64 @@
         .match-table-container { width: 100%; margin: 0 auto; background: rgba(0, 0, 0, 0.9); }
         .match-table { width: 100%; border-collapse: collapse; table-layout: fixed; border: 1.5px solid #666; }
         
-        /* 列幅：牛名エリア 40%ずつ、中央 20% */
-        .col-cow { width: 40%; position: relative; }
-        .col-center { width: 20%; }
+        /* 列幅：牛名エリアを広めに確保 */
+        .col-cow { width: 42%; position: relative; }
+        .col-center { width: 16%; } /* 番付のみに絞って凝縮 */
 
-        .match-table td { border: 1px solid #444; padding: 12px 2px; vertical-align: middle; }
+        .match-table td { border: 1px solid #444; padding: 15px 2px 10px 2px; vertical-align: middle; }
 
-        /* --- チャンピオン・チャレンジャーバッジ --- */
+        /* 日本語バッジ：斜め配置でポスター風に */
         .badge {
-            position: absolute; top: 2px; font-size: 0.5rem; font-weight: 800;
-            padding: 1px 4px; border-radius: 2px; color: #fff; text-transform: uppercase;
+            position: absolute; top: 0; font-size: 0.5rem; font-weight: 800;
+            padding: 2px 6px; color: #fff; z-index: 1;
         }
-        .badge-champ { left: 2px; background: #e60000; }   /* 東方の左上（赤） */
-        .badge-challenger { right: 2px; background: #007bff; } /* 西方の右上（青） */
+        .badge-champ { left: 0; background: #e60000; border-radius: 0 0 5px 0; }
+        .badge-challenger { right: 0; background: #007bff; border-radius: 0 0 0 5px; }
 
-        /* 牛名 */
         .cow-name { 
-            font-size: clamp(0.9rem, 3.8vw, 1.6rem); 
+            font-size: clamp(0.95rem, 4vw, 1.6rem); 
             font-weight: 900; color: #fff; display: block; 
-            white-space: nowrap; letter-spacing: -0.5px; margin-bottom: 4px;
+            white-space: nowrap; letter-spacing: -0.5px; margin-bottom: 5px;
         }
 
-        /* 下にまとめる情報（地区名、戦歴、牛主、元名） */
+        /* 地区・戦歴・牛主・元名 */
         .cow-details { 
-            font-size: 0.55rem; color: #bbb; display: block; line-height: 1.3;
+            font-size: 0.55rem; color: #bbb; display: block; line-height: 1.4;
         }
-        .detail-item { margin-right: 3px; }
-        .detail-item::after { content: " / "; }
+        .detail-item { display: inline-block; }
+        .detail-item::after { content: " / "; color: #555; }
         .detail-item:last-child::after { content: ""; }
 
-        /* 中央エリア */
-        .center-box { display: flex; flex-direction: column; align-items: center; }
+        /* 中央エリア：番付メイン */
+        .center-box { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        
         .bantuke-text { 
-            font-size: 0.6rem; color: #f1c40f; font-weight: bold; 
-            margin-bottom: 5px; line-height: 1.1; 
+            font-size: 0.65rem; color: #f1c40f; font-weight: bold; 
+            line-height: 1.1; margin-bottom: 3px;
         }
         
-        .bantuke-row { display: flex; align-items: center; justify-content: center; width: 100%; }
-        .win-mark { width: 22px; font-size: 1.2rem; font-weight: bold; color: #e60000; }
-        .win-mark.none { color: transparent; }
-
-        /* 番付がある時は数字を出さない設定 */
         .bantuke-num {
-            font-size: 1.3rem; font-weight: bold; color: #fff; font-family: 'Oswald', sans-serif;
-            margin: 0 5px;
+            font-size: 1.5rem; font-weight: bold; color: #fff; font-family: 'Oswald', sans-serif;
+            line-height: 1;
         }
 
-        .match-time {
-            font-family: 'Oswald', sans-serif; font-size: 0.65rem; color: #fff;
-            border-top: 1px solid #444; width: 90%; margin-top: 6px; padding-top: 4px;
+        /* タイム・結果：番付のすぐ下に配置 */
+        .match-result {
+            margin-top: 8px; border-top: 1px solid #444; width: 100%; padding-top: 4px;
         }
+        .win-circle { font-size: 1rem; color: #e60000; font-weight: bold; display: block; margin-bottom: 2px; }
+        .time-val { font-family: 'Oswald', sans-serif; font-size: 0.65rem; color: #aaa; white-space: nowrap; }
 
         /* ヘッダー */
-        .table-head { background: #222; font-size: 0.6rem; color: #aaa; }
-        .head-east { background: #e60000; color: #fff; }
-        .head-west { background: #eee; color: #000; }
+        .table-head { background: #111; font-size: 0.6rem; color: #888; }
+        .head-east { background: #e60000; color: #fff; border-color: #e60000; }
+        .head-west { background: #eee; color: #000; border-color: #eee; }
 
         @media (min-width: 600px) {
             .match-table-container { max-width: 850px; }
-            .badge { font-size: 0.7rem; padding: 2px 8px; }
+            .badge { font-size: 0.75rem; }
             .cow-details { font-size: 0.8rem; }
+            .bantuke-num { font-size: 2rem; }
         }
     </style>
 </head>
@@ -98,13 +96,13 @@
     <table class="match-table">
         <tr class="table-head">
             <th class="head-east">東（紅）</th>
-            <th>番付 ／ 勝敗 ／ タイム</th>
+            <th>番付 ／ 結果</th>
             <th class="head-west">西（白）</th>
         </tr>
 
         <tr>
             <td class="col-cow">
-                <span class="badge badge-champ">CHAMPION</span>
+                <span class="badge badge-champ">チャンピオン</span>
                 <span class="cow-name">黒龍王</span>
                 <div class="cow-details">
                     <span class="detail-item">面縄</span>
@@ -115,15 +113,14 @@
             <td class="col-center">
                 <div class="center-box">
                     <span class="bantuke-text">全島一優勝旗<br>争奪戦</span>
-                    <div class="bantuke-row">
-                        <span class="win-mark">○</span>
-                        <span class="win-mark none">○</span>
+                    <div class="match-result">
+                        <span class="win-circle">○</span>
+                        <span class="time-val">12:05</span>
                     </div>
-                    <div class="match-time">12:05</div>
                 </div>
             </td>
             <td class="col-cow">
-                <span class="badge badge-challenger">CHALLENGER</span>
+                <span class="badge badge-challenger">チャレンジャー</span>
                 <span class="cow-name">闘勢琥珀</span>
                 <div class="cow-details">
                     <span class="detail-item">平土野</span>
@@ -145,12 +142,11 @@
             </td>
             <td class="col-center">
                 <div class="center-box">
-                    <div class="bantuke-row">
-                        <span class="win-mark none">○</span>
-                        <span class="bantuke-num">2</span>
-                        <span class="win-mark none">○</span>
+                    <span class="bantuke-num">2</span>
+                    <div class="match-result">
+                        <span class="win-circle" style="color:transparent;">○</span>
+                        <span class="time-val">--:--</span>
                     </div>
-                    <div class="match-time">--:--</div>
                 </div>
             </td>
             <td class="col-cow">
@@ -162,8 +158,37 @@
                 </div>
             </td>
         </tr>
+
+        <tr>
+            <td class="col-cow">
+                <span class="cow-name">闘～Touki～氣</span>
+                <div class="cow-details">
+                    <span class="detail-item">浅間</span>
+                    <span class="detail-item">4連勝</span>
+                    <span class="detail-item">調教師：握正之</span>
+                </div>
+            </td>
+            <td class="col-center">
+                <div class="center-box">
+                    <span class="bantuke-num">3</span>
+                    <div class="match-result">
+                        <span class="win-circle" style="color:transparent;">○</span>
+                        <span class="time-val">--:--</span>
+                    </div>
+                </div>
+            </td>
+            <td class="col-cow">
+                <span class="cow-name">真瀬名ヒーラー</span>
+                <div class="cow-details">
+                    <span class="detail-item">真瀬名</span>
+                    <span class="detail-item">牛主：真瀬名</span>
+                </div>
+            </td>
+        </tr>
     </table>
 </div>
+
+<p style="color:#555; font-size:0.6rem; margin: 30px 0;">© 2026 togyu.net</p>
 
 </body>
 </html>
