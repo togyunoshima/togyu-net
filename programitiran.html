@@ -4,24 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>対戦表 | 徳之島闘牛サイト</title>
-    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Noto+Sans+JP:wght@900&family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Noto+Sans+JP:wght@700;900&family=Oswald:wght@700&display=swap" rel="stylesheet">
     <style>
         body { 
             background-color: #050505; 
             color: #eee; 
-            font-family: 'Kaisei Tokumin', serif; 
+            font-family: 'Noto Sans JP', sans-serif; 
             margin: 0;
-            padding: 20px 10px;
+            padding: 10px;
             text-align: center;
         }
 
-        /* --- 上3列・下2列のメニュー --- */
+        /* --- メニュー: 上3列・下2列 --- */
         .header-nav {
             max-width: 950px;
-            margin: 0 auto 40px auto;
+            margin: 0 auto 30px auto;
             display: grid;
             grid-template-columns: repeat(6, 1fr);
-            gap: 10px;
+            gap: 8px;
         }
 
         .nav-item {
@@ -32,9 +32,9 @@
             color: #fff;
             text-decoration: none;
             border: 1px solid #444;
-            padding: 12px 5px;
+            padding: 12px 2px;
             font-size: 0.85rem;
-            font-weight: 800;
+            font-weight: 700;
             transition: 0.3s;
         }
 
@@ -46,13 +46,11 @@
         .nav-item:nth-child(1), .nav-item:nth-child(2), .nav-item:nth-child(3) { grid-column: span 2; }
         .nav-item:nth-child(4), .nav-item:nth-child(5) { grid-column: span 3; }
 
-        /* --- タイトル --- */
         h1 { 
             font-family: 'Kaisei Tokumin', serif;
-            font-weight: 800;
-            font-size: clamp(2.2rem, 8vw, 3.5rem);
+            font-size: clamp(2rem, 7vw, 3.2rem);
             color: #fff;
-            margin: 20px 0 40px 0;
+            margin: 25px 0;
             text-shadow: 0.05em 0.05em 0px #e60000;
         }
 
@@ -63,16 +61,16 @@
             background-color: #222;
             color: #f1c40f;
             padding: 10px 15px;
-            font-size: 1.1rem;
-            font-weight: 800;
-            border-left: 5px solid #e60000;
+            font-size: 1.15rem;
+            font-weight: 900;
+            border-left: 6px solid #e60000;
             text-align: left;
         }
 
         /* --- テーブル --- */
         .table-container {
             max-width: 950px;
-            margin: 0 auto 20px auto;
+            margin: 0 auto 15px auto;
             border-bottom: 2px solid #e60000;
             background: #111;
         }
@@ -87,15 +85,27 @@
             padding: 20px 10px;
             border-bottom: 1px solid #222;
             vertical-align: middle;
-            text-align: center !important;
+        }
+
+        .col-date { 
+            width: 100px;
+            font-family: 'Oswald', sans-serif; 
+            color: #f1c40f; 
+            font-size: 1.05rem; 
+            text-align: center;
+        }
+
+        .col-title { 
+            font-size: 1.1rem; 
+            font-weight: 700; 
+            color: #fff; 
+            line-height: 1.5;
+            text-align: left;
+            padding-left: 15px !important;
             word-wrap: break-word;
         }
 
-        .col-date-box { width: 110px; }
-        .col-result-box { width: 85px; }
-
-        .col-date { font-family: 'Oswald', sans-serif; color: #f1c40f; font-size: 1.05rem; }
-        .col-title { font-size: 1.1rem; font-weight: 800; color: #fff; line-height: 1.5; }
+        .col-result-box { width: 80px; text-align: center; }
 
         .btn-result {
             display: inline-block;
@@ -104,13 +114,16 @@
             text-decoration: none;
             padding: 6px 12px;
             font-weight: 900;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
 
+        /* スマホ調整 */
         @media (max-width: 600px) {
-            .nav-item { font-size: 0.75rem; }
-            .col-date-box { width: 90px; }
-            .col-title { font-size: 0.95rem; }
+            .nav-item { font-size: 0.75rem; padding: 10px 1px; }
+            .col-date { width: 80px; font-size: 0.95rem; }
+            .col-title { font-size: 0.95rem; padding-left: 8px !important; }
+            .basho-header { font-size: 1.05rem; }
+            .col-result-box { width: 70px; }
         }
     </style>
 </head>
@@ -130,8 +143,16 @@
 <div class="table-container">
     <table class="program-table">
         <tbody>
-            <tr><td class="col-date-box col-date">2026.03.08</td><td class="col-title">玉城千春(Kiroro)スペシャルライブ＆<br>平成19・20年生卒業記念ナイター</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-            <tr><td class="col-date">2026.03.07</td><td class="col-title">卒業記念ナイター闘牛大会</td><td><a href="#" class="btn-result">結果</a></td></tr>
+            <tr>
+                <td class="col-date">2026.03.08</td>
+                <td class="col-title">玉城千春(Kiroro)スペシャルライブ＆<br>平成19・20年生卒業記念ナイター闘牛大会</td>
+                <td class="col-result-box"><a href="#" class="btn-result">結果</a></td>
+            </tr>
+            <tr>
+                <td class="col-date">2026.03.07</td>
+                <td class="col-title">卒業記念ナイター闘牛大会</td>
+                <td class="col-result-box"><a href="#" class="btn-result">結果</a></td>
+            </tr>
         </tbody>
     </table>
 </div>
@@ -140,117 +161,117 @@
 <div class="table-container">
     <table class="program-table">
         <tbody>
-            <tr><td class="col-date-box col-date">2026.01.03</td><td class="col-title">第42回 徳之島全島一・ミニ軽量級優勝旗争奪戦<br>徳之島町大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-            <tr><td class="col-date">2026.01.02</td><td class="col-title">第42回 徳之島中量級優勝旗争奪戦<br>平成2年・3年厄払い闘牛大会</td><td><a href="#" class="btn-result">結果</a></td></tr>
-            <tr><td class="col-date">2026.01.01</td><td class="col-title">第42回 徳之島軽量級優勝旗争奪戦<br>平成17・18年生成人記念闘牛大会</td><td><a href="#" class="btn-result">結果</a></td></tr>
+            <tr><td class="col-date">2026.01.03</td><td class="col-title">第42回 徳之島全島一・<br>ミニ軽量級優勝旗争奪戦 徳之島町大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+            <tr><td class="col-date">2026.01.02</td><td class="col-title">第42回 徳之島中量級優勝旗争奪戦<br>平成2年・3年厄払い闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+            <tr><td class="col-date">2026.01.01</td><td class="col-title">第42回 徳之島軽量級優勝旗争奪戦<br>平成17・18年生成人記念闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
         </tbody>
     </table>
 </div>
 
 <div class="basho-header">2025年 12月場所</div>
 <div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date-box col-date">2025.12.31</td><td class="col-title">若手オールスター忘年会2025 1時だよ！全員集合！</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2025.12.31</td><td class="col-title">若手オールスター忘年会2025<br>1時だよ！全員集合！</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
 </tbody></table></div>
 
 <div class="basho-header">2025年 10月場所</div>
 <div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date-box col-date">2025.10.19</td><td class="col-title">目手久闘牛稽古大会</td><td class="col-result-box"><span style="color:#333">ー</span></td></tr>
-    <tr><td class="col-date">2025.10.05</td><td class="col-title">第41回 徳之島全島一・軽量級優勝旗争奪戦</td><td><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2025.10.04</td><td class="col-title">第41回 徳之島中量級・ミニ軽量級優勝旗争奪戦</td><td><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2025.10.19</td><td class="col-title">目手久闘牛稽古大会</td><td class="col-result-box"><span style="color:#333">ー</span></td></tr>
+    <tr><td class="col-date">2025.10.05</td><td class="col-title">第41回 徳之島全島一・軽量級優勝旗争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2025.10.04</td><td class="col-title">第41回 徳之島中量級・<br>ミニ軽量級優勝旗争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
 </tbody></table></div>
 
 <div class="basho-header">2025年 9月場所</div>
 <div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date-box col-date">2025.09.22</td><td class="col-title">秋のナイター闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2025.09.22</td><td class="col-title">秋のナイター闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
 </tbody></table></div>
 
 <div class="basho-header">2025年 8月場所</div>
 <div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date-box col-date">2025.08.14</td><td class="col-title">お盆ナイター闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2025.08.13</td><td class="col-title">お盆若手オールスター闘牛大会</td><td><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2025.08.14</td><td class="col-title">お盆ナイター闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2025.08.13</td><td class="col-title">お盆若手オールスター闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
 </tbody></table></div>
 
 <div class="basho-header">2025年 6月場所</div>
 <div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date-box col-date">2025.06.28</td><td class="col-title">2025 トライアスロンIN徳之島 WELCOME大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2025.06.28</td><td class="col-title">2025 トライアスロンIN徳之島<br>WELCOME大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
 </tbody></table></div>
 
 <div class="basho-header">2025年 5月場所</div>
 <div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date-box col-date">2025.05.19</td><td class="col-title">第66回 奄美群島市町村議員大会開催記念</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2025.05.05</td><td class="col-title">第3回 子どもの日フェスティバル闘牛大会</td><td><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2025.05.04</td><td class="col-title">第40回 徳之島全島一・ミニ軽量級争奪戦</td><td><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2025.05.03</td><td class="col-title">第40回 徳之島中量級優勝旗争奪戦</td><td><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2025.05.02</td><td class="col-title">第40回 徳之島軽量級優勝旗争奪戦</td><td><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2025.05.19</td><td class="col-title">第66回 奄美群島市町村議員大会開催記念</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2025.05.05</td><td class="col-title">第3回 子どもの日フェスティバル闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2025.05.04</td><td class="col-title">第40回 徳之島全島一・ミニ軽量級争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2025.05.03</td><td class="col-title">第40回 徳之島中量級優勝旗争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2025.05.02</td><td class="col-title">第40回 徳之島軽量級優勝旗争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
 </tbody></table></div>
 
 <div class="basho-header">2025年 4月場所</div>
 <div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date-box col-date">2025.04.20</td><td class="col-title">第10回 きびまつりなくさみ大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2025.04.20</td><td class="col-title">第10回 きびまつりなくさみ大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
 </tbody></table></div>
 
 <div class="basho-header">2025年 3月場所</div>
 <div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date-box col-date">2025.03.09</td><td class="col-title">卒業記念全島若手オールスター闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2025.03.08</td><td class="col-title">平成18・19年生卒業記念闘牛大会</td><td><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2025.03.09</td><td class="col-title">卒業記念全島若手オールスター闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2025.03.08</td><td class="col-title">平成18・19年生卒業記念闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
 </tbody></table></div>
 
 <div class="basho-header">2025年 1月場所</div>
 <div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date-box col-date">2025.01.04</td><td class="col-title">昭和40年生還暦記念闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2025.01.03</td><td class="col-title">第39回 徳之島全島一・ミニ軽量級争奪戦</td><td><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2025.01.02</td><td class="col-title">第39回 徳之島中量級優勝旗争奪戦</td><td><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2025.01.01</td><td class="col-title">第39回 徳之島軽量級優勝旗争奪戦</td><td><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2025.01.04</td><td class="col-title">昭和40年生還暦記念闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2025.01.03</td><td class="col-title">第39回 徳之島全島一・ミニ軽量級争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2025.01.02</td><td class="col-title">第39回 徳之島中量級優勝旗争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2025.01.01</td><td class="col-title">第39回 徳之島軽量級優勝旗争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
 </tbody></table></div>
 
 <div class="basho-header">2024年 12月場所</div>
 <div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date-box col-date">2024.12.31</td><td class="col-title">第2回 若手オールスター忘年会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2024.12.22</td><td class="col-title">道の駅とくのしま オープン記念</td><td><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2024.12.31</td><td class="col-title">第2回 若手オールスター忘年会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2024.12.22</td><td class="col-title">道の駅とくのしま オープン記念</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
 </tbody></table></div>
 
 <div class="basho-header">2024年 10月場所</div>
 <div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date-box col-date">2024.10.06</td><td class="col-title">第38回 徳之島全島一・軽量級争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2024.10.05</td><td class="col-title">第38回 徳之島中量級・ミニ軽量級争奪戦</td><td><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2024.10.06</td><td class="col-title">第38回 徳之島全島一・軽量級争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2024.10.05</td><td class="col-title">第38回 徳之島中量級・ミニ軽量級争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
 </tbody></table></div>
 
 <div class="basho-header">2024年 8月場所</div>
 <div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date-box col-date">2024.08.14</td><td class="col-title">お盆ナイター闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2024.08.11</td><td class="col-title">若手オールスターナイター闘牛大会</td><td><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2024.08.14</td><td class="col-title">お盆ナイター闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2024.08.11</td><td class="col-title">若手オールスターナイター闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
 </tbody></table></div>
 
 <div class="basho-header">2024年 7月場所</div>
 <div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date-box col-date">2024.07.05</td><td class="col-title">徳之島中央家畜市場購買者歓迎大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2024.07.05</td><td class="col-title">徳之島中央家畜市場購買者歓迎大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
 </tbody></table></div>
 
 <div class="basho-header">2024年 6月場所</div>
 <div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date-box col-date">2024.06.22</td><td class="col-title">2024トライアスロンin徳之島 歓迎大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2024.06.22</td><td class="col-title">2024トライアスロンin徳之島 歓迎大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
 </tbody></table></div>
 
 <div class="basho-header">2024年 5月場所</div>
 <div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date-box col-date">2024.05.12</td><td class="col-title">第9回 徳之島きびまつり 製糖終了なぐさみ</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2024.05.05</td><td class="col-title">第2回 子どもの日フェスティバル</td><td><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2024.05.04</td><td class="col-title">第37回 徳之島全島一&ミニ軽量級争奪戦</td><td><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2024.05.03</td><td class="col-title">第37回 徳之島中量級優勝旗争奪戦</td><td><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2024.05.02</td><td class="col-title">第37回 徳之島軽量級優勝旗争奪戦</td><td><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2024.05.12</td><td class="col-title">第9回 徳之島きびまつり 製糖終了なぐさみ</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2024.05.05</td><td class="col-title">第2回 子どもの日フェスティバル</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2024.05.04</td><td class="col-title">第37回 徳之島全島一&ミニ軽量級争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2024.05.03</td><td class="col-title">第37回 徳之島中量級優勝旗争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2024.05.02</td><td class="col-title">第37回 徳之島軽量級優勝旗争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
 </tbody></table></div>
 
 <div class="basho-header">2024年 3月場所</div>
 <div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date-box col-date">2024.03.31</td><td class="col-title">丸正グループ45周年記念若手大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2024.03.09</td><td class="col-title">卒業記念闘牛大会</td><td><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2024.03.31</td><td class="col-title">丸正グループ45周年記念若手大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2024.03.09</td><td class="col-title">卒業記念闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
 </tbody></table></div>
 
 <div class="basho-header">2024年 1月場所</div>
 <div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date-box col-date">2024.01.03</td><td class="col-title">第36回 徳之島全島一&ミニ軽量級争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2024.01.02</td><td class="col-title">第36回 徳之島中量級優勝旗争奪戦</td><td><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2024.01.01</td><td class="col-title">第36回 徳之島軽量級優勝旗争奪戦</td><td><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2024.01.03</td><td class="col-title">第36回 徳之島全島一&ミニ軽量級争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2024.01.02</td><td class="col-title">第36回 徳之島中量級優勝旗争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2024.01.01</td><td class="col-title">第36回 徳之島軽量級優勝旗争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
 </tbody></table></div>
 
 <p style="margin-top:60px; color:#333; font-size:0.75rem;">© 2026 togyu.net</p>
