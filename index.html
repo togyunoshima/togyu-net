@@ -4,21 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>徳之島闘牛サイト | ホーム</title>
-    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Yuji+Syuku&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Yuji+Syuku&family=Oswald:wght@700&display=swap" rel="stylesheet">
     <style>
         body { 
             background-color: #050505; 
             color: #eee; 
             font-family: 'Kaisei Tokumin', serif; 
             margin: 0;
-            padding: 20px 10px;
+            padding: 10px;
             text-align: center;
         }
 
-        /* --- 上3列・下2列のメニュー --- */
+        /* --- タイトル最上部 --- */
+        h1 { 
+            font-family: 'Yuji Syuku', serif;
+            font-size: clamp(2.2rem, 10vw, 4.8rem);
+            color: #fff;
+            margin: 30px 0 20px 0;
+            line-height: 1.2;
+            text-shadow: 3px 3px 0 #e60000, -1px -1px 0 #e60000, 1px -1px 0 #e60000, -1px 1px 0 #e60000, 1px 1px 0 #e60000;
+            letter-spacing: 2px;
+        }
+
+        /* --- メニュー --- */
         .header-nav {
             max-width: 950px;
-            margin: 0 auto 40px auto;
+            margin: 0 auto 30px auto;
             display: grid;
             grid-template-columns: repeat(6, 1fr);
             gap: 10px;
@@ -38,55 +49,48 @@
             transition: 0.3s;
         }
 
-        .nav-item:hover {
-            background-color: #e60000;
-            border-color: #e60000;
-        }
-
+        .nav-item:hover { background-color: #e60000; border-color: #e60000; }
         .nav-item:nth-child(1), .nav-item:nth-child(2), .nav-item:nth-child(3) { grid-column: span 2; }
         .nav-item:nth-child(4), .nav-item:nth-child(5) { grid-column: span 3; }
 
-        /* --- タイトル: 対戦表と同じ闘龍風設定 --- */
-        h1 { 
-            font-family: 'Yuji Syuku', serif;
-            font-size: clamp(2.5rem, 12vw, 5rem);
-            color: #fff;
-            margin: 40px 0;
-            line-height: 1.1;
-            /* 魂の赤影 */
-            text-shadow: 
-                3px 3px 0 #e60000,
-                -1px -1px 0 #e60000,  
-                 1px -1px 0 #e60000,
-                -1px  1px 0 #e60000,
-                 1px  1px 0 #e60000;
-            letter-spacing: 4px;
-        }
-
-        .hero-img {
-            max-width: 1000px;
-            width: 95%;
-            height: auto;
-            margin: 20px auto;
-            border: 2px solid #333;
-        }
-
-        .intro-text {
-            max-width: 800px;
-            margin: 40px auto;
-            line-height: 1.8;
-            font-size: 1.1rem;
+        /* --- 各セクションの共通設定 --- */
+        .section-container {
+            max-width: 950px;
+            margin: 0 auto 40px auto;
             text-align: left;
-            padding: 0 15px;
+            padding: 0 10px;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            color: #f1c40f;
+            border-left: 5px solid #e60000;
+            padding-left: 15px;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .content-box {
+            background: #111;
+            border: 1px solid #222;
+            padding: 20px;
+            color: #999;
+            text-align: center;
+            min-height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         @media (max-width: 600px) {
-            h1 { font-size: 2.5rem; letter-spacing: 2px; }
+            h1 { font-size: 2.3rem; }
             .nav-item { font-size: 0.75rem; }
         }
     </style>
 </head>
 <body>
+
+<h1>徳之島闘牛サイト</h1>
 
 <nav class="header-nav">
     <a href="index.html" class="nav-item" style="background: #e60000; border-color: #e60000;">ホーム</a>
@@ -96,17 +100,25 @@
     <a href="champions.html" class="nav-item">徳之島闘牛歴代王者</a>
 </nav>
 
-<h1>徳之島闘牛</h1>
+<div class="section-container">
+    <div class="section-title">最新・人気記事</div>
+    <div class="content-box">
+        記事一覧（準備中）
+    </div>
+</div>
 
-<img src="https://via.placeholder.com/1000x500/111/fff?text=TOKYU+IMAGE" alt="徳之島闘牛イメージ" class="hero-img">
+<div class="section-container">
+    <div class="section-title">闘牛場のご案内</div>
+    <div class="content-box">
+        闘牛場マップ（準備中）
+    </div>
+</div>
 
-<div class="intro-text">
-    <p>
-        徳之島の闘牛は、五百年以上の歴史を持つ伝統文化です。
-        島民の魂を揺さぶる「ワイド！ワイド！」の掛け声とともに、
-        一トンを超える巨牛たちが激突する様はまさに圧巻。
-        ここでは最新の対戦表や過去の戦歴、歴代の王者たちの情報を発信しています。
-    </p>
+<div class="section-container">
+    <div class="section-title">公式Instagram</div>
+    <div class="content-box">
+        Instagramフィード（準備中）
+    </div>
 </div>
 
 <p style="margin-top:60px; color:#333; font-size:0.75rem;">© 2026 togyu.net</p>
