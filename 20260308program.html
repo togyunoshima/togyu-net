@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026年3月8日 取組表 | 徳之島闘牛サイト</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Yuji+Syuku&family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            margin: 0; padding: 10px; background-color: #050505; color: #eee; 
+            font-family: 'Kaisei Tokumin', serif; text-align: center;
+        }
+
+        .bg-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('IMG_8395.jpg'); background-size: cover;
+            background-position: center; opacity: 0.15; filter: grayscale(100%); z-index: -1;
+        }
+
+        /* 大会タイトル */
+        .taikai-header { margin: 30px 0; }
+        .taikai-date { font-family: 'Oswald', sans-serif; color: #f1c40f; font-size: 1.2rem; letter-spacing: 2px; }
+        h1 { 
+            font-family: 'Yuji Syuku', serif; font-size: clamp(1.5rem, 6vw, 2.5rem); 
+            color: #fff; margin: 10px 0; line-height: 1.4;
+            text-shadow: 2px 2px 0 #e60000;
+        }
+
+        .back-link { display: inline-block; margin: 10px 0 30px 0; color: #aaa; text-decoration: none; font-size: 0.85rem; border: 1px solid #444; padding: 5px 15px; }
+
+        /* 取組表コンテナ */
+        .program-container { max-width: 700px; margin: 0 auto; padding-bottom: 50px; }
+
+        /* 各取組 */
+        .match-row {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #333;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .match-label {
+            position: absolute; top: 0; left: 0; background: #e60000;
+            color: #fff; font-size: 0.65rem; padding: 2px 8px; font-weight: bold;
+        }
+
+        .side { width: 42%; padding: 0 10px; }
+        .side.east { text-align: right; border-right: 1px solid #333; }
+        .side.west { text-align: left; border-left: 1px solid #333; }
+        
+        .vs-zone { width: 16%; font-family: 'Yuji Syuku', serif; color: #e60000; font-size: 1.4rem; font-weight: bold; }
+
+        .rank { font-size: 0.75rem; color: #f1c40f; display: block; margin-bottom: 5px; }
+        .cow-name { font-size: 1.2rem; font-weight: 800; color: #fff; display: block; }
+
+        @media (max-width: 600px) {
+            .cow-name { font-size: 1rem; }
+            .vs-zone { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-overlay"></div>
+
+<div class="taikai-header">
+    <div class="taikai-date">2026.03.08 SUN</div>
+    <h1>玉城千春(Kiroro)スペシャルライブ＆<br>平成19・20年生卒業記念ナイター闘牛大会</h1>
+    <a href="programitiran.html" class="back-link">← 対戦表一覧に戻る</a>
+</div>
+
+<div class="program-container">
+
+    <div class="match-row">
+        <div class="match-label">結びの一番</div>
+        <div class="side east">
+            <span class="rank">徳之島全島一王者</span>
+            <span class="cow-name">牛の名前が入ります</span>
+        </div>
+        <div class="vs-zone">VS</div>
+        <div class="side west">
+            <span class="rank">挑戦者</span>
+            <span class="cow-name">牛の名前が入ります</span>
+        </div>
+    </div>
+
+    <div class="match-row">
+        <div class="match-label">特別指名</div>
+        <div class="side east">
+            <span class="rank">東</span>
+            <span class="cow-name">牛の名前が入ります</span>
+        </div>
+        <div class="vs-zone">VS</div>
+        <div class="side west">
+            <span class="rank">西</span>
+            <span class="cow-name">牛の名前が入ります</span>
+        </div>
+    </div>
+
+    <div class="match-row">
+        <div class="match-label">指名</div>
+        <div class="side east">
+            <span class="rank">東</span>
+            <span class="cow-name">牛の名前が入ります</span>
+        </div>
+        <div class="vs-zone">VS</div>
+        <div class="side west">
+            <span class="rank">西</span>
+            <span class="cow-name">牛の名前が入ります</span>
+        </div>
+    </div>
+
+</div>
+
+<p style="color:#555; font-size:0.75rem; margin-bottom: 30px;">© 2026 togyu.net</p>
+
+</body>
+</html>
