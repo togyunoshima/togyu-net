@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>徳之島闘牛アーカイブ | ホーム</title>
-    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@800&family=Noto+Sans+JP:wght@900&family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <title>徳之島闘牛サイト | ホーム</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@800&family=Yuji+Syuku&family=Noto+Sans+JP:wght@900&family=Oswald:wght@700&display=swap" rel="stylesheet">
     <style>
         body, html {
             height: 100%;
@@ -24,30 +24,33 @@
             z-index: 1;
             padding: 20px;
             width: 100%;
-            max-width: 500px;
+            max-width: 600px;
         }
 
+        /* 荒々しい筆文字と赤×金のグラデーション */
         .main-title {
-            font-family: 'Noto Sans JP', sans-serif;
+            font-family: 'Yuji Syuku', serif;
             font-weight: 900;
-            font-size: clamp(3rem, 12vw, 5.5rem);
+            font-size: clamp(3rem, 15vw, 6rem);
             margin: 0;
             line-height: 1.1;
-            text-shadow: 4px 4px 0px #e60000;
+            background: linear-gradient(45deg, #b30000 0%, #ffc107 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0px 4px 10px rgba(179, 0, 0, 0.8);
             letter-spacing: -2px;
         }
 
         .catchphrase {
             font-size: clamp(0.9rem, 3.5vw, 1.3rem);
             color: #f1c40f;
-            margin-top: 10px;
-            margin-bottom: 40px;
+            margin-top: 15px;
+            margin-bottom: 50px;
             letter-spacing: 10px;
             font-weight: 800;
             padding-left: 10px;
         }
 
-        /* ナビゲーションメニュー */
         .nav-menu {
             display: flex;
             flex-direction: column;
@@ -76,12 +79,13 @@
             box-shadow: 0 10px 25px rgba(230, 0, 0, 0.4);
         }
 
+        /* フッター：ドメイン名に変更 */
         .footer-text {
             position: absolute;
             bottom: 30px;
             font-family: 'Oswald', sans-serif;
             font-size: 0.8rem;
-            color: #333;
+            color: #444; /* 少し見やすく調整 */
             letter-spacing: 3px;
         }
     </style>
@@ -89,25 +93,19 @@
 <body>
 
 <div class="container">
-    <div class="main-title">徳之島闘牛</div>
+    <div class="main-title">徳之島闘牛サイト</div>
     <div class="catchphrase">魂が、咆える。</div>
 
     <nav class="nav-menu">
         <a href="index.html" class="nav-item">ホーム</a>
-        
         <a href="programitiran.html" class="nav-item">対戦表</a>
-        
         <a href="search.html" class="nav-item">戦歴検索</a>
         <a href="prediction.html" class="nav-item">予想ページ</a>
         <a href="champions.html" class="nav-item">徳之島闘牛歴代王者</a>
     </nav>
 </div>
 
-<div class="footer-text">© 2026 TOKUNOSHIMA TOGYU ARCHIVE</div>
-
-</body>
-</html>
-<p style="margin-top:40px; color:#333; font-size:0.7rem;">© TOKUNOSHIMA TOGYU ARCHIVES</p>
+<div class="footer-text">© togyu.net</div>
 
 </body>
 </html>
