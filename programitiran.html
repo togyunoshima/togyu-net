@@ -11,24 +11,58 @@
             color: #eee; 
             font-family: 'Kaisei Tokumin', serif; 
             margin: 0;
-            padding: 40px 10px;
+            padding: 20px 10px;
             text-align: center;
         }
 
-        /* 1. タイトルを「対戦表」のみにし、筆文字デザインを適用 */
-        h1 { 
-            font-family: 'Kaisei Tokumin', serif; /* 筆文字 */
-            font-weight: 800;
-            font-size: clamp(2.5rem, 10vw, 4rem);
+        /* --- 上3列・下2列のメニュー --- */
+        .header-nav {
+            max-width: 950px;
+            margin: 0 auto 40px auto;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr); /* 6分割して配置を調整 */
+            gap: 10px;
+        }
+
+        .nav-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
             color: #fff;
-            margin-bottom: 40px; /* 余白調整 */
-            letter-spacing: -1px;
-            text-shadow: 0.05em 0.05em 0px #e60000;
-            text-align: center;
+            text-decoration: none;
+            border: 1px solid #444;
+            padding: 12px 5px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            transition: 0.3s;
         }
 
-        /* 2. subtitle（英語）は削除 */
+        .nav-item:hover {
+            background-color: #e60000;
+            border-color: #e60000;
+        }
 
+        /* 上段3列 */
+        .nav-item:nth-child(1), .nav-item:nth-child(2), .nav-item:nth-child(3) {
+            grid-column: span 2;
+        }
+        /* 下段2列 */
+        .nav-item:nth-child(4), .nav-item:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* --- タイトル --- */
+        h1 { 
+            font-family: 'Kaisei Tokumin', serif;
+            font-weight: 800;
+            font-size: clamp(2.2rem, 8vw, 3.5rem);
+            color: #fff;
+            margin: 20px 0 40px 0;
+            text-shadow: 0.05em 0.05em 0px #e60000;
+        }
+
+        /* --- テーブル --- */
         .table-container {
             max-width: 950px;
             margin: 0 auto;
@@ -48,7 +82,6 @@
             color: #fff;
             padding: 15px;
             font-size: 1rem;
-            text-align: center;
         }
 
         .program-table td {
@@ -59,67 +92,39 @@
             word-wrap: break-word;
         }
 
-        .col-date-box { width: 120px; }
-        .col-title-box { width: auto; }
-        .col-result-box { width: 90px; }
+        .col-date-box { width: 110px; }
+        .col-result-box { width: 85px; }
 
-        .col-date {
-            font-family: 'Oswald', sans-serif;
-            color: #f1c40f; 
-            font-size: 1.1rem;
-        }
-
-        .col-title {
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: #fff;
-            line-height: 1.6;
-            text-align: center;
-        }
+        .col-date { font-family: 'Oswald', sans-serif; color: #f1c40f; font-size: 1.05rem; }
+        .col-title { font-size: 1.15rem; font-weight: 800; color: #fff; line-height: 1.5; }
 
         .btn-result {
             display: inline-block;
             background-color: #fff;
             color: #000;
             text-decoration: none;
-            padding: 8px 18px;
+            padding: 6px 12px;
             font-weight: 900;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             border: 2px solid #fff;
-            transition: 0.3s;
-        }
-
-        .btn-result:hover {
-            background-color: #e60000;
-            color: #fff;
-            border-color: #e60000;
-        }
-
-        .back-home {
-            display: inline-block;
-            margin-top: 30px;
-            text-decoration: none;
-            color: #fff;
-            border: 1px solid #444;
-            padding: 12px 40px;
-            font-weight: 800;
-            background: rgba(255, 255, 255, 0.05);
-            transition: 0.3s;
-        }
-
-        .back-home:hover {
-            background: #e60000;
-            border-color: #e60000;
         }
 
         @media (max-width: 600px) {
-            .col-date-box { width: 100px; }
-            .col-title { font-size: 1.05rem; }
-            h1 { font-size: 2rem; }
+            .nav-item { font-size: 0.75rem; padding: 10px 2px; }
+            .col-date-box { width: 90px; }
+            .col-title { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
+
+<nav class="header-nav">
+    <a href="index.html" class="nav-item">ホーム</a>
+    <a href="programitiran.html" class="nav-item" style="background: #e60000; border-color: #e60000;">対戦表</a>
+    <a href="search.html" class="nav-item">戦歴検索</a>
+    <a href="prediction.html" class="nav-item">予想ページ</a>
+    <a href="champions.html" class="nav-item">歴代王者</a>
+</nav>
 
 <h1>対戦表</h1>
 
@@ -180,11 +185,7 @@
     </table>
 </div>
 
-<div style="text-align: center; margin-bottom: 50px;">
-    <a href="index.html" class="back-home">ホームへ戻る</a>
-</div>
-
-<p style="margin-top:40px; color:#333; font-size:0.7rem;">© 2026 togyu.net</p>
+<p style="margin-top:60px; color:#333; font-size:0.75rem;">© 2026 togyu.net</p>
 
 </body>
 </html>
