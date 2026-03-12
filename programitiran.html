@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>対戦表 | 徳之島闘牛サイト</title>
-    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Yuji+Syuku&family=Oswald:wght@700&display=swap" rel="stylesheet">
     <style>
         body { 
             background-color: #050505; 
             color: #eee; 
-            font-family: 'Kaisei Tokumin', serif; /* フォントを戻しました */
+            font-family: 'Kaisei Tokumin', serif; 
             margin: 0;
             padding: 10px;
             text-align: center;
@@ -32,7 +32,7 @@
             color: #fff;
             text-decoration: none;
             border: 1px solid #444;
-            padding: 12px 2px;
+            padding: 12px 5px;
             font-size: 0.85rem;
             font-weight: 800;
             transition: 0.3s;
@@ -46,11 +46,21 @@
         .nav-item:nth-child(1), .nav-item:nth-child(2), .nav-item:nth-child(3) { grid-column: span 2; }
         .nav-item:nth-child(4), .nav-item:nth-child(5) { grid-column: span 3; }
 
+        /* --- タイトル: 闘龍風に変更 --- */
         h1 { 
-            font-size: clamp(2rem, 7vw, 3.2rem);
+            font-family: 'Yuji Syuku', serif; /* 祐uji 宿（かすれ筆） */
+            font-size: clamp(2.5rem, 10vw, 4.5rem); /* 少し大きくして迫力を */
             color: #fff;
-            margin: 25px 0;
-            text-shadow: 0.05em 0.05em 0px #e60000;
+            margin: 20px 0 40px 0;
+            line-height: 1;
+            /* 赤影をパキッと太くして、闘龍の荒々しさを強調 */
+            text-shadow: 
+                3px 3px 0 #e60000,
+                -1px -1px 0 #e60000,  
+                 1px -1px 0 #e60000,
+                -1px  1px 0 #e60000,
+                 1px  1px 0 #e60000;
+            letter-spacing: 2px;
         }
 
         /* --- 場所区切りヘッダー --- */
@@ -117,6 +127,7 @@
         }
 
         @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
             .nav-item { font-size: 0.75rem; padding: 10px 1px; }
             .col-date { width: 80px; font-size: 0.95rem; }
             .col-title { font-size: 0.95rem; padding-left: 8px !important; }
