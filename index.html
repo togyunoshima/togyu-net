@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>徳之島闘牛アーカイブ | ホーム</title>
+    <title>徳之島闘牛サイト | ホーム</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@800&family=Noto+Sans+JP:wght@900&family=Oswald:wght@700&display=swap" rel="stylesheet">
     <style>
         body, html {
@@ -11,39 +13,35 @@
             margin: 0;
             background-color: #050505;
             color: #fff;
-            font-family: 'Kaisei Tokumin', serif;
+            /* 筆文字を優先的に適用 */
+            font-family: 'Kaisei Tokumin', serif; 
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            overflow: hidden; /* スマホで画面が揺れないように固定 */
+            overflow: hidden;
         }
 
         .container {
             padding: 20px;
-            width: 100%;
-            max-width: 600px; /* 少し広げて1行を維持しやすく */
+            width: 95%; /* 横幅に少し余裕を持たせる */
+            max-width: 600px;
             box-sizing: border-box;
         }
 
-        /* 魂のメインタイトル：1行表示を死守 */
+        /* 魂のメインタイトル：1行に収めつつ、確実に筆文字を適用 */
         .main-title {
-            font-family: 'Noto Sans JP', sans-serif;
-            font-weight: 900;
-            /* vwを使って画面幅に合わせて自動リサイズ（1行に収める） */
-            font-size: 13vw; 
-            white-space: nowrap; /* 絶対に改行させない */
+            font-family: 'Kaisei Tokumin', serif; /* ここも筆文字に固定 */
+            font-weight: 800;
+            /* 見切れないようにサイズを少し抑えめに調整 */
+            font-size: clamp(2rem, 10vw, 4.5rem); 
+            white-space: nowrap; 
             margin: 0;
             line-height: 1.2;
-            /* 濁りを消すため、パキッとした鮮やかな赤 (#ff0000) を使用 */
             color: #ffffff;
+            /* 鮮やかな赤 (#ff0000) */
             text-shadow: 0.05em 0.05em 0px #ff0000; 
             letter-spacing: -0.02em;
-        }
-
-        /* PCで見るときに大きくなりすぎないよう制限 */
-        @media (min-width: 600px) {
-            .main-title { font-size: 80px; }
         }
 
         .catchphrase {
@@ -75,6 +73,8 @@
             font-size: 1.1rem;
             font-weight: 800;
             transition: 0.3s;
+            /* ボタン内も筆文字 */
+            font-family: 'Kaisei Tokumin', serif;
         }
 
         .nav-item:hover {
@@ -108,7 +108,7 @@
     </nav>
 </div>
 
-<div class="footer-text">© 2026 TOKUNOSHIMA TOGYU ARCHIVE</div>
+<div class="footer-text">© 2026 TOKUNOSHIMA TOGYU</div>
 
 </body>
 </html>
