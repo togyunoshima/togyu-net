@@ -3,203 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>取組表 | 徳之島闘牛サイト</title>
+    <title>3/8 卒業記念ナイター番組表 | togyu.net</title>
     <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Yuji+Syuku&family=Oswald:wght@700&display=swap" rel="stylesheet">
     <style>
-        body { 
-            margin: 0; padding: 2px; background-color: #050505; color: #eee; 
-            font-family: 'Kaisei Tokumin', serif; text-align: center; line-height: 1.1;
-            overflow-x: hidden;
-        }
-        .bg-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('IMG_8395.jpg'); background-size: cover;
-            background-position: center; opacity: 0.15; filter: grayscale(100%); z-index: -1;
-        }
-
-        h1 { 
-            font-family: 'Yuji Syuku', serif; font-size: clamp(1.1rem, 4vw, 1.6rem); 
-            color: #fff; margin: 8px auto; text-shadow: 2px 2px 0 #e60000;
-            line-height: 1.3;
-        }
-
-        .taikai-info {
-            max-width: 98%; margin: 0 auto 8px auto; background: rgba(255,255,255,0.08);
-            border: 1px solid #444; padding: 6px; font-size: 0.65rem; text-align: left;
-            display: flex; justify-content: space-around; flex-wrap: wrap;
-        }
-        .info-row { margin: 2px 5px; }
-        .info-label { color: #f1c40f; font-weight: bold; margin-right: 4px; }
-
+        body { margin: 0; padding: 2px; background-color: #050505; color: #eee; font-family: 'Kaisei Tokumin', serif; text-align: center; line-height: 1.1; overflow-x: hidden; }
+        .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('IMG_8395.jpg'); background-size: cover; background-position: center; opacity: 0.15; z-index: -1; }
+        h1 { font-family: 'Yuji Syuku', serif; font-size: clamp(0.9rem, 3.5vw, 1.4rem); color: #fff; margin: 8px auto; text-shadow: 2px 2px 0 #e60000; line-height: 1.3; }
         .match-table-container { width: 100%; margin: 0 auto; background: rgba(0, 0, 0, 0.9); }
         .match-table { width: 100%; border-collapse: collapse; table-layout: fixed; border: 1.5px solid #666; }
-        
-        .col-cow { width: 41%; position: relative; }
-        .col-center { width: 18%; }
-
-        /* セル余白を詰めつつ、10組収めるための調整 */
-        .match-table td { border: 1px solid #444; padding: 4px 1px; vertical-align: middle; }
-
-        .badge {
-            position: absolute; top: 1px; font-size: 0.45rem; font-weight: 800;
-            padding: 0 3px; border-radius: 1px; color: #fff; line-height: 1.2;
-        }
-        .badge-champ { left: 1px; background: #e60000; }
-        .badge-challenger { right: 1px; background: #007bff; }
-
-        .cow-name { 
-            font-size: 1rem; font-weight: 900; color: #fff; 
-            display: block; white-space: nowrap; letter-spacing: -0.5px;
-            margin-bottom: 2px;
-        }
-
-        .cow-details { 
-            font-size: 0.52rem; color: #bbb; display: block; line-height: 1.2;
-        }
-        .detail-item::after { content: "/"; margin: 0 1px; }
-        .detail-item:last-child::after { content: ""; }
-
-        /* 中央エリアの調整 */
-        .center-box { display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        
-        /* 争奪戦の文字を大きく強調 */
-        .bantuke-text { 
-            font-size: 0.7rem; color: #f1c40f; font-weight: 900; 
-            margin-bottom: 2px; line-height: 1.1;
-            text-shadow: 1px 1px 0 #000;
-        }
-        
-        /* 数字番付の調整 */
-        .bantuke-num { font-size: 1.2rem; font-weight: bold; color: #fff; font-family: 'Oswald', sans-serif; margin-bottom: 2px; }
-
-        /* 勝敗とタイムを横並びに */
-        .result-row { 
-            display: flex; align-items: center; justify-content: center; 
-            width: 100%; border-top: 1px solid #444; padding-top: 2px;
-        }
-        .win-mark { font-size: 1rem; font-weight: bold; color: #e60000; margin: 0 2px; }
-        .win-mark.none { color: transparent; }
-        .match-time { font-family: 'Oswald', sans-serif; font-size: 0.6rem; color: #fff; margin: 0 2px; }
-
-        .table-head th { background: #222; font-size: 0.55rem; color: #aaa; padding: 4px 0; }
+        .match-table td, .match-table th { border: 1px solid #444; padding: 6px 1px; vertical-align: middle; }
+        .col-cow { width: 40%; }
+        .col-center { width: 20%; }
+        .cow-name { font-size: 1.05rem; font-weight: 900; color: #fff; display: block; margin-bottom: 2px; }
+        .cow-meta { font-size: 0.55rem; color: #f1c40f; display: block; line-height: 1.1; margin-bottom: 1px; }
+        .cow-owner { font-size: 0.5rem; color: #aaa; display: block; line-height: 1.2; }
+        .bantuke-text { font-size: 0.75rem; color: #f1c40f; font-weight: 900; line-height: 1.2; }
+        .table-head th { background: #222; font-size: 0.6rem; padding: 5px 0; }
         .head-east { background: #e60000 !important; color: #fff; }
         .head-west { background: #eee !important; color: #000; }
-
-        @media (min-width: 600px) {
-            .match-table-container { max-width: 800px; }
-            .cow-name { font-size: 1.4rem; }
-            .cow-details { font-size: 0.75rem; }
-            .bantuke-text { font-size: 0.9rem; }
-        }
     </style>
 </head>
 <body>
 
 <div class="bg-overlay"></div>
 
-<h1>玉城千春(Kiroro)スペシャルライブ＆<br>平成19・20年生卒業記念ナイター闘牛大会</h1>
-
-<div class="taikai-info">
-    <div class="info-row"><span class="info-label">日時</span>令和8年3月8日 18:00開始</div>
-    <div class="info-row"><span class="info-label">場所</span>なくさみ館</div>
-    <div class="info-row"><span class="info-label">主催</span>徳之島闘牛連合会</div>
-    <div class="info-row"><span class="info-label">入場料</span>大人3,000円 / 小中高1,000円</div>
-</div>
+<h1>玉城千春(kiroro)スペシャルミニライブ＆<br>平成19・20年生卒業記念ナイター闘牛大会</h1>
 
 <div class="match-table-container">
     <table class="match-table">
         <tr class="table-head">
-            <th class="head-east">東（紅）</th>
+            <th class="head-east">東方</th>
             <th>番付</th>
-            <th class="head-west">西（白）</th>
+            <th class="head-west">西方</th>
         </tr>
 
         <tr>
             <td class="col-cow">
-                <span class="badge badge-champ">チャンピオン</span>
-                <span class="cow-name">黒龍王</span>
-                <div class="cow-details"><span class="detail-item">面縄</span><span class="detail-item">現王座</span><span class="detail-item">永島照己</span></div>
+                <span class="cow-meta">牧山青空・琉輝卒業記念</span>
+                <span class="cow-name">牛若琉輝丸</span>
+                <span class="cow-owner">デビュー戦(牛主：牧山政則)</span>
             </td>
             <td class="col-center">
-                <div class="center-box">
-                    <span class="bantuke-text">全島一<br>優勝旗争奪戦</span>
-                    <div class="result-row">
-                        <span class="win-mark">○</span>
-                        <span class="match-time">12:05</span>
-                        <span class="win-mark none">○</span>
-                    </div>
-                </div>
+                <span class="bantuke-text">県対抗<br>ファイナルマッチ</span>
             </td>
             <td class="col-cow">
-                <span class="badge badge-challenger">チャレンジャー</span>
-                <span class="cow-name">闘勢琥珀</span>
-                <div class="cow-details"><span class="detail-item">平土野</span><span class="detail-item">9連勝</span><span class="detail-item">輝グループ</span></div>
+                <span class="cow-name">耀</span>
+                <span class="cow-owner">沖縄3番1枚</span>
             </td>
         </tr>
 
         <tr>
             <td class="col-cow">
-                <span class="badge badge-champ">チャンピオン</span>
-                <span class="cow-name">友花形光ちゃん号</span>
-                <div class="cow-details"><span class="detail-item">石垣島</span><span class="detail-item">1勝</span><span class="detail-item">玉代勢光子</span></div>
+                <span class="cow-meta">窪田勇心・郷健太卒業記念</span>
+                <span class="cow-name">三代目 八Hatsuki輝</span>
+                <span class="cow-owner">デビュー戦(牛主：平成8-9年生絆同志会)</span>
             </td>
             <td class="col-center">
-                <div class="center-box">
-                    <span class="bantuke-text">ミニ軽量級<br>優勝旗争奪戦</span>
-                    <div class="result-row">
-                        <span class="win-mark none">○</span>
-                        <span class="match-time">--:--</span>
-                        <span class="win-mark none">○</span>
-                    </div>
-                </div>
+                <span class="bantuke-text">指名特別</span>
             </td>
             <td class="col-cow">
-                <span class="badge badge-challenger">チャレンジャー</span>
-                <span class="cow-name">友良牛</span>
-                <div class="cow-details"><span class="detail-item">古里</span><span class="detail-item">2連勝</span><span class="detail-item">友良賢士</span></div>
+                <span class="cow-name">希 爛</span>
+                <span class="cow-owner">元 希龍</span>
             </td>
         </tr>
 
         <tr>
-            <td class="col-cow"><span class="cow-name">闘～Touki～氣</span><div class="cow-details"><span class="detail-item">浅間</span><span class="detail-item">4連勝</span><span class="detail-item">握正之</span></div></td>
-            <td class="col-center"><div class="center-box"><span class="bantuke-num">3</span><div class="result-row"><span class="win-mark none">○</span><span class="match-time">--:--</span><span class="win-mark none">○</span></div></div></td>
-            <td class="col-cow"><span class="cow-name">真瀬名ヒーラー</span><div class="cow-details"><span class="detail-item">真瀬名</span><span class="detail-item">1勝</span><span class="detail-item">真瀬名</span></div></td>
+            <td class="col-cow">
+                <span class="cow-meta">あゆら卒業記念</span>
+                <span class="cow-name">石原大宝</span>
+                <span class="cow-owner">デビュー戦(牛主：石原以歳3歳12日)</span>
+            </td>
+            <td class="col-center">
+                <span class="bantuke-text">VS</span>
+            </td>
+            <td class="col-cow">
+                <span class="cow-meta">煌義卒業記念</span>
+                <span class="cow-name">飛 魚</span>
+                <span class="cow-owner">デビュー戦(牛主：恵子69kg)</span>
+            </td>
         </tr>
 
         <tr>
-            <td class="col-cow"><span class="cow-name">爆隆</span><div class="cow-details"><span class="detail-item">下久志</span><span class="detail-item">2連勝</span><span class="detail-item">時拓夢</span></div></td>
-            <td class="col-center"><div class="center-box"><span class="bantuke-num">4</span><div class="result-row"><span class="win-mark none">○</span><span class="match-time">--:--</span><span class="win-mark none">○</span></div></div></td>
-            <td class="col-cow"><span class="cow-name">壱心嵐</span><div class="cow-details"><span class="detail-item">崎原</span><span class="detail-item">デビュー</span><span class="detail-item">心那＆壱大</span></div></td>
+            <td class="col-cow">
+                <span class="cow-name">ミニハヤテ號</span>
+                <span class="cow-owner">デビュー戦</span>
+            </td>
+            <td class="col-center">
+                <span class="bantuke-text">VS</span>
+            </td>
+            <td class="col-cow">
+                <span class="cow-meta">杉 光輝卒業記念</span>
+                <span class="cow-name">翔隆王</span>
+                <span class="cow-owner">(牛主：小林拓海)</span>
+            </td>
         </tr>
+
         <tr>
-            <td class="col-cow"><span class="cow-name">勇健天一</span><div class="cow-details"><span class="detail-item">母間</span><span class="detail-item">デビュー</span><span class="detail-item">米澤勇三</span></div></td>
-            <td class="col-center"><div class="center-box"><span class="bantuke-num">5</span><div class="result-row"><span class="win-mark none">○</span><span class="match-time">--:--</span><span class="win-mark none">○</span></div></div></td>
-            <td class="col-cow"><span class="cow-name">闘将★大力</span><div class="cow-details"><span class="detail-item">上面縄</span><span class="detail-item">デビュー</span><span class="detail-item">長嶋愛和</span></div></td>
-        </tr>
-        <tr>
-            <td class="col-cow"><span class="cow-name">黒★宝</span><div class="cow-details"><span class="detail-item">松原</span><span class="detail-item">1勝</span><span class="detail-item">政満平</span></div></td>
-            <td class="col-center"><div class="center-box"><span class="bantuke-num">6</span><div class="result-row"><span class="win-mark none">○</span><span class="match-time">--:--</span><span class="win-mark none">○</span></div></div></td>
-            <td class="col-cow"><span class="cow-name">ゴン</span><div class="cow-details"><span class="detail-item">崎原</span><span class="detail-item">デビュー</span><span class="detail-item">望・拓海</span></div></td>
-        </tr>
-        <tr>
-            <td class="col-cow"><span class="cow-name">はる次郎</span><div class="cow-details"><span class="detail-item">手々</span><span class="detail-item">デビュー</span><span class="detail-item">植木太陽</span></div></td>
-            <td class="col-center"><div class="center-box"><span class="bantuke-num">7</span><div class="result-row"><span class="win-mark none">○</span><span class="match-time">--:--</span><span class="win-mark none">○</span></div></div></td>
-            <td class="col-cow"><span class="cow-name">神風パン次郎</span><div class="cow-details"><span class="detail-item">木之香</span><span class="detail-item">1勝</span><span class="detail-item">永岡兄弟</span></div></td>
-        </tr>
-        <tr>
-            <td class="col-cow"><span class="cow-name">勝山無双</span><div class="cow-details"><span class="detail-item">沖縄</span><span class="detail-item">1勝</span><span class="detail-item">大城草平</span></div></td>
-            <td class="col-center"><div class="center-box"><span class="bantuke-num">8</span><div class="result-row"><span class="win-mark none">○</span><span class="match-time">--:--</span><span class="win-mark none">○</span></div></div></td>
-            <td class="col-cow"><span class="cow-name">瑠柊王</span><div class="cow-details"><span class="detail-item">与名間</span><span class="detail-item">デビュー</span><span class="detail-item">杉山龍一</span></div></td>
-        </tr>
-        <tr>
-            <td class="col-cow"><span class="cow-name">牛名</span><div class="cow-details"><span class="detail-item">地区</span><span class="detail-item">戦歴</span><span class="detail-item">牛主</span></div></td>
-            <td class="col-center"><div class="center-box"><span class="bantuke-num">9</span><div class="result-row"><span class="win-mark none">○</span><span class="match-time">--:--</span><span class="win-mark none">○</span></div></div></td>
-            <td class="col-cow"><span class="cow-name">牛名</span><div class="cow-details"><span class="detail-item">地区</span><span class="detail-item">戦歴</span><span class="detail-item">牛主</span></div></td>
-        </tr>
-        <tr>
-            <td class="col-cow"><span class="cow-name">牛名</span><div class="cow-details"><span class="detail-item">地区</span><span class="detail-item">戦歴</span><span class="detail-item">牛主</span></div></td>
-            <td class="col-center"><div class="center-box"><span class="bantuke-num">10</span><div class="result-row"><span class="win-mark none">○</span><span class="match-time">--:--</span><span class="win-mark none">○</span></div></div></td>
-            <td class="col-cow"><span class="cow-name">牛名</span><div class="cow-details"><span class="detail-item">地区</span><span class="detail-item">戦歴</span><span class="detail-item">牛主</span></div></td>
+            <td class="col-cow">
+                <span class="cow-meta">當 虎太朗卒業記念</span>
+                <span class="cow-name">小原荒波</span>
+                <span class="cow-owner">沖縄含む8勝3敗 元沖縄 馬天白冠</span>
+            </td>
+            <td class="col-center">
+                <span class="bantuke-text">封切</span>
+            </td>
+            <td class="col-cow">
+                <span class="cow-meta">祝 力斗卒業記念</span>
+                <span class="cow-name">力 心</span>
+                <span class="cow-owner">元 ブルースカイ苗龍栄号</span>
+            </td>
         </tr>
     </table>
 </div>
