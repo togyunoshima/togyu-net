@@ -13,68 +13,64 @@
         .bg-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-image: url('IMG_8395.jpg'); background-size: cover;
-            background-position: center; opacity: 0.15; filter: grayscale(100%); z-index: -1;
+            background-position: center; opacity: 0.2; filter: grayscale(100%); z-index: -1;
         }
 
-        /* --- 大会名・ヘッダー --- */
-        .taikai-header { margin: 10px 0; }
+        /* --- ヘッダー・タイトル --- */
+        .taikai-header { margin: 15px 0 10px 0; }
         h1 { 
-            font-family: 'Yuji Syuku', serif; font-size: clamp(1.2rem, 4.2vw, 1.8rem); 
-            color: #fff; margin: 5px auto; line-height: 1.4; max-width: 95%;
-            word-break: keep-all; overflow-wrap: break-word; text-shadow: 1px 1px 0 #e60000;
+            font-family: 'Yuji Syuku', serif; font-size: clamp(1.2rem, 4.5vw, 2rem); 
+            color: #fff; margin: 10px auto; line-height: 1.4; max-width: 95%;
+            word-break: keep-all; overflow-wrap: break-word; text-shadow: 2px 2px 0 #e60000;
         }
-        .back-link { display: inline-block; margin-bottom: 8px; color: #aaa; text-decoration: none; font-size: 0.7rem; border: 1px solid #444; padding: 2px 10px; }
+        .back-link { display: inline-block; margin-bottom: 10px; color: #aaa; text-decoration: none; font-size: 0.8rem; border: 1px solid #444; padding: 4px 12px; }
 
-        /* --- 大会詳細情報（復活） --- */
+        /* --- 大会詳細情報 --- */
         .taikai-info {
-            max-width: 100%; margin: 0 auto 10px auto; background: rgba(255,255,255,0.05);
-            border: 1px solid #333; padding: 10px; font-size: 0.75rem; text-align: left;
+            max-width: 100%; margin: 0 auto 15px auto; background: rgba(255,255,255,0.05);
+            border: 1px solid #444; padding: 10px; font-size: 0.8rem; text-align: left;
         }
-        .info-row { display: flex; margin-bottom: 3px; border-bottom: 1px dotted #444; padding-bottom: 2px; }
-        .info-label { width: 60px; color: #f1c40f; font-weight: bold; }
+        .info-row { display: flex; margin-bottom: 4px; border-bottom: 1px dotted #555; padding-bottom: 2px; }
+        .info-label { width: 65px; color: #f1c40f; font-weight: bold; }
 
-        /* --- 取組表（スワイプなし・全項目表示） --- */
-        .match-table-container { width: 100%; margin: 0 auto; background: rgba(0, 0, 0, 0.85); }
+        /* --- 取組表（スワイプなし設定） --- */
+        .match-table-container { width: 100%; margin: 0 auto; background: rgba(0, 0, 0, 0.8); }
         .match-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
         .match-table th, .match-table td {
-            border: 1px solid #444; padding: 6px 0px; vertical-align: middle;
+            border: 1px solid #444; padding: 6px 1px; vertical-align: middle;
+            font-size: 0.65rem;
         }
 
         /* 列幅調整 */
-        .col-win { width: 6%; }      /* 勝敗 */
-        .col-area { width: 8%; }     /* 地区 */
-        .col-cow { width: 32%; }     /* 牛名・牛主 */
-        .col-bantuke { width: 10%; } /* 番付 */
-        .col-time { width: 8%; }     /* 対戦タイム */
+        .col-win { width: 7%; }      /* 勝敗 */
+        .col-area { width: 10%; }     /* 地区（横書きに戻しました） */
+        .col-cow { width: 30%; }      /* 牛名・牛主 */
+        .col-bantuke { width: 11%; }  /* 番付 */
+        .col-time { width: 9%; }      /* 対戦タイム */
 
-        .match-table th { background-color: #222; color: #aaa; font-size: 0.55rem; height: 22px; }
+        .match-table th { background-color: #222; color: #aaa; font-size: 0.6rem; height: 25px; }
         .match-table th.col-east { background-color: #e60000; color: #fff; }
         .match-table th.col-white { background-color: #fff; color: #000; }
 
-        /* 牛名：最大化 / 牛主：1行維持 */
-        .cow-name { font-size: 1.15rem; font-weight: 900; color: #fff; display: block; margin-bottom: 1px; }
-        .owner-name { font-size: 0.55rem; color: #ccc; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        /* 牛名・牛主（改行なし） */
+        .cow-name { font-size: 1rem; font-weight: 900; color: #fff; display: block; margin-bottom: 1px; letter-spacing: -0.5px; }
+        .owner-name { font-size: 0.55rem; color: #bbb; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         
-        /* 地区：中央揃え */
-        .area-text { 
-            font-size: 0.65rem; color: #eee; 
-            writing-mode: vertical-rl; text-orientation: upright;
-            display: inline-block; vertical-align: middle; letter-spacing: 1px;
-        }
+        /* 地区名（横書き中央揃え） */
+        .area-text { font-size: 0.7rem; color: #fff; display: block; text-align: center; }
 
-        /* 番付：隙間なし・文字サイズで埋める */
-        .bantuke-text { font-weight: bold; color: #f1c40f; line-height: 1.0; }
-        .b-main { font-size: 0.8rem; display: block; margin-bottom: 2px; }
-        .b-sub { font-size: 0.55rem; display: block; color: #eee; letter-spacing: -0.5px; }
+        /* 番付（隙間なしデザイン） */
+        .bantuke-text { font-weight: bold; color: #f1c40f; line-height: 1.1; display: block; }
+        .b-main { font-size: 0.8rem; display: block; letter-spacing: -0.5px; }
+        .b-sub { font-size: 0.5rem; display: block; color: #eee; transform: scale(0.9); }
 
-        .win-mark { color: #e60000; font-size: 1rem; font-weight: bold; }
+        .win-mark { color: #e60000; font-size: 1.1rem; font-weight: bold; }
         .time-text { font-family: 'Oswald', sans-serif; font-size: 0.65rem; color: #fff; }
 
         @media (min-width: 600px) {
             .match-table-container { max-width: 950px; }
             .cow-name { font-size: 1.5rem; }
             .b-main { font-size: 1.1rem; }
-            .b-sub { font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -84,7 +80,7 @@
 
 <div class="taikai-header">
     <h1>玉城千春(Kiroro)スペシャルライブ＆<br>平成19・20年生卒業記念ナイター闘牛大会</h1>
-    <a href="programitiran.html" class="back-link">← 一覧に戻る</a>
+    <a href="programitiran.html" class="back-link">← 対戦表一覧に戻る</a>
 </div>
 
 <div class="taikai-info">
@@ -116,10 +112,7 @@
                     <span class="cow-name">黒龍王</span>
                     <span class="owner-name">牛主：永島照己</span>
                 </td>
-                <td class="bantuke-text">
-                    <span class="b-main">全島一</span>
-                    <span class="b-sub">優勝旗争奪戦</span>
-                </td>
+                <td class="bantuke-text"><span class="b-main">全島一</span><span class="b-sub">優勝旗争奪戦</span></td>
                 <td class="col-cow">
                     <span class="cow-name">闘勢琥珀</span>
                     <span class="owner-name">牛主：輝グループ</span>
@@ -135,10 +128,7 @@
                     <span class="cow-name">光ちゃん号</span>
                     <span class="owner-name">牛主：玉代勢光子</span>
                 </td>
-                <td class="bantuke-text">
-                    <span class="b-main">ミニ軽量級</span>
-                    <span class="b-sub">優勝旗争奪戦</span>
-                </td>
+                <td class="bantuke-text"><span class="b-main">ミニ軽量級</span><span class="b-sub">優勝旗争奪戦</span></td>
                 <td class="col-cow">
                     <span class="cow-name">友良牛</span>
                     <span class="owner-name">牛主：友良賢士</span>
@@ -147,6 +137,14 @@
                 <td></td>
                 <td class="time-text">--:--</td>
             </tr>
+            <tr><td></td><td><span class="area-text">地区</span></td><td class="col-cow"><span class="cow-name">牛名</span><span class="owner-name">牛主：名前</span></td><td class="bantuke-text"><span class="b-main">3</span></td><td class="col-cow"><span class="cow-name">牛名</span><span class="owner-name">牛主：名前</span></td><td><span class="area-text">地区</span></td><td></td><td class="time-text">--:--</td></tr>
+            <tr><td></td><td><span class="area-text">地区</span></td><td class="col-cow"><span class="cow-name">牛名</span><span class="owner-name">牛主：名前</span></td><td class="bantuke-text"><span class="b-main">4</span></td><td class="col-cow"><span class="cow-name">牛名</span><span class="owner-name">牛主：名前</span></td><td><span class="area-text">地区</span></td><td></td><td class="time-text">--:--</td></tr>
+            <tr><td></td><td><span class="area-text">地区</span></td><td class="col-cow"><span class="cow-name">牛名</span><span class="owner-name">牛主：名前</span></td><td class="bantuke-text"><span class="b-main">5</span></td><td class="col-cow"><span class="cow-name">牛名</span><span class="owner-name">牛主：名前</span></td><td><span class="area-text">地区</span></td><td></td><td class="time-text">--:--</td></tr>
+            <tr><td></td><td><span class="area-text">地区</span></td><td class="col-cow"><span class="cow-name">牛名</span><span class="owner-name">牛主：名前</span></td><td class="bantuke-text"><span class="b-main">6</span></td><td class="col-cow"><span class="cow-name">牛名</span><span class="owner-name">牛主：名前</span></td><td><span class="area-text">地区</span></td><td></td><td class="time-text">--:--</td></tr>
+            <tr><td></td><td><span class="area-text">地区</span></td><td class="col-cow"><span class="cow-name">牛名</span><span class="owner-name">牛主：名前</span></td><td class="bantuke-text"><span class="b-main">7</span></td><td class="col-cow"><span class="cow-name">牛名</span><span class="owner-name">牛主：名前</span></td><td><span class="area-text">地区</span></td><td></td><td class="time-text">--:--</td></tr>
+            <tr><td></td><td><span class="area-text">地区</span></td><td class="col-cow"><span class="cow-name">牛名</span><span class="owner-name">牛主：名前</span></td><td class="bantuke-text"><span class="b-main">8</span></td><td class="col-cow"><span class="cow-name">牛名</span><span class="owner-name">牛主：名前</span></td><td><span class="area-text">地区</span></td><td></td><td class="time-text">--:--</td></tr>
+            <tr><td></td><td><span class="area-text">地区</span></td><td class="col-cow"><span class="cow-name">牛名</span><span class="owner-name">牛主：名前</span></td><td class="bantuke-text"><span class="b-main">9</span></td><td class="col-cow"><span class="cow-name">牛名</span><span class="owner-name">牛主：名前</span></td><td><span class="area-text">地区</span></td><td></td><td class="time-text">--:--</td></tr>
+            <tr><td></td><td><span class="area-text">地区</span></td><td class="col-cow"><span class="cow-name">牛名</span><span class="owner-name">牛主：名前</span></td><td class="bantuke-text"><span class="b-main">10</span></td><td class="col-cow"><span class="cow-name">牛名</span><span class="owner-name">牛主：名前</span></td><td><span class="area-text">地区</span></td><td></td><td class="time-text">--:--</td></tr>
         </tbody>
     </table>
 </div>
