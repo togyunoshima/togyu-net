@@ -7,8 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Yuji+Syuku&family=Oswald:wght@700&display=swap" rel="stylesheet">
     <style>
         body { 
-            margin: 0; padding: 5px; background-color: #050505; color: #eee; 
-            font-family: 'Kaisei Tokumin', serif; text-align: center; line-height: 1.2;
+            margin: 0; padding: 2px; background-color: #050505; color: #eee; 
+            font-family: 'Kaisei Tokumin', serif; text-align: center; line-height: 1.1;
             overflow-x: hidden;
         }
         .bg-overlay {
@@ -17,73 +17,71 @@
             background-position: center; opacity: 0.15; filter: grayscale(100%); z-index: -1;
         }
 
+        /* ヘッダーを少しコンパクトに */
         h1 { 
-            font-family: 'Yuji Syuku', serif; font-size: clamp(1rem, 4.2vw, 1.7rem); 
-            color: #fff; margin: 10px auto; text-shadow: 2px 2px 0 #e60000;
+            font-family: 'Yuji Syuku', serif; font-size: 1rem; 
+            color: #fff; margin: 5px auto; text-shadow: 1px 1px 0 #e60000;
         }
-        .back-link { display: inline-block; margin-bottom: 8px; color: #aaa; text-decoration: none; font-size: 0.7rem; border: 1px solid #444; padding: 3px 10px; }
-
-        /* 大会詳細 */
-        .taikai-info {
-            max-width: 100%; margin: 0 auto 10px auto; background: rgba(255,255,255,0.05);
-            border: 1px solid #444; padding: 8px; font-size: 0.7rem; text-align: left;
-        }
-        .info-row { display: flex; border-bottom: 1px dotted #555; padding: 3px 0; }
-        .info-label { width: 55px; color: #f1c40f; font-weight: bold; flex-shrink: 0; }
 
         .match-table-container { width: 100%; margin: 0 auto; background: rgba(0, 0, 0, 0.9); }
-        .match-table { width: 100%; border-collapse: collapse; table-layout: fixed; border: 1.5px solid #666; }
+        .match-table { width: 100%; border-collapse: collapse; table-layout: fixed; border: 1px solid #666; }
         
-        .col-cow { width: 42%; position: relative; }
-        .col-center { width: 16%; } 
+        .col-cow { width: 41%; position: relative; }
+        .col-center { width: 18%; }
 
-        .match-table td { border: 1px solid #444; padding: 18px 2px 10px 2px; vertical-align: middle; }
+        /* セルの上下余白を詰めつつ、左右に少しだけゆとり */
+        .match-table td { border: 1px solid #444; padding: 5px 1px; vertical-align: middle; }
 
-        /* 日本語バッジ */
+        /* チャンピオンバッジを少し小さく */
         .badge {
-            position: absolute; top: 0; font-size: 0.5rem; font-weight: 800;
-            padding: 2px 6px; color: #fff; z-index: 1;
+            position: absolute; top: 1px; font-size: 0.45rem; font-weight: 800;
+            padding: 0 3px; border-radius: 1px; color: #fff;
         }
-        .badge-champ { left: 0; background: #e60000; border-radius: 0 0 5px 0; }
-        .badge-challenger { right: 0; background: #007bff; border-radius: 0 0 0 5px; }
+        .badge-champ { left: 1px; background: #e60000; }
+        .badge-challenger { right: 1px; background: #007bff; }
 
+        /* 牛名：1画面に収めるため少しサイズ調整 */
         .cow-name { 
-            font-size: clamp(0.95rem, 4vw, 1.6rem); 
-            font-weight: 900; color: #fff; display: block; 
-            white-space: nowrap; letter-spacing: -0.5px; margin-bottom: 5px;
+            font-size: 0.95rem; font-weight: 900; color: #fff; 
+            display: block; white-space: nowrap; letter-spacing: -0.5px;
         }
 
-        .cow-details { font-size: 0.55rem; color: #bbb; display: block; line-height: 1.4; }
-        .detail-item::after { content: " / "; color: #555; }
+        /* 牛情報：さらにコンパクトに */
+        .cow-details { 
+            font-size: 0.52rem; color: #aaa; display: block; margin-top: 1px; transform: scale(0.95);
+        }
+        .detail-item::after { content: "/"; margin: 0 1px; }
         .detail-item:last-child::after { content: ""; }
 
-        /* 中央エリア：番付 */
-        .center-box { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; }
-        
+        /* 中央エリア：高さを抑える */
+        .center-box { display: flex; flex-direction: column; align-items: center; justify-content: center; }
         .bantuke-text { 
-            font-size: 0.65rem; color: #f1c40f; font-weight: bold; 
-            line-height: 1.1; width: 100%; word-break: keep-all;
+            font-size: 0.5rem; color: #f1c40f; font-weight: bold; 
+            margin-bottom: 2px; line-height: 1; 
         }
+        
+        .bantuke-row { display: flex; align-items: center; justify-content: center; height: 22px; }
+        .win-mark { width: 18px; font-size: 1rem; font-weight: bold; color: #e60000; }
+        .win-mark.none { color: transparent; }
+
         .bantuke-num {
-            font-size: 1.6rem; font-weight: bold; color: #fff; font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem; font-weight: bold; color: #fff; font-family: 'Oswald', sans-serif;
+            margin: 0 2px;
         }
 
-        /* ◯とタイムの配置調整 */
-        .match-result-row {
-            margin-top: 8px; border-top: 1px dotted #444; width: 100%; padding-top: 5px;
-            display: flex; align-items: center; justify-content: center;
+        /* タイム：線を細く、余白も最小限 */
+        .match-time {
+            font-family: 'Oswald', sans-serif; font-size: 0.6rem; color: #fff;
+            border-top: 1px solid #333; width: 85%; margin-top: 2px; padding-top: 2px;
         }
-        .win-circle { font-size: 1rem; color: #e60000; font-weight: bold; line-height: 1; width: 20px; text-align: center; }
-        .time-val { font-family: 'Oswald', sans-serif; font-size: 0.65rem; color: #aaa; margin: 0 4px; }
 
-        .table-head { background: #111; font-size: 0.6rem; color: #888; }
-        .head-east { background: #e60000; color: #fff; }
-        .head-west { background: #eee; color: #000; }
+        .table-head th { background: #222; font-size: 0.55rem; color: #aaa; padding: 3px 0; }
+        .head-east { background: #e60000 !important; color: #fff; }
+        .head-west { background: #eee !important; color: #000; }
 
         @media (min-width: 600px) {
-            .match-table-container { max-width: 850px; }
-            .bantuke-text { font-size: 0.9rem; }
-            .cow-details { font-size: 0.8rem; }
+            .match-table-container { max-width: 700px; }
+            .cow-name { font-size: 1.4rem; }
         }
     </style>
 </head>
@@ -91,98 +89,86 @@
 
 <div class="bg-overlay"></div>
 
-<div class="taikai-header">
-    <h1>玉城千春(Kiroro)スペシャルライブ＆<br>平成19・20年生卒業記念ナイター闘牛大会</h1>
-    <a href="programitiran.html" class="back-link">← 対戦表一覧に戻る</a>
-</div>
-
-<div class="taikai-info">
-    <div class="info-row"><span class="info-label">日時</span><span>令和8年3月8日 18:00開始</span></div>
-    <div class="info-row"><span class="info-label">場所</span><span>伊仙町・なくさみ館</span></div>
-    <div class="info-row"><span class="info-label">主催</span><span>徳之島闘牛連合会</span></div>
-    <div class="info-row"><span class="info-label">入場料</span><span>大人3,000円 / 小中学生1,000円</span></div>
-</div>
+<h1> Kiroroスペシャルライブ ＆ 卒業記念闘牛 </h1>
 
 <div class="match-table-container">
     <table class="match-table">
         <tr class="table-head">
             <th class="head-east">東（紅）</th>
-            <th>番付</th>
+            <th>番付/勝敗/タイム</th>
             <th class="head-west">西（白）</th>
         </tr>
 
         <tr>
             <td class="col-cow">
-                <span class="badge badge-champ">チャンピオン</span>
+                <span class="badge badge-champ">CHAMP</span>
                 <span class="cow-name">黒龍王</span>
-                <div class="cow-details"><span class="detail-item">面縄</span><span class="detail-item">現王座</span><span class="detail-item">永島照己</span></div>
+                <div class="cow-details">
+                    <span class="detail-item">面縄</span><span class="detail-item">王座</span><span class="detail-item">永島照己</span>
+                </div>
             </td>
             <td class="col-center">
                 <div class="center-box">
-                    <span class="bantuke-text">全島一優勝旗<br>争奪戦</span>
-                    <div class="match-result-row">
-                        <span class="win-circle">○</span><span class="time-val">12:05</span>
-                        <span class="win-circle" style="visibility:hidden;">○</span>
+                    <span class="bantuke-text">全島一争奪戦</span>
+                    <div class="bantuke-row">
+                        <span class="win-mark">○</span><span class="win-mark none">○</span>
                     </div>
+                    <div class="match-time">12:05</div>
                 </div>
             </td>
             <td class="col-cow">
-                <span class="badge badge-challenger">チャレンジャー</span>
+                <span class="badge badge-challenger">CHALLENGE</span>
                 <span class="cow-name">闘勢琥珀</span>
-                <div class="cow-details"><span class="detail-item">平土野</span><span class="detail-item">9連勝</span><span class="detail-item">輝グループ</span></div>
+                <div class="cow-details">
+                    <span class="detail-item">平土野</span><span class="detail-item">9連勝</span><span class="detail-item">輝G</span>
+                </div>
             </td>
         </tr>
 
         <tr>
             <td class="col-cow">
                 <span class="cow-name">友花形光ちゃん号</span>
-                <div class="cow-details"><span class="detail-item">石垣島</span><span class="detail-item">デビュー戦</span><span class="detail-item">玉代勢光子</span></div>
+                <div class="cow-details">
+                    <span class="detail-item">石垣</span><span class="detail-item">デビュー</span><span class="detail-item">玉代勢</span>
+                </div>
             </td>
             <td class="col-center">
                 <div class="center-box">
-                    <span class="bantuke-num">2</span>
-                    <div class="match-result-row">
-                        <span class="win-circle" style="visibility:hidden;">○</span>
-                        <span class="time-val">08:14</span>
-                        <span class="win-circle">○</span></div>
+                    <span class="bantuke-text">ミニ軽量級</span>
+                    <div class="bantuke-row">
+                        <span class="win-mark none">○</span><span class="bantuke-num">2</span><span class="win-mark none">○</span>
+                    </div>
+                    <div class="match-time">--:--</div>
                 </div>
             </td>
             <td class="col-cow">
                 <span class="cow-name">友良牛</span>
-                <div class="cow-details"><span class="detail-item">古里</span><span class="detail-item">2連勝</span><span class="detail-item">友良賢士</span></div>
+                <div class="cow-details">
+                    <span class="detail-item">古里</span><span class="detail-item">2連勝</span><span class="detail-item">友良賢士</span>
+                </div>
             </td>
         </tr>
 
-        <script>
-            for (let i = 3; i <= 10; i++) {
-                document.write(`
-                <tr>
-                    <td class="col-cow">
-                        <span class="cow-name">牛名</span>
-                        <div class="cow-details"><span class="detail-item">地区</span><span class="detail-item">戦歴</span><span class="detail-item">牛主</span></div>
-                    </td>
-                    <td class="col-center">
-                        <div class="center-box">
-                            <span class="bantuke-num">${i}</span>
-                            <div class="match-result-row">
-                                <span class="win-circle" style="visibility:hidden;">○</span>
-                                <span class="time-val">--:--</span>
-                                <span class="win-circle" style="visibility:hidden;">○</span>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="col-cow">
-                        <span class="cow-name">牛名</span>
-                        <div class="cow-details"><span class="detail-item">地区</span><span class="detail-item">戦歴</span><span class="detail-item">牛主</span></div>
-                    </td>
-                </tr>
-                `);
-            }
-        </script>
+        <tr>
+            <td class="col-cow">
+                <span class="cow-name">闘～Touki～氣</span>
+                <div class="cow-details"><span class="detail-item">浅間</span><span class="detail-item">4勝</span><span class="detail-item">握正之</span></div>
+            </td>
+            <td class="col-center">
+                <div class="center-box">
+                    <div class="bantuke-row">
+                        <span class="win-mark none">○</span><span class="bantuke-num">3</span><span class="win-mark none">○</span>
+                    </div>
+                    <div class="match-time">--:--</div>
+                </div>
+            </td>
+            <td class="col-cow">
+                <span class="cow-name">真瀬名ヒーラー</span>
+                <div class="cow-details"><span class="detail-item">真瀬名</span><span class="detail-item">牛主:真瀬名</span></div>
+            </td>
+        </tr>
     </table>
 </div>
-
-<p style="color:#555; font-size:0.6rem; margin: 30px 0;">© 2026 togyu.net</p>
 
 </body>
 </html>
