@@ -8,87 +8,73 @@
     <style>
         body { 
             margin: 0; padding: 5px; background-color: #050505; color: #eee; 
-            font-family: 'Kaisei Tokumin', serif; text-align: center; line-height: 1.3;
-            overflow-x: hidden;
+            font-family: 'Kaisei Tokumin', serif; text-align: center; overflow-x: hidden;
         }
         .bg-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-image: url('IMG_8395.jpg'); background-size: cover;
-            background-position: center; opacity: 0.12; filter: grayscale(100%); z-index: -1;
+            background-position: center; opacity: 0.15; filter: grayscale(100%); z-index: -1;
         }
 
-        /* ヘッダー周り：コンパクト化 */
-        .taikai-header { margin: 10px 0; }
-        .taikai-date { font-family: 'Oswald', sans-serif; color: #f1c40f; font-size: 1rem; }
         h1 { 
-            font-family: 'Yuji Syuku', serif; font-size: 1.3rem; 
-            color: #fff; margin: 5px 0; line-height: 1.2;
-            text-shadow: 1px 1px 0 #e60000;
+            font-family: 'Yuji Syuku', serif; font-size: clamp(1rem, 4.2vw, 1.7rem); 
+            color: #fff; margin: 10px auto; text-shadow: 2px 2px 0 #e60000;
         }
-        .back-link { display: inline-block; margin-bottom: 10px; color: #aaa; text-decoration: none; font-size: 0.7rem; border: 1px solid #444; padding: 2px 10px; }
 
-        /* 大会情報：1行に凝縮 */
-        .taikai-info {
-            max-width: 600px; margin: 0 auto 10px auto; background: rgba(255,255,255,0.03);
-            border: 1px solid #333; padding: 8px; font-size: 0.65rem; text-align: left;
-            display: grid; grid-template-columns: 1fr 1fr; gap: 2px 10px;
-        }
-        .info-row { border-bottom: 1px dotted #444; padding: 1px 0; display: flex; }
-        .info-label { width: 45px; color: #f1c40f; flex-shrink: 0; }
-
-        /* 取組リスト：隙間ゼロ構成 */
-        .match-container { 
-            max-width: 600px; margin: 0 auto; 
-            border: 1px solid #444; /* 全体を囲う枠線 */
-            background: rgba(15, 15, 15, 0.95);
-        }
-        .match-item {
-            position: relative;
-            border-bottom: 1px solid #444; /* 各組の区切り線 */
-            padding-bottom: 0;
-        }
-        .match-item:last-child { border-bottom: none; }
-
-        /* 番付ラベル */
-        .match-label {
-            position: absolute; top: 0; left: 0; background: #e60000; color: #fff;
-            font-size: 0.55rem; padding: 1px 6px; font-weight: bold; z-index: 1;
-        }
-        .match-label.special { background: #fff; color: #000; }
-        .match-label.num { background: #333; color: #aaa; }
-
-        /* 対戦エリア：高さを抑える */
-        .match-main { display: flex; align-items: center; padding: 18px 4px 6px 4px; }
-        .side { width: 42%; }
-        .side.east { text-align: right; padding-right: 4px; }
-        .side.west { text-align: left; padding-left: 4px; }
+        /* 取組表スタイル：沖縄プログラム参照 */
+        .match-table-container { width: 100%; margin: 0 auto; background: rgba(0, 0, 0, 0.9); }
+        .match-table { width: 100%; border-collapse: collapse; table-layout: fixed; border: 1.5px solid #666; }
         
+        /* 列幅：牛名を最大化（各40%）、中央（番付・勝敗・タイム）を凝縮 */
+        .col-cow { width: 40%; }
+        .col-center { width: 20%; } /* ここに番付・◯・タイムをまとめる */
+
+        .match-table td {
+            border: 1px solid #444; padding: 6px 2px; vertical-align: middle;
+        }
+
+        /* 牛名：横幅いっぱい使って1行 */
         .cow-name { 
-            font-size: 0.95rem; font-weight: 800; color: #fff; 
-            display: block; white-space: nowrap; letter-spacing: -0.5px;
+            font-size: clamp(0.8rem, 3.5vw, 1.4rem); 
+            font-weight: 900; color: #fff; display: block; 
+            white-space: nowrap; letter-spacing: -0.5px;
         }
-        .owner { 
-            font-size: 0.5rem; color: #aaa; display: block; 
-            overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+        /* 牛主：牛名の下に配置 */
+        .owner-name { 
+            font-size: 0.55rem; color: #bbb; display: block; margin-top: 2px;
         }
-        .win-mark { color: #e60000; font-size: 0.9rem; margin: 0 1px; vertical-align: middle; }
+        .area-text { font-size: 0.5rem; color: #aaa; display: block; margin-bottom: 2px; }
 
-        .vs-zone { 
-            width: 16%; font-family: 'Yuji Syuku', serif; color: #e60000; 
-            font-size: 0.9rem; font-weight: bold; flex-shrink: 0;
+        /* 中央エリア：番付・勝敗・タイム */
+        .center-box {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .bantuke-row { display: flex; align-items: center; justify-content: center; width: 100%; }
+        
+        .win-mark { 
+            width: 20px; font-size: 1rem; font-weight: bold; color: #e60000;
+        }
+        .win-mark.none { color: transparent; }
+
+        .bantuke-num {
+            font-size: 1.1rem; font-weight: bold; color: #f1c40f; font-family: 'Oswald', sans-serif;
+            margin: 0 5px;
+        }
+        .bantuke-text-small { font-size: 0.5rem; color: #f1c40f; font-weight: bold; line-height: 1; }
+
+        .match-time {
+            font-family: 'Oswald', sans-serif; font-size: 0.65rem; color: #fff;
+            border-top: 1px solid #444; width: 100%; margin-top: 4px; padding-top: 2px;
         }
 
-        /* フッター：より細く */
-        .match-footer {
-            display: flex; justify-content: space-between; align-items: center;
-            background: rgba(255,255,255,0.03);
-            padding: 2px 8px; border-top: 1px solid #222; font-size: 0.6rem; color: #f1c40f;
-        }
-        .time-box { color: #fff; font-family: 'Oswald', sans-serif; font-size: 0.65rem; }
+        /* ヘッダー */
+        .table-head { background: #222; font-size: 0.6rem; color: #aaa; }
+        .head-east { background: #e60000; color: #fff; }
+        .head-west { background: #eee; color: #000; }
 
         @media (min-width: 600px) {
-            .cow-name { font-size: 1.4rem; }
-            .taikai-info { font-size: 0.8rem; }
+            .match-table-container { max-width: 800px; }
+            .owner-name { font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -96,156 +82,111 @@
 
 <div class="bg-overlay"></div>
 
-<div class="taikai-header">
-    <div class="taikai-date">2026.03.08 SUN</div>
-    <h1>卒業記念ナイター闘牛大会</h1>
-    <a href="programitiran.html" class="back-link">← 対戦表一覧に戻る</a>
-</div>
+<h1>玉城千春(Kiroro)スペシャルライブ＆<br>平成19・20年生卒業記念ナイター闘牛大会</h1>
 
-<div class="taikai-info">
-    <div class="info-row"><span class="info-label">日時</span><span>R8.3.8 18:00</span></div>
-    <div class="info-row"><span class="info-label">場所</span><span>なくさみ館</span></div>
-    <div class="info-row"><span class="info-label">主催</span><span>連合会</span></div>
-    <div class="info-row"><span class="info-label">料金</span><span>3,000円</span></div>
-</div>
+<div class="match-table-container">
+    <table class="match-table">
+        <tr class="table-head">
+            <th class="head-east">東（紅）</th>
+            <th>番付 ／ 勝敗 ／ タイム</th>
+            <th class="head-west">西（白）</th>
+        </tr>
 
-<div class="match-container">
-
-    <div class="match-item">
-        <div class="match-label">全島一戦</div>
-        <div class="match-main">
-            <div class="side east">
-                <span class="owner">永島照己</span>
-                <span class="cow-name"><span class="win-mark">○</span>黒龍王</span>
-            </div>
-            <div class="vs-zone">VS</div>
-            <div class="side west">
-                <span class="owner">輝グループ</span>
+        <tr>
+            <td class="col-cow">
+                <span class="area-text">面縄</span>
+                <span class="cow-name">黒龍王</span>
+                <span class="owner-name">牛主：永島照己</span>
+            </td>
+            <td class="col-center">
+                <div class="center-box">
+                    <span class="bantuke-text-small">全島一</span>
+                    <div class="bantuke-row">
+                        <span class="win-mark">○</span>
+                        <span class="bantuke-num">1</span>
+                        <span class="win-mark none">○</span>
+                    </div>
+                    <div class="match-time">12' 05</div>
+                </div>
+            </td>
+            <td class="col-cow">
+                <span class="area-text">平土野</span>
                 <span class="cow-name">闘勢琥珀</span>
-            </div>
-        </div>
-        <div class="match-footer">
-            <span>面縄</span><span class="time-box">12:05</span><span>平土野</span>
-        </div>
-    </div>
+                <span class="owner-name">9連勝(輝グループ)</span>
+            </td>
+        </tr>
 
-    <div class="match-item">
-        <div class="match-label special">ミニ軽量級戦</div>
-        <div class="match-main">
-            <div class="side east">
-                <span class="owner">玉代勢光子</span>
+        <tr>
+            <td class="col-cow">
+                <span class="area-text">石垣島</span>
                 <span class="cow-name">友花形光ちゃん号</span>
-            </div>
-            <div class="vs-zone">VS</div>
-            <div class="side west">
-                <span class="owner">友良賢士</span>
+                <span class="owner-name">牛主：玉代勢光子</span>
+            </td>
+            <td class="col-center">
+                <div class="center-box">
+                    <span class="bantuke-text-small">ミニ軽量級</span>
+                    <div class="bantuke-row">
+                        <span class="win-mark none">○</span>
+                        <span class="bantuke-num">2</span>
+                        <span class="win-mark none">○</span>
+                    </div>
+                    <div class="match-time">--' --</div>
+                </div>
+            </td>
+            <td class="col-cow">
+                <span class="area-text">古里</span>
                 <span class="cow-name">友良牛</span>
-            </div>
-        </div>
-        <div class="match-footer">
-            <span>石垣島</span><span class="time-box">--:--</span><span>古里</span>
-        </div>
-    </div>
+                <span class="owner-name">2連勝(友良賢士)</span>
+            </td>
+        </tr>
 
-    <div class="match-item">
-        <div class="match-label num">第3試合</div>
-        <div class="match-main">
-            <div class="side east">
-                <span class="owner">握正之</span>
+        <tr>
+            <td class="col-cow">
+                <span class="area-text">浅間</span>
                 <span class="cow-name">闘～Touki～氣</span>
-            </div>
-            <div class="vs-zone">VS</div>
-            <div class="side west">
-                <span class="owner">真瀬名</span>
+                <span class="owner-name">調教師：握正之</span>
+            </td>
+            <td class="col-center">
+                <div class="center-box">
+                    <div class="bantuke-row">
+                        <span class="win-mark none">○</span>
+                        <span class="bantuke-num">3</span>
+                        <span class="win-mark none">○</span>
+                    </div>
+                    <div class="match-time">--' --</div>
+                </div>
+            </td>
+            <td class="col-cow">
+                <span class="area-text">真瀬名</span>
                 <span class="cow-name">真瀬名ヒーラー</span>
-            </div>
-        </div>
-        <div class="match-footer">
-            <span>浅間</span><span class="time-box">--:--</span><span>真瀬名</span>
-        </div>
-    </div>
+                <span class="owner-name">牛主：真瀬名</span>
+            </td>
+        </tr>
 
-    <div class="match-item">
-        <div class="match-label num">第4試合</div>
-        <div class="match-main">
-            <div class="side east">
-                <span class="owner">時拓夢</span>
-                <span class="cow-name">爆隆</span>
-            </div>
-            <div class="vs-zone">VS</div>
-            <div class="side west">
-                <span class="owner">心那＆壱大</span>
-                <span class="cow-name">壱心嵐</span>
-            </div>
-        </div>
-        <div class="match-footer">
-            <span>下久志</span><span class="time-box">--:--</span><span>崎原</span>
-        </div>
-    </div>
-
-    <div class="match-item">
-        <div class="match-label num">第5試合</div>
-        <div class="match-main">
-            <div class="side east"><span class="owner">牛主名</span><span class="cow-name">牛の名前</span></div>
-            <div class="vs-zone">VS</div>
-            <div class="side west"><span class="owner">牛主名</span><span class="cow-name">牛の名前</span></div>
-        </div>
-        <div class="match-footer"><span>地区</span><span class="time-box">--:--</span><span>地区</span></div>
-    </div>
-    
-    <div class="match-item">
-        <div class="match-label num">第6試合</div>
-        <div class="match-main">
-            <div class="side east"><span class="owner">牛主名</span><span class="cow-name">牛の名前</span></div>
-            <div class="vs-zone">VS</div>
-            <div class="side west"><span class="owner">牛主名</span><span class="cow-name">牛の名前</span></div>
-        </div>
-        <div class="match-footer"><span>地区</span><span class="time-box">--:--</span><span>地区</span></div>
-    </div>
-
-    <div class="match-item">
-        <div class="match-label num">第7試合</div>
-        <div class="match-main">
-            <div class="side east"><span class="owner">牛主名</span><span class="cow-name">牛の名前</span></div>
-            <div class="vs-zone">VS</div>
-            <div class="side west"><span class="owner">牛主名</span><span class="cow-name">牛の名前</span></div>
-        </div>
-        <div class="match-footer"><span>地区</span><span class="time-box">--:--</span><span>地区</span></div>
-    </div>
-
-    <div class="match-item">
-        <div class="match-label num">第8試合</div>
-        <div class="match-main">
-            <div class="side east"><span class="owner">牛主名</span><span class="cow-name">牛の名前</span></div>
-            <div class="vs-zone">VS</div>
-            <div class="side west"><span class="owner">牛主名</span><span class="cow-name">牛の名前</span></div>
-        </div>
-        <div class="match-footer"><span>地区</span><span class="time-box">--:--</span><span>地区</span></div>
-    </div>
-
-    <div class="match-item">
-        <div class="match-label num">第9試合</div>
-        <div class="match-main">
-            <div class="side east"><span class="owner">牛主名</span><span class="cow-name">牛の名前</span></div>
-            <div class="vs-zone">VS</div>
-            <div class="side west"><span class="owner">牛主名</span><span class="cow-name">牛の名前</span></div>
-        </div>
-        <div class="match-footer"><span>地区</span><span class="time-box">--:--</span><span>地区</span></div>
-    </div>
-
-    <div class="match-item">
-        <div class="match-label num">第10試合</div>
-        <div class="match-main">
-            <div class="side east"><span class="owner">牛主名</span><span class="cow-name">牛の名前</span></div>
-            <div class="vs-zone">VS</div>
-            <div class="side west"><span class="owner">牛主名</span><span class="cow-name">牛の名前</span></div>
-        </div>
-        <div class="match-footer"><span>地区</span><span class="time-box">--:--</span><span>地区</span></div>
-    </div>
-
+        <tr>
+            <td class="col-cow">
+                <span class="area-text">手々</span>
+                <span class="cow-name">はる次郎</span>
+                <span class="owner-name">調教師：植木太陽</span>
+            </td>
+            <td class="col-center">
+                <div class="center-box">
+                    <div class="bantuke-row">
+                        <span class="win-mark none">○</span>
+                        <span class="bantuke-num">7</span>
+                        <span class="win-mark none">○</span>
+                    </div>
+                    <div class="match-time">--' --</div>
+                </div>
+            </td>
+            <td class="col-cow">
+                <span class="area-text">木之香</span>
+                <span class="cow-name">神風パン次郎</span>
+                <span class="owner-name">牛主：永岡兄弟</span>
+            </td>
+        </tr>
+    </table>
 </div>
-
-<p style="color:#555; font-size:0.6rem; margin: 20px 0;">© 2026 togyu.net</p>
 
 </body>
 </html>
