@@ -8,73 +8,87 @@
     <style>
         body { 
             margin: 0; padding: 5px; background-color: #050505; color: #eee; 
-            font-family: 'Kaisei Tokumin', serif; text-align: center; overflow-x: hidden;
+            font-family: 'Kaisei Tokumin', serif; text-align: center; line-height: 1.2;
+            overflow-x: hidden;
         }
         .bg-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-image: url('IMG_8395.jpg'); background-size: cover;
-            background-position: center; opacity: 0.15; filter: grayscale(100%); z-index: -1;
+            background-position: center; opacity: 0.2; filter: grayscale(100%); z-index: -1;
         }
 
+        /* 前者強めの力強いヘッダー */
         h1 { 
-            font-family: 'Yuji Syuku', serif; font-size: clamp(1rem, 4.2vw, 1.7rem); 
-            color: #fff; margin: 10px auto; text-shadow: 2px 2px 0 #e60000;
+            font-family: 'Yuji Syuku', serif; font-size: clamp(1.1rem, 4.5vw, 1.8rem); 
+            color: #fff; margin: 10px auto; line-height: 1.4; max-width: 95%;
+            text-shadow: 2px 2px 0 #e60000;
         }
+        .back-link { display: inline-block; margin-bottom: 8px; color: #aaa; text-decoration: none; font-size: 0.75rem; border: 1px solid #444; padding: 3px 10px; }
 
-        /* 取組表スタイル：沖縄プログラム参照 */
-        .match-table-container { width: 100%; margin: 0 auto; background: rgba(0, 0, 0, 0.9); }
-        .match-table { width: 100%; border-collapse: collapse; table-layout: fixed; border: 1.5px solid #666; }
-        
-        /* 列幅：牛名を最大化（各40%）、中央（番付・勝敗・タイム）を凝縮 */
-        .col-cow { width: 40%; }
-        .col-center { width: 20%; } /* ここに番付・◯・タイムをまとめる */
-
-        .match-table td {
-            border: 1px solid #444; padding: 6px 2px; vertical-align: middle;
+        .taikai-info {
+            max-width: 100%; margin: 0 auto 10px auto; background: rgba(255,255,255,0.05);
+            border: 1px solid #444; padding: 10px; font-size: 0.7rem; text-align: left;
         }
+        .info-row { display: flex; border-bottom: 1px dotted #555; padding: 2px 0; }
+        .info-label { width: 55px; color: #f1c40f; font-weight: bold; }
 
-        /* 牛名：横幅いっぱい使って1行 */
+        /* ハイブリッド・テーブル */
+        .match-table-container { width: 100%; margin: 0 auto; background: rgba(0, 0, 0, 0.85); border: 1px solid #444; }
+        .match-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+        .match-table th, .match-table td { border: 1px solid #444; vertical-align: middle; padding: 8px 2px; }
+
+        /* 列幅：牛名エリアを大きく確保 */
+        .col-cow { width: 38%; }
+        .col-center { width: 24%; } /* 番付・勝敗・タイム用 */
+
+        .table-head th { font-size: 0.6rem; padding: 5px 0; }
+        .head-east { background-color: #e60000; color: #fff; }
+        .head-west { background-color: #fff; color: #000; }
+        .head-center { background-color: #222; color: #aaa; }
+
+        /* 牛名：前者の力強さを継承 */
         .cow-name { 
-            font-size: clamp(0.8rem, 3.5vw, 1.4rem); 
+            font-size: clamp(0.9rem, 4vw, 1.5rem); 
             font-weight: 900; color: #fff; display: block; 
-            white-space: nowrap; letter-spacing: -0.5px;
+            white-space: nowrap; letter-spacing: -1px;
+            text-shadow: 1px 1px 2px #000;
         }
-        /* 牛主：牛名の下に配置 */
+        /* 牛主：後者のルールで「下」に配置 */
         .owner-name { 
-            font-size: 0.55rem; color: #bbb; display: block; margin-top: 2px;
+            font-size: 0.55rem; color: #bbb; display: block; margin-top: 3px;
+            line-height: 1.1;
         }
-        .area-text { font-size: 0.5rem; color: #aaa; display: block; margin-bottom: 2px; }
+        .area-text { font-size: 0.6rem; color: #f1c40f; display: block; margin-bottom: 2px; }
 
-        /* 中央エリア：番付・勝敗・タイム */
-        .center-box {
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-        }
-        .bantuke-row { display: flex; align-items: center; justify-content: center; width: 100%; }
+        /* 中央配置（沖縄スタイル） */
+        .center-box { display: flex; flex-direction: column; align-items: center; }
+        .bantuke-text-small { font-size: 0.5rem; color: #f1c40f; font-weight: bold; margin-bottom: 2px; }
         
-        .win-mark { 
-            width: 20px; font-size: 1rem; font-weight: bold; color: #e60000;
+        .bantuke-row { 
+            display: flex; align-items: center; justify-content: center; width: 100%; 
+            margin: 2px 0;
         }
+        /* 勝敗の◯ */
+        .win-mark { width: 22px; font-size: 1.1rem; font-weight: bold; color: #e60000; }
         .win-mark.none { color: transparent; }
 
+        /* 番付数字：前者のように太く大きく */
         .bantuke-num {
-            font-size: 1.1rem; font-weight: bold; color: #f1c40f; font-family: 'Oswald', sans-serif;
-            margin: 0 5px;
+            font-size: 1.2rem; font-weight: bold; color: #fff; font-family: 'Oswald', sans-serif;
+            margin: 0 4px; line-height: 1;
         }
-        .bantuke-text-small { font-size: 0.5rem; color: #f1c40f; font-weight: bold; line-height: 1; }
 
+        /* タイム：中央下部に配置 */
         .match-time {
             font-family: 'Oswald', sans-serif; font-size: 0.65rem; color: #fff;
-            border-top: 1px solid #444; width: 100%; margin-top: 4px; padding-top: 2px;
+            background: rgba(255,255,255,0.1); padding: 1px 6px; border-radius: 2px; margin-top: 5px;
         }
 
-        /* ヘッダー */
-        .table-head { background: #222; font-size: 0.6rem; color: #aaa; }
-        .head-east { background: #e60000; color: #fff; }
-        .head-west { background: #eee; color: #000; }
-
         @media (min-width: 600px) {
-            .match-table-container { max-width: 800px; }
+            .match-table-container { max-width: 900px; }
+            .cow-name { font-size: 1.8rem; }
             .owner-name { font-size: 0.8rem; }
+            .bantuke-num { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -82,13 +96,21 @@
 
 <div class="bg-overlay"></div>
 
-<h1>玉城千春(Kiroro)スペシャルライブ＆<br>平成19・20年生卒業記念ナイター闘牛大会</h1>
+<div class="taikai-header">
+    <h1>玉城千春(Kiroro)スペシャルライブ＆<br>平成19・20年生卒業記念ナイター闘牛大会</h1>
+    <a href="programitiran.html" class="back-link">← 対戦表一覧に戻る</a>
+</div>
+
+<div class="taikai-info">
+    <div class="info-row"><span class="info-label">日時</span><span>令和8年3月8日 18:00開始</span></div>
+    <div class="info-row"><span class="info-label">場所</span><span>伊仙町・なくさみ館</span></div>
+</div>
 
 <div class="match-table-container">
     <table class="match-table">
         <tr class="table-head">
             <th class="head-east">東（紅）</th>
-            <th>番付 ／ 勝敗 ／ タイム</th>
+            <th class="head-center">番付 / 勝敗 / タイム</th>
             <th class="head-west">西（白）</th>
         </tr>
 
@@ -106,13 +128,13 @@
                         <span class="bantuke-num">1</span>
                         <span class="win-mark none">○</span>
                     </div>
-                    <div class="match-time">12' 05</div>
+                    <div class="match-time">12:05</div>
                 </div>
             </td>
             <td class="col-cow">
                 <span class="area-text">平土野</span>
                 <span class="cow-name">闘勢琥珀</span>
-                <span class="owner-name">9連勝(輝グループ)</span>
+                <span class="owner-name">9連勝(牛主：輝グループ)</span>
             </td>
         </tr>
 
@@ -130,13 +152,13 @@
                         <span class="bantuke-num">2</span>
                         <span class="win-mark none">○</span>
                     </div>
-                    <div class="match-time">--' --</div>
+                    <div class="match-time">--:--</div>
                 </div>
             </td>
             <td class="col-cow">
                 <span class="area-text">古里</span>
                 <span class="cow-name">友良牛</span>
-                <span class="owner-name">2連勝(友良賢士)</span>
+                <span class="owner-name">2連勝(牛主：友良賢士)</span>
             </td>
         </tr>
 
@@ -153,7 +175,7 @@
                         <span class="bantuke-num">3</span>
                         <span class="win-mark none">○</span>
                     </div>
-                    <div class="match-time">--' --</div>
+                    <div class="match-time">--:--</div>
                 </div>
             </td>
             <td class="col-cow">
@@ -162,31 +184,10 @@
                 <span class="owner-name">牛主：真瀬名</span>
             </td>
         </tr>
-
-        <tr>
-            <td class="col-cow">
-                <span class="area-text">手々</span>
-                <span class="cow-name">はる次郎</span>
-                <span class="owner-name">調教師：植木太陽</span>
-            </td>
-            <td class="col-center">
-                <div class="center-box">
-                    <div class="bantuke-row">
-                        <span class="win-mark none">○</span>
-                        <span class="bantuke-num">7</span>
-                        <span class="win-mark none">○</span>
-                    </div>
-                    <div class="match-time">--' --</div>
-                </div>
-            </td>
-            <td class="col-cow">
-                <span class="area-text">木之香</span>
-                <span class="cow-name">神風パン次郎</span>
-                <span class="owner-name">牛主：永岡兄弟</span>
-            </td>
-        </tr>
     </table>
 </div>
+
+<p style="color:#555; font-size:0.6rem; margin: 30px 0;">© 2026 togyu.net</p>
 
 </body>
 </html>
