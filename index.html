@@ -4,111 +4,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>徳之島闘牛サイト | ホーム</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@800&family=Noto+Sans+JP:wght@900&family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Yuji+Syuku&display=swap" rel="stylesheet">
     <style>
-        body, html {
-            height: 100%;
-            margin: 0;
-            background-color: #050505;
-            color: #fff;
-            /* 筆文字を優先的に適用 */
+        body { 
+            background-color: #050505; 
+            color: #eee; 
             font-family: 'Kaisei Tokumin', serif; 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        .container {
-            padding: 20px;
-            width: 95%; /* 横幅に少し余裕を持たせる */
-            max-width: 600px;
-            box-sizing: border-box;
-        }
-
-        /* 魂のメインタイトル：1行に収めつつ、確実に筆文字を適用 */
-        .main-title {
-            font-family: 'Kaisei Tokumin', serif; /* ここも筆文字に固定 */
-            font-weight: 800;
-            /* 見切れないようにサイズを少し抑えめに調整 */
-            font-size: clamp(2rem, 10vw, 4.5rem); 
-            white-space: nowrap; 
             margin: 0;
-            line-height: 1.2;
-            color: #ffffff;
-            /* 鮮やかな赤 (#ff0000) */
-            text-shadow: 0.05em 0.05em 0px #ff0000; 
-            letter-spacing: -0.02em;
+            padding: 20px 10px;
+            text-align: center;
         }
 
-        .catchphrase {
-            font-size: clamp(0.8rem, 3.5vw, 1.2rem);
-            color: #f1c40f;
-            margin-top: 5px;
-            margin-bottom: 40px;
-            letter-spacing: 0.5em;
-            font-weight: 800;
-            padding-left: 0.5em;
-        }
-
-        .nav-menu {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            align-items: center;
+        /* --- 上3列・下2列のメニュー --- */
+        .header-nav {
+            max-width: 950px;
+            margin: 0 auto 40px auto;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
         }
 
         .nav-item {
-            display: block;
-            width: 100%;
-            max-width: 280px;
-            padding: 15px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             background: rgba(255, 255, 255, 0.05);
             color: #fff;
             text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            font-size: 1.1rem;
+            border: 1px solid #444;
+            padding: 12px 5px;
+            font-size: 0.85rem;
             font-weight: 800;
             transition: 0.3s;
-            /* ボタン内も筆文字 */
-            font-family: 'Kaisei Tokumin', serif;
         }
 
         .nav-item:hover {
-            background-color: #ff0000;
-            border-color: #ff0000;
-            transform: scale(1.05);
+            background-color: #e60000;
+            border-color: #e60000;
         }
 
-        .footer-text {
-            position: absolute;
-            bottom: 20px;
-            font-family: 'Oswald', sans-serif;
-            font-size: 0.7rem;
-            color: #444;
-            letter-spacing: 2px;
+        .nav-item:nth-child(1), .nav-item:nth-child(2), .nav-item:nth-child(3) { grid-column: span 2; }
+        .nav-item:nth-child(4), .nav-item:nth-child(5) { grid-column: span 3; }
+
+        /* --- タイトル: 対戦表と同じ闘龍風設定 --- */
+        h1 { 
+            font-family: 'Yuji Syuku', serif;
+            font-size: clamp(2.5rem, 12vw, 5rem);
+            color: #fff;
+            margin: 40px 0;
+            line-height: 1.1;
+            /* 魂の赤影 */
+            text-shadow: 
+                3px 3px 0 #e60000,
+                -1px -1px 0 #e60000,  
+                 1px -1px 0 #e60000,
+                -1px  1px 0 #e60000,
+                 1px  1px 0 #e60000;
+            letter-spacing: 4px;
+        }
+
+        .hero-img {
+            max-width: 1000px;
+            width: 95%;
+            height: auto;
+            margin: 20px auto;
+            border: 2px solid #333;
+        }
+
+        .intro-text {
+            max-width: 800px;
+            margin: 40px auto;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            text-align: left;
+            padding: 0 15px;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; letter-spacing: 2px; }
+            .nav-item { font-size: 0.75rem; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="main-title">徳之島闘牛サイト</div>
-    <div class="catchphrase">魂が、咆える。</div>
+<nav class="header-nav">
+    <a href="index.html" class="nav-item" style="background: #e60000; border-color: #e60000;">ホーム</a>
+    <a href="programitiran.html" class="nav-item">対戦表</a>
+    <a href="search.html" class="nav-item">戦歴検索</a>
+    <a href="prediction.html" class="nav-item">予想ページ</a>
+    <a href="champions.html" class="nav-item">徳之島闘牛歴代王者</a>
+</nav>
 
-    <nav class="nav-menu">
-        <a href="index.html" class="nav-item">ホーム</a>
-        <a href="programitiran.html" class="nav-item">対戦表</a>
-        <a href="search.html" class="nav-item">戦歴検索</a>
-        <a href="prediction.html" class="nav-item">予想ページ</a>
-        <a href="champions.html" class="nav-item">徳之島闘牛歴代王者</a>
-    </nav>
+<h1>徳之島闘牛</h1>
+
+<img src="https://via.placeholder.com/1000x500/111/fff?text=TOKYU+IMAGE" alt="徳之島闘牛イメージ" class="hero-img">
+
+<div class="intro-text">
+    <p>
+        徳之島の闘牛は、五百年以上の歴史を持つ伝統文化です。
+        島民の魂を揺さぶる「ワイド！ワイド！」の掛け声とともに、
+        一トンを超える巨牛たちが激突する様はまさに圧巻。
+        ここでは最新の対戦表や過去の戦歴、歴代の王者たちの情報を発信しています。
+    </p>
 </div>
 
-<div class="footer-text">© 2026 TOKUNOSHIMA TOGYU</div>
+<p style="margin-top:60px; color:#333; font-size:0.75rem;">© 2026 togyu.net</p>
 
 </body>
 </html>
