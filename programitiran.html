@@ -4,128 +4,256 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>対戦表 | 徳之島闘牛サイト</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@800&family=Noto+Sans+JP:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Noto+Sans+JP:wght@900&family=Oswald:wght@700&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-color: #050505;
-            color: #fff;
-            font-family: 'Noto Sans JP', sans-serif; /* 表は読みやすさ重視 */
+        body { 
+            background-color: #050505; 
+            color: #eee; 
+            font-family: 'Kaisei Tokumin', serif; 
             margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            padding: 20px 10px;
+            text-align: center;
         }
 
-        /* 魂の筆文字タイトル（英語なし・1行） */
-        .page-title {
+        /* --- 上3列・下2列のメニュー --- */
+        .header-nav {
+            max-width: 950px;
+            margin: 0 auto 40px auto;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+        }
+
+        .nav-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            text-decoration: none;
+            border: 1px solid #444;
+            padding: 12px 5px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            transition: 0.3s;
+        }
+
+        .nav-item:hover {
+            background-color: #e60000;
+            border-color: #e60000;
+        }
+
+        .nav-item:nth-child(1), .nav-item:nth-child(2), .nav-item:nth-child(3) { grid-column: span 2; }
+        .nav-item:nth-child(4), .nav-item:nth-child(5) { grid-column: span 3; }
+
+        /* --- タイトル --- */
+        h1 { 
             font-family: 'Kaisei Tokumin', serif;
             font-weight: 800;
-            font-size: clamp(2.5rem, 10vw, 4rem);
-            margin: 20px 0 30px 0;
-            color: #ffffff;
-            text-shadow: 0.05em 0.05em 0px #ff0000;
-            text-align: center;
-            white-space: nowrap;
+            font-size: clamp(2.2rem, 8vw, 3.5rem);
+            color: #fff;
+            margin: 20px 0 40px 0;
+            text-shadow: 0.05em 0.05em 0px #e60000;
         }
 
-        /* 画像通りの赤いヘッダー表 */
-        .table-container {
-            width: 100%;
-            max-width: 800px;
-            border-collapse: collapse;
-            background-color: #000;
-            border: 1px solid #333;
-        }
-
-        .table-header {
-            background-color: #e60000; /* 赤い帯 */
-            color: white;
-        }
-
-        th, td {
-            padding: 15px 10px;
-            border: 1px solid #333;
-            text-align: center;
-            font-size: 0.95rem;
+        /* --- 場所区切りヘッダー --- */
+        .basho-header {
+            max-width: 950px;
+            margin: 40px auto 0 auto;
+            background-color: #222;
+            color: #f1c40f;
+            padding: 10px 15px;
+            font-size: 1.1rem;
             font-weight: 800;
+            border-left: 5px solid #e60000;
+            text-align: left;
         }
 
-        .date-col {
-            color: #f1c40f; /* 日付の黄色 */
-            width: 80px;
+        /* --- テーブル --- */
+        .table-container {
+            max-width: 950px;
+            margin: 0 auto 20px auto;
+            border-bottom: 2px solid #e60000;
+            background: #111;
         }
 
-        .result-btn {
+        .program-table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        .program-table td {
+            padding: 20px 10px;
+            border-bottom: 1px solid #222;
+            vertical-align: middle;
+            text-align: center !important;
+            word-wrap: break-word;
+        }
+
+        .col-date-box { width: 110px; }
+        .col-result-box { width: 85px; }
+
+        .col-date { font-family: 'Oswald', sans-serif; color: #f1c40f; font-size: 1.05rem; }
+        .col-title { font-size: 1.1rem; font-weight: 800; color: #fff; line-height: 1.5; }
+
+        .btn-result {
+            display: inline-block;
             background-color: #fff;
             color: #000;
-            border: none;
-            padding: 5px 15px;
-            font-weight: 900;
-            cursor: pointer;
-        }
-
-        .back-home {
-            margin-top: 40px;
             text-decoration: none;
-            color: #fff;
-            border: 1px solid #444;
-            padding: 12px 40px;
-            font-weight: 800;
-            background: rgba(255, 255, 255, 0.05);
+            padding: 6px 12px;
+            font-weight: 900;
+            font-size: 0.85rem;
         }
 
-        /* c○を togyu.net に統一 */
-        .footer-text {
-            margin-top: 50px;
-            margin-bottom: 20px;
-            font-size: 0.7rem;
-            color: #444;
-            letter-spacing: 2px;
+        @media (max-width: 600px) {
+            .nav-item { font-size: 0.75rem; }
+            .col-date-box { width: 90px; }
+            .col-title { font-size: 0.95rem; }
         }
     </style>
 </head>
 <body>
 
-    <h1 class="page-title">対戦表</h1>
+<nav class="header-nav">
+    <a href="index.html" class="nav-item">ホーム</a>
+    <a href="programitiran.html" class="nav-item" style="background: #e60000; border-color: #e60000;">対戦表</a>
+    <a href="search.html" class="nav-item">戦歴検索</a>
+    <a href="prediction.html" class="nav-item">予想ページ</a>
+    <a href="champions.html" class="nav-item">徳之島闘牛歴代王者</a>
+</nav>
 
-    <table class="table-container">
-        <thead>
-            <tr class="table-header">
-                <th>開催日</th>
-                <th>大会名（番組）</th>
-                <th>結果</th>
-            </tr>
-        </thead>
+<h1>対戦表</h1>
+
+<div class="basho-header">2026年 3月場所</div>
+<div class="table-container">
+    <table class="program-table">
         <tbody>
-            <tr>
-                <td class="date-col">26.03.08</td>
-                <td>玉城千春(Kiroro)スペシャルライブ＆<br>平成19・20年生卒業記念ナイター大会</td>
-                <td><button class="result-btn">結果</button></td>
-            </tr>
-            <tr>
-                <td class="date-col">26.03.07</td>
-                <td>卒業記念ナイター闘牛大会</td>
-                <td><button class="result-btn">結果</button></td>
-            </tr>
-            <tr>
-                <td class="date-col">26.01.03</td>
-                <td>第42回 徳之島全島一・ミニ軽量級優勝旗争奪戦<br>徳之島町大会</td>
-                <td><button class="result-btn">結果</button></td>
-            </tr>
-            <tr>
-                <td class="date-col">26.01.02</td>
-                <td>第42回 徳之島中量級優勝旗争奪戦<br>平成2年・3年厄払い闘牛大会</td>
-                <td><button class="result-btn">結果</button></td>
-            </tr>
+            <tr><td class="col-date-box col-date">2026.03.08</td><td class="col-title">玉城千春(Kiroro)スペシャルライブ＆<br>平成19・20年生卒業記念ナイター</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+            <tr><td class="col-date">2026.03.07</td><td class="col-title">卒業記念ナイター闘牛大会</td><td><a href="#" class="btn-result">結果</a></td></tr>
         </tbody>
     </table>
+</div>
 
-    <a href="index.html" class="back-home">ホームへ戻る</a>
+<div class="basho-header">2026年 1月場所</div>
+<div class="table-container">
+    <table class="program-table">
+        <tbody>
+            <tr><td class="col-date-box col-date">2026.01.03</td><td class="col-title">第42回 徳之島全島一・ミニ軽量級優勝旗争奪戦<br>徳之島町大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+            <tr><td class="col-date">2026.01.02</td><td class="col-title">第42回 徳之島中量級優勝旗争奪戦<br>平成2年・3年厄払い闘牛大会</td><td><a href="#" class="btn-result">結果</a></td></tr>
+            <tr><td class="col-date">2026.01.01</td><td class="col-title">第42回 徳之島軽量級優勝旗争奪戦<br>平成17・18年生成人記念闘牛大会</td><td><a href="#" class="btn-result">結果</a></td></tr>
+        </tbody>
+    </table>
+</div>
 
-    <div class="footer-text">© 2026 togyu.net</div>
+<div class="basho-header">2025年 12月場所</div>
+<div class="table-container"><table class="program-table"><tbody>
+    <tr><td class="col-date-box col-date">2025.12.31</td><td class="col-title">若手オールスター忘年会2025 1時だよ！全員集合！</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+</tbody></table></div>
+
+<div class="basho-header">2025年 10月場所</div>
+<div class="table-container"><table class="program-table"><tbody>
+    <tr><td class="col-date-box col-date">2025.10.19</td><td class="col-title">目手久闘牛稽古大会</td><td class="col-result-box"><span style="color:#333">ー</span></td></tr>
+    <tr><td class="col-date">2025.10.05</td><td class="col-title">第41回 徳之島全島一・軽量級優勝旗争奪戦</td><td><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2025.10.04</td><td class="col-title">第41回 徳之島中量級・ミニ軽量級優勝旗争奪戦</td><td><a href="#" class="btn-result">結果</a></td></tr>
+</tbody></table></div>
+
+<div class="basho-header">2025年 9月場所</div>
+<div class="table-container"><table class="program-table"><tbody>
+    <tr><td class="col-date-box col-date">2025.09.22</td><td class="col-title">秋のナイター闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+</tbody></table></div>
+
+<div class="basho-header">2025年 8月場所</div>
+<div class="table-container"><table class="program-table"><tbody>
+    <tr><td class="col-date-box col-date">2025.08.14</td><td class="col-title">お盆ナイター闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2025.08.13</td><td class="col-title">お盆若手オールスター闘牛大会</td><td><a href="#" class="btn-result">結果</a></td></tr>
+</tbody></table></div>
+
+<div class="basho-header">2025年 6月場所</div>
+<div class="table-container"><table class="program-table"><tbody>
+    <tr><td class="col-date-box col-date">2025.06.28</td><td class="col-title">2025 トライアスロンIN徳之島 WELCOME大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+</tbody></table></div>
+
+<div class="basho-header">2025年 5月場所</div>
+<div class="table-container"><table class="program-table"><tbody>
+    <tr><td class="col-date-box col-date">2025.05.19</td><td class="col-title">第66回 奄美群島市町村議員大会開催記念</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2025.05.05</td><td class="col-title">第3回 子どもの日フェスティバル闘牛大会</td><td><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2025.05.04</td><td class="col-title">第40回 徳之島全島一・ミニ軽量級争奪戦</td><td><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2025.05.03</td><td class="col-title">第40回 徳之島中量級優勝旗争奪戦</td><td><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2025.05.02</td><td class="col-title">第40回 徳之島軽量級優勝旗争奪戦</td><td><a href="#" class="btn-result">結果</a></td></tr>
+</tbody></table></div>
+
+<div class="basho-header">2025年 4月場所</div>
+<div class="table-container"><table class="program-table"><tbody>
+    <tr><td class="col-date-box col-date">2025.04.20</td><td class="col-title">第10回 きびまつりなくさみ大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+</tbody></table></div>
+
+<div class="basho-header">2025年 3月場所</div>
+<div class="table-container"><table class="program-table"><tbody>
+    <tr><td class="col-date-box col-date">2025.03.09</td><td class="col-title">卒業記念全島若手オールスター闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2025.03.08</td><td class="col-title">平成18・19年生卒業記念闘牛大会</td><td><a href="#" class="btn-result">結果</a></td></tr>
+</tbody></table></div>
+
+<div class="basho-header">2025年 1月場所</div>
+<div class="table-container"><table class="program-table"><tbody>
+    <tr><td class="col-date-box col-date">2025.01.04</td><td class="col-title">昭和40年生還暦記念闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2025.01.03</td><td class="col-title">第39回 徳之島全島一・ミニ軽量級争奪戦</td><td><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2025.01.02</td><td class="col-title">第39回 徳之島中量級優勝旗争奪戦</td><td><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2025.01.01</td><td class="col-title">第39回 徳之島軽量級優勝旗争奪戦</td><td><a href="#" class="btn-result">結果</a></td></tr>
+</tbody></table></div>
+
+<div class="basho-header">2024年 12月場所</div>
+<div class="table-container"><table class="program-table"><tbody>
+    <tr><td class="col-date-box col-date">2024.12.31</td><td class="col-title">第2回 若手オールスター忘年会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2024.12.22</td><td class="col-title">道の駅とくのしま オープン記念</td><td><a href="#" class="btn-result">結果</a></td></tr>
+</tbody></table></div>
+
+<div class="basho-header">2024年 10月場所</div>
+<div class="table-container"><table class="program-table"><tbody>
+    <tr><td class="col-date-box col-date">2024.10.06</td><td class="col-title">第38回 徳之島全島一・軽量級争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2024.10.05</td><td class="col-title">第38回 徳之島中量級・ミニ軽量級争奪戦</td><td><a href="#" class="btn-result">結果</a></td></tr>
+</tbody></table></div>
+
+<div class="basho-header">2024年 8月場所</div>
+<div class="table-container"><table class="program-table"><tbody>
+    <tr><td class="col-date-box col-date">2024.08.14</td><td class="col-title">お盆ナイター闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2024.08.11</td><td class="col-title">若手オールスターナイター闘牛大会</td><td><a href="#" class="btn-result">結果</a></td></tr>
+</tbody></table></div>
+
+<div class="basho-header">2024年 7月場所</div>
+<div class="table-container"><table class="program-table"><tbody>
+    <tr><td class="col-date-box col-date">2024.07.05</td><td class="col-title">徳之島中央家畜市場購買者歓迎大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+</tbody></table></div>
+
+<div class="basho-header">2024年 6月場所</div>
+<div class="table-container"><table class="program-table"><tbody>
+    <tr><td class="col-date-box col-date">2024.06.22</td><td class="col-title">2024トライアスロンin徳之島 歓迎大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+</tbody></table></div>
+
+<div class="basho-header">2024年 5月場所</div>
+<div class="table-container"><table class="program-table"><tbody>
+    <tr><td class="col-date-box col-date">2024.05.12</td><td class="col-title">第9回 徳之島きびまつり 製糖終了なぐさみ</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2024.05.05</td><td class="col-title">第2回 子どもの日フェスティバル</td><td><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2024.05.04</td><td class="col-title">第37回 徳之島全島一&ミニ軽量級争奪戦</td><td><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2024.05.03</td><td class="col-title">第37回 徳之島中量級優勝旗争奪戦</td><td><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2024.05.02</td><td class="col-title">第37回 徳之島軽量級優勝旗争奪戦</td><td><a href="#" class="btn-result">結果</a></td></tr>
+</tbody></table></div>
+
+<div class="basho-header">2024年 3月場所</div>
+<div class="table-container"><table class="program-table"><tbody>
+    <tr><td class="col-date-box col-date">2024.03.31</td><td class="col-title">丸正グループ45周年記念若手大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2024.03.09</td><td class="col-title">卒業記念闘牛大会</td><td><a href="#" class="btn-result">結果</a></td></tr>
+</tbody></table></div>
+
+<div class="basho-header">2024年 1月場所</div>
+<div class="table-container"><table class="program-table"><tbody>
+    <tr><td class="col-date-box col-date">2024.01.03</td><td class="col-title">第36回 徳之島全島一&ミニ軽量級争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2024.01.02</td><td class="col-title">第36回 徳之島中量級優勝旗争奪戦</td><td><a href="#" class="btn-result">結果</a></td></tr>
+    <tr><td class="col-date">2024.01.01</td><td class="col-title">第36回 徳之島軽量級優勝旗争奪戦</td><td><a href="#" class="btn-result">結果</a></td></tr>
+</tbody></table></div>
+
+<p style="margin-top:60px; color:#333; font-size:0.75rem;">© 2026 togyu.net</p>
 
 </body>
 </html>
