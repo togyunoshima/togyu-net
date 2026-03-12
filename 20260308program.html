@@ -7,8 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Yuji+Syuku&family=Oswald:wght@700&display=swap" rel="stylesheet">
     <style>
         body { 
-            margin: 0; padding: 10px; background-color: #050505; color: #eee; 
-            font-family: 'Kaisei Tokumin', serif; text-align: center; line-height: 1.4;
+            margin: 0; padding: 5px; background-color: #050505; color: #eee; 
+            font-family: 'Kaisei Tokumin', serif; text-align: center; line-height: 1.3;
         }
         .bg-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -16,59 +16,58 @@
             background-position: center; opacity: 0.15; filter: grayscale(100%); z-index: -1;
         }
 
-        /* --- 大会名（改行調整済み） --- */
-        .taikai-header { margin: 15px 0; padding: 0 5px; }
-        .taikai-date { font-family: 'Oswald', sans-serif; color: #f1c40f; font-size: 1.1rem; }
+        /* --- ヘッダー・タイトル調整 --- */
+        .taikai-header { margin: 10px 0; }
+        .taikai-date { font-family: 'Oswald', sans-serif; color: #f1c40f; font-size: 1rem; }
         h1 { 
-            font-family: 'Yuji Syuku', serif; 
-            font-size: clamp(1.3rem, 4.5vw, 2rem); 
-            color: #fff; margin: 8px auto; line-height: 1.4;
-            max-width: 90%; /* 横幅を制限して中央に寄せる */
-            word-break: keep-all; /* 単語の途中での改行を防止 */
-            overflow-wrap: break-word; /* 長い単語は折り返す */
-            text-shadow: 2px 2px 0 #e60000;
+            font-family: 'Yuji Syuku', serif; font-size: clamp(1.2rem, 4.2vw, 1.8rem); 
+            color: #fff; margin: 5px auto; line-height: 1.4; max-width: 95%;
+            word-break: keep-all; overflow-wrap: break-word; text-shadow: 2px 2px 0 #e60000;
         }
-        .back-link { display: inline-block; margin-bottom: 15px; color: #aaa; text-decoration: none; font-size: 0.75rem; border: 1px solid #444; padding: 4px 12px; }
+        .back-link { display: inline-block; margin-bottom: 10px; color: #aaa; text-decoration: none; font-size: 0.7rem; border: 1px solid #444; padding: 3px 10px; }
 
-        /* --- 大会詳細情報 --- */
+        /* --- 大会詳細 --- */
         .taikai-info {
-            max-width: 100%; margin: 0 auto 15px auto; background: rgba(255,255,255,0.05);
-            border: 1px solid #333; padding: 10px; font-size: 0.75rem; text-align: left;
+            max-width: 100%; margin: 0 auto 10px auto; background: rgba(255,255,255,0.05);
+            border: 1px solid #333; padding: 8px; font-size: 0.7rem; text-align: left;
         }
-        .info-row { display: flex; margin-bottom: 3px; border-bottom: 1px dotted #444; }
-        .info-label { width: 60px; color: #f1c40f; font-weight: bold; }
+        .info-row { display: flex; border-bottom: 1px dotted #444; }
+        .info-label { width: 50px; color: #f1c40f; font-weight: bold; }
 
-        /* --- 取組表（スワイプなし設定） --- */
-        .match-table-container { width: 100%; margin: 0 auto; background: rgba(0, 0, 0, 0.7); }
+        /* --- 取組表（スワイプなし・全項目表示） --- */
+        .match-table-container { width: 100%; margin: 0 auto; background: rgba(0, 0, 0, 0.8); }
         .match-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
         .match-table th, .match-table td {
-            border: 1px solid #333; padding: 8px 2px; vertical-align: middle;
-            word-wrap: break-word;
+            border: 1px solid #333; padding: 6px 1px; vertical-align: middle;
+            font-size: 0.65rem;
         }
 
-        /* 列の幅を％で固定（合計100%） */
-        .col-win { width: 8%; }    /* 勝敗 */
-        .col-side { width: 35%; }   /* 牛の名前エリア */
-        .col-bantuke { width: 14%; } /* 番付 */
-        .col-time { width: 10%; }   /* タイム */
+        /* 列の横幅を1%単位でシビアに調整（合計100%） */
+        .col-win { width: 6%; }      /* 勝敗 */
+        .col-area { width: 10%; }     /* 地区 */
+        .col-cow { width: 28%; }      /* 牛名・牛主 */
+        .col-bantuke { width: 12%; }  /* 番付 */
+        .col-time { width: 10%; }     /* 対戦タイム */
 
-        .match-table th { background-color: #222; font-size: 0.65rem; color: #aaa; }
+        .match-table th { background-color: #222; color: #aaa; font-size: 0.55rem; }
         .match-table th.col-east { background-color: #e60000; color: #fff; }
-        .match-table th.col-bantuke-h { background-color: #fff; color: #000; }
+        .match-table th.col-white { background-color: #fff; color: #000; }
 
-        /* 牛主や地区の情報（名前の上下に配置して横幅を節約） */
-        .sub-info { font-size: 0.6rem; color: #aaa; display: block; line-height: 1.1; }
-        .cow-name { font-size: 0.9rem; font-weight: 800; color: #fff; display: block; margin: 2px 0; }
-        .bantuke-text { font-size: 0.75rem; font-weight: bold; color: #fff; }
+        /* 牛名・牛主の表示 */
+        .cow-name { font-size: 0.85rem; font-weight: 800; color: #fff; display: block; margin-bottom: 1px; }
+        .owner-name { font-size: 0.55rem; color: #aaa; display: block; transform: scale(0.9); }
+        .area-text { font-size: 0.6rem; color: #eee; }
+        .bantuke-text { font-size: 0.7rem; font-weight: bold; color: #f1c40f; }
 
-        .win-mark { color: #e60000; font-size: 1.1rem; font-weight: bold; }
-        .lose-mark { color: #333; font-size: 1rem; }
-        .time-text { font-family: 'Oswald', sans-serif; font-size: 0.7rem; color: #f1c40f; }
+        /* マークとタイム */
+        .win-mark { color: #e60000; font-size: 1rem; font-weight: bold; }
+        .lose-mark { color: #444; font-size: 0.9rem; }
+        .time-text { font-family: 'Oswald', sans-serif; font-size: 0.65rem; color: #fff; }
 
         @media (min-width: 600px) {
-            .match-table-container { max-width: 800px; }
+            .match-table-container { max-width: 900px; }
             .cow-name { font-size: 1.1rem; }
-            .sub-info { font-size: 0.75rem; }
+            .match-table th, .match-table td { font-size: 0.8rem; padding: 10px 5px; }
         }
     </style>
 </head>
@@ -85,47 +84,53 @@
 <div class="taikai-info">
     <div class="info-row"><span class="info-label">日時</span><span>令和8年3月8日 18:00開始</span></div>
     <div class="info-row"><span class="info-label">場所</span><span>伊仙町・なくさみ館</span></div>
-    <div class="info-row"><span class="info-label">主催</span><span>徳之島闘牛連合会</span></div>
+    <div class="info-row"><span class="info-label">入場料</span><span>大人3,000円 / 小中学生1,000円</span></div>
 </div>
 
 <div class="match-table-container">
     <table class="match-table">
         <thead>
             <tr>
-                <th class="col-win">勝</th>
+                <th class="col-win">勝敗</th>
+                <th class="col-area">地区</th>
                 <th class="col-east">東方</th>
-                <th class="col-bantuke-h">番付</th>
+                <th class="col-white">番付</th>
                 <th>西方</th>
-                <th class="col-win">勝</th>
-                <th class="col-time">時間</th>
+                <th class="col-area">地区</th>
+                <th class="col-win">勝敗</th>
+                <th class="col-time">対戦タイム</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td><span class="win-mark">○</span></td>
-                <td class="col-side">
-                    <span class="sub-info">面縄 / 牛主：徳之島</span>
+                <td class="area-text">面縄</td>
+                <td class="col-cow">
                     <span class="cow-name">黒龍王</span>
+                    <span class="owner-name">牛主：永島 照己</span>
                 </td>
                 <td class="bantuke-text">全島一</td>
-                <td class="col-side">
-                    <span class="sub-info">平土野 / 牛主：輝グループ</span>
+                <td class="col-cow">
                     <span class="cow-name">闘勢琥珀</span>
+                    <span class="owner-name">牛主：輝グループ</span>
                 </td>
+                <td class="area-text">平土野</td>
                 <td><span class="lose-mark">●</span></td>
                 <td class="time-text">12:05</td>
             </tr>
             <tr>
                 <td></td>
-                <td class="col-side">
-                    <span class="sub-info">石垣島 / 牛主：玉代勢</span>
+                <td class="area-text">石垣島</td>
+                <td class="col-cow">
                     <span class="cow-name">光ちゃん号</span>
+                    <span class="owner-name">牛主：玉代勢 光子</span>
                 </td>
                 <td class="bantuke-text">ミニ軽量</td>
-                <td class="col-side">
-                    <span class="sub-info">古里 / 牛主：友良</span>
+                <td class="col-cow">
                     <span class="cow-name">友良牛</span>
+                    <span class="owner-name">牛主：友良 賢士</span>
                 </td>
+                <td class="area-text">古里</td>
                 <td></td>
                 <td class="time-text">--:--</td>
             </tr>
@@ -133,7 +138,7 @@
     </table>
 </div>
 
-<p style="color:#555; font-size:0.7rem; margin: 30px 0;">© 2026 togyu.net</p>
+<p style="color:#555; font-size:0.65rem; margin: 30px 0;">© 2026 togyu.net</p>
 
 </body>
 </html>
