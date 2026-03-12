@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>徳之島闘牛サイト | ホーム</title>
-    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@800&family=Yuji+Syuku&family=Noto+Sans+JP:wght@900&family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <title>徳之島闘牛アーカイブ | ホーム</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@800&family=Noto+Sans+JP:wght@900&family=Oswald:wght@700&display=swap" rel="stylesheet">
     <style>
         body, html {
             height: 100%;
@@ -16,39 +16,44 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            overflow: hidden;
+            overflow: hidden; /* スマホで画面が揺れないように固定 */
         }
 
         .container {
-            position: relative;
-            z-index: 1;
             padding: 20px;
             width: 100%;
-            max-width: 600px;
+            max-width: 600px; /* 少し広げて1行を維持しやすく */
+            box-sizing: border-box;
         }
 
-        /* 荒々しい筆文字と赤×金のグラデーション */
+        /* 魂のメインタイトル：1行表示を死守 */
         .main-title {
-            font-family: 'Yuji Syuku', serif;
+            font-family: 'Noto Sans JP', sans-serif;
             font-weight: 900;
-            font-size: clamp(3rem, 15vw, 6rem);
+            /* vwを使って画面幅に合わせて自動リサイズ（1行に収める） */
+            font-size: 13vw; 
+            white-space: nowrap; /* 絶対に改行させない */
             margin: 0;
-            line-height: 1.1;
-            background: linear-gradient(45deg, #b30000 0%, #ffc107 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0px 4px 10px rgba(179, 0, 0, 0.8);
-            letter-spacing: -2px;
+            line-height: 1.2;
+            /* 濁りを消すため、パキッとした鮮やかな赤 (#ff0000) を使用 */
+            color: #ffffff;
+            text-shadow: 0.05em 0.05em 0px #ff0000; 
+            letter-spacing: -0.02em;
+        }
+
+        /* PCで見るときに大きくなりすぎないよう制限 */
+        @media (min-width: 600px) {
+            .main-title { font-size: 80px; }
         }
 
         .catchphrase {
-            font-size: clamp(0.9rem, 3.5vw, 1.3rem);
+            font-size: clamp(0.8rem, 3.5vw, 1.2rem);
             color: #f1c40f;
-            margin-top: 15px;
-            margin-bottom: 50px;
-            letter-spacing: 10px;
+            margin-top: 5px;
+            margin-bottom: 40px;
+            letter-spacing: 0.5em;
             font-weight: 800;
-            padding-left: 10px;
+            padding-left: 0.5em;
         }
 
         .nav-menu {
@@ -61,32 +66,30 @@
         .nav-item {
             display: block;
             width: 100%;
-            max-width: 320px;
-            padding: 16px 0;
-            background: rgba(255, 255, 255, 0.03);
+            max-width: 280px;
+            padding: 15px 0;
+            background: rgba(255, 255, 255, 0.05);
             color: #fff;
             text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            font-size: 1.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 1.1rem;
             font-weight: 800;
-            transition: all 0.3s ease;
+            transition: 0.3s;
         }
 
         .nav-item:hover {
-            background-color: #e60000;
-            border-color: #e60000;
+            background-color: #ff0000;
+            border-color: #ff0000;
             transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(230, 0, 0, 0.4);
         }
 
-        /* フッター：ドメイン名に変更 */
         .footer-text {
             position: absolute;
-            bottom: 30px;
+            bottom: 20px;
             font-family: 'Oswald', sans-serif;
-            font-size: 0.8rem;
-            color: #444; /* 少し見やすく調整 */
-            letter-spacing: 3px;
+            font-size: 0.7rem;
+            color: #444;
+            letter-spacing: 2px;
         }
     </style>
 </head>
@@ -105,7 +108,7 @@
     </nav>
 </div>
 
-<div class="footer-text">© togyu.net</div>
+<div class="footer-text">© 2026 TOKUNOSHIMA TOGYU ARCHIVE</div>
 
 </body>
 </html>
