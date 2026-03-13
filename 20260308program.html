@@ -6,35 +6,35 @@
     <title>3/8 大会情報 | togyu.net</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Kaisei+Tokumin:wght@700;800&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
     <style>
-        /* 全体の中央揃えを徹底 */
+        /* 1. 全体の中央揃えを徹底 */
         body { margin: 0; padding: 0; background-color: #050505; color: #eee; font-family: 'Kaisei Tokumin', serif; text-align: center; }
         .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('IMG_8395.jpg'); background-size: cover; background-position: center; opacity: 0.1; z-index: -1; }
 
-        /* メニューバー（対戦表ページ仕様） */
-        .nav-container { background: #fff; width: 100%; margin: 0 auto; padding: 0; }
-        .nav-row { display: flex; border-bottom: 1px solid #ddd; max-width: 100%; }
+        /* 2. メニューバー（対戦表ページ仕様・完全中央） */
+        .nav-container { background: #fff; width: 100%; display: flex; flex-direction: column; align-items: center; }
+        .nav-row { display: flex; width: 100%; max-width: 800px; border-bottom: 1px solid #ddd; }
         .nav-row:last-child { border-bottom: none; }
         .nav-row a { flex: 1; color: #000; text-decoration: none; font-size: 0.75rem; font-weight: 800; padding: 12px 0; border-right: 1px solid #ddd; text-align: center; }
         .nav-row a:last-child { border-right: none; }
 
-        /* ヘッダー・詳細構成（維持） */
-        .header-container { max-width: 600px; margin: 0 auto; padding: 25px 10px; text-align: center; }
+        /* 3. ヘッダー・タイトル・詳細（構成維持） */
+        .header-container { width: 100%; max-width: 800px; margin: 0 auto; padding: 25px 10px; box-sizing: border-box; }
         .date-display { font-family: 'Oswald', sans-serif; font-size: 1.25rem; color: #f1c40f; letter-spacing: 0.05em; margin-bottom: 5px; font-weight: 700; }
         h1 { 
             font-family: 'Noto Serif JP', serif; 
             font-size: 1.35rem; color: #fff; line-height: 1.5; margin: 0 0 20px 0; 
             text-shadow: 2px 2px 0 #e60000, -1px -1px 0 #e60000, 1px -1px 0 #e60000, -1px 1px 0 #e60000; 
-            font-weight: 700; word-break: keep-all; display: inline-block;
+            font-weight: 700; word-break: keep-all;
         }
         .back-btn { display: inline-block; padding: 5px 15px; border: 1px solid #555; background: transparent; color: #bbb; text-decoration: none; font-size: 0.7rem; margin-bottom: 25px; }
         .info-table { width: 95%; max-width: 480px; margin: 0 auto; border-collapse: collapse; text-align: left; font-size: 0.75rem; }
         .info-table td { padding: 9px 5px; border-bottom: 1px dotted #333; }
         .info-label { color: #f1c40f; width: 65px; font-weight: bold; }
 
-        /* 取組表：中央配置を固定し、幅を調整 */
+        /* 4. 取組表：中央固定。PC・スマホそれぞれに最適化 */
         .match-table { 
             width: 100%; 
-            max-width: 800px; /* PCでの見やすさ */
+            max-width: 800px; 
             margin: 20px auto; 
             border-collapse: collapse; 
             table-layout: fixed; 
@@ -43,24 +43,24 @@
         }
         .match-table th, .match-table td { border: 1px solid #444; padding: 10px 0; vertical-align: middle; }
         
-        /* 地区：文字サイズ維持しつつ、ギリギリまで狭める */
-        .col-area { width: 10%; font-size: 0.55rem; color: #bbb; white-space: nowrap; padding: 0 1px !important; } 
-        /* 牛名：左右に最大限振り分け */
-        .col-cow { width: 35%; } 
-        /* 番付：中央固定 */
-        .col-center { width: 10%; } 
+        /* 地区：文字サイズを小さくせず、幅だけを極限まで狭める */
+        .col-area { width: 60px; font-size: 0.75rem; color: #bbb; white-space: nowrap; padding: 0 2px !important; } 
+        /* 番付：1行になる幅を確保 */
+        .col-center { width: 85px; } 
+        /* 牛名：残りのスペースを均等に最大化 */
+        .col-cow { width: auto; } 
 
-        .table-head th { background: #222; font-size: 0.6rem; padding: 8px 0; color: #aaa; }
+        .table-head th { background: #222; font-size: 0.65rem; padding: 8px 0; color: #aaa; }
         .head-east { background: #e60000 !important; color: #fff; }
         .head-west { background: #eee !important; color: #000; }
 
-        .cow-meta { font-size: 0.5rem; color: #f1c40f; display: block; margin-bottom: 2px; }
-        .cow-name { font-size: clamp(0.9rem, 4vw, 1.1rem); font-weight: 900; color: #fff; display: block; white-space: nowrap; }
-        .cow-owner { font-size: 0.45rem; color: #999; display: block; margin-top: 3px; }
+        .cow-meta { font-size: 0.55rem; color: #f1c40f; display: block; margin-bottom: 2px; }
+        .cow-name { font-size: clamp(0.95rem, 2.5vw, 1.3rem); font-weight: 900; color: #fff; display: block; white-space: nowrap; }
+        .cow-owner { font-size: 0.5rem; color: #999; display: block; margin-top: 3px; }
 
-        .bantuke-text { font-size: 0.7rem; color: #f1c40f; font-weight: 900; display: block; margin-bottom: 8px; white-space: nowrap; }
+        .bantuke-text { font-size: 0.75rem; color: #f1c40f; font-weight: 900; display: block; margin-bottom: 8px; white-space: nowrap; }
         .result-row { display: flex; border-top: 1px solid #444; padding-top: 6px; align-items: center; justify-content: center; width: 100%; }
-        .res-win { width: 25%; font-size: 0.85rem; font-weight: bold; color: #e60000; text-align: center; }
+        .res-win { width: 25%; font-size: 0.9rem; font-weight: bold; color: #e60000; text-align: center; }
         .res-time { width: 50%; font-family: 'Oswald', sans-serif; font-size: 0.65rem; color: #fff; border-left: 1px solid #333; border-right: 1px solid #333; }
     </style>
 </head>
@@ -87,7 +87,7 @@
 
 <table class="match-table">
     <tr class="table-head">
-        <th>地区</th><th class="head-east">東方</th><th>番付</th><th class="head-west">西方</th><th>地区</th>
+        <th class="col-area">地区</th><th class="head-east">東方</th><th class="col-center">番付</th><th class="head-west">西方</th><th class="col-area">地区</th>
     </tr>
     <tr>
         <td class="col-area">徳和瀬</td>
