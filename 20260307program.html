@@ -10,28 +10,31 @@
         body { margin: 0; padding: 10px; background-color: #050505; color: #eee; font-family: 'Kaisei Tokumin', serif; text-align: center; overflow-x: hidden; }
         .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('IMG_8395.jpg'); background-size: cover; background-position: center; opacity: 0.15; filter: grayscale(100%); z-index: -1; }
 
-        /* ナビゲーション */
         .header-nav { max-width: 950px; margin: 0 auto 30px auto; display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
         .nav-item { display: flex; justify-content: center; align-items: center; background: rgba(255, 255, 255, 0.1); color: #fff; text-decoration: none; border: 1px solid #444; padding: 12px 5px; font-size: 0.85rem; font-weight: 800; }
         .nav-item:nth-child(2) { background: #e60000; border-color: #e60000; }
 
-        /* ヘッダー */
         .header-container { width: 100%; max-width: 600px; margin: 0 auto; padding: 15px 10px; }
         .date-display { font-family: 'Oswald', sans-serif; font-size: 1.25rem; color: #f1c40f; letter-spacing: 0.05em; margin-bottom: 8px; font-weight: 700; }
         h1 { font-family: 'Noto Serif JP', serif; font-size: clamp(1.1rem, 4.5vw, 1.5rem); color: #fff; line-height: 1.5; margin: 0 auto 20px auto; text-shadow: 2px 2px 0 #e60000; font-weight: 700; }
 
-        /* メインテーブル */
-        .match-table { width: 100%; max-width: 900px; margin: 20px auto; border-collapse: collapse; table-layout: fixed; background: rgba(0, 0, 0, 0.85); border: 1.5px solid #444; }
-        .match-table td { border: 1px solid #333; padding: 12px 2px; vertical-align: middle; text-align: center; }
-        
-        /* 地区名・牛名の調整クラス */
-        .col-area { width: 65px; font-size: 0.85rem; color: #bbb; font-weight: bold; line-height: 1.2; }
-        .area-nishime { font-size: 0.7rem !important; white-space: nowrap; } /* 西目手久専用：1行にする */
+        .info-table { width: 95%; max-width: 480px; margin: 0 auto 30px auto; border-collapse: collapse; text-align: left; font-size: 0.85rem; }
+        .info-table td { padding: 8px 5px; border-bottom: 1px dotted #333; }
+        .info-label { color: #f1c40f; width: 75px; font-weight: bold; }
 
-        .col-cow { width: auto; padding: 8px 4px !important; }
-        .cow-meta { font-size: 0.7rem; color: #f1c40f; display: block; margin-bottom: 2px; line-height: 1.1; }
-        .cow-name { font-size: 1.3rem; font-weight: 900; color: #fff; display: block; line-height: 1.2; }
-        .cow-owner { font-size: 0.7rem; color: #999; display: block; margin-top: 3px; line-height: 1.1; }
+        .match-table { width: 100%; max-width: 900px; margin: 20px auto; border-collapse: collapse; table-layout: fixed; background: rgba(0, 0, 0, 0.85); border: 1.5px solid #444; }
+        .match-table td { border: 1px solid #333; padding: 10px 1px; vertical-align: middle; text-align: center; overflow: hidden; }
+        
+        /* 地区名調整 */
+        .col-area { width: 65px; font-size: 0.85rem; color: #bbb; font-weight: bold; }
+        .area-nishime { font-size: 0.65rem !important; white-space: nowrap; letter-spacing: -0.05em; }
+
+        /* 牛名調整 */
+        .col-cow { width: auto; }
+        .cow-meta { font-size: 0.7rem; color: #f1c40f; display: block; margin-bottom: 2px; white-space: nowrap; }
+        .cow-name { font-size: 1.25rem; font-weight: 900; color: #fff; display: block; line-height: 1.2; white-space: nowrap; }
+        .cow-name small { font-size: 0.8rem; font-weight: 700; vertical-align: middle; } /* ()内を小さく */
+        .cow-owner { font-size: 0.68rem; color: #999; display: block; margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
         .col-center { width: 100px; } 
         .table-head th { padding: 12px 0; font-size: 0.9rem; background: #222; border: 1px solid #333; }
@@ -52,13 +55,11 @@
         .archive-link { display: inline-block; padding: 5px 15px; background: rgba(255, 255, 255, 0.1); color: #fff; border: 1px solid #444; font-size: 0.75rem; text-decoration: none; font-weight: 800; }
         .current-day { color: #e60000 !important; text-decoration: none !important; cursor: default; }
 
-        /* スマホ調整 */
         @media screen and (max-width: 600px) {
             .col-area { width: 45px; font-size: 0.65rem; }
             .col-center { width: 75px; }
-            .cow-name { font-size: 0.95rem; }
+            .cow-name { font-size: 0.9rem; }
             .cow-meta, .cow-owner { font-size: 0.55rem; }
-            .bantuke-text { font-size: 0.65rem; }
             .nav-item { font-size: 0.6rem; padding: 8px 2px; }
         }
     </style>
@@ -76,6 +77,12 @@
 <div class="header-container">
     <div class="date-display">2026.03.07 SAT</div>
     <h1>2026 卒業記念ナイター闘牛大会</h1>
+    <table class="info-table">
+        <tr><td class="info-label">日時</td><td>令和8年3月7日 午後6時30分開始</td></tr>
+        <tr><td class="info-label">場所</td><td>なくさみ館</td></tr>
+        <tr><td class="info-label">主催</td><td>卒業記念ナイター闘牛大会実行委員会</td></tr>
+        <tr><td class="info-label">入場料</td><td>大人 3,000円 / 小人 1,000円</td></tr>
+    </table>
 </div>
 
 <table class="match-table">
@@ -120,14 +127,14 @@
     </tr>
     <tr>
         <td class="col-area">浅間</td>
-        <td class="col-cow"><span class="cow-name">爆(～battou～)闘</span><span class="cow-owner">（牛主：元山・富山）</span></td>
+        <td class="col-cow"><span class="cow-name">爆<small>(～battou～)</small>闘</span><span class="cow-owner">（牛主：元山・富山）</span></td>
         <td class="col-center"><span class="bantuke-text">若手特別</span><div class="result-row"><div class="res-time"> --:-- </div></div></td>
         <td class="col-cow"><span class="cow-meta">祝 真決卒業記念</span><span class="cow-name">翔龍皇ゼッツ</span><span class="cow-owner">（牛主：立山尊愛）</span></td>
         <td class="col-area">伊仙</td>
     </tr>
     <tr>
         <td class="col-area">亀津</td>
-        <td class="col-cow"><span class="cow-name">小(くわーむん)夢</span><span class="cow-owner">（牛主：倉・竹川）</span></td>
+        <td class="col-cow"><span class="cow-name">小<small>(くわーむん)</small>夢</span><span class="cow-owner">（牛主：倉・竹川）</span></td>
         <td class="col-center"><span class="bantuke-text">若手花形</span><div class="result-row"><div class="res-time"> --:-- </div></div></td>
         <td class="col-cow"><span class="cow-meta">祝 卒業 米田海斗</span><span class="cow-name">愛進龍</span><span class="cow-owner">（牛主：優心）</span></td>
         <td class="col-area">亀津</td>
@@ -136,20 +143,20 @@
         <td class="col-area">伊仙</td>
         <td class="col-cow"><span class="cow-name">56 赤棟蛇</span><span class="cow-owner">元一天張（昭和56年生）</span></td>
         <td class="col-center"><span class="bantuke-text">封切特別</span><div class="result-row"><div class="res-time"> --:-- </div></div></td>
-        <td class="col-cow"><span class="cow-meta">二代目</span><span class="cow-name">凛勝❤️珠凛</span><span class="cow-owner">デビュー戦</span></td>
+        <td class="col-cow"><span class="cow-meta">二代目</span><span class="cow-name">凛勝❤️珠凛</span><span class="cow-owner">デビュー戦（牛主：寺本珠凛・凜音）</span></td>
         <td class="col-area">亀津</td>
     </tr>
     <tr>
         <td class="col-area">花津川</td>
-        <td class="col-cow"><span class="cow-name">突撃☆ハチハチ</span></td>
-        <td class="col-center"><span class="bantuke-text">ｱﾄﾗｸｼｮﾝ</span><div class="result-row"><div class="res-time"> 05:00 </div></div></td>
-        <td class="col-cow"><span class="cow-name">凜 虎</span></td>
+        <td class="col-cow"><span class="cow-name">突撃☆ハチハチ</span><span class="cow-owner">（牛主：突撃グループ）</span></td>
+        <td class="col-center"><span class="bantuke-text">ｱﾄﾗｸｼｮﾝ</span><div class="result-row"><div class="res-time"> --:-- </div></div></td>
+        <td class="col-cow"><span class="cow-name">凜 虎</span><span class="cow-owner">（牛主：重田大瑛）</span></td>
         <td class="col-area">浅間</td>
     </tr>
     <tr>
         <td class="col-area">目手久</td>
-        <td class="col-cow"><span class="cow-name">天龍王</span></td>
-        <td class="col-center"><span class="bantuke-text">ｱﾄﾗｸｼｮﾝ</span><div class="result-row"><div class="res-time"> 05:00 </div></div></td>
+        <td class="col-cow"><span class="cow-name">天龍王</span><span class="cow-owner">（牛主：盛莉葵）</span></td>
+        <td class="col-center"><span class="bantuke-text">ｱﾄﾗｸｼｮﾝ</span><div class="result-row"><div class="res-time"> --:-- </div></div></td>
         <td class="col-cow"><span class="cow-name">大陸王</span></td>
         <td class="col-area">目手久</td>
     </tr>
