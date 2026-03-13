@@ -28,36 +28,49 @@
 
         /* 取組表 */
         .match-table { width: 100%; max-width: 800px; margin: 20px auto; border-collapse: collapse; table-layout: fixed; background: rgba(0, 0, 0, 0.85); border: 1.5px solid #444; }
-        .match-table th, .match-table td { border: 1px solid #333; padding: 12px 0; vertical-align: middle; }
+        .match-table th, .match-table td { border: 1px solid #333; padding: 12px 0; vertical-align: middle; text-align: center; } /* 全体を中央揃えに */
         .col-area { width: 60px; font-size: 0.9rem; color: #bbb; font-weight: bold; }
         .col-center { width: 100px; } 
-        .table-head th { padding: 12px 0; font-size: 0.85rem; }
+        .table-head th { padding: 12px 0; font-size: 0.85rem; text-align: center; } /* ヘッドも中央揃え */
         .head-east { background: #e60000 !important; color: #fff; }
         .head-west { background: #eee !important; color: #000; }
 
-        /* 牛名・付随情報 */
-        .cow-meta { font-size: 0.7rem; color: #f1c40f; display: block; margin-bottom: 2px; white-space: nowrap; }
+        /* 牛名・付随情報（全体修正） */
+        .cow-meta { font-size: 0.7rem; color: #f1c40f; display: block; margin-bottom: 2px; white-space: nowrap; } /* 卒業記念サイズ戻し */
         .cow-name { font-size: 1.35rem; font-weight: 900; color: #fff; display: block; white-space: nowrap; letter-spacing: -0.01em; }
-        .cow-owner { font-size: 0.7rem; color: #999; display: block; margin-top: 3px; line-height: 1.2; }
+        .cow-owner { font-size: 0.7rem; color: #999; display: block; margin-top: 3px; line-height: 1.2; white-space: normal; } /* 牛主名の改行許可 */
         .name-sub-mini { font-size: 0.75em; display: inline-block; font-weight: 700; }
 
-        /* スコア・タイム */
-        .bantuke-text { font-size: 0.8rem; color: #f1c40f; font-weight: 900; display: block; margin-bottom: 8px; white-space: nowrap; line-height: 1.1; }
-        .result-row { display: flex; border-top: 1px solid #333; padding-top: 6px; align-items: center; justify-content: center; width: 100%; }
+        /* 八輝専用調整（PC・スマホ共通） */
+        .hatauki-meta { font-size: 0.65rem; letter-spacing: -0.02em; }
+        .hatauki-name { font-size: 1.25rem; letter-spacing: -0.03em; }
+        .hatauki-owner { font-size: 0.65rem; line-height: 1.2; }
+
+        /* スコア・タイム（中央揃え統一） */
+        .bantuke-text { font-size: 0.8rem; color: #f1c40f; font-weight: 900; display: block; margin-bottom: 8px; white-space: nowrap; line-height: 1.1; text-align: center; }
+        .result-row { display: flex; border-top: 1px solid #333; padding-top: 6px; align-items: center; justify-content: center; width: 100%; text-align: center; } /* 中央寄せ */
         .res-win { width: 22%; font-size: 1rem; font-weight: bold; color: #e60000; text-align: center; } 
-        .res-time { width: 56%; font-family: 'Oswald', 'Kaisei Tokumin', sans-serif; font-size: 0.72rem; color: #fff; border-left: 1px solid #333; border-right: 1px solid #333; white-space: nowrap; }
+        .res-time { width: 56%; font-family: 'Oswald', 'Kaisei Tokumin', sans-serif; font-size: 0.72rem; color: #fff; border-left: 1px solid #333; border-right: 1px solid #333; white-space: nowrap; text-align: center; }
+        .res-lose { color: transparent !important; }
 
         /* スマホ専用調整 */
         @media screen and (max-width: 600px) {
             .col-area { width: 45px; font-size: 0.7rem; }
             .col-center { width: 85px; }
+            .table-head th { font-size: 0.7rem; }
+            
+            /* 牛名全体の基本サイズ */
             .cow-name { font-size: 1.0rem; } 
-            /* 卒業記念のサイズを元に戻す */
-            .cow-meta { font-size: 0.55rem; letter-spacing: -0.01em; }
-            /* 改行を許可し、文字サイズを調整 */
-            .cow-owner { font-size: 0.58rem; letter-spacing: -0.02em; white-space: normal; word-break: break-all; }
+            .cow-meta { font-size: 0.55rem; }
+            .cow-owner { font-size: 0.55rem; }
+
+            /* 八輝専用調整（スマホ） */
+            .hatauki-name { font-size: 0.9rem !important; }
+            .hatauki-meta { font-size: 0.5rem !important; letter-spacing: -0.03em; }
+            .hatauki-owner { font-size: 0.5rem !important; white-space: normal !important; word-break: break-all; } /* 2行改行強制 */
+            
             .tight-name { font-size: 0.85rem !important; }
-            .res-time { font-size: 0.62rem; }
+            .res-time { font-size: 0.62rem; letter-spacing: -0.01em; }
         }
     </style>
 </head>
@@ -99,7 +112,7 @@
         </td>
         <td class="col-center">
             <span class="bantuke-text">県対抗<br>ﾌｧｲﾅﾙ</span>
-            <div class="result-row"><div class="res-win">○</div><div class="res-time">0分45秒</div></div>
+            <div class="result-row"><div class="res-win">○</div><div class="res-time">0分45秒</div><div class="res-win res-lose">○</div></div>
         </td>
         <td class="col-cow"><span class="cow-name">耀</span><span class="cow-owner">沖縄3番1枚</span></td>
         <td class="col-area">沖縄</td>
@@ -108,13 +121,13 @@
     <tr>
         <td class="col-area">徳之島</td>
         <td class="col-cow">
-            <span class="cow-meta">窪田勇心・郷健太卒業記念</span>
-            <span class="cow-name tight-name"><span class="name-sub-mini">三代目</span> 八<span class="name-sub-mini">Hatsuki</span>輝</span>
-            <span class="cow-owner">デビュー戦<br>(牛主：平成8･9年生絆同志会)</span>
+            <span class="cow-meta hatauki-meta">窪田勇心・郷健太卒業記念</span>
+            <span class="cow-name hatauki-name"><span class="name-sub-mini">三代目</span> 八<span class="name-sub-mini">Hatsuki</span>輝</span>
+            <span class="cow-owner hatauki-owner">デビュー戦<br>(牛主：平成8･9年生絆同志会)</span> /* 2行改行 */
         </td>
         <td class="col-center">
             <span class="bantuke-text">指名特別</span>
-            <div class="result-row"><div class="res-win">○</div><div class="res-time">1分28秒</div></div>
+            <div class="result-row"><div class="res-win">○</div><div class="res-time">1分28秒</div><div class="res-win res-lose">○</div></div>
         </td>
         <td class="col-cow"><span class="cow-name">希 爛</span><span class="cow-owner">元 希燗</span></td>
         <td class="col-area">石垣</td>
@@ -129,7 +142,7 @@
         </td>
         <td class="col-center">
             <span class="bantuke-text">VS</span>
-            <div class="result-row"><div class="res-win">○</div><div class="res-time">不戦勝</div></div>
+            <div class="result-row"><div class="res-win">○</div><div class="res-time">不戦勝</div><div class="res-win res-lose">○</div></div>
         </td>
         <td class="col-cow">
             <span class="cow-meta">煌義卒業記念</span>
@@ -141,10 +154,10 @@
 
     <tr>
         <td class="col-area">面縄</td>
-        <td class="col-cow"><span class="cow-name">ミニハヤテ號</span><span class="cow-owner">デビュー戦</span></td>
+        <td class="col-cow"><span class="cow-name tight-name">ミニハヤテ號</span><span class="cow-owner">デビュー戦</span></td>
         <td class="col-center">
             <span class="bantuke-text">VS</span>
-            <div class="result-row"><div class="res-win res-lose"></div><div class="res-time">不戦勝</div><div class="res-win">○</div></div>
+            <div class="result-row"><div class="res-win res-lose">○</div><div class="res-time">不戦勝</div><div class="res-win">○</div></div>
         </td>
         <td class="col-cow">
             <span class="cow-meta">杉 光輝卒業記念</span>
@@ -163,7 +176,7 @@
         </td>
         <td class="col-center">
             <span class="bantuke-text">封切</span>
-            <div class="result-row"><div class="res-win res-lose"></div><div class="res-time">7分23秒</div><div class="res-win">○</div></div>
+            <div class="result-row"><div class="res-win res-lose">○</div><div class="res-time">7分23秒</div><div class="res-win">○</div></div>
         </td>
         <td class="col-cow">
             <span class="cow-meta">祝 力斗卒業記念</span>
@@ -173,6 +186,8 @@
         <td class="col-area">上面縄</td>
     </tr>
 </table>
+
+<p style="margin-top:60px; color:#555; font-size:0.75rem;">© 2026 togyu.net</p>
 
 </body>
 </html>
