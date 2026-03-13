@@ -31,19 +31,20 @@
         .info-label { color: #f1c40f; width: 65px; font-weight: bold; }
         .info-content { color: #fff; }
 
-        /* 取組表：地区を狭めて牛名を広く */
+        /* 取組表：地区の余白を消して牛名を広く */
         .match-table { width: 100%; border-collapse: collapse; table-layout: fixed; background: rgba(0, 0, 0, 0.9); border: 1.5px solid #666; margin-top: 20px; }
         .match-table th, .match-table td { border: 1px solid #444; padding: 10px 0; vertical-align: middle; }
         
-        .col-area { width: 5%; font-size: 0.55rem; color: #bbb; writing-mode: vertical-rl; padding: 5px 2px !important; } /* 地区を極狭に */
-        .col-cow { width: 38.5%; } /* 牛名を広げた */
-        .col-center { width: 13%; } /* 番付・結果エリア */
+        /* 地区：横書きのまま幅を詰め、余白を最小化 */
+        .col-area { width: 6%; font-size: 0.55rem; color: #bbb; padding: 0 !important; letter-spacing: -0.05em; } 
+        .col-cow { width: 37.5%; } 
+        .col-center { width: 13%; } 
 
         .table-head th { background: #222; font-size: 0.6rem; padding: 8px 0; color: #aaa; }
         .head-east { background: #e60000 !important; color: #fff; }
         .head-west { background: #eee !important; color: #000; }
 
-        /* 牛名表示：1行に収めるための調整 */
+        /* 牛名表示：1行に収める */
         .cow-meta { font-size: 0.5rem; color: #f1c40f; display: block; margin-bottom: 2px; }
         .cow-name { 
             font-size: 1.1rem; 
@@ -52,13 +53,11 @@
             display: block; 
             line-height: 1.2; 
             letter-spacing: -0.02em; 
-            white-space: nowrap; /* 1行を強制 */
-            overflow: hidden;
-            text-overflow: ellipsis;
+            white-space: nowrap; 
         }
         .cow-owner { font-size: 0.45rem; color: #999; display: block; margin-top: 3px; }
 
-        /* 結果入力エリア */
+        /* 結果入力エリア (そのまま維持) */
         .bantuke-text { font-size: 0.7rem; color: #f1c40f; font-weight: 900; display: block; margin-bottom: 8px; }
         .result-row { display: flex; border-top: 1px solid #444; padding-top: 6px; align-items: center; justify-content: center; width: 95%; margin: 0 auto; }
         .res-win { width: 25%; font-size: 1rem; font-weight: bold; color: #e60000; }
