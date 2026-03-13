@@ -1,47 +1,90 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
 <meta charset="UTF-8">
-<title>闘牛戦績テスト</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>牛一覧 | 徳之島闘牛サイト</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Yuji+Syuku&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    padding:20px;
+    background:#050505;
+    color:#eee;
+    font-family:'Kaisei Tokumin',serif;
+}
+
+h1{
+    text-align:center;
+    font-family:'Yuji Syuku',serif;
+    font-size:40px;
+    margin-bottom:40px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+}
+
+.bull{
+    background:rgba(30,30,30,0.7);
+    border:1px solid #333;
+    padding:20px;
+    margin-bottom:15px;
+}
+
+.bull-name{
+    font-size:20px;
+    font-weight:800;
+}
+
+.alias{
+    color:#aaa;
+    font-size:14px;
+    margin-top:5px;
+}
+</style>
 </head>
 
 <body>
 
-<h1>小原荒波 戦績</h1>
+<h1>牛一覧</h1>
 
-<div id="record"></div>
+<div class="container" id="bull-list"></div>
 
 <script>
 
-fetch("data/matches.json")
-.then(response => response.json())
+fetch("data/bulls.json")
+.then(res => res.json())
 .then(data => {
 
-const bull = "小原荒波"
+    const list = document.getElementById("bull-list");
 
-const fights = data.filter(match => match.bull === bull)
+    data.forEach(bull => {
 
-let html = ""
+        const div = document.createElement("div");
+        div.className = "bull";
 
-fights.forEach(fight => {
+        let aliasText = "";
 
-html += `
-<p>
-${fight.date}  
-${fight.bull} vs ${fight.opponent}  
-結果: ${fight.result}
-</p>
-`
+        if(bull.aliases && bull.aliases.length > 0){
+            aliasText = `<div class="alias">(${bull.aliases.join(" / ")})</div>`;
+        }
 
-})
+        div.innerHTML = `
+            <div class="bull-name">${bull.name}</div>
+            ${aliasText}
+        `;
 
-document.getElementById("record").innerHTML = html
+        list.appendChild(div);
 
-})
+    });
+
+});
 
 </script>
 
 </body>
-
 </html>
