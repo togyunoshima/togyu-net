@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<title>闘牛戦歴</title>
+</head>
+
+<body>
+
+<h1 id="bull-name"></h1>
+
+<h2>戦歴</h2>
+
+<div id="record"></div>
+
+<script>
+
+const params = new URLSearchParams(location.search)
+const bullId = params.get("id")
+
+fetch("data/bulls.json")
+.then(res => res.json())
+.then(bulls => {
+
+const bull = bulls.find(b => b.id === bullId)
+
+document.getElementById("bull-name").textContent = bull.name
+
+fetch("data/matches.json")
+.then(res => res.json())
+.then(matches => {
+
+const fights = matches.filter(m =>
+m.winner === bull.name ||
+m.loser === bull.name
+)
+
+let html = ""
+
+fights.forEach(fight => {
+
+html += `
+<p>
+${fight.date}
+<br>
+${fight.winner} vs ${fight.loser}
+<br>
+${fight.time}
+<br>
+${fight.arena}
+</p>
+<hr>
+`
+
+})
+
+document.getElementById("record").innerHTML = html
+
+})
+
+})
+
+</script>
+
+</body>
+
+</html>
