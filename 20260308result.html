@@ -1,17 +1,183 @@
-<style>
-    .cow-name.win::before { content: "○ "; color: #e60000; } /* 勝った牛に赤丸 */
-    .time { font-size: 0.8rem; color: #f1c40f; display: block; margin-top: 5px; } /* 対戦時間用 */
-</style>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>3/8 大会結果 | togyu.net</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Kaisei+Tokumin:wght@700;800&family=Noto+Serif+JP:wght@700&family=Yuji+Syuku&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        body { margin: 0; padding: 10px; background-color: #050505; color: #eee; font-family: 'Kaisei Tokumin', serif; text-align: center; overflow-x: hidden; }
+        .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('IMG_8395.jpg'); background-size: cover; background-position: center; opacity: 0.15; filter: grayscale(100%); z-index: -1; }
 
-<div class="match-row">
-    <div class="side east">
-        <span class="rank">東</span>
-        <span class="cow-name win">牛の名前A</span> </div>
-    <div class="vs-zone">
-        <span style="font-size:0.8rem; color:#aaa;">12分05秒</span><br>VS
-    </div>
-    <div class="side west">
-        <span class="rank">西</span>
-        <span class="cow-name">牛の名前B</span>
-    </div>
+        /* メニューバー */
+        .header-nav { max-width: 950px; margin: 0 auto 30px auto; display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+        .nav-item { display: flex; justify-content: center; align-items: center; background: rgba(255, 255, 255, 0.1); color: #fff; text-decoration: none; border: 1px solid #444; padding: 12px 5px; font-size: 0.85rem; font-weight: 800; }
+        .nav-item:nth-child(1), .nav-item:nth-child(2), .nav-item:nth-child(3) { grid-column: span 2; }
+        .nav-item:nth-child(4), .nav-item:nth-child(5) { grid-column: span 3; }
+
+        /* ヘッダー */
+        .header-container { width: 100%; max-width: 600px; margin: 0 auto; padding: 15px 10px; }
+        .date-display { font-family: 'Oswald', sans-serif; font-size: 1.25rem; color: #f1c40f; letter-spacing: 0.05em; margin-bottom: 8px; font-weight: 700; }
+        h1 { font-family: 'Noto Serif JP', serif; font-size: clamp(1.05rem, 4.5vw, 1.35rem); color: #fff; line-height: 1.5; margin: 0 auto 20px auto; text-shadow: 2px 2px 0 #e60000, -1px -1px 0 #e60000, 1px -1px 0 #e60000, -1px 1px 0 #e60000; font-weight: 700; }
+        .back-btn { display: inline-block; padding: 8px 20px; border: 1px solid #555; background: rgba(255,255,255,0.05); color: #bbb; text-decoration: none; font-size: 0.75rem; margin-bottom: 25px; }
+
+        /* 詳細テーブル */
+        .info-table { width: 95%; max-width: 480px; margin: 0 auto; border-collapse: collapse; text-align: left; font-size: 0.75rem; }
+        .info-table td { padding: 10px 5px; border-bottom: 1px dotted #333; }
+        .info-label { color: #f1c40f; width: 65px; font-weight: bold; }
+
+        /* 取組表 */
+        .match-table { width: 100%; max-width: 800px; margin: 20px auto; border-collapse: collapse; table-layout: fixed; background: rgba(0, 0, 0, 0.85); border: 1.5px solid #444; }
+        .match-table th, .match-table td { border: 1px solid #333; padding: 12px 0; vertical-align: middle; }
+        .col-area { width: 60px; font-size: 0.9rem; color: #bbb; font-weight: bold; }
+        .col-center { width: 90px; } 
+        .table-head th { padding: 12px 0; font-size: 0.85rem; }
+        .head-east { background: #e60000 !important; color: #fff; }
+        .head-west { background: #eee !important; color: #000; }
+
+        /* 牛名・付随情報（PC版視認性アップ） */
+        .cow-meta { font-size: 0.7rem; color: #f1c40f; display: block; margin-bottom: 2px; white-space: nowrap; }
+        .cow-name { font-size: 1.35rem; font-weight: 900; color: #fff; display: block; white-space: nowrap; letter-spacing: -0.01em; }
+        .cow-owner { font-size: 0.7rem; color: #999; display: block; margin-top: 3px; white-space: nowrap; }
+        .name-sub-mini { font-size: 0.75em; display: inline-block; font-weight: 700; }
+
+        /* スコア */
+        .bantuke-text { font-size: 0.8rem; color: #f1c40f; font-weight: 900; display: block; margin-bottom: 8px; white-space: nowrap; line-height: 1.1; }
+        .result-row { display: flex; border-top: 1px solid #333; padding-top: 6px; align-items: center; justify-content: center; width: 100%; }
+        .res-win { width: 25%; font-size: 1rem; font-weight: bold; color: #e60000; text-align: center; } 
+        .res-time { width: 50%; font-family: 'Oswald', 'Kaisei Tokumin', sans-serif; font-size: 0.75rem; color: #fff; border-left: 1px solid #333; border-right: 1px solid #333; }
+        .res-lose { color: transparent !important; }
+
+        /* スマホ専用調整（はみ出し・改行防止） */
+        @media screen and (max-width: 600px) {
+            .nav-item { font-size: 0.75rem; }
+            .col-area { width: 48px; font-size: 0.7rem; }
+            .col-center { width: 78px; }
+            .table-head th { font-size: 0.7rem; }
+            .cow-name { font-size: 1.05rem; } 
+            .cow-meta { font-size: 0.52rem; letter-spacing: -0.02em; }
+            .cow-owner { font-size: 0.52rem; letter-spacing: -0.02em; }
+            .tight-name { font-size: 0.88rem !important; letter-spacing: -0.04em; }
+            .tight-meta { font-size: 0.5rem !important; letter-spacing: -0.05em; }
+            .tight-owner { font-size: 0.48rem !important; letter-spacing: -0.05em; }
+            .res-time { font-size: 0.65rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-overlay"></div>
+
+<nav class="header-nav">
+    <a href="index.html" class="nav-item">ホーム</a>
+    <a href="programitiran.html" class="nav-item" style="background: #e60000; border-color: #e60000;">対戦表</a>
+    <a href="search.html" class="nav-item">戦歴検索</a>
+    <a href="prediction.html" class="nav-item">予想ページ</a>
+    <a href="champions.html" class="nav-item">徳之島闘牛歴代王者</a>
+</nav>
+
+<div class="header-container">
+    <div class="date-display">2026.03.08 SUN</div>
+    <h1>玉城千春（Kiroro）スペシャルライブ＆<br>平成19・20年生卒業記念ナイター闘牛大会</h1>
+    <a href="programitiran.html" class="back-btn">← 対戦表一覧に戻る</a>
+    
+    <table class="info-table">
+        <tr><td class="info-label">日時</td><td class="info-content">令和8年3月8日 午後6時対戦開始</td></tr>
+        <tr><td class="info-label">場所</td><td class="info-content">なくさみ館</td></tr>
+    </table>
 </div>
+
+<table class="match-table">
+    <tr class="table-head">
+        <th class="col-area">地区</th><th class="head-east">東方</th><th class="col-center">番付</th><th class="head-west">西方</th><th class="col-area">地区</th>
+    </tr>
+
+    <tr>
+        <td class="col-area">徳和瀬</td>
+        <td class="col-cow">
+            <span class="cow-meta">牧山青空・琉輝卒業記念</span>
+            <span class="cow-name">牛若琉輝丸</span>
+            <span class="cow-owner tight-owner">デビュー戦(牛主：牧山政則)</span>
+        </td>
+        <td class="col-center">
+            <span class="bantuke-text">県対抗<br>ﾌｧｲﾅﾙ</span>
+            <div class="result-row"><div class="res-win">○</div><div class="res-time">0分45秒</div><div class="res-win res-lose">○</div></div>
+        </td>
+        <td class="col-cow"><span class="cow-name">耀</span><span class="cow-owner">沖縄3番1枚</span></td>
+        <td class="col-area">沖縄</td>
+    </tr>
+
+    <tr>
+        <td class="col-area">徳之島</td>
+        <td class="col-cow">
+            <span class="cow-meta tight-meta">窪田勇心・郷健太卒業記念</span>
+            <span class="cow-name tight-name"><span class="name-sub-mini">三代目</span> 八<span class="name-sub-mini">Hatsuki</span>輝</span>
+            <span class="cow-owner tight-owner">デビュー戦(牛主：絆同志会)</span>
+        </td>
+        <td class="col-center">
+            <span class="bantuke-text">指名特別</span>
+            <div class="result-row"><div class="res-win">○</div><div class="res-time">1分28秒</div><div class="res-win res-lose">○</div></div>
+        </td>
+        <td class="col-cow"><span class="cow-name">希 爛</span><span class="cow-owner">元 希龍</span></td>
+        <td class="col-area">石垣</td>
+    </tr>
+
+    <tr>
+        <td class="col-area">山天願</td>
+        <td class="col-cow">
+            <span class="cow-meta">あゆら卒業記念</span>
+            <span class="cow-name">石原大宝</span>
+            <span class="cow-owner">デビュー戦</span>
+        </td>
+        <td class="col-center">
+            <span class="bantuke-text">VS</span>
+            <div class="result-row"><div class="res-win">○</div><div class="res-time">不戦勝</div><div class="res-win res-lose">○</div></div>
+        </td>
+        <td class="col-cow">
+            <span class="cow-meta">煌義卒業記念</span>
+            <span class="cow-name">飛 魚</span>
+            <span class="cow-owner">デビュー戦</span>
+        </td>
+        <td class="col-area">前泊</td>
+    </tr>
+
+    <tr>
+        <td class="col-area">面縄</td>
+        <td class="col-cow"><span class="cow-name tight-name">ミニハヤテ號</span><span class="cow-owner">デビュー戦</span></td>
+        <td class="col-center">
+            <span class="bantuke-text">VS</span>
+            <div class="result-row"><div class="res-win res-lose">○</div><div class="res-time">不戦勝</div><div class="res-win">○</div></div>
+        </td>
+        <td class="col-cow">
+            <span class="cow-meta">杉 光輝卒業記念</span>
+            <span class="cow-name">翔隆王</span>
+            <span class="cow-owner tight-owner">(牛主：小林拓海)</span>
+        </td>
+        <td class="col-area">亀津</td>
+    </tr>
+
+    <tr>
+        <td class="col-area">小原</td>
+        <td class="col-cow">
+            <span class="cow-meta">當 虎太朗卒業記念</span>
+            <span class="cow-name">小原荒波</span>
+            <span class="cow-owner tight-owner">沖縄含む8勝3敗</span>
+        </td>
+        <td class="col-center">
+            <span class="bantuke-text">封切</span>
+            <div class="result-row"><div class="res-win res-lose">○</div><div class="res-time">7分23秒</div><div class="res-win">○</div></div>
+        </td>
+        <td class="col-cow">
+            <span class="cow-meta">祝 力斗卒業記念</span>
+            <span class="cow-name">力 心</span>
+            <span class="cow-owner">元 ﾌﾞﾙｰｽｶｲ</span>
+        </td>
+        <td class="col-area">上面縄</td>
+    </tr>
+</table>
+
+<p style="margin-top:60px; color:#555; font-size:0.75rem;">© 2026 togyu.net</p>
+
+</body>
+</html>
