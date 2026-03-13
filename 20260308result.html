@@ -26,9 +26,9 @@
         .info-table td { padding: 10px 5px; border-bottom: 1px dotted #333; }
         .info-label { color: #f1c40f; width: 75px; font-weight: bold; }
 
-        /* 取組表：基本設定（PCサイズ優先） */
+        /* 取組表：基本設定 */
         .match-table { width: 100%; max-width: 900px; margin: 20px auto; border-collapse: collapse; table-layout: fixed; background: rgba(0, 0, 0, 0.85); border: 1.5px solid #444; }
-        .match-table td { border: 1px solid #333; padding: 12px 2px; vertical-align: middle; text-align: center; overflow: hidden; }
+        .match-table td { border: 1px solid #333; padding: 12px 1px; vertical-align: middle; text-align: center; overflow: hidden; }
         .col-area { width: 60px; font-size: 0.9rem; color: #bbb; font-weight: bold; }
         .col-center { width: 110px; } 
         .table-head th { padding: 12px 0; font-size: 0.9rem; background: #222; }
@@ -44,26 +44,26 @@
         /* 八輝専用（PCでも2行許可） */
         .hatauki-owner { white-space: normal !important; line-height: 1.2; }
 
-        /* 結果・タイム（中央揃え） */
+        /* ★結果・タイム（中央揃えを徹底修正）★ */
         .bantuke-text { font-size: 0.85rem; color: #f1c40f; font-weight: 900; display: block; margin-bottom: 5px; }
         .result-row { display: flex; border-top: 1px solid #333; padding-top: 8px; align-items: center; justify-content: center; width: 100%; }
-        .res-win { width: 22px; font-size: 1.1rem; font-weight: bold; color: #e60000; flex-shrink: 0; } 
-        .res-time { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.82rem; color: #fff; border-left: 1px solid #333; border-right: 1px solid #333; margin: 0 4px; white-space: nowrap; }
-        .res-empty { width: 22px; }
+        .res-win { width: 20px; font-size: 1.1rem; font-weight: bold; color: #e60000; flex-shrink: 0; text-align: center; } 
+        .res-time { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.82rem; color: #fff; border-left: 1px solid #333; border-right: 1px solid #333; margin: 0 4px; white-space: nowrap; text-align: center; }
+        .res-empty { width: 20px; flex-shrink: 0; }
 
         /* スマホ専用：はみ出し完全ガード設定 */
         @media screen and (max-width: 600px) {
             .col-area { width: 42px; font-size: 0.65rem; }
             .col-center { width: 80px; }
             .cow-name { font-size: 0.9rem; letter-spacing: -0.02em; }
-            
-            /* 他の長い牛主名や記念名を1行で収めるための縮小 */
             .cow-meta { font-size: 0.48rem; letter-spacing: -0.03em; }
-            .cow-owner { font-size: 0.48rem; letter-spacing: -0.04em; }
             
-            /* ★八輝：スマホで2行でも見切れないよう極小化★ */
+            /* ★荒波・石原大宝の長い牛主名を1行で収めるための縮小★ */
+            .cow-owner { font-size: 0.42rem !important; letter-spacing: -0.05em !important; }
+            
+            /* 八輝：スマホで2行でも見切れないよう縮小 */
             .hatauki-meta { font-size: 0.45rem !important; letter-spacing: -0.05em !important; }
-            .hatauki-name { font-size: 0.78rem !important; letter-spacing: -0.06em !important; }
+            .hatauki-name { font-size: 0.78rem !important; letter-spacing: -0.05em !important; }
             .hatauki-owner { font-size: 0.45rem !important; letter-spacing: -0.05em !important; white-space: normal !important; line-height: 1.1 !important; }
 
             .res-time { font-size: 0.62rem; letter-spacing: -0.02em; }
