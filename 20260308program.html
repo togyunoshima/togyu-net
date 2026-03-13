@@ -4,68 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>3/8 大会情報 | togyu.net</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Kaisei+Tokumin:wght@700;800&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Kaisei+Tokumin:wght@700;800&family=Noto+Serif+JP:wght@700&family=Yuji+Syuku&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; }
-        body { margin: 0; padding: 0; background-color: #050505; color: #eee; font-family: 'Kaisei Tokumin', serif; text-align: center; overflow-x: hidden; display: flex; flex-direction: column; align-items: center; }
+        body { margin: 0; padding: 10px; background-color: #050505; color: #eee; font-family: 'Kaisei Tokumin', serif; text-align: center; overflow-x: hidden; }
         
-        /* 背景画像設定 */
-        .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('IMG_8395.jpg'); background-size: cover; background-position: center; opacity: 0.15; z-index: -1; }
+        .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('IMG_8395.jpg'); background-size: cover; background-position: center; opacity: 0.15; filter: grayscale(100%); z-index: -1; }
 
-        /* 【修正】メニューバー：グレーの半透明スタイル */
-        .nav-container { 
-            background: rgba(30, 30, 30, 0.85); /* 半透明のダークグレー */
-            backdrop-filter: blur(5px); /* 背景を少しぼかす（モダンな透け感） */
-            width: 100%; 
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
-            position: sticky; top: 0; z-index: 100;
+        /* 【移植】programitiran.html 本物のメニューバー */
+        .header-nav {
+            max-width: 950px;
+            margin: 0 auto 30px auto;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 8px;
         }
-        .nav-row { display: flex; width: 100%; max-width: 800px; margin: 0 auto; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-        .nav-row:last-child { border-bottom: none; }
-        .nav-row a { 
-            flex: 1; color: #fff; text-decoration: none; font-size: 0.75rem; font-weight: 700; 
-            padding: 16px 0; border-right: 1px solid rgba(255, 255, 255, 0.05); text-align: center; line-height: 1.2;
+        .nav-item {
+            display: flex; justify-content: center; align-items: center;
+            background: rgba(255, 255, 255, 0.1); color: #fff;
+            text-decoration: none; border: 1px solid #444; padding: 12px 5px;
+            font-size: 0.85rem; font-weight: 800; transition: 0.3s;
         }
-        .nav-row a:last-child { border-right: none; }
-        .nav-row a.active { background: #e60000; color: #fff; }
+        .nav-item:hover { background-color: #e60000; border-color: #e60000; }
+        .nav-item:nth-child(1), .nav-item:nth-child(2), .nav-item:nth-child(3) { grid-column: span 2; }
+        .nav-item:nth-child(4), .nav-item:nth-child(5) { grid-column: span 3; }
 
-        /* ヘッダー・タイトル設定 */
-        .header-container { width: 100%; max-width: 600px; margin: 0 auto; padding: 25px 10px; text-align: center; }
+        /* ヘッダー */
+        .header-container { width: 100%; max-width: 600px; margin: 0 auto; padding: 15px 10px; }
         .date-display { font-family: 'Oswald', sans-serif; font-size: 1.25rem; color: #f1c40f; letter-spacing: 0.05em; margin-bottom: 8px; font-weight: 700; }
-        
         h1 { 
-            font-family: 'Noto Serif JP', serif; 
-            font-size: clamp(1.05rem, 4.5vw, 1.35rem); 
+            font-family: 'Noto Serif JP', serif; font-size: clamp(1.05rem, 4.5vw, 1.35rem); 
             color: #fff; line-height: 1.5; margin: 0 auto 20px auto; 
             text-shadow: 2px 2px 0 #e60000, -1px -1px 0 #e60000, 1px -1px 0 #e60000, -1px 1px 0 #e60000; 
             font-weight: 700; width: 100%;
         }
 
-        .back-btn { display: inline-block; padding: 8px 20px; border: 1px solid #555; background: rgba(255,255,255,0.05); color: #bbb; text-decoration: none; font-size: 0.75rem; margin-bottom: 25px; border-radius: 2px; }
+        .back-btn { display: inline-block; padding: 8px 20px; border: 1px solid #555; background: rgba(255,255,255,0.05); color: #bbb; text-decoration: none; font-size: 0.75rem; margin-bottom: 25px; }
 
         .info-table { width: 95%; max-width: 480px; margin: 0 auto; border-collapse: collapse; text-align: left; font-size: 0.75rem; }
         .info-table td { padding: 10px 5px; border-bottom: 1px dotted #333; }
         .info-label { color: #f1c40f; width: 65px; font-weight: bold; }
 
-        /* 取組表設定 */
-        .match-table { 
-            width: 100%; max-width: 800px; margin: 20px auto; border-collapse: collapse; 
-            table-layout: fixed; background: rgba(0, 0, 0, 0.85); border: 1.5px solid #444; 
-        }
+        /* 取組表 */
+        .match-table { width: 100%; max-width: 800px; margin: 20px auto; border-collapse: collapse; table-layout: fixed; background: rgba(0, 0, 0, 0.85); border: 1.5px solid #444; }
         .match-table th, .match-table td { border: 1px solid #333; padding: 12px 0; vertical-align: middle; }
-        
-        .col-area { width: 60px; font-size: 0.75rem; color: #bbb; white-space: nowrap; } 
+        .col-area { width: 60px; font-size: 0.75rem; color: #bbb; } 
         .col-center { width: 85px; } 
-
         .table-head th { background: rgba(30, 30, 30, 0.9); font-size: 0.65rem; padding: 10px 0; color: #aaa; }
         .head-east { background: #e60000 !important; color: #fff; }
         .head-west { background: #eee !important; color: #000; }
 
-        /* 牛名：PCでは 1.3rem を維持 */
         .cow-meta { font-size: 0.55rem; color: #f1c40f; display: block; margin-bottom: 2px; }
         .cow-name { font-size: 1.3rem; font-weight: 900; color: #fff; display: block; white-space: nowrap; letter-spacing: -0.01em; }
         .cow-owner { font-size: 0.5rem; color: #999; display: block; margin-top: 3px; }
-
         .name-sub-mini { font-size: 0.8em; display: inline-block; }
 
         .bantuke-text { font-size: 0.75rem; color: #f1c40f; font-weight: 900; display: block; margin-bottom: 8px; white-space: nowrap; line-height: 1.1; }
@@ -73,12 +64,11 @@
         .res-win { width: 25%; font-size: 0.9rem; font-weight: bold; color: #e60000; text-align: center; }
         .res-time { width: 50%; font-family: 'Oswald', sans-serif; font-size: 0.65rem; color: #fff; border-left: 1px solid #333; border-right: 1px solid #333; }
 
-        /* 【スマホ専用調整】 */
-        @media screen and (max-width: 480px) {
+        @media screen and (max-width: 600px) {
+            .nav-item { font-size: 0.75rem; }
             .col-area { width: 48px; font-size: 0.65rem; }
             .col-center { width: 78px; }
             .cow-name { font-size: 1.05rem; } 
-            /* 八Hatsuki輝のスマホ専用縮小 */
             .hatsuki-special { font-size: 0.88rem !important; letter-spacing: -0.05em; }
             .hatsuki-special .name-sub-mini { font-size: 0.72em; }
         }
@@ -88,29 +78,22 @@
 
 <div class="bg-overlay"></div>
 
-<nav class="nav-container">
-    <div class="nav-row">
-        <a href="index.html">ホーム</a>
-        <a href="programitiran.html" class="active">対戦表</a>
-        <a href="search.html">戦歴検索</a>
-    </div>
-    <div class="nav-row">
-        <a href="yoso.html">予想ページ</a>
-        <a href="history.html">徳之島闘牛歴代王者</a>
-    </div>
+<nav class="header-nav">
+    <a href="index.html" class="nav-item">ホーム</a>
+    <a href="programitiran.html" class="nav-item" style="background: #e60000; border-color: #e60000;">対戦表</a>
+    <a href="search.html" class="nav-item">戦歴検索</a>
+    <a href="prediction.html" class="nav-item">予想ページ</a>
+    <a href="champions.html" class="nav-item">徳之島闘牛歴代王者</a>
 </nav>
 
 <div class="header-container">
     <div class="date-display">2026.03.08 SUN</div>
     <h1>玉城千春（Kiroro）スペシャルライブ＆<br>平成19・20年生卒業記念ナイター闘牛大会</h1>
-    
     <a href="programitiran.html" class="back-btn">← 対戦表一覧に戻る</a>
     
     <table class="info-table">
         <tr><td class="info-label">日時</td><td class="info-content">令和8年3月8日 午後6時対戦開始</td></tr>
         <tr><td class="info-label">場所</td><td class="info-content">伊仙町・なくさみ館</td></tr>
-        <tr><td class="info-label">主催</td><td class="info-content">徳之島闘牛連合会</td></tr>
-        <tr><td class="info-label">入場料</td><td class="info-content">大人3,000円 / 小中学生1,000円</td></tr>
     </table>
 </div>
 
@@ -205,6 +188,8 @@
         <td class="col-area">上面縄</td>
     </tr>
 </table>
+
+<p style="margin-top:60px; color:#555; font-size:0.75rem;">© 2026 togyu.net</p>
 
 </body>
 </html>
