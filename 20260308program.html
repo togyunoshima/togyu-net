@@ -254,6 +254,79 @@
     }
 </style>
 
+<style>
+    .archive-section {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 60px;
+        margin-bottom: 40px;
+        padding: 0 10px;
+    }
+    .archive-table {
+        width: 100%;
+        max-width: 480px;
+        border-collapse: collapse;
+        background: rgba(0, 0, 0, 0.85); /* プログラムと同じ半透明黒 */
+        color: #eee;
+        font-family: 'Kaisei Tokumin', serif; /* フォント統一 */
+        border: 1.5px solid #444;
+    }
+    .archive-table th {
+        background-color: #222; /* ヘッダーと同じ暗めのグレー */
+        border: 1px solid #333;
+        padding: 12px 8px;
+        font-size: 0.85rem;
+        width: 110px;
+        color: #f1c40f; /* 金色文字 */
+        line-height: 1.4;
+    }
+    .archive-table td {
+        border: 1px solid #333;
+        padding: 15px 10px;
+    }
+    .archive-flex {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 15px;
+    }
+    .archive-box {
+        text-align: center;
+        flex: 1;
+    }
+    .archive-day {
+        display: block;
+        font-size: 0.9rem;
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: #fff;
+    }
+    .archive-link {
+        display: inline-block;
+        padding: 5px 15px;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border: 1px solid #444;
+        font-size: 0.75rem;
+        text-decoration: none;
+        font-weight: 800;
+        transition: 0.2s;
+    }
+    .archive-link:hover {
+        background-color: #e60000; /* ホバーで赤く光る */
+        border-color: #e60000;
+        color: #fff;
+    }
+
+    /* スマホ調整 */
+    @media screen and (max-width: 600px) {
+        .archive-table th { font-size: 0.75rem; width: 90px; }
+        .archive-day { font-size: 0.8rem; }
+        .archive-link { padding: 4px 10px; font-size: 0.7rem; }
+    }
+</style>
+
 <div class="archive-section">
     <table class="archive-table">
         <tr>
@@ -262,15 +335,17 @@
                 <div class="archive-flex">
                     <div class="archive-box">
                         <span class="archive-day">3月7日</span>
-                        <a href="20260307result.html" class="archive-link">結果</a>
+                        <a href="20260307result.html" class="archive-link">結 果</a>
                     </div>
                     <div class="archive-box">
                         <span class="archive-day">3月8日</span>
-                        <a href="20260308result.html" class="archive-link">結果</a>
+                        <a href="20260308result.html" class="archive-link">結 果</a>
                     </div>
                 </div>
             </td>
         </tr>
+    </table>
+</div>
     </table>
 </div>
 <p style="margin-top:60px; color:#555; font-size:0.75rem;">© 2026 togyu.net</p>
