@@ -20,13 +20,12 @@
         .header-container { width: 100%; max-width: 600px; margin: 0 auto; padding: 15px 10px; }
         .date-display { font-family: 'Oswald', sans-serif; font-size: 1.25rem; color: #f1c40f; letter-spacing: 0.05em; margin-bottom: 8px; font-weight: 700; }
         h1 { font-family: 'Noto Serif JP', serif; font-size: clamp(1.05rem, 4.5vw, 1.35rem); color: #fff; line-height: 1.5; margin: 0 auto 20px auto; text-shadow: 2px 2px 0 #e60000, -1px -1px 0 #e60000, 1px -1px 0 #e60000, -1px 1px 0 #e60000; font-weight: 700; }
-        .back-btn { display: inline-block; padding: 8px 20px; border: 1px solid #555; background: rgba(255,255,255,0.05); color: #bbb; text-decoration: none; font-size: 0.75rem; margin-bottom: 25px; }
 
         /* 取組表 */
         .match-table { width: 100%; max-width: 800px; margin: 20px auto; border-collapse: collapse; table-layout: fixed; background: rgba(0, 0, 0, 0.85); border: 1.5px solid #444; }
         .match-table th, .match-table td { border: 1px solid #333; padding: 12px 0; vertical-align: middle; }
         .col-area { width: 60px; font-size: 0.9rem; color: #bbb; font-weight: bold; }
-        .col-center { width: 100px; } /* タイムのために少し幅を広げました */
+        .col-center { width: 100px; } 
         .table-head th { padding: 12px 0; font-size: 0.85rem; }
         .head-east { background: #e60000 !important; color: #fff; }
         .head-west { background: #eee !important; color: #000; }
@@ -41,24 +40,26 @@
         .bantuke-text { font-size: 0.8rem; color: #f1c40f; font-weight: 900; display: block; margin-bottom: 8px; white-space: nowrap; line-height: 1.1; }
         .result-row { display: flex; border-top: 1px solid #333; padding-top: 6px; align-items: center; justify-content: center; width: 100%; }
         .res-win { width: 22%; font-size: 1rem; font-weight: bold; color: #e60000; text-align: center; } 
-        .res-time { width: 56%; font-family: 'Oswald', 'Kaisei Tokumin', sans-serif; font-size: 0.72rem; color: #fff; border-left: 1px solid #333; border-right: 1px solid #333; white-space: nowrap; overflow: hidden; }
+        .res-time { width: 56%; font-family: 'Oswald', 'Kaisei Tokumin', sans-serif; font-size: 0.72rem; color: #fff; border-left: 1px solid #333; border-right: 1px solid #333; white-space: nowrap; }
         .res-lose { color: transparent !important; }
 
-        /* スマホ専用調整 */
+        /* スマホ専用調整：はみ出し対策の最終防衛ライン */
         @media screen and (max-width: 600px) {
             .nav-item { font-size: 0.75rem; }
-            .col-area { width: 48px; font-size: 0.7rem; }
-            .col-center { width: 85px; } /* スマホでも少し広めに確保 */
+            .col-area { width: 45px; font-size: 0.7rem; }
+            .col-center { width: 82px; } /* タイムを維持しつつ中央を少し絞る */
             .table-head th { font-size: 0.7rem; }
-            .cow-name { font-size: 1.05rem; } 
-            .cow-meta { font-size: 0.52rem; letter-spacing: -0.02em; }
-            .cow-owner { font-size: 0.52rem; letter-spacing: -0.02em; }
-            .tight-name { font-size: 0.88rem !important; letter-spacing: -0.04em; }
-            .tight-meta { font-size: 0.5rem !important; letter-spacing: -0.05em; }
-            .tight-owner { font-size: 0.48rem !important; letter-spacing: -0.05em; }
             
-            /* タイムのはみ出し・改行を完全に防ぐ */
-            .res-time { font-size: 0.62rem; letter-spacing: -0.02em; }
+            .cow-name { font-size: 1.0rem; } 
+            .cow-meta { font-size: 0.5rem; letter-spacing: -0.03em; }
+            .cow-owner { font-size: 0.5rem; letter-spacing: -0.03em; }
+            
+            /* 八輝などの長い名前用 */
+            .tight-name { font-size: 0.82rem !important; letter-spacing: -0.05em; }
+            .tight-meta { font-size: 0.48rem !important; letter-spacing: -0.05em; }
+            .tight-owner { font-size: 0.46rem !important; letter-spacing: -0.05em; }
+            
+            .res-time { font-size: 0.62rem; letter-spacing: -0.01em; }
         }
     </style>
 </head>
@@ -77,7 +78,6 @@
 <div class="header-container">
     <div class="date-display">2026.03.08 SUN</div>
     <h1>玉城千春（Kiroro）スペシャルライブ＆<br>平成19・20年生卒業記念ナイター闘牛大会</h1>
-    <a href="programitiran.html" class="back-btn">← 対戦表一覧に戻る</a>
 </div>
 
 <table class="match-table">
@@ -163,7 +163,7 @@
         <td class="col-cow">
             <span class="cow-meta">祝 力斗卒業記念</span>
             <span class="cow-name">力 心</span>
-            <span class="cow-owner">元 ﾌﾞﾙｰｽｶｲ</span>
+            <span class="cow-owner">元 ﾌﾞﾙｰスカイ</span>
         </td>
         <td class="col-area">上面縄</td>
     </tr>
