@@ -6,72 +6,81 @@
     <title>3/8 大会情報 | togyu.net</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Kaisei+Tokumin:wght@700;800&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
     <style>
-        /* 全体の中央配置設定 */
         * { box-sizing: border-box; }
         body { margin: 0; padding: 0; background-color: #050505; color: #eee; font-family: 'Kaisei Tokumin', serif; text-align: center; overflow-x: hidden; display: flex; flex-direction: column; align-items: center; }
-        .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('IMG_8395.jpg'); background-size: cover; background-position: center; opacity: 0.1; z-index: -1; }
+        
+        /* 背景画像設定 */
+        .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('IMG_8395.jpg'); background-size: cover; background-position: center; opacity: 0.15; z-index: -1; }
 
-        /* メニューバー：programitiran.html と同一デザイン */
-        .nav-container { background: #fff; width: 100%; border-bottom: 1px solid #ccc; margin-bottom: 0; }
-        .nav-row { display: flex; width: 100%; max-width: 800px; margin: 0 auto; border-bottom: 1px solid #eee; }
+        /* 【修正】メニューバー：グレーの半透明スタイル */
+        .nav-container { 
+            background: rgba(30, 30, 30, 0.85); /* 半透明のダークグレー */
+            backdrop-filter: blur(5px); /* 背景を少しぼかす（モダンな透け感） */
+            width: 100%; 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+            position: sticky; top: 0; z-index: 100;
+        }
+        .nav-row { display: flex; width: 100%; max-width: 800px; margin: 0 auto; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
         .nav-row:last-child { border-bottom: none; }
         .nav-row a { 
-            flex: 1; color: #000; text-decoration: none; font-size: 0.75rem; font-weight: 800; 
-            padding: 16px 0; border-right: 1px solid #eee; text-align: center; line-height: 1;
+            flex: 1; color: #fff; text-decoration: none; font-size: 0.75rem; font-weight: 700; 
+            padding: 16px 0; border-right: 1px solid rgba(255, 255, 255, 0.05); text-align: center; line-height: 1.2;
         }
         .nav-row a:last-child { border-right: none; }
-        .nav-row a.active { background: #e60000; color: #fff; } /* 現在のページ強調 */
+        .nav-row a.active { background: #e60000; color: #fff; }
 
-        /* ヘッダー：タイトルの見切れと左寄りを解消 */
+        /* ヘッダー・タイトル設定 */
         .header-container { width: 100%; max-width: 600px; margin: 0 auto; padding: 25px 10px; text-align: center; }
         .date-display { font-family: 'Oswald', sans-serif; font-size: 1.25rem; color: #f1c40f; letter-spacing: 0.05em; margin-bottom: 8px; font-weight: 700; }
         
         h1 { 
             font-family: 'Noto Serif JP', serif; 
-            font-size: clamp(1.0rem, 4.2vw, 1.35rem); 
-            color: #fff; line-height: 1.4; margin: 0 auto 20px auto; 
+            font-size: clamp(1.05rem, 4.5vw, 1.35rem); 
+            color: #fff; line-height: 1.5; margin: 0 auto 20px auto; 
             text-shadow: 2px 2px 0 #e60000, -1px -1px 0 #e60000, 1px -1px 0 #e60000, -1px 1px 0 #e60000; 
-            font-weight: 700; width: 100%; word-break: keep-all;
+            font-weight: 700; width: 100%;
         }
 
-        .back-btn { display: inline-block; padding: 8px 20px; border: 1px solid #555; background: transparent; color: #bbb; text-decoration: none; font-size: 0.7rem; margin-bottom: 25px; transition: 0.3s; }
-        .back-btn:hover { background: #222; color: #fff; }
+        .back-btn { display: inline-block; padding: 8px 20px; border: 1px solid #555; background: rgba(255,255,255,0.05); color: #bbb; text-decoration: none; font-size: 0.75rem; margin-bottom: 25px; border-radius: 2px; }
 
         .info-table { width: 95%; max-width: 480px; margin: 0 auto; border-collapse: collapse; text-align: left; font-size: 0.75rem; }
         .info-table td { padding: 10px 5px; border-bottom: 1px dotted #333; }
         .info-label { color: #f1c40f; width: 65px; font-weight: bold; }
 
-        /* 取組表：PCの最高なバランスを維持 */
+        /* 取組表設定 */
         .match-table { 
             width: 100%; max-width: 800px; margin: 20px auto; border-collapse: collapse; 
-            table-layout: fixed; background: rgba(0, 0, 0, 0.9); border: 1.5px solid #666; 
+            table-layout: fixed; background: rgba(0, 0, 0, 0.85); border: 1.5px solid #444; 
         }
-        .match-table th, .match-table td { border: 1px solid #444; padding: 12px 0; vertical-align: middle; }
+        .match-table th, .match-table td { border: 1px solid #333; padding: 12px 0; vertical-align: middle; }
         
-        .col-area { width: 55px; font-size: 0.7rem; color: #bbb; white-space: nowrap; } 
+        .col-area { width: 60px; font-size: 0.75rem; color: #bbb; white-space: nowrap; } 
         .col-center { width: 85px; } 
-        .col-cow { width: auto; overflow: hidden; } 
 
-        .table-head th { background: #222; font-size: 0.65rem; padding: 10px 0; color: #aaa; }
+        .table-head th { background: rgba(30, 30, 30, 0.9); font-size: 0.65rem; padding: 10px 0; color: #aaa; }
         .head-east { background: #e60000 !important; color: #fff; }
         .head-west { background: #eee !important; color: #000; }
 
+        /* 牛名：PCでは 1.3rem を維持 */
         .cow-meta { font-size: 0.55rem; color: #f1c40f; display: block; margin-bottom: 2px; }
-        .cow-name { font-size: clamp(0.9rem, 3.8vw, 1.3rem); font-weight: 900; color: #fff; display: block; white-space: nowrap; letter-spacing: -0.02em; }
+        .cow-name { font-size: 1.3rem; font-weight: 900; color: #fff; display: block; white-space: nowrap; letter-spacing: -0.01em; }
         .cow-owner { font-size: 0.5rem; color: #999; display: block; margin-top: 3px; }
 
-        /* 【重要】八Hatsuki輝 専用のはみ出し防止設定 */
-        .hatsuki-special { font-size: 0.85em !important; letter-spacing: -0.04em !important; }
-        .name-sub-mini { font-size: 0.6em; letter-spacing: -0.07em; display: inline-block; transform: scale(0.9); }
+        .name-sub-mini { font-size: 0.8em; display: inline-block; }
 
         .bantuke-text { font-size: 0.75rem; color: #f1c40f; font-weight: 900; display: block; margin-bottom: 8px; white-space: nowrap; line-height: 1.1; }
-        .result-row { display: flex; border-top: 1px solid #444; padding-top: 6px; align-items: center; justify-content: center; width: 100%; }
+        .result-row { display: flex; border-top: 1px solid #333; padding-top: 6px; align-items: center; justify-content: center; width: 100%; }
         .res-win { width: 25%; font-size: 0.9rem; font-weight: bold; color: #e60000; text-align: center; }
         .res-time { width: 50%; font-family: 'Oswald', sans-serif; font-size: 0.65rem; color: #fff; border-left: 1px solid #333; border-right: 1px solid #333; }
 
+        /* 【スマホ専用調整】 */
         @media screen and (max-width: 480px) {
             .col-area { width: 48px; font-size: 0.65rem; }
             .col-center { width: 78px; }
+            .cow-name { font-size: 1.05rem; } 
+            /* 八Hatsuki輝のスマホ専用縮小 */
+            .hatsuki-special { font-size: 0.88rem !important; letter-spacing: -0.05em; }
+            .hatsuki-special .name-sub-mini { font-size: 0.72em; }
         }
     </style>
 </head>
@@ -115,7 +124,7 @@
         <td class="col-cow">
             <span class="cow-meta">牧山青空・琉輝卒業記念</span>
             <span class="cow-name">牛若琉輝丸</span>
-            <span class="cow-owner">デビュー戦(牛主：牧山政則)</span>
+            <span class="cow-owner">デビュー戦</span>
         </td>
         <td class="col-center">
             <span class="bantuke-text">県対抗<br>ﾌｧｲﾅﾙ</span>
@@ -172,7 +181,7 @@
         <td class="col-cow">
             <span class="cow-meta">杉 光輝卒業記念</span>
             <span class="cow-name">翔隆王</span>
-            <span class="cow-owner">(牛主：小林拓海)</span>
+            <span class="cow-owner">デビュー戦</span>
         </td>
         <td class="col-area">亀津</td>
     </tr>
@@ -182,7 +191,7 @@
         <td class="col-cow">
             <span class="cow-meta">當 虎太朗卒業記念</span>
             <span class="cow-name">小原荒波</span>
-            <span class="cow-owner">沖縄含む8勝3敗</span>
+            <span class="cow-owner">8勝3敗</span>
         </td>
         <td class="col-center">
             <span class="bantuke-text">封切</span>
