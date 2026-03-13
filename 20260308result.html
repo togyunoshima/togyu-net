@@ -35,10 +35,10 @@
         .head-east { background: #e60000 !important; color: #fff; }
         .head-west { background: #eee !important; color: #000; }
 
-        /* 牛名・付随情報（PC版） */
+        /* 牛名・付随情報 */
         .cow-meta { font-size: 0.7rem; color: #f1c40f; display: block; margin-bottom: 2px; white-space: nowrap; }
         .cow-name { font-size: 1.35rem; font-weight: 900; color: #fff; display: block; white-space: nowrap; letter-spacing: -0.01em; }
-        .cow-owner { font-size: 0.7rem; color: #999; display: block; margin-top: 3px; white-space: nowrap; }
+        .cow-owner { font-size: 0.7rem; color: #999; display: block; margin-top: 3px; line-height: 1.2; }
         .name-sub-mini { font-size: 0.75em; display: inline-block; font-weight: 700; }
 
         /* スコア・タイム */
@@ -47,31 +47,16 @@
         .res-win { width: 22%; font-size: 1rem; font-weight: bold; color: #e60000; text-align: center; } 
         .res-time { width: 56%; font-family: 'Oswald', 'Kaisei Tokumin', sans-serif; font-size: 0.72rem; color: #fff; border-left: 1px solid #333; border-right: 1px solid #333; white-space: nowrap; }
 
-        /* スマホ専用：はみ出し対策 */
+        /* スマホ専用調整 */
         @media screen and (max-width: 600px) {
             .col-area { width: 45px; font-size: 0.7rem; }
             .col-center { width: 85px; }
             .cow-name { font-size: 1.0rem; } 
-            
-            /* 【最重要修正】cow-owner全般の改行禁止とフォント縮小 */
-            .cow-owner { 
-                font-size: 0.45rem !important; 
-                letter-spacing: -0.04em; 
-                white-space: nowrap !important;
-                display: block;
-                width: 100%;
-                overflow: hidden; /* 万が一の保険 */
-            }
-            
-            /* 八輝などの特別に長い牛主用：さらに小さく */
-            .tight-owner { 
-                font-size: 0.4rem !important; /* 限界まで小さく設定 */
-                letter-spacing: -0.07em !important; /* 文字を詰めまくる */
-                transform: scale(0.95); /* 全体を少し縮小して収める */
-                transform-origin: center;
-            }
-
-            .tight-name { font-size: 0.85rem !important; letter-spacing: -0.06em; }
+            /* 卒業記念のサイズを元に戻す */
+            .cow-meta { font-size: 0.55rem; letter-spacing: -0.01em; }
+            /* 改行を許可し、文字サイズを調整 */
+            .cow-owner { font-size: 0.58rem; letter-spacing: -0.02em; white-space: normal; word-break: break-all; }
+            .tight-name { font-size: 0.85rem !important; }
             .res-time { font-size: 0.62rem; }
         }
     </style>
@@ -110,7 +95,7 @@
         <td class="col-cow">
             <span class="cow-meta">牧山青空・琉輝卒業記念</span>
             <span class="cow-name">牛若琉輝丸</span>
-            <span class="cow-owner">デビュー戦(牛主：牧山政則)</span>
+            <span class="cow-owner">デビュー戦<br>(牛主：牧山政則)</span>
         </td>
         <td class="col-center">
             <span class="bantuke-text">県対抗<br>ﾌｧｲﾅﾙ</span>
@@ -125,7 +110,7 @@
         <td class="col-cow">
             <span class="cow-meta">窪田勇心・郷健太卒業記念</span>
             <span class="cow-name tight-name"><span class="name-sub-mini">三代目</span> 八<span class="name-sub-mini">Hatsuki</span>輝</span>
-            <span class="cow-owner tight-owner">デビュー戦(牛主：平成8･9年生絆同志会)</span>
+            <span class="cow-owner">デビュー戦<br>(牛主：平成8･9年生絆同志会)</span>
         </td>
         <td class="col-center">
             <span class="bantuke-text">指名特別</span>
@@ -140,7 +125,7 @@
         <td class="col-cow">
             <span class="cow-meta">あゆら卒業記念</span>
             <span class="cow-name">石原大宝</span>
-            <span class="cow-owner">デビュー戦(牛主:石原)3歳12日</span>
+            <span class="cow-owner">デビュー戦<br>(牛主:石原)3歳12日</span>
         </td>
         <td class="col-center">
             <span class="bantuke-text">VS</span>
@@ -149,7 +134,7 @@
         <td class="col-cow">
             <span class="cow-meta">煌義卒業記念</span>
             <span class="cow-name">飛 魚</span>
-            <span class="cow-owner">デビュー戦(牛主：恵子)</span>
+            <span class="cow-owner">デビュー戦<br>(牛主：恵子)</span>
         </td>
         <td class="col-area">前泊</td>
     </tr>
@@ -174,7 +159,7 @@
         <td class="col-cow">
             <span class="cow-meta">當 虎太朗卒業記念</span>
             <span class="cow-name">小原荒波</span>
-            <span class="cow-owner tight-owner">沖縄含む8勝3敗 元沖縄 馬天白冠</span>
+            <span class="cow-owner">沖縄含む8勝3敗<br>元沖縄 馬天白冠</span>
         </td>
         <td class="col-center">
             <span class="bantuke-text">封切</span>
@@ -183,7 +168,7 @@
         <td class="col-cow">
             <span class="cow-meta">祝 力斗卒業記念</span>
             <span class="cow-name">力 心</span>
-            <span class="cow-owner tight-owner">元 ブルースカイ農園 栄号</span>
+            <span class="cow-owner">元 ブルースカイ農園 栄号</span>
         </td>
         <td class="col-area">上面縄</td>
     </tr>
