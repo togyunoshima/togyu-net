@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<title>闘牛戦績テスト</title>
+</head>
+
+<body>
+
+<h1>小原荒波 戦績</h1>
+
+<div id="record"></div>
+
+<script>
+
+fetch("data/matches.json")
+.then(response => response.json())
+.then(data => {
+
+const bull = "小原荒波"
+
+const fights = data.filter(match => match.bull === bull)
+
+let html = ""
+
+fights.forEach(fight => {
+
+html += `
+<p>
+${fight.date}  
+${fight.bull} vs ${fight.opponent}  
+結果: ${fight.result}
+</p>
+`
+
+})
+
+document.getElementById("record").innerHTML = html
+
+})
+
+</script>
+
+</body>
+
+</html>
