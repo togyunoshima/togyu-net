@@ -6,33 +6,42 @@
     <title>3/7 対戦表 | togyu.net</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Kaisei+Tokumin:wght@700;800&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
     <style>
-        /* CSSは共通テンプレを適用（省略） */
         * { box-sizing: border-box; }
         body { margin: 0; padding: 10px; background-color: #050505; color: #eee; font-family: 'Kaisei Tokumin', serif; text-align: center; overflow-x: hidden; }
         .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('IMG_8395.jpg'); background-size: cover; background-position: center; opacity: 0.15; filter: grayscale(100%); z-index: -1; }
+
+        /* ナビゲーション */
         .header-nav { max-width: 950px; margin: 0 auto 30px auto; display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
         .nav-item { display: flex; justify-content: center; align-items: center; background: rgba(255, 255, 255, 0.1); color: #fff; text-decoration: none; border: 1px solid #444; padding: 12px 5px; font-size: 0.85rem; font-weight: 800; }
         .nav-item:nth-child(2) { background: #e60000; border-color: #e60000; }
+
+        /* ヘッダー */
         .header-container { width: 100%; max-width: 600px; margin: 0 auto; padding: 15px 10px; }
         .date-display { font-family: 'Oswald', sans-serif; font-size: 1.25rem; color: #f1c40f; letter-spacing: 0.05em; margin-bottom: 8px; font-weight: 700; }
         h1 { font-family: 'Noto Serif JP', serif; font-size: clamp(1.1rem, 4.5vw, 1.5rem); color: #fff; line-height: 1.5; margin: 0 auto 20px auto; text-shadow: 2px 2px 0 #e60000; font-weight: 700; }
-        .info-table { width: 95%; max-width: 480px; margin: 0 auto 30px auto; border-collapse: collapse; text-align: left; font-size: 0.85rem; }
-        .info-table td { padding: 10px 5px; border-bottom: 1px dotted #333; }
-        .info-label { color: #f1c40f; width: 75px; font-weight: bold; }
+
+        /* メインテーブル */
         .match-table { width: 100%; max-width: 900px; margin: 20px auto; border-collapse: collapse; table-layout: fixed; background: rgba(0, 0, 0, 0.85); border: 1.5px solid #444; }
-        .match-table td { border: 1px solid #333; padding: 12px 1px; vertical-align: middle; text-align: center; }
-        .col-area { width: 60px; font-size: 0.9rem; color: #bbb; font-weight: bold; }
-        .col-center { width: 110px; } 
-        .table-head th { padding: 12px 0; font-size: 0.9rem; background: #222; }
+        .match-table td { border: 1px solid #333; padding: 12px 2px; vertical-align: middle; text-align: center; }
+        
+        /* 地区名・牛名の調整クラス */
+        .col-area { width: 65px; font-size: 0.85rem; color: #bbb; font-weight: bold; line-height: 1.2; }
+        .area-nishime { font-size: 0.7rem !important; white-space: nowrap; } /* 西目手久専用：1行にする */
+
+        .col-cow { width: auto; padding: 8px 4px !important; }
+        .cow-meta { font-size: 0.7rem; color: #f1c40f; display: block; margin-bottom: 2px; line-height: 1.1; }
+        .cow-name { font-size: 1.3rem; font-weight: 900; color: #fff; display: block; line-height: 1.2; }
+        .cow-owner { font-size: 0.7rem; color: #999; display: block; margin-top: 3px; line-height: 1.1; }
+
+        .col-center { width: 100px; } 
+        .table-head th { padding: 12px 0; font-size: 0.9rem; background: #222; border: 1px solid #333; }
         .head-east { background: #e60000 !important; color: #fff; }
         .head-west { background: #eee !important; color: #000; }
-        .cow-meta { font-size: 0.75rem; color: #f1c40f; display: block; margin-bottom: 2px; }
-        .cow-name { font-size: 1.4rem; font-weight: 900; color: #fff; display: block; }
-        .cow-owner { font-size: 0.72rem; color: #999; display: block; margin-top: 3px; }
-        .bantuke-text { font-size: 0.85rem; color: #f1c40f; font-weight: 900; display: block; margin-bottom: 5px; }
+        .bantuke-text { font-size: 0.8rem; color: #f1c40f; font-weight: 900; display: block; margin-bottom: 5px; }
         .result-row { display: flex; border-top: 1px solid #333; padding-top: 8px; align-items: center; justify-content: center; }
-        .res-time { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.82rem; color: #fff; text-align: center; }
+        .res-time { font-family: 'Oswald', sans-serif; font-size: 0.8rem; color: #fff; }
 
+        /* リンクテーブル */
         .archive-section { width: 100%; display: flex; justify-content: center; margin-top: 60px; padding: 0 10px; }
         .archive-table { width: 100%; max-width: 480px; border-collapse: collapse; background: rgba(0, 0, 0, 0.85); color: #eee; border: 1.5px solid #444; }
         .archive-table th { background-color: #222; border: 1px solid #333; padding: 12px 8px; font-size: 0.85rem; width: 110px; color: #f1c40f; }
@@ -43,13 +52,14 @@
         .archive-link { display: inline-block; padding: 5px 15px; background: rgba(255, 255, 255, 0.1); color: #fff; border: 1px solid #444; font-size: 0.75rem; text-decoration: none; font-weight: 800; }
         .current-day { color: #e60000 !important; text-decoration: none !important; cursor: default; }
 
+        /* スマホ調整 */
         @media screen and (max-width: 600px) {
-            .col-area { width: 42px; font-size: 0.65rem; }
-            .col-center { width: 80px; }
-            .cow-name { font-size: 0.9rem; }
-            .cow-meta { font-size: 0.48rem; }
-            .cow-owner { font-size: 0.42rem !important; }
-            .nav-item { font-size: 0.65rem; padding: 8px 2px; }
+            .col-area { width: 45px; font-size: 0.65rem; }
+            .col-center { width: 75px; }
+            .cow-name { font-size: 0.95rem; }
+            .cow-meta, .cow-owner { font-size: 0.55rem; }
+            .bantuke-text { font-size: 0.65rem; }
+            .nav-item { font-size: 0.6rem; padding: 8px 2px; }
         }
     </style>
 </head>
@@ -66,29 +76,25 @@
 <div class="header-container">
     <div class="date-display">2026.03.07 SAT</div>
     <h1>2026 卒業記念ナイター闘牛大会</h1>
-    <table class="info-table">
-        <tr><td class="info-label">日時</td><td>令和8年3月7日 午後6時30分対戦開始</td></tr>
-        <tr><td class="info-label">場所</td><td>なくさみ館</td></tr>
-        <tr><td class="info-label">主催</td><td>卒業記念ナイター闘牛大会実行委員</td></tr>
-        <tr><td class="info-label">入場料</td><td>大人3000円 小人1000円</td></tr>
-    </table>
 </div>
 
 <table class="match-table">
-    <tr class="table-head"><th class="col-area">地区</th><th class="head-east">東方</th><th class="col-center">番付</th><th class="head-west">西方</th><th class="col-area">地区</th></tr>
+    <tr class="table-head">
+        <th class="col-area">地区</th><th class="head-east">東方</th><th class="col-center">番付</th><th class="head-west">西方</th><th class="col-area">地区</th>
+    </tr>
     
     <tr>
         <td class="col-area">古里</td>
-        <td class="col-cow"><span class="cow-meta">海伸 萌愛 卒業記念</span><span class="cow-name">友良牛</span><span class="cow-owner">7勝1敗(牛主：萌愛)</span></td>
+        <td class="col-cow"><span class="cow-meta">海伸・萌愛 卒業記念</span><span class="cow-name">友良牛</span><span class="cow-owner">7勝1敗（牛主：萌愛）</span></td>
         <td class="col-center"><span class="bantuke-text">横綱</span><div class="result-row"><div class="res-time"> --:-- </div></div></td>
-        <td class="col-cow"><span class="cow-name">小美剣 武 V 威</span><span class="cow-owner">4勝2敗(牛主：基山幸樹)</span></td>
+        <td class="col-cow"><span class="cow-name">武 V 威</span><span class="cow-owner">4勝2敗（牛主：基山幸樹）</span></td>
         <td class="col-area">亀津</td>
     </tr>
     <tr>
-        <td class="col-area">西目手久</td>
+        <td class="col-area area-nishime">西目手久</td>
         <td class="col-cow"><span class="cow-name">竜芯☆煌輝</span><span class="cow-owner">2勝1敗1引分</span></td>
         <td class="col-center"><span class="bantuke-text">大型特別</span><div class="result-row"><div class="res-time"> --:-- </div></div></td>
-        <td class="col-cow"><span class="cow-meta">花掛友人会</span><span class="cow-name">嵐 覇</span><span class="cow-owner">(牛主：虹河・統海)</span></td>
+        <td class="col-cow"><span class="cow-meta">花掛友人会</span><span class="cow-name">嵐 覇</span><span class="cow-owner">（牛主：虹河・統海）</span></td>
         <td class="col-area">浅間</td>
     </tr>
     <tr>
@@ -100,17 +106,52 @@
     </tr>
     <tr>
         <td class="col-area">松原</td>
-        <td class="col-cow"><span class="cow-meta">西元正大 卒業記念</span><span class="cow-name">絆</span><span class="cow-owner">元 パプリカ</span></td>
+        <td class="col-cow"><span class="cow-meta">西元正大 卒業記念</span><span class="cow-name">絆</span><span class="cow-owner">元パプリカ</span></td>
         <td class="col-center"><span class="bantuke-text">ベテラン対決</span><div class="result-row"><div class="res-time"> --:-- </div></div></td>
-        <td class="col-cow"><span class="cow-meta">眞形紅覇 卒業記念</span><span class="cow-name">覇武露</span><span class="cow-owner">5勝2敗</span></td>
+        <td class="col-cow"><span class="cow-meta">祝 卒業 真決</span><span class="cow-name">覇武露</span><span class="cow-owner">5勝2敗</span></td>
         <td class="col-area">亀津</td>
     </tr>
     <tr>
         <td class="col-area">上面縄</td>
-        <td class="col-cow"><span class="cow-meta">千奈代 祝卒業記念</span><span class="cow-name">海帆汐千英孝天一</span><span class="cow-owner">デビュー戦</span></td>
+        <td class="col-cow"><span class="cow-meta">千奈代 祝卒業記念</span><span class="cow-name">海帆汐千英孝天一</span></td>
         <td class="col-center"><span class="bantuke-text">指名特別</span><div class="result-row"><div class="res-time"> --:-- </div></div></td>
-        <td class="col-cow"><span class="cow-name">しぃじゃ白タビ茉也號</span><span class="cow-owner">デビュー戦</span></td>
+        <td class="col-cow"><span class="cow-name">しぃじゃ白タビ茉也號</span></td>
         <td class="col-area">花徳</td>
+    </tr>
+    <tr>
+        <td class="col-area">浅間</td>
+        <td class="col-cow"><span class="cow-name">爆(～battou～)闘</span><span class="cow-owner">（牛主：元山・富山）</span></td>
+        <td class="col-center"><span class="bantuke-text">若手特別</span><div class="result-row"><div class="res-time"> --:-- </div></div></td>
+        <td class="col-cow"><span class="cow-meta">祝 真決卒業記念</span><span class="cow-name">翔龍皇ゼッツ</span><span class="cow-owner">（牛主：立山尊愛）</span></td>
+        <td class="col-area">伊仙</td>
+    </tr>
+    <tr>
+        <td class="col-area">亀津</td>
+        <td class="col-cow"><span class="cow-name">小(くわーむん)夢</span><span class="cow-owner">（牛主：倉・竹川）</span></td>
+        <td class="col-center"><span class="bantuke-text">若手花形</span><div class="result-row"><div class="res-time"> --:-- </div></div></td>
+        <td class="col-cow"><span class="cow-meta">祝 卒業 米田海斗</span><span class="cow-name">愛進龍</span><span class="cow-owner">（牛主：優心）</span></td>
+        <td class="col-area">亀津</td>
+    </tr>
+    <tr>
+        <td class="col-area">伊仙</td>
+        <td class="col-cow"><span class="cow-name">56 赤棟蛇</span><span class="cow-owner">元一天張（昭和56年生）</span></td>
+        <td class="col-center"><span class="bantuke-text">封切特別</span><div class="result-row"><div class="res-time"> --:-- </div></div></td>
+        <td class="col-cow"><span class="cow-meta">二代目</span><span class="cow-name">凛勝❤️珠凛</span><span class="cow-owner">デビュー戦</span></td>
+        <td class="col-area">亀津</td>
+    </tr>
+    <tr>
+        <td class="col-area">花津川</td>
+        <td class="col-cow"><span class="cow-name">突撃☆ハチハチ</span></td>
+        <td class="col-center"><span class="bantuke-text">ｱﾄﾗｸｼｮﾝ</span><div class="result-row"><div class="res-time"> 05:00 </div></div></td>
+        <td class="col-cow"><span class="cow-name">凜 虎</span></td>
+        <td class="col-area">浅間</td>
+    </tr>
+    <tr>
+        <td class="col-area">目手久</td>
+        <td class="col-cow"><span class="cow-name">天龍王</span></td>
+        <td class="col-center"><span class="bantuke-text">ｱﾄﾗｸｼｮﾝ</span><div class="result-row"><div class="res-time"> 05:00 </div></div></td>
+        <td class="col-cow"><span class="cow-name">大陸王</span></td>
+        <td class="col-area">目手久</td>
     </tr>
 </table>
 
@@ -127,6 +168,5 @@
         </tr>
     </table>
 </div>
-<p style="margin-top:60px; color:#555; font-size:0.75rem;">© 2026 togyu.net</p>
 </body>
 </html>
