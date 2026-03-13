@@ -7,56 +7,55 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Kaisei+Tokumin:wght@700;800&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
     <style>
         body { margin: 0; padding: 0; background-color: #050505; color: #eee; font-family: 'Kaisei Tokumin', serif; text-align: center; }
-        .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #050505; background-image: url('IMG_8395.jpg'); background-size: cover; background-position: center; opacity: 0.1; z-index: -1; }
+        .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('IMG_8395.jpg'); background-size: cover; background-position: center; opacity: 0.1; z-index: -1; }
 
-        /* メニューバー (3列 + 2列) */
+        /* メニューバー (復元) */
         .nav-container { background: #fff; margin-bottom: 15px; padding: 2px 0; }
         .nav-row { display: flex; justify-content: center; border-bottom: 1px solid #ddd; }
         .nav-row:last-child { border-bottom: none; }
         .nav-row a { flex: 1; color: #000; text-decoration: none; font-size: 0.7rem; font-weight: 800; padding: 10px 0; border-right: 1px solid #ddd; }
         .nav-row a:last-child { border-right: none; }
 
-        /* ヘッダー：スマホでのタイトル改行調整 */
-        .header-container { max-width: 600px; margin: 0 auto; padding: 20px 5px; text-align: center; }
-        .date-display { font-family: 'Oswald', sans-serif; font-size: 1.2rem; color: #f1c40f; letter-spacing: 0.05em; margin-bottom: 5px; font-weight: 700; }
+        /* ヘッダー：スマホの改行調整 */
+        .header-container { max-width: 600px; margin: 0 auto; padding: 25px 15px; text-align: center; }
+        .date-display { font-family: 'Oswald', sans-serif; font-size: 1.25rem; color: #f1c40f; letter-spacing: 0.05em; margin-bottom: 5px; font-weight: 700; }
         h1 { 
             font-family: 'Noto Serif JP', serif; 
-            font-size: clamp(1rem, 4.5vw, 1.3rem); /* スマホサイズで自動調整 */
-            color: #fff; line-height: 1.4; margin: 0 0 15px 0; 
+            font-size: 1.35rem; 
+            color: #fff; 
+            line-height: 1.5; 
+            margin: 0 0 20px 0; 
             text-shadow: 2px 2px 0 #e60000, -1px -1px 0 #e60000, 1px -1px 0 #e60000, -1px 1px 0 #e60000; 
-            font-weight: 700; word-break: keep-all; overflow-wrap: anywhere; 
+            font-weight: 700;
+            word-break: keep-all; /* スマホで変なところで切れないように */
         }
 
-        .back-btn { display: inline-block; padding: 5px 15px; border: 1px solid #555; background: transparent; color: #bbb; text-decoration: none; font-size: 0.7rem; margin-bottom: 15px; }
+        .back-btn { display: inline-block; padding: 5px 15px; border: 1px solid #555; background: transparent; color: #bbb; text-decoration: none; font-size: 0.7rem; margin-bottom: 25px; }
 
-        .info-table { width: 95%; max-width: 480px; margin: 0 auto; border-collapse: collapse; text-align: left; font-size: 0.7rem; }
-        .info-table td { padding: 7px 5px; border-bottom: 1px dotted #333; }
-        .info-label { color: #f1c40f; width: 50px; font-weight: bold; }
+        .info-table { width: 100%; max-width: 480px; margin: 0 auto; border-collapse: collapse; text-align: left; font-size: 0.75rem; }
+        .info-table td { padding: 9px 5px; vertical-align: top; border-bottom: 1px dotted #333; }
+        .info-label { color: #f1c40f; width: 65px; font-weight: bold; }
 
-        /* 取組表：幅の再調整 */
-        .match-table { width: 100%; border-collapse: collapse; table-layout: fixed; background: rgba(0, 0, 0, 0.9); border: 1.5px solid #666; }
-        .match-table th, .match-table td { border: 1px solid #444; padding: 8px 0; vertical-align: middle; }
+        /* 取組表：地区名・番付の改行防止と○の収まり */
+        .match-table { width: 100%; border-collapse: collapse; table-layout: fixed; background: rgba(0, 0, 0, 0.9); border: 1.5px solid #666; margin-top: 20px; }
+        .match-table th, .match-table td { border: 1px solid #444; padding: 10px 0; vertical-align: middle; }
         
-        /* 地区：徳和瀬が1行で収まるよう微増 */
-        .col-area { width: 11%; font-size: 0.58rem; color: #bbb; white-space: nowrap; letter-spacing: -0.05em; } 
-        .col-cow { width: 32%; } 
-        /* 番付：指名特別が1行で収まるよう調整 */
-        .col-center { width: 14%; } 
+        .col-area { width: 12%; font-size: 0.55rem; color: #bbb; white-space: nowrap; padding: 0 !important; } /* 徳和瀬が一行で収まる幅 */
+        .col-cow { width: 33%; } 
+        .col-center { width: 14%; } /* 指名特別が一行で収まる幅 */
 
-        .table-head th { background: #222; font-size: 0.6rem; padding: 6px 0; color: #aaa; }
+        .table-head th { background: #222; font-size: 0.6rem; padding: 8px 0; color: #aaa; }
         .head-east { background: #e60000 !important; color: #fff; }
         .head-west { background: #eee !important; color: #000; }
 
         .cow-meta { font-size: 0.5rem; color: #f1c40f; display: block; margin-bottom: 2px; }
-        .cow-name { font-size: 1rem; font-weight: 900; color: #fff; display: block; white-space: nowrap; }
+        .cow-name { font-size: 1.1rem; font-weight: 900; color: #fff; display: block; line-height: 1.2; letter-spacing: -0.02em; white-space: nowrap; }
         .cow-owner { font-size: 0.45rem; color: #999; display: block; margin-top: 3px; }
 
-        /* 番付テキストと結果○の調整 */
-        .bantuke-text { font-size: 0.65rem; color: #f1c40f; font-weight: 900; display: block; margin-bottom: 5px; white-space: nowrap; }
-        .result-row { display: flex; border-top: 1px solid #444; padding-top: 5px; align-items: center; justify-content: center; width: 100%; }
-        /* ○が枠内に収まるようサイズ調整 */
-        .res-win { width: 25%; font-size: 0.85rem; font-weight: bold; color: #e60000; line-height: 1; }
-        .res-time { width: 50%; font-family: 'Oswald', sans-serif; font-size: 0.6rem; color: #fff; border-left: 1px solid #333; border-right: 1px solid #333; }
+        .bantuke-text { font-size: 0.7rem; color: #f1c40f; font-weight: 900; display: block; margin-bottom: 8px; white-space: nowrap; }
+        .result-row { display: flex; border-top: 1px solid #444; padding-top: 6px; align-items: center; justify-content: center; width: 95%; margin: 0 auto; }
+        .res-win { width: 25%; font-size: 0.9rem; font-weight: bold; color: #e60000; line-height: 1; } /* ○を枠内に収めるため縮小 */
+        .res-time { width: 50%; font-family: 'Oswald', sans-serif; font-size: 0.65rem; color: #fff; border-left: 1px solid #333; border-right: 1px solid #333; }
     </style>
 </head>
 <body>
@@ -88,7 +87,6 @@
     <tr class="table-head">
         <th>地区</th><th class="head-east">東方</th><th>番付</th><th class="head-west">西方</th><th>地区</th>
     </tr>
-
     <tr>
         <td class="col-area">徳和瀬</td>
         <td class="col-cow">
@@ -102,19 +100,15 @@
                 <div class="res-win">○</div><div class="res-time">--:--</div><div class="res-win" style="color:transparent;">○</div>
             </div>
         </td>
-        <td class="col-cow">
-            <span class="cow-name">耀</span>
-            <span class="cow-owner">沖縄3番1枚</span>
-        </td>
+        <td class="col-cow"><span class="cow-name">耀</span><span class="cow-owner">沖縄3番1枚</span></td>
         <td class="col-area">沖縄</td>
     </tr>
-
     <tr>
         <td class="col-area">徳之島</td>
         <td class="col-cow">
             <span class="cow-meta">窪田勇心・郷健太卒業記念</span>
             <span class="cow-name">三代目 八Hatsuki輝</span>
-            <span class="cow-owner">デビュー戦(牛主：平成8-9年生絆同志会)</span>
+            <span class="cow-owner">デビュー戦(牛主：絆同志会)</span>
         </td>
         <td class="col-center">
             <span class="bantuke-text">指名特別</span>
@@ -122,34 +116,9 @@
                 <div class="res-win" style="color:transparent;">○</div><div class="res-time">--:--</div><div class="res-win" style="color:transparent;">○</div>
             </div>
         </td>
-        <td class="col-cow">
-            <span class="cow-name">希 爛</span>
-            <span class="cow-owner">元 希龍</span>
-        </td>
+        <td class="col-cow"><span class="cow-name">希 爛</span><span class="cow-owner">元 希龍</span></td>
         <td class="col-area">石垣</td>
     </tr>
-
-    <tr>
-        <td class="col-area">山天願</td>
-        <td class="col-cow">
-            <span class="cow-meta">あゆら卒業記念</span>
-            <span class="cow-name">石原大宝</span>
-            <span class="cow-owner">デビュー戦</span>
-        </td>
-        <td class="col-center">
-            <span class="bantuke-text">VS</span>
-            <div class="result-row">
-                <div class="res-win" style="color:transparent;">○</div><div class="res-time">--:--</div><div class="res-win" style="color:transparent;">○</div>
-            </div>
-        </td>
-        <td class="col-cow">
-            <span class="cow-meta">煌義卒業記念</span>
-            <span class="cow-name">飛 魚</span>
-            <span class="cow-owner">デビュー戦</span>
-        </td>
-        <td class="col-area">前泊</td>
-    </tr>
     </table>
-
 </body>
 </html>
