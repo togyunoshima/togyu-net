@@ -1,1 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
 
+<head>
+<meta charset="UTF-8">
+<title>戦歴検索 | 徳之島闘牛サイト</title>
+
+<style>
+
+body{
+background:#050505;
+color:#eee;
+font-family:serif;
+text-align:center;
+padding:40px;
+}
+
+h1{
+font-size:36px;
+margin-bottom:40px;
+}
+
+input{
+padding:12px;
+font-size:18px;
+width:260px;
+}
+
+button{
+padding:12px 20px;
+font-size:18px;
+background:#e60000;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+.result{
+margin-top:40px;
+max-width:600px;
+margin-left:auto;
+margin-right:auto;
+text-align:left;
+}
+
+.bull{
+padding:12px;
+border-bottom:1px solid #333;
+cursor:pointer;
+}
+
+.bull:hover{
+background:#111;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>戦歴検索</h1>
+
+<input type="text" id="searchBox" placeholder="牛の名前を入力">
+<button onclick="searchBull()">検索</button>
+
+<div class="result" id="result"></div>
+
+<script>
+
+let bulls = []
+
+fetch("data/bulls.json")
+.then(res=>res.json())
+.then(data=>{
+bulls=data
+})
+
+function searchBull(){
+
+const word=document.getElementById("searchBox").value
+
+const result=bulls.filter(bull =>
+bull.name.includes(word) ||
+(bull.aliases && bull.aliases.join("").includes(word))
+)
+
+let html=""
+
+result.forEach(bull=>{
+
+html+=`
+<div class="bull" onclick="location.href='bull.html?id=${bull.id}'">
+${bull.name}
+</div>
+`
+
+})
+
+document.getElementById("result").innerHTML=html
+
+}
+
+</script>
+
+</body>
+
+</html>
