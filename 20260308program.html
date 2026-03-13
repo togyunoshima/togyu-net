@@ -6,13 +6,13 @@
     <title>3/8 大会情報 | togyu.net</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Kaisei+Tokumin:wght@700;800&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
     <style>
-        /* 全体設定 */
+        /* 全体設定（維持） */
         body { margin: 0; padding: 0; background-color: #050505; color: #eee; font-family: 'Kaisei Tokumin', serif; text-align: center; }
         .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('IMG_8395.jpg'); background-size: cover; background-position: center; opacity: 0.1; z-index: -1; }
 
-        /* メニューバー（トップ・対戦表ページと統一） */
+        /* 【修正】メニューバー（対戦表・トップページと統一：3列＋2列） */
         .nav-container { background: #fff; width: 100%; display: flex; flex-direction: column; align-items: center; }
-        .nav-row { display: flex; width: 100%; max-width: 800px; border-bottom: 1px solid #ddd; }
+        .nav-row { display: flex; width: 100%; max-width: 600px; border-bottom: 1px solid #ddd; }
         .nav-row:last-child { border-bottom: none; }
         .nav-row a { 
             flex: 1; color: #000; text-decoration: none; font-size: 0.75rem; font-weight: 800; 
@@ -21,13 +21,14 @@
         .nav-row a:last-child { border-right: none; }
 
         /* ヘッダー構成（構成維持） */
-        .header-container { width: 100%; max-width: 800px; margin: 0 auto; padding: 25px 10px; box-sizing: border-box; }
+        .header-container { width: 100%; max-width: 600px; margin: 0 auto; padding: 25px 10px; box-sizing: border-box; }
         .date-display { font-family: 'Oswald', sans-serif; font-size: 1.25rem; color: #f1c40f; letter-spacing: 0.05em; margin-bottom: 5px; font-weight: 700; }
         h1 { 
             font-family: 'Noto Serif JP', serif; font-size: 1.35rem; color: #fff; line-height: 1.5; margin: 0 0 20px 0; 
             text-shadow: 2px 2px 0 #e60000, -1px -1px 0 #e60000, 1px -1px 0 #e60000, -1px 1px 0 #e60000; 
             font-weight: 700; word-break: keep-all; 
         }
+        /* 【修正】戻るボタン（リンクエラー修正） */
         .back-btn { display: inline-block; padding: 8px 18px; border: 1px solid #555; background: transparent; color: #bbb; text-decoration: none; font-size: 0.7rem; margin-bottom: 25px; transition: 0.3s; }
         .back-btn:hover { background: #222; color: #fff; }
 
@@ -35,7 +36,7 @@
         .info-table td { padding: 9px 5px; border-bottom: 1px dotted #333; }
         .info-label { color: #f1c40f; width: 65px; font-weight: bold; }
 
-        /* 取組表：PCの「最高」のバランスを維持しつつレスポンシブ化 */
+        /* 取組表：PCのベストなレイアウトを維持しつつレスポンシブ化 */
         .match-table { 
             width: 100%; max-width: 800px; margin: 20px auto; border-collapse: collapse; 
             table-layout: fixed; background: rgba(0, 0, 0, 0.9); border: 1.5px solid #666; 
@@ -54,9 +55,11 @@
         .head-west { background: #eee !important; color: #000; }
 
         .cow-meta { font-size: 0.55rem; color: #f1c40f; display: block; margin-bottom: 2px; }
-        /* 文字サイズをスマホで最適化 */
         .cow-name { font-size: clamp(0.9rem, 3.5vw, 1.3rem); font-weight: 900; color: #fff; display: block; white-space: nowrap; letter-spacing: -0.02em; }
         .cow-owner { font-size: 0.5rem; color: #999; display: block; margin-top: 3px; }
+
+        /* 【修正】八Hatsuki輝のHatsukiだけ小さく */
+        .name-sub { font-size: 0.8em; }
 
         .bantuke-text { font-size: 0.75rem; color: #f1c40f; font-weight: 900; display: block; margin-bottom: 8px; white-space: nowrap; line-height: 1.1; }
         .result-row { display: flex; border-top: 1px solid #444; padding-top: 6px; align-items: center; justify-content: center; width: 100%; }
@@ -78,7 +81,7 @@
 <nav class="nav-container">
     <div class="nav-row">
         <a href="index.html">ホーム</a>
-        <a href="taisen.html">対戦表</a>
+        <a href="index.html">対戦表</a>
         <a href="#">戦歴検索</a>
     </div>
     <div class="nav-row">
@@ -90,7 +93,7 @@
 <div class="header-container">
     <div class="date-display">2026.03.08 SUN</div>
     <h1>玉城千春（Kiroro）スペシャルライブ＆<br>平成19・20年生卒業記念ナイター闘牛大会</h1>
-    <a href="taisen.html" class="back-btn">← 対戦表一覧に戻る</a>
+    <a href="index.html" class="back-btn">← 対戦表一覧に戻る</a>
     
     <table class="info-table">
         <tr><td class="info-label">日時</td><td class="info-content">令和8年3月8日 午後6時対戦開始</td></tr>
@@ -135,7 +138,7 @@
         <td class="col-area">徳之島</td>
         <td class="col-cow">
             <span class="cow-meta">窪田勇心・郷健太卒業記念</span>
-            <span class="cow-name">三代目 八Hatsuki輝</span>
+            <span class="cow-name">三代目 八<span class="name-sub">Hatsuki</span>輝</span>
             <span class="cow-owner">デビュー戦(牛主：絆同志会)</span>
         </td>
         <td class="col-center">
@@ -216,7 +219,7 @@
         <td class="col-cow">
             <span class="cow-meta">祝 力斗卒業記念</span>
             <span class="cow-name">力 心</span>
-            <span class="cow-owner">元 ﾌﾞﾙｰｽｶｲ</span>
+            <span class="cow-owner">元 ﾌﾞﾙｰスｶｲ</span>
         </td>
         <td class="col-area">上面縄</td>
     </tr>
