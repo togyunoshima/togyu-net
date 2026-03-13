@@ -6,52 +6,51 @@
     <title>3/8 大会情報 | togyu.net</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Kaisei+Tokumin:wght@700;800&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
     <style>
-        /* 1. 全体の中央揃えを徹底（スマホでの左寄りを解消） */
+        /* 全体の中央配置設定 */
         * { box-sizing: border-box; }
         body { margin: 0; padding: 0; background-color: #050505; color: #eee; font-family: 'Kaisei Tokumin', serif; text-align: center; overflow-x: hidden; display: flex; flex-direction: column; align-items: center; }
         .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('IMG_8395.jpg'); background-size: cover; background-position: center; opacity: 0.1; z-index: -1; }
 
-        /* 2. メニューバー：全ページ統一（白背景・黒枠・3+2構成） */
-        .nav-container { background: #fff; width: 100%; border-bottom: 2px solid #ddd; }
-        .nav-row { display: flex; width: 100%; max-width: 800px; margin: 0 auto; border-bottom: 1px solid #ddd; }
+        /* メニューバー：programitiran.html と同一デザイン */
+        .nav-container { background: #fff; width: 100%; border-bottom: 1px solid #ccc; margin-bottom: 0; }
+        .nav-row { display: flex; width: 100%; max-width: 800px; margin: 0 auto; border-bottom: 1px solid #eee; }
         .nav-row:last-child { border-bottom: none; }
         .nav-row a { 
             flex: 1; color: #000; text-decoration: none; font-size: 0.75rem; font-weight: 800; 
-            padding: 15px 0; border-right: 1px solid #ddd; text-align: center; line-height: 1;
+            padding: 16px 0; border-right: 1px solid #eee; text-align: center; line-height: 1;
         }
         .nav-row a:last-child { border-right: none; }
-        .nav-row a:active, .nav-row a.active { background: #e60000; color: #fff; }
+        .nav-row a.active { background: #e60000; color: #fff; } /* 現在のページ強調 */
 
-        /* 3. ヘッダー：タイトルの見切れ防止 */
+        /* ヘッダー：タイトルの見切れと左寄りを解消 */
         .header-container { width: 100%; max-width: 600px; margin: 0 auto; padding: 25px 10px; text-align: center; }
         .date-display { font-family: 'Oswald', sans-serif; font-size: 1.25rem; color: #f1c40f; letter-spacing: 0.05em; margin-bottom: 8px; font-weight: 700; }
         
         h1 { 
             font-family: 'Noto Serif JP', serif; 
-            font-size: clamp(1.05rem, 4.5vw, 1.35rem); /* スマホで見切れないサイズ */
+            font-size: clamp(1.0rem, 4.2vw, 1.35rem); 
             color: #fff; line-height: 1.4; margin: 0 auto 20px auto; 
             text-shadow: 2px 2px 0 #e60000, -1px -1px 0 #e60000, 1px -1px 0 #e60000, -1px 1px 0 #e60000; 
-            font-weight: 700; width: 95%; overflow-wrap: break-word;
+            font-weight: 700; width: 100%; word-break: keep-all;
         }
 
-        /* 4. 戻るボタン：programitiran.html に修正 */
-        .back-btn { display: inline-block; padding: 8px 20px; border: 1px solid #555; background: transparent; color: #bbb; text-decoration: none; font-size: 0.75rem; margin-bottom: 25px; transition: 0.3s; }
+        .back-btn { display: inline-block; padding: 8px 20px; border: 1px solid #555; background: transparent; color: #bbb; text-decoration: none; font-size: 0.7rem; margin-bottom: 25px; transition: 0.3s; }
         .back-btn:hover { background: #222; color: #fff; }
 
         .info-table { width: 95%; max-width: 480px; margin: 0 auto; border-collapse: collapse; text-align: left; font-size: 0.75rem; }
         .info-table td { padding: 10px 5px; border-bottom: 1px dotted #333; }
         .info-label { color: #f1c40f; width: 65px; font-weight: bold; }
 
-        /* 5. 取組表：PCの形を維持しつつ中央配置 */
+        /* 取組表：PCの最高なバランスを維持 */
         .match-table { 
             width: 100%; max-width: 800px; margin: 20px auto; border-collapse: collapse; 
             table-layout: fixed; background: rgba(0, 0, 0, 0.9); border: 1.5px solid #666; 
         }
         .match-table th, .match-table td { border: 1px solid #444; padding: 12px 0; vertical-align: middle; }
         
-        .col-area { width: 55px; font-size: 0.7rem; color: #bbb; white-space: nowrap; padding: 0 2px !important; } 
+        .col-area { width: 55px; font-size: 0.7rem; color: #bbb; white-space: nowrap; } 
         .col-center { width: 85px; } 
-        .col-cow { width: auto; } 
+        .col-cow { width: auto; overflow: hidden; } 
 
         .table-head th { background: #222; font-size: 0.65rem; padding: 10px 0; color: #aaa; }
         .head-east { background: #e60000 !important; color: #fff; }
@@ -61,8 +60,9 @@
         .cow-name { font-size: clamp(0.9rem, 3.8vw, 1.3rem); font-weight: 900; color: #fff; display: block; white-space: nowrap; letter-spacing: -0.02em; }
         .cow-owner { font-size: 0.5rem; color: #999; display: block; margin-top: 3px; }
 
-        /* 「八Hatsuki輝」専用：はみ出し完全防止 */
-        .name-sub { font-size: 0.65em; letter-spacing: -0.06em; display: inline-block; vertical-align: middle; }
+        /* 【重要】八Hatsuki輝 専用のはみ出し防止設定 */
+        .hatsuki-special { font-size: 0.85em !important; letter-spacing: -0.04em !important; }
+        .name-sub-mini { font-size: 0.6em; letter-spacing: -0.07em; display: inline-block; transform: scale(0.9); }
 
         .bantuke-text { font-size: 0.75rem; color: #f1c40f; font-weight: 900; display: block; margin-bottom: 8px; white-space: nowrap; line-height: 1.1; }
         .result-row { display: flex; border-top: 1px solid #444; padding-top: 6px; align-items: center; justify-content: center; width: 100%; }
@@ -72,7 +72,6 @@
         @media screen and (max-width: 480px) {
             .col-area { width: 48px; font-size: 0.65rem; }
             .col-center { width: 78px; }
-            h1 { width: 100%; }
         }
     </style>
 </head>
@@ -130,7 +129,7 @@
         <td class="col-area">徳之島</td>
         <td class="col-cow">
             <span class="cow-meta">窪田勇心・郷健太卒業記念</span>
-            <span class="cow-name">三代目 八<span class="name-sub">Hatsuki</span>輝</span>
+            <span class="cow-name hatsuki-special">三代目 八<span class="name-sub-mini">Hatsuki</span>輝</span>
             <span class="cow-owner">デビュー戦(牛主：絆同志会)</span>
         </td>
         <td class="col-center">
