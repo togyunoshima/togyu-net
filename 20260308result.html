@@ -264,7 +264,22 @@
         .archive-link { padding: 4px 10px; font-size: 0.7rem; }
     }
 </style>
+<style>
+    /* （中略：CSSはプログラム版と同じものを流用してください。hoverの赤設定も維持しています） */
+    .archive-section { width: 100%; display: flex; justify-content: center; margin-top: 60px; padding: 0 10px; }
+    .archive-table { width: 100%; max-width: 480px; border-collapse: collapse; background: rgba(0, 0, 0, 0.85); color: #eee; border: 1.5px solid #444; font-family: 'Kaisei Tokumin', serif; }
+    .archive-table th { background-color: #222; border: 1px solid #333; padding: 12px 8px; font-size: 0.85rem; width: 110px; color: #f1c40f; }
+    .archive-table td { border: 1px solid #333; padding: 15px 10px; }
+    .archive-flex { display: flex; justify-content: space-around; gap: 15px; }
+    .archive-box { text-align: center; flex: 1; }
+    
+    .archive-day-link { display: block; font-size: 0.9rem; font-weight: bold; margin-bottom: 8px; color: #fff; text-decoration: underline; } /* 日付はプログラムへのリンク */
+    .archive-link { display: inline-block; padding: 5px 15px; background: rgba(255, 255, 255, 0.1); color: #fff; border: 1px solid #444; font-size: 0.75rem; text-decoration: none; font-weight: 800; }
+    .archive-link:hover { background-color: #e60000; border-color: #e60000; }
 
+    /* 現在のページ専用：赤くしてリンクなし */
+    .current-btn { background-color: #e60000 !important; border-color: #e60000 !important; cursor: default; }
+</style>
 <div class="archive-section">
     <table class="archive-table">
         <tr>
@@ -272,13 +287,12 @@
             <td>
                 <div class="archive-flex">
                     <div class="archive-box">
-                        <a href="20260307program.html" class="archive-link">3月7日</a>
-                          <a href="20260307result.html" class="archive-link">結 果</a>
+                        <a href="20260307program.html" class="archive-day-link">3月7日</a>
+                        <a href="20260307result.html" class="archive-link">結 果</a>
                     </div>
                     <div class="archive-box">
-                    　　 <a href="20260308program.html" class="archive-link">3月8日</a>
-                          <span class="archive-day">結果</span>
-                    </div>
+                        <a href="20260308program.html" class="archive-day-link">3月8日</a>
+                        <span class="archive-link current-btn">結 果</span> </div>
                 </div>
             </td>
         </tr>
