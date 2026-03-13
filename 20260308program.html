@@ -189,7 +189,90 @@
         <td class="col-area">上面縄</td>
     </tr>
 </table>
+    <style>
+    .archive-section {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+        margin-bottom: 40px;
+        padding: 0 10px;
+    }
+    .archive-table {
+        width: 100%;
+        max-width: 450px;
+        border-collapse: collapse;
+        background-color: #ffffff; /* 以前のサイト風に白背景 */
+        color: #333333;
+        font-family: sans-serif;
+        border: 1px solid #cccccc;
+    }
+    .archive-table th {
+        background-color: #f2f2f2;
+        border: 1px solid #cccccc;
+        padding: 12px 8px;
+        font-size: 0.9rem;
+        width: 100px;
+        line-height: 1.4;
+    }
+    .archive-table td {
+        border: 1px solid #cccccc;
+        padding: 10px;
+    }
+    .archive-flex {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 10px;
+    }
+    .archive-box {
+        text-align: center;
+        flex: 1;
+    }
+    .archive-day {
+        display: block;
+        font-size: 0.85rem;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #333;
+        text-decoration: none;
+    }
+    .archive-link {
+        display: inline-block;
+        padding: 3px 12px;
+        background-color: #e8f4ff;
+        color: #0056b3;
+        border: 1px solid #0056b3;
+        border-radius: 3px;
+        font-size: 0.75rem;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+    .archive-link:hover {
+        background-color: #0056b3;
+        color: #ffffff;
+    }
+</style>
 
+<div class="archive-section">
+    <table class="archive-table">
+        <tr>
+            <th>2026年<br>3月場所</th>
+            <td>
+                <div class="archive-flex">
+                    <div class="archive-box">
+                        <span class="archive-day">3月7日</span>
+                        <a href="20260307result.html" class="archive-link">結果</a>
+                    </div>
+                    <div class="archive-box">
+                        <span class="archive-day">3月8日</span>
+                        <a href="20260308result.html" class="archive-link">結果</a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
 <p style="margin-top:60px; color:#555; font-size:0.75rem;">© 2026 togyu.net</p>
 
 </body>
