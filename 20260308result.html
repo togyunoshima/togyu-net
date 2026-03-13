@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>3/8 大会結果 | togyu.net</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Kaisei+Tokumin:wght@700;800&family=Noto+Serif+JP:wght@700&family=Yuji+Syuku&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Kaisei+Tokumin:wght@700;800&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; }
         body { margin: 0; padding: 10px; background-color: #050505; color: #eee; font-family: 'Kaisei Tokumin', serif; text-align: center; overflow-x: hidden; }
@@ -12,41 +12,43 @@
 
         /* 取組表の基本設定 */
         .match-table { width: 100%; max-width: 800px; margin: 20px auto; border-collapse: collapse; table-layout: fixed; background: rgba(0, 0, 0, 0.85); border: 1.5px solid #444; }
-        .match-table th, .match-table td { border: 1px solid #333; padding: 12px 2px; vertical-align: middle; text-align: center; }
+        .match-table td { border: 1px solid #333; padding: 10px 2px; vertical-align: middle; text-align: center; overflow: hidden; }
+        
         .col-area { width: 55px; font-size: 0.8rem; color: #bbb; font-weight: bold; }
         .col-center { width: 95px; } 
-        .table-head th { padding: 12px 0; font-size: 0.85rem; }
+        .table-head th { padding: 12px 0; font-size: 0.85rem; background: #222; border: 1px solid #333; }
         .head-east { background: #e60000 !important; color: #fff; }
         .head-west { background: #eee !important; color: #000; }
 
-        /* 牛情報（基本） */
+        /* 牛情報（基本：1行を維持しつつ縮小） */
         .cow-meta { font-size: 0.65rem; color: #f1c40f; display: block; margin-bottom: 2px; white-space: nowrap; }
-        .cow-name { font-size: 1.3rem; font-weight: 900; color: #fff; display: block; white-space: nowrap; letter-spacing: -0.01em; }
-        .cow-owner { font-size: 0.65rem; color: #999; display: block; margin-top: 3px; white-space: nowrap; }
+        .cow-name { font-size: 1.25rem; font-weight: 900; color: #fff; display: block; white-space: nowrap; letter-spacing: -0.01em; }
+        .cow-owner { font-size: 0.62rem; color: #999; display: block; margin-top: 3px; white-space: nowrap; } /* デフォルトは1行 */
         .name-sub-mini { font-size: 0.75em; display: inline-block; font-weight: 700; }
 
-        /* ★八輝だけの特別スタイル★ */
+        /* ★八輝だけの特別スタイル（2行許可）★ */
         .hatauki-meta { font-size: 0.52rem !important; letter-spacing: -0.02em; }
         .hatauki-name { font-size: 1.05rem !important; letter-spacing: -0.04em; }
         .hatauki-owner { font-size: 0.52rem !important; white-space: normal !important; line-height: 1.2; }
 
-        /* スコア・タイム（中央揃え） */
+        /* スコア・タイム（中央揃え・不戦勝対応） */
         .bantuke-text { font-size: 0.8rem; color: #f1c40f; font-weight: 900; display: block; margin-bottom: 5px; white-space: nowrap; }
         .result-row { display: flex; border-top: 1px solid #333; padding-top: 6px; align-items: center; justify-content: center; width: 100%; }
-        .res-win { width: 20px; font-size: 1rem; font-weight: bold; color: #e60000; } 
-        .res-time { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.75rem; color: #fff; border-left: 1px solid #333; border-right: 1px solid #333; margin: 0 5px; white-space: nowrap; }
-        .res-empty { width: 20px; }
+        .res-win { width: 18px; font-size: 0.95rem; font-weight: bold; color: #e60000; flex-shrink: 0; } 
+        .res-time { flex: 1; font-family: 'Oswald', sans-serif; font-size: 0.72rem; color: #fff; border-left: 1px solid #333; border-right: 1px solid #333; margin: 0 4px; white-space: nowrap; text-align: center; }
+        .res-empty { width: 18px; flex-shrink: 0; }
 
+        /* スマホ専用：はみ出しを徹底ガード */
         @media screen and (max-width: 600px) {
             .col-area { width: 42px; font-size: 0.65rem; }
             .col-center { width: 82px; }
-            .cow-name { font-size: 0.95rem; }
-            .cow-meta { font-size: 0.52rem; }
-            .cow-owner { font-size: 0.52rem; }
-            .res-time { font-size: 0.65rem; }
+            .cow-name { font-size: 0.9rem; }
+            .cow-meta { font-size: 0.5rem; }
+            .cow-owner { font-size: 0.5rem; letter-spacing: -0.02em; } /* 他の牛主名も小さくして1行死守 */
+            .res-time { font-size: 0.62rem; letter-spacing: -0.02em; }
             
-            /* スマホ版八輝さらに微調整 */
-            .hatauki-name { font-size: 0.85rem !important; }
+            /* 八輝スマホ版 */
+            .hatauki-name { font-size: 0.82rem !important; }
         }
     </style>
 </head>
