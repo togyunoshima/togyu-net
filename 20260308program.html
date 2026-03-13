@@ -6,45 +6,48 @@
     <title>3/8 大会情報 | togyu.net</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Kaisei+Tokumin:wght@700;800&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
     <style>
+        /* 全体の中央揃えを徹底 */
         body { margin: 0; padding: 0; background-color: #050505; color: #eee; font-family: 'Kaisei Tokumin', serif; text-align: center; }
         .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('IMG_8395.jpg'); background-size: cover; background-position: center; opacity: 0.1; z-index: -1; }
 
-        /* 【修正】メニューバー：対戦表ページと完全に同じスタイル（枠線と余白） */
-        .nav-container { background: #fff; margin: 0; padding: 0; }
-        .nav-row { display: flex; border-bottom: 1px solid #ddd; }
+        /* メニューバー（対戦表ページ仕様） */
+        .nav-container { background: #fff; width: 100%; margin: 0 auto; padding: 0; }
+        .nav-row { display: flex; border-bottom: 1px solid #ddd; max-width: 100%; }
         .nav-row:last-child { border-bottom: none; }
-        .nav-row a { 
-            flex: 1; 
-            color: #000; 
-            text-decoration: none; 
-            font-size: 0.75rem; 
-            font-weight: 800; 
-            padding: 12px 0; 
-            border-right: 1px solid #ddd; 
-            text-align: center;
-        }
+        .nav-row a { flex: 1; color: #000; text-decoration: none; font-size: 0.75rem; font-weight: 800; padding: 12px 0; border-right: 1px solid #ddd; text-align: center; }
         .nav-row a:last-child { border-right: none; }
 
-        /* ヘッダー・タイトル・詳細（完全維持） */
-        .header-container { max-width: 600px; margin: 0 auto; padding: 25px 15px; text-align: center; }
+        /* ヘッダー・詳細構成（維持） */
+        .header-container { max-width: 600px; margin: 0 auto; padding: 25px 10px; text-align: center; }
         .date-display { font-family: 'Oswald', sans-serif; font-size: 1.25rem; color: #f1c40f; letter-spacing: 0.05em; margin-bottom: 5px; font-weight: 700; }
         h1 { 
             font-family: 'Noto Serif JP', serif; 
             font-size: 1.35rem; color: #fff; line-height: 1.5; margin: 0 0 20px 0; 
             text-shadow: 2px 2px 0 #e60000, -1px -1px 0 #e60000, 1px -1px 0 #e60000, -1px 1px 0 #e60000; 
-            font-weight: 700; word-break: keep-all;
+            font-weight: 700; word-break: keep-all; display: inline-block;
         }
         .back-btn { display: inline-block; padding: 5px 15px; border: 1px solid #555; background: transparent; color: #bbb; text-decoration: none; font-size: 0.7rem; margin-bottom: 25px; }
-        .info-table { width: 100%; max-width: 480px; margin: 0 auto; border-collapse: collapse; text-align: left; font-size: 0.75rem; }
-        .info-table td { padding: 9px 5px; vertical-align: top; border-bottom: 1px dotted #333; }
+        .info-table { width: 95%; max-width: 480px; margin: 0 auto; border-collapse: collapse; text-align: left; font-size: 0.75rem; }
+        .info-table td { padding: 9px 5px; border-bottom: 1px dotted #333; }
         .info-label { color: #f1c40f; width: 65px; font-weight: bold; }
 
-        /* 【修正】取組表：地区幅を極限（7.5%）まで縮小 */
-        .match-table { width: 100%; border-collapse: collapse; table-layout: fixed; background: rgba(0, 0, 0, 0.9); border: 1.5px solid #666; margin-top: 20px; }
+        /* 取組表：中央配置を固定し、幅を調整 */
+        .match-table { 
+            width: 100%; 
+            max-width: 800px; /* PCでの見やすさ */
+            margin: 20px auto; 
+            border-collapse: collapse; 
+            table-layout: fixed; 
+            background: rgba(0, 0, 0, 0.9); 
+            border: 1.5px solid #666; 
+        }
         .match-table th, .match-table td { border: 1px solid #444; padding: 10px 0; vertical-align: middle; }
         
-        .col-area { width: 7.5%; font-size: 0.55rem; color: #bbb; white-space: nowrap; padding: 0 1px !important; letter-spacing: -0.05em; } 
-        .col-cow { width: 37.5%; } 
+        /* 地区：文字サイズ維持しつつ、ギリギリまで狭める */
+        .col-area { width: 10%; font-size: 0.55rem; color: #bbb; white-space: nowrap; padding: 0 1px !important; } 
+        /* 牛名：左右に最大限振り分け */
+        .col-cow { width: 35%; } 
+        /* 番付：中央固定 */
         .col-center { width: 10%; } 
 
         .table-head th { background: #222; font-size: 0.6rem; padding: 8px 0; color: #aaa; }
@@ -52,13 +55,13 @@
         .head-west { background: #eee !important; color: #000; }
 
         .cow-meta { font-size: 0.5rem; color: #f1c40f; display: block; margin-bottom: 2px; }
-        .cow-name { font-size: 1.1rem; font-weight: 900; color: #fff; display: block; line-height: 1.2; letter-spacing: -0.02em; white-space: nowrap; }
+        .cow-name { font-size: clamp(0.9rem, 4vw, 1.1rem); font-weight: 900; color: #fff; display: block; white-space: nowrap; }
         .cow-owner { font-size: 0.45rem; color: #999; display: block; margin-top: 3px; }
 
         .bantuke-text { font-size: 0.7rem; color: #f1c40f; font-weight: 900; display: block; margin-bottom: 8px; white-space: nowrap; }
-        .result-row { display: flex; border-top: 1px solid #444; padding-top: 6px; align-items: center; justify-content: center; width: 98%; margin: 0 auto; }
-        .res-win { width: 20%; font-size: 0.85rem; font-weight: bold; color: #e60000; line-height: 1; text-align: center; }
-        .res-time { width: 60%; font-family: 'Oswald', sans-serif; font-size: 0.65rem; color: #fff; border-left: 1px solid #333; border-right: 1px solid #333; }
+        .result-row { display: flex; border-top: 1px solid #444; padding-top: 6px; align-items: center; justify-content: center; width: 100%; }
+        .res-win { width: 25%; font-size: 0.85rem; font-weight: bold; color: #e60000; text-align: center; }
+        .res-time { width: 50%; font-family: 'Oswald', sans-serif; font-size: 0.65rem; color: #fff; border-left: 1px solid #333; border-right: 1px solid #333; }
     </style>
 </head>
 <body>
@@ -66,12 +69,8 @@
 <div class="bg-overlay"></div>
 
 <nav class="nav-container">
-    <div class="nav-row">
-        <a href="#">ホーム</a><a href="#">対戦表</a><a href="#">戦歴検索</a>
-    </div>
-    <div class="nav-row">
-        <a href="#">予想ページ</a><a href="#">徳之島闘牛歴代王者</a>
-    </div>
+    <div class="nav-row"><a href="#">ホーム</a><a href="#">対戦表</a><a href="#">戦歴検索</a></div>
+    <div class="nav-row"><a href="#">予想ページ</a><a href="#">徳之島闘牛歴代王者</a></div>
 </nav>
 
 <div class="header-container">
