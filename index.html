@@ -283,11 +283,6 @@ style="width:90px;margin-bottom:12px;">
 
 <div class="instagram-title">@togyunoshima</div>
 
-<div class="instagram-placeholder">
-
-
-</div>
-
 <a class="instagram-link"
 href="https://www.instagram.com/togyunoshima"
 target="_blank">
@@ -308,16 +303,17 @@ Instagramを見る
 </footer>
 
 <script>
-
 fetch("data/programs.json")
 .then(res => res.json())
 .then(data => {
 
-const latestFive=data.slice(0,5)
+const latestFive = [...data]
+  .sort((a, b) => b.id.localeCompare(a.id))
+  .slice(0, 5)
 
-const html=latestFive.map(item=>{
+const html = latestFive.map(item => {
 
-const title=item.title || item.date
+const title = item.title || item.date
 
 return `
 
@@ -337,10 +333,12 @@ ${title}
 
 }).join("")
 
-document.getElementById("latestTournament").innerHTML=html
+document.getElementById("latestTournament").innerHTML = html
 
 })
-
+.catch(() => {
+document.getElementById("latestTournament").innerHTML = "読み込みに失敗しました"
+})
 </script>
 
 </body>
