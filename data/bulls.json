@@ -1,1323 +1,2238 @@
 [
   {
     "id": "touki",
-    "name": "闘〜Touki〜気"
+    "display_name": "闘〜Touki〜気",
+    "former_names": [],
+    "exact_title": "闘〜Touki〜気"
   },
   {
     "id": "iltsushinwarugaki",
-    "name": "一心悪餓鬼"
+    "display_name": "一心悪餓鬼",
+    "former_names": [],
+    "exact_title": "一心悪餓鬼"
   },
   {
     "id": "zenshinbiran",
-    "name": "吉村畜産☆美乱(元 前心★美乱)"
+    "display_name": "吉村畜産☆美乱",
+    "former_names": [
+      "前心★美乱"
+    ],
+    "exact_title": "吉村畜産☆美乱(元 前心★美乱)"
   },
   {
     "id": "senryutogaihuzi",
-    "name": "結一千(元 千竜トガイ富士,元沖縄 天下一)"
+    "display_name": "結一千",
+    "former_names": [
+      "千竜トガイ富士",
+      "沖縄 天下一"
+    ],
+    "exact_title": "結一千(元 千竜トガイ富士,元沖縄 天下一)"
   },
   {
     "id": "hukuhiromaru",
-    "name": "龍(古)桜 福廣丸(元 龍神大王丸,大王丸,(真)大王丸)"
+    "display_name": "龍(古)桜 福廣丸",
+    "former_names": [
+      "龍神大王丸",
+      "大王丸",
+      "(真)大王丸"
+    ],
+    "exact_title": "龍(古)桜 福廣丸(元 龍神大王丸,大王丸,(真)大王丸)"
   },
   {
     "id": "toshimakairiki",
-    "name": "トシマ(元 十島魁力)"
+    "display_name": "トシマ",
+    "former_names": [
+      "十島魁力"
+    ],
+    "exact_title": "トシマ(元 十島魁力)"
   },
   {
     "id": "paripipo",
-    "name": "ぱぁーりーぴぃーぽぉ"
+    "display_name": "ぱぁーりーぴぃーぽぉ",
+    "former_names": [],
+    "exact_title": "ぱぁーりーぴぃーぽぉ"
   },
   {
     "id": "marugen",
-    "name": "マルゲン"
+    "display_name": "マルゲン",
+    "former_names": [],
+    "exact_title": "マルゲン"
   },
   {
     "id": "raikouou",
-    "name": "菜々海トガイ来浩桜(元 来浩桜,元沖縄 伊良皆圧送来浩桜)"
+    "display_name": "菜々海トガイ来浩桜",
+    "former_names": [
+      "来浩桜",
+      "沖縄 伊良皆圧送来浩桜"
+    ],
+    "exact_title": "菜々海トガイ来浩桜(元 来浩桜,元沖縄 伊良皆圧送来浩桜)"
   },
   {
     "id": "ihouzan",
-    "name": "伊鵬山"
+    "display_name": "伊鵬山",
+    "former_names": [],
+    "exact_title": "伊鵬山"
   },
   {
     "id": "tyurabosi",
-    "name": "美☆星(元沖縄 華☆丸)"
+    "display_name": "美☆星",
+    "former_names": [
+      "沖縄 華☆丸"
+    ],
+    "exact_title": "美☆星(元沖縄 華☆丸)"
   },
   {
     "id": "seizindousi",
-    "name": "成人(真)同志"
+    "display_name": "成人(真)同志",
+    "former_names": [],
+    "exact_title": "成人(真)同志"
   },
   {
     "id": "tibiken",
-    "name": "小美剣刀宝"
+    "display_name": "小美剣刀宝",
+    "former_names": [],
+    "exact_title": "小美剣刀宝"
   },
   {
     "id": "itibanbosi",
-    "name": "一番星"
+    "display_name": "一番星",
+    "former_names": [],
+    "exact_title": "一番星"
   },
   {
     "id": "totugekihakuryu",
-    "name": "小前田グループ 突撃白龍"
+    "display_name": "小前田グループ 突撃白龍",
+    "former_names": [],
+    "exact_title": "小前田グループ 突撃白龍"
   },
   {
     "id": "sannanboaoki",
-    "name": "三男坊碧希"
+    "display_name": "三男坊碧希",
+    "former_names": [],
+    "exact_title": "三男坊碧希"
   },
   {
     "id": "bontenmarukujyaku",
-    "name": "梵天丸朱雀"
+    "display_name": "梵天丸朱雀",
+    "former_names": [],
+    "exact_title": "梵天丸朱雀"
   },
   {
     "id": "mayatorasannanbo",
-    "name": "茉也虎三男坊"
+    "display_name": "茉也虎三男坊",
+    "former_names": [],
+    "exact_title": "茉也虎三男坊"
   },
   {
     "id": "totugekiyaltsutya",
-    "name": "突撃★ヤッチャ(元 花掛友人会栄冠)"
+    "display_name": "突撃★ヤッチャ",
+    "former_names": [
+      "花掛友人会栄冠"
+    ],
+    "exact_title": "突撃★ヤッチャ(元 花掛友人会栄冠)"
   },
   {
     "id": "tokonnakaryusyogou",
-    "name": "闘魂仲琉正號(元沖縄 仲琉正)"
+    "display_name": "闘魂仲琉正號",
+    "former_names": [
+      "沖縄 仲琉正"
+    ],
+    "exact_title": "闘魂仲琉正號(元沖縄 仲琉正)"
   },
   {
     "id": "kaishitenriki",
-    "name": "海志(寅)天力"
+    "display_name": "海志(寅)天力",
+    "former_names": [],
+    "exact_title": "海志(寅)天力"
   },
   {
     "id": "kisyodaijyaojr",
-    "name": "絆翔大蛇王Jr"
+    "display_name": "絆翔大蛇王Jr",
+    "former_names": [],
+    "exact_title": "絆翔大蛇王Jr"
   },
   {
     "id": "yusyoki",
-    "name": "賞 トロフィー 杯(元 勇松輝,元沖縄 剛毅花形)"
+    "display_name": "賞 トロフィー 杯",
+    "former_names": [
+      "勇松輝",
+      "沖縄 剛毅花形"
+    ],
+    "exact_title": "賞 トロフィー 杯(元 勇松輝,元沖縄 剛毅花形)"
   },
   {
     "id": "hukudatogai",
-    "name": "福田トガイ(元 楓佳トガイ)"
+    "display_name": "福田トガイ",
+    "former_names": [
+      "楓佳トガイ"
+    ],
+    "exact_title": "福田トガイ(元 楓佳トガイ)"
   },
   {
     "id": "%e8%bc%9d%e5%88%a9%e8%99%9f%e5%85%83-%e4%b8%80%e7%94%b7%e8%99%9f",
-    "name": "輝利號(元 一男號)"
+    "display_name": "輝利號",
+    "former_names": [
+      "一男號"
+    ],
+    "exact_title": "輝利號(元 一男號)"
   },
   {
     "id": "rikitomuso",
-    "name": "104×2会 力斗夢想"
+    "display_name": "104×2会 力斗夢想",
+    "former_names": [],
+    "exact_title": "104×2会 力斗夢想"
   },
   {
     "id": "haku",
-    "name": "晃建設従業員 覇久"
+    "display_name": "晃建設従業員 覇久",
+    "former_names": [],
+    "exact_title": "晃建設従業員 覇久"
   },
   {
     "id": "saltsukakozou-kiwami",
-    "name": "蹴球小僧 極(元 大來心,極)"
+    "display_name": "蹴球小僧 極",
+    "former_names": [
+      "大來心",
+      "極"
+    ],
+    "exact_title": "蹴球小僧 極(元 大來心,極)"
   },
   {
     "id": "onitora",
-    "name": "鬼虎"
+    "display_name": "鬼虎",
+    "former_names": [],
+    "exact_title": "鬼虎"
   },
   {
     "id": "sentounizuraiou",
-    "name": "戦闘ニーズ徠凰"
+    "display_name": "戦闘ニーズ徠凰",
+    "former_names": [],
+    "exact_title": "戦闘ニーズ徠凰"
   },
   {
     "id": "haruren",
-    "name": "春蓮(元 ヤンバシ会 Kｰ3)"
+    "display_name": "春蓮",
+    "former_names": [
+      "ヤンバシ会 Kｰ3"
+    ],
+    "exact_title": "春蓮(元 ヤンバシ会 Kｰ3)"
   },
   {
     "id": "ibukisakura",
-    "name": "伊吹桜"
+    "display_name": "伊吹桜",
+    "former_names": [],
+    "exact_title": "伊吹桜"
   },
   {
     "id": "tenryukagayaki",
-    "name": "天龍☆輝"
+    "display_name": "天龍☆輝",
+    "former_names": [],
+    "exact_title": "天龍☆輝"
   },
   {
     "id": "zensyokogyoogonryu",
-    "name": "全勝工業黄金龍"
+    "display_name": "全勝工業黄金龍",
+    "former_names": [],
+    "exact_title": "全勝工業黄金龍"
   },
   {
     "id": "tokontoratora",
-    "name": "闘魂トラトラ"
+    "display_name": "闘魂トラトラ",
+    "former_names": [],
+    "exact_title": "闘魂トラトラ"
   },
   {
     "id": "enha",
-    "name": "閻覇"
+    "display_name": "閻覇",
+    "former_names": [],
+    "exact_title": "閻覇"
   },
   {
     "id": "hideyoshitaihou",
-    "name": "秀吉大宝"
+    "display_name": "秀吉大宝",
+    "former_names": [],
+    "exact_title": "秀吉大宝"
   },
   {
     "id": "katuyamamusou",
-    "name": "勝山無双"
+    "display_name": "勝山無双",
+    "former_names": [],
+    "exact_title": "勝山無双"
   },
   {
     "id": "syousyuking",
-    "name": "二代目 八輝(元 翔柊王)"
+    "display_name": "二代目 八輝",
+    "former_names": [
+      "翔柊王"
+    ],
+    "exact_title": "二代目 八輝(元 翔柊王)"
   },
   {
     "id": "haruzirou",
-    "name": "林山いとこ会 はる次郎"
+    "display_name": "林山いとこ会 はる次郎",
+    "former_names": [],
+    "exact_title": "林山いとこ会 はる次郎"
   },
   {
     "id": "kamikazepanzirou",
-    "name": "神風パン次郎"
+    "display_name": "神風パン次郎",
+    "former_names": [],
+    "exact_title": "神風パン次郎"
   },
   {
     "id": "kokuhou",
-    "name": "闘(必勝)将 黒★宝"
+    "display_name": "闘(必勝)将 黒★宝",
+    "former_names": [],
+    "exact_title": "闘(必勝)将 黒★宝"
   },
   {
     "id": "gon",
-    "name": "東(祈)勝 ゴン"
+    "display_name": "東(祈)勝 ゴン",
+    "former_names": [],
+    "exact_title": "東(祈)勝 ゴン"
   },
   {
     "id": "yukenteniti",
-    "name": "勇健天一"
+    "display_name": "勇健天一",
+    "former_names": [],
+    "exact_title": "勇健天一"
   },
   {
     "id": "tosyodairiki",
-    "name": "闘将★大力"
+    "display_name": "闘将★大力",
+    "former_names": [],
+    "exact_title": "闘将★大力"
   },
   {
     "id": "bakuryu",
-    "name": "平成13・14年生 爆隆"
+    "display_name": "平成13・14年生 爆隆",
+    "former_names": [],
+    "exact_title": "平成13・14年生 爆隆"
   },
   {
     "id": "iltsushinarashi",
-    "name": "壱心嵐"
+    "display_name": "壱心嵐",
+    "former_names": [],
+    "exact_title": "壱心嵐"
   },
   {
     "id": "tomohanagata-miltsutyangou",
-    "name": "友花形 光ちゃん号"
+    "display_name": "友花形 光ちゃん号",
+    "former_names": [],
+    "exact_title": "友花形 光ちゃん号"
   },
   {
     "id": "tomoragyu",
-    "name": "友良牛"
+    "display_name": "友良牛",
+    "former_names": [],
+    "exact_title": "友良牛"
   },
   {
     "id": "masenahira",
-    "name": "真瀬名ヒーラー"
+    "display_name": "真瀬名ヒーラー",
+    "former_names": [],
+    "exact_title": "真瀬名ヒーラー"
   },
   {
     "id": "kokuryuou",
-    "name": "黒龍王"
+    "display_name": "黒龍王",
+    "former_names": [],
+    "exact_title": "黒龍王"
   },
   {
     "id": "toseikohaku",
-    "name": "藤野組 闘'勢琥珀(元沖縄 闘勢琥珀)"
+    "display_name": "藤野組 闘'勢琥珀",
+    "former_names": [
+      "沖縄 闘勢琥珀"
+    ],
+    "exact_title": "藤野組 闘'勢琥珀(元沖縄 闘勢琥珀)"
   },
   {
     "id": "butikamasi",
-    "name": "Superstar ぶちかまし(元 永岡牛,元沖縄 琉仁ぶちかまし)"
+    "display_name": "Superstar ぶちかまし",
+    "former_names": [
+      "永岡牛",
+      "沖縄 琉仁ぶちかまし"
+    ],
+    "exact_title": "Superstar ぶちかまし(元 永岡牛,元沖縄 琉仁ぶちかまし)"
   },
   {
     "id": "ritohanagata",
-    "name": "琉斗花形"
+    "display_name": "琉斗花形",
+    "former_names": [],
+    "exact_title": "琉斗花形"
   },
   {
     "id": "tokunari",
-    "name": "徳成(元 いぶき)"
+    "display_name": "徳成",
+    "former_names": [
+      "いぶき"
+    ],
+    "exact_title": "徳成(元 いぶき)"
   },
   {
     "id": "syansyan",
-    "name": "しゃんしゃん(元 超星香香,三八会,香香)"
+    "display_name": "しゃんしゃん",
+    "former_names": [
+      "超星香香",
+      "三八会",
+      "香香"
+    ],
+    "exact_title": "しゃんしゃん(元 超星香香,三八会,香香)"
   },
   {
     "id": "%e4%b8%89%e5%b0%86%e5%a4%a7%e4%bf%90%e5%90%b9",
-    "name": "三将大俐吹"
+    "display_name": "三将大俐吹",
+    "former_names": [],
+    "exact_title": "三将大俐吹"
   },
   {
     "id": "multsuku",
-    "name": "昇(政)龍 むっく"
+    "display_name": "昇(政)龍 むっく",
+    "former_names": [],
+    "exact_title": "昇(政)龍 むっく"
   },
   {
     "id": "yugenkouha",
-    "name": "ゆうちゃんトガイ(元 晴天荒鷲,有源紅覇,元沖縄 紅勝牙)"
+    "display_name": "ゆうちゃんトガイ",
+    "former_names": [
+      "晴天荒鷲",
+      "有源紅覇",
+      "沖縄 紅勝牙"
+    ],
+    "exact_title": "ゆうちゃんトガイ(元 晴天荒鷲,有源紅覇,元沖縄 紅勝牙)"
   },
   {
     "id": "ryutenryuharutora",
-    "name": "龍天龍晴虎"
+    "display_name": "龍天龍晴虎",
+    "former_names": [],
+    "exact_title": "龍天龍晴虎"
   },
   {
     "id": "okorinbo",
-    "name": "栄心晴(元 成人記念赤獣王,二代目赤獣王,怒倫坊)"
+    "display_name": "栄心晴",
+    "former_names": [
+      "成人記念赤獣王",
+      "二代目赤獣王",
+      "怒倫坊"
+    ],
+    "exact_title": "栄心晴(元 成人記念赤獣王,二代目赤獣王,怒倫坊)"
   },
   {
     "id": "tentenpandayua",
-    "name": "てんてんパンダ結愛(元 カンフーパンダ)"
+    "display_name": "てんてんパンダ結愛",
+    "former_names": [
+      "カンフーパンダ"
+    ],
+    "exact_title": "てんてんパンダ結愛(元 カンフーパンダ)"
   },
   {
     "id": "abaremuhomatsu",
-    "name": "暴れ無法松"
+    "display_name": "暴れ無法松",
+    "former_names": [],
+    "exact_title": "暴れ無法松"
   },
   {
     "id": "kukuru",
-    "name": "くくる(元 心玖留,元沖縄 保乃奨,闘勢心玖留)"
+    "display_name": "くくる",
+    "former_names": [
+      "心玖留",
+      "沖縄 保乃奨",
+      "闘勢心玖留"
+    ],
+    "exact_title": "くくる(元 心玖留,元沖縄 保乃奨,闘勢心玖留)"
   },
   {
     "id": "kanemitsuhakumai",
-    "name": "兼光白舞"
+    "display_name": "兼光白舞",
+    "former_names": [],
+    "exact_title": "兼光白舞"
   },
   {
     "id": "daikokuten",
-    "name": "大黒天"
+    "display_name": "大黒天",
+    "former_names": [],
+    "exact_title": "大黒天"
   },
   {
     "id": "hakushinryu",
-    "name": "白真竜(元 白神煌龍,白神龍)"
+    "display_name": "白真竜",
+    "former_names": [
+      "白神煌龍",
+      "白神龍"
+    ],
+    "exact_title": "白真竜(元 白神煌龍,白神龍)"
   },
   {
     "id": "tenryuhayabusa",
-    "name": "天龍はやぶさ"
+    "display_name": "天龍はやぶさ",
+    "former_names": [],
+    "exact_title": "天龍はやぶさ"
   },
   {
     "id": "nidaime-rikidozan",
-    "name": "二代目 力道山"
+    "display_name": "二代目 力道山",
+    "former_names": [],
+    "exact_title": "二代目 力道山"
   },
   {
     "id": "zenshingyu",
-    "name": "前心牛"
+    "display_name": "前心牛",
+    "former_names": [],
+    "exact_title": "前心牛"
   },
   {
     "id": "%e5%85%89%e5%a7%ab%e9%be%8d",
-    "name": "光姫龍"
+    "display_name": "光姫龍",
+    "former_names": [],
+    "exact_title": "光姫龍"
   },
   {
     "id": "maltsutoba",
-    "name": "まっとーばー(元 天水)"
+    "display_name": "まっとーばー",
+    "former_names": [
+      "天水"
+    ],
+    "exact_title": "まっとーばー(元 天水)"
   },
   {
     "id": "tensintogai",
-    "name": "天心★トガイ"
+    "display_name": "天心★トガイ",
+    "former_names": [],
+    "exact_title": "天心★トガイ"
   },
   {
     "id": "%e6%9d%b1%e5%92%8c%e6%8a%80%e7%a0%94%e9%be%8d%e8%88%9e",
-    "name": "東和技研龍舞"
+    "display_name": "東和技研龍舞",
+    "former_names": [],
+    "exact_title": "東和技研龍舞"
   },
   {
     "id": "kamikazeboitaisingou",
-    "name": "居酒屋ヤドカリ(元 神風暴威大慎号,久保商店)"
+    "display_name": "居酒屋ヤドカリ",
+    "former_names": [
+      "神風暴威大慎号",
+      "久保商店"
+    ],
+    "exact_title": "居酒屋ヤドカリ(元 神風暴威大慎号,久保商店)"
   },
   {
     "id": "jyosyohayate",
-    "name": "疾風(元 常勝ハヤテ,砕破,桓騎)"
+    "display_name": "疾風",
+    "former_names": [
+      "常勝ハヤテ",
+      "砕破",
+      "桓騎"
+    ],
+    "exact_title": "疾風(元 常勝ハヤテ,砕破,桓騎)"
   },
   {
     "id": "%e7%8f%80%e9%87%91%e9%be%8d",
-    "name": "珀金龍"
+    "display_name": "珀金龍",
+    "former_names": [],
+    "exact_title": "珀金龍"
   },
   {
     "id": "huzitatsu",
-    "name": "富士龍"
+    "display_name": "富士龍",
+    "former_names": [],
+    "exact_title": "富士龍"
   },
   {
     "id": "fightinghinata",
-    "name": "三強大力ひまり號(元 ファイティング日葵)"
+    "display_name": "三強大力ひまり號",
+    "former_names": [
+      "ファイティング日葵"
+    ],
+    "exact_title": "三強大力ひまり號(元 ファイティング日葵)"
   },
   {
     "id": "kyokushinryu",
-    "name": "極神龍"
+    "display_name": "極神龍",
+    "former_names": [],
+    "exact_title": "極神龍"
   },
   {
     "id": "rindaman",
-    "name": "蓮心☆力輝 リンダマン(元 富岡輪蛇)"
+    "display_name": "蓮心☆力輝 リンダマン",
+    "former_names": [
+      "富岡輪蛇"
+    ],
+    "exact_title": "蓮心☆力輝 リンダマン(元 富岡輪蛇)"
   },
   {
     "id": "jin",
-    "name": "JIN"
+    "display_name": "JIN",
+    "former_names": [],
+    "exact_title": "JIN"
   },
   {
     "id": "ibismaru",
-    "name": "IBIS丸"
+    "display_name": "IBIS丸",
+    "former_names": [],
+    "exact_title": "IBIS丸"
   },
   {
     "id": "kizuna",
-    "name": "絆"
+    "display_name": "絆",
+    "former_names": [],
+    "exact_title": "絆"
   },
   {
     "id": "munesyungoromaru",
-    "name": "角 天一(元 真牛虎,宗駿五郎丸)"
+    "display_name": "角 天一",
+    "former_names": [
+      "真牛虎",
+      "宗駿五郎丸"
+    ],
+    "exact_title": "角 天一(元 真牛虎,宗駿五郎丸)"
   },
   {
     "id": "nidaimesitibukai-kaido",
-    "name": "二代目七錻会 カイドウ(元 常勝斬鉄,元沖縄 永昇パンタ,永昇斬鉄,航進会斬鉄)"
+    "display_name": "二代目七錻会 カイドウ",
+    "former_names": [
+      "常勝斬鉄",
+      "沖縄 永昇パンタ",
+      "永昇斬鉄",
+      "航進会斬鉄"
+    ],
+    "exact_title": "二代目七錻会 カイドウ(元 常勝斬鉄,元沖縄 永昇パンタ,永昇斬鉄,航進会斬鉄)"
   },
   {
     "id": "ryugenitika",
-    "name": "龍弦一花"
+    "display_name": "龍弦一花",
+    "former_names": [],
+    "exact_title": "龍弦一花"
   },
   {
     "id": "ukenako",
-    "name": "宇堅アコー(元 琴櫻)"
+    "display_name": "宇堅アコー",
+    "former_names": [
+      "琴櫻"
+    ],
+    "exact_title": "宇堅アコー(元 琴櫻)"
   },
   {
     "id": "kameyamakyodaiboguwala",
-    "name": "剛剣(元 亀山三兄弟坊ぐわぁ,知念重機土木☆剛剣)"
+    "display_name": "剛剣",
+    "former_names": [
+      "亀山三兄弟坊ぐわぁ",
+      "知念重機土木☆剛剣"
+    ],
+    "exact_title": "剛剣(元 亀山三兄弟坊ぐわぁ,知念重機土木☆剛剣)"
   },
   {
     "id": "taiho",
-    "name": "大砲"
+    "display_name": "大砲",
+    "former_names": [],
+    "exact_title": "大砲"
   },
   {
     "id": "marukatsumarumo",
-    "name": "丸勝MARUMO(元 友心MARUMO)"
+    "display_name": "丸勝MARUMO",
+    "former_names": [
+      "友心MARUMO"
+    ],
+    "exact_title": "丸勝MARUMO(元 友心MARUMO)"
   },
   {
     "id": "hanakakeyuzinkai-karu",
-    "name": "花掛友人会 カール"
+    "display_name": "花掛友人会 カール",
+    "former_names": [],
+    "exact_title": "花掛友人会 カール"
   },
   {
     "id": "itigekitsu",
-    "name": "猿會小鉄。(元 一撃つ。)"
+    "display_name": "猿會小鉄。",
+    "former_names": [
+      "一撃つ。"
+    ],
+    "exact_title": "猿會小鉄。(元 一撃つ。)"
   },
   {
     "id": "sandaime-santoraayane",
-    "name": "突撃心虎(元 三代目 三虎あやね,三虎郁音)"
+    "display_name": "突撃心虎",
+    "former_names": [
+      "三代目 三虎あやね",
+      "三虎郁音"
+    ],
+    "exact_title": "突撃心虎(元 三代目 三虎あやね,三虎郁音)"
   },
   {
     "id": "%e3%83%a4%e3%83%b3%e3%83%90%e3%82%b7%e4%bc%9a-%e4%bb%81%e6%81%8b",
-    "name": "なんす嵐(元 ヤンバシ会 仁恋,ヤンバシ会 喜 琥士郎)"
+    "display_name": "なんす嵐",
+    "former_names": [
+      "ヤンバシ会 仁恋",
+      "ヤンバシ会 喜 琥士郎"
+    ],
+    "exact_title": "なんす嵐(元 ヤンバシ会 仁恋,ヤンバシ会 喜 琥士郎)"
   },
   {
     "id": "ajyamakozo",
-    "name": "亜蛇魔小僧"
+    "display_name": "亜蛇魔小僧",
+    "former_names": [],
+    "exact_title": "亜蛇魔小僧"
   },
   {
     "id": "shinbashikai-koziro",
-    "name": "新橋會 小次郎(元沖縄 小次郎)"
+    "display_name": "新橋會 小次郎",
+    "former_names": [
+      "沖縄 小次郎"
+    ],
+    "exact_title": "新橋會 小次郎(元沖縄 小次郎)"
   },
   {
     "id": "nidaime-kizuna",
-    "name": "ダルちゃん(元 ダルメシアン,二代目 絆)"
+    "display_name": "ダルちゃん",
+    "former_names": [
+      "ダルメシアン",
+      "二代目 絆"
+    ],
+    "exact_title": "ダルちゃん(元 ダルメシアン,二代目 絆)"
   },
   {
     "id": "kiyushin-shimatora",
-    "name": "絆結心 島虎"
+    "display_name": "絆結心 島虎",
+    "former_names": [],
+    "exact_title": "絆結心 島虎"
   },
   {
     "id": "mizukihakushinou",
-    "name": "みずき白神鷹"
+    "display_name": "みずき白神鷹",
+    "former_names": [],
+    "exact_title": "みずき白神鷹"
   },
   {
     "id": "mugenbyaltsuko",
-    "name": "夢玄白虎(元 侑玄白虎,心愛白雪)"
+    "display_name": "夢玄白虎",
+    "former_names": [
+      "侑玄白虎",
+      "心愛白雪"
+    ],
+    "exact_title": "夢玄白虎(元 侑玄白虎,心愛白雪)"
   },
   {
     "id": "bui",
-    "name": "小美剣武v威(元 武V威)"
+    "display_name": "小美剣武v威",
+    "former_names": [
+      "武V威"
+    ],
+    "exact_title": "小美剣武v威(元 武V威)"
   },
   {
     "id": "tosyotaihuakikogou",
-    "name": "闘将台風秋子号"
+    "display_name": "闘将台風秋子号",
+    "former_names": [],
+    "exact_title": "闘将台風秋子号"
   },
   {
     "id": "marutomidoushikaiematyan",
-    "name": "(富)同志会縁真ちゃん"
+    "display_name": "(富)同志会縁真ちゃん",
+    "former_names": [],
+    "exact_title": "(富)同志会縁真ちゃん"
   },
   {
     "id": "kikanbo",
-    "name": "鬼金坊"
+    "display_name": "鬼金坊",
+    "former_names": [],
+    "exact_title": "鬼金坊"
   },
   {
     "id": "tosyoryu-matenro",
-    "name": "丸亀(愛)同志会(元 闘(将)龍 摩天楼,つばさ丸亀山号)"
+    "display_name": "丸亀(愛)同志会",
+    "former_names": [
+      "闘(将)龍 摩天楼",
+      "つばさ丸亀山号"
+    ],
+    "exact_title": "丸亀(愛)同志会(元 闘(将)龍 摩天楼,つばさ丸亀山号)"
   },
   {
     "id": "nakayuzinkai-yumaou",
-    "name": "NAKA友人会 勇磨王(元 哲松)"
+    "display_name": "NAKA友人会 勇磨王",
+    "former_names": [
+      "哲松"
+    ],
+    "exact_title": "NAKA友人会 勇磨王(元 哲松)"
   },
   {
     "id": "daishinsyoryumiyasukegou",
-    "name": "大仁勝龍宮助号"
+    "display_name": "大仁勝龍宮助号",
+    "former_names": [],
+    "exact_title": "大仁勝龍宮助号"
   },
   {
     "id": "mamoshin",
-    "name": "摩守進"
+    "display_name": "摩守進",
+    "former_names": [],
+    "exact_title": "摩守進"
   },
   {
     "id": "onibusyo",
-    "name": "鬼武将"
+    "display_name": "鬼武将",
+    "former_names": [],
+    "exact_title": "鬼武将"
   },
   {
     "id": "toshinnizu",
-    "name": "闘心ニーズ"
+    "display_name": "闘心ニーズ",
+    "former_names": [],
+    "exact_title": "闘心ニーズ"
   },
   {
     "id": "hatisu",
-    "name": "蓮"
+    "display_name": "蓮",
+    "former_names": [],
+    "exact_title": "蓮"
   },
   {
     "id": "%e7%a2%a7%e5%bf%83",
-    "name": "碧心"
+    "display_name": "碧心",
+    "former_names": [],
+    "exact_title": "碧心"
   },
   {
     "id": "syotenryu",
-    "name": "照天龍"
+    "display_name": "照天龍",
+    "former_names": [],
+    "exact_title": "照天龍"
   },
   {
     "id": "kuurutogai",
-    "name": "孔潤トガイ(元 悟羽勇トガイ)"
+    "display_name": "孔潤トガイ",
+    "former_names": [
+      "悟羽勇トガイ"
+    ],
+    "exact_title": "孔潤トガイ(元 悟羽勇トガイ)"
   },
   {
     "id": "marushinarawashi",
-    "name": "マルシン荒鷲"
+    "display_name": "マルシン荒鷲",
+    "former_names": [],
+    "exact_title": "マルシン荒鷲"
   },
   {
     "id": "itsuki",
-    "name": "壱☆輝"
+    "display_name": "壱☆輝",
+    "former_names": [],
+    "exact_title": "壱☆輝"
   },
   {
     "id": "reltsuka",
-    "name": "烈⭕️夏"
+    "display_name": "烈⭕️夏",
+    "former_names": [],
+    "exact_title": "烈⭕️夏"
   },
   {
     "id": "shinbaraion",
-    "name": "倖羽獅子"
+    "display_name": "倖羽獅子",
+    "former_names": [],
+    "exact_title": "倖羽獅子"
   },
   {
     "id": "goldmoa",
-    "name": "GOLD☆萌愛"
+    "display_name": "GOLD☆萌愛",
+    "former_names": [],
+    "exact_title": "GOLD☆萌愛"
   },
   {
     "id": "maruaiitigeki",
-    "name": "丸愛一撃"
+    "display_name": "丸愛一撃",
+    "former_names": [],
+    "exact_title": "丸愛一撃"
   },
   {
     "id": "totugekipandatazuna",
-    "name": "森山工業突撃パンダ(元 芳倉美装突撃パンダ,突撃パンダ絆羽)"
+    "display_name": "森山工業突撃パンダ",
+    "former_names": [
+      "芳倉美装突撃パンダ",
+      "突撃パンダ絆羽"
+    ],
+    "exact_title": "森山工業突撃パンダ(元 芳倉美装突撃パンダ,突撃パンダ絆羽)"
   },
   {
     "id": "syoshinkotetu",
-    "name": "将真琥鉄(元 将真琥)"
+    "display_name": "将真琥鉄",
+    "former_names": [
+      "将真琥"
+    ],
+    "exact_title": "将真琥鉄(元 将真琥)"
   },
   {
     "id": "nidaime-yuzinhanagata",
-    "name": "二代目 友人花形"
+    "display_name": "二代目 友人花形",
+    "former_names": [],
+    "exact_title": "二代目 友人花形"
   },
   {
     "id": "morigumiryushinouki",
-    "name": "森組竜芯☆煌輝"
+    "display_name": "森組竜芯☆煌輝",
+    "former_names": [],
+    "exact_title": "森組竜芯☆煌輝"
   },
   {
     "id": "isentyu41nenseigou",
-    "name": "Victory(元 白松昇天山, 伊仙中41年生号)"
+    "display_name": "Victory",
+    "former_names": [
+      "白松昇天山",
+      "伊仙中41年生号"
+    ],
+    "exact_title": "Victory(元 白松昇天山, 伊仙中41年生号)"
   },
   {
     "id": "kokishin",
-    "name": "豊(祈)島 幸輝心"
+    "display_name": "豊(祈)島 幸輝心",
+    "former_names": [],
+    "exact_title": "豊(祈)島 幸輝心"
   },
   {
     "id": "kotorigou",
-    "name": "琴莉號(元 池田牛昇進王)"
+    "display_name": "琴莉號",
+    "former_names": [
+      "池田牛昇進王"
+    ],
+    "exact_title": "琴莉號(元 池田牛昇進王)"
   },
   {
     "id": "shiranami",
-    "name": "平成12・13年生 白波"
+    "display_name": "平成12・13年生 白波",
+    "former_names": [],
+    "exact_title": "平成12・13年生 白波"
   },
   {
     "id": "hukuryuou",
-    "name": "平成11年生 福龍桜"
+    "display_name": "平成11年生 福龍桜",
+    "former_names": [],
+    "exact_title": "平成11年生 福龍桜"
   },
   {
     "id": "goldseiya",
-    "name": "金色聖也"
+    "display_name": "金色聖也",
+    "former_names": [],
+    "exact_title": "金色聖也"
   },
   {
     "id": "ouga",
-    "name": "凰雅(元 海均将,力進夏渚)"
+    "display_name": "凰雅",
+    "former_names": [
+      "海均将",
+      "力進夏渚"
+    ],
+    "exact_title": "凰雅(元 海均将,力進夏渚)"
   },
   {
     "id": "taisyo-teltsupei",
-    "name": "大昇 鉄平(元 炭治郎)"
+    "display_name": "大昇 鉄平",
+    "former_names": [
+      "炭治郎"
+    ],
+    "exact_title": "大昇 鉄平(元 炭治郎)"
   },
   {
     "id": "edakoryu",
-    "name": "江田幸龍"
+    "display_name": "江田幸龍",
+    "former_names": [],
+    "exact_title": "江田幸龍"
   },
   {
     "id": "toyomasakunigou",
-    "name": "兄丸軍団 上野兄弟号(元 豊 正国号)"
+    "display_name": "兄丸軍団 上野兄弟号",
+    "former_names": [
+      "豊 正国号"
+    ],
+    "exact_title": "兄丸軍団 上野兄弟号(元 豊 正国号)"
   },
   {
     "id": "multsutimuti-ryushinriki",
-    "name": "むっちむち 隆心力"
+    "display_name": "むっちむち 隆心力",
+    "former_names": [],
+    "exact_title": "むっちむち 隆心力"
   },
   {
     "id": "okatudoushikai-syogun",
-    "name": "大勝同志会 将軍"
+    "display_name": "大勝同志会 将軍",
+    "former_names": [],
+    "exact_title": "大勝同志会 将軍"
   },
   {
     "id": "galibar",
-    "name": "GALIBAR"
+    "display_name": "GALIBAR",
+    "former_names": [],
+    "exact_title": "GALIBAR"
   },
   {
     "id": "eitawakatoragou",
-    "name": "永太若虎號"
+    "display_name": "永太若虎號",
+    "former_names": [],
+    "exact_title": "永太若虎號"
   },
   {
     "id": "daisangendoushigou",
-    "name": "大三元同志號"
+    "display_name": "大三元同志號",
+    "former_names": [],
+    "exact_title": "大三元同志號"
   },
   {
     "id": "toushin",
-    "name": "闘進(元 蒼龍)"
+    "display_name": "闘進",
+    "former_names": [
+      "蒼龍"
+    ],
+    "exact_title": "闘進(元 蒼龍)"
   },
   {
     "id": "houryokuenhanagatateltsushigou",
-    "name": "宝緑園花形鉄志號(元 一千映,二代目 おゆき號)"
+    "display_name": "宝緑園花形鉄志號",
+    "former_names": [
+      "一千映",
+      "二代目 おゆき號"
+    ],
+    "exact_title": "宝緑園花形鉄志號(元 一千映,二代目 おゆき號)"
   },
   {
     "id": "abareyamaushi",
-    "name": "暴れ邪馬丑"
+    "display_name": "暴れ邪馬丑",
+    "former_names": [],
+    "exact_title": "暴れ邪馬丑"
   },
   {
     "id": "bar-sinka-taketoraou",
-    "name": "Bar Sinka 武虎煌"
+    "display_name": "Bar Sinka 武虎煌",
+    "former_names": [],
+    "exact_title": "Bar Sinka 武虎煌"
   },
   {
     "id": "jyosyoiltsukaku",
-    "name": "上昇一角(元 あたり実業)"
+    "display_name": "上昇一角",
+    "former_names": [
+      "あたり実業"
+    ],
+    "exact_title": "上昇一角(元 あたり実業)"
   },
   {
     "id": "yatagarasu",
-    "name": "八咫烏(元 豪縁)"
+    "display_name": "八咫烏",
+    "former_names": [
+      "豪縁"
+    ],
+    "exact_title": "八咫烏(元 豪縁)"
   },
   {
     "id": "kikaku-shimadoraku",
-    "name": "企画 島牛楽(元 二代目 大陸王)"
+    "display_name": "企画 島牛楽",
+    "former_names": [
+      "二代目 大陸王"
+    ],
+    "exact_title": "企画 島牛楽(元 二代目 大陸王)"
   },
   {
     "id": "rateru",
-    "name": "ラーテル(元 突弾ラーテル)"
+    "display_name": "ラーテル",
+    "former_names": [
+      "突弾ラーテル"
+    ],
+    "exact_title": "ラーテル(元 突弾ラーテル)"
   },
   {
     "id": "yuhasogyogaltsuki",
-    "name": "友羽総業牙♡鬼"
+    "display_name": "友羽総業牙♡鬼",
+    "former_names": [],
+    "exact_title": "友羽総業牙♡鬼"
   },
   {
     "id": "beruako",
-    "name": "ベルアコー"
+    "display_name": "ベルアコー",
+    "former_names": [],
+    "exact_title": "ベルアコー"
   },
   {
     "id": "shinkiryu",
-    "name": "心樹龍(元 心花紋)"
+    "display_name": "心樹龍",
+    "former_names": [
+      "心花紋"
+    ],
+    "exact_title": "心樹龍(元 心花紋)"
   },
   {
     "id": "kokusyobin",
-    "name": "黒勝瓶"
+    "display_name": "黒勝瓶",
+    "former_names": [],
+    "exact_title": "黒勝瓶"
   },
   {
     "id": "tengatogai",
-    "name": "銭亀(元 天雅トガイ)"
+    "display_name": "銭亀",
+    "former_names": [
+      "天雅トガイ"
+    ],
+    "exact_title": "銭亀(元 天雅トガイ)"
   },
   {
     "id": "uekitikusangodairiki",
-    "name": "上木畜産五大力(元 桃若)"
+    "display_name": "上木畜産五大力",
+    "former_names": [
+      "桃若"
+    ],
+    "exact_title": "上木畜産五大力(元 桃若)"
   },
   {
     "id": "yanbashikai-maltsushigura",
-    "name": "鉄拳(元 ヤンバシ会 驀,元沖縄 驀(まっしぐら)宜野王)"
+    "display_name": "鉄拳",
+    "former_names": [
+      "ヤンバシ会 驀",
+      "沖縄 驀(まっしぐら)宜野王"
+    ],
+    "exact_title": "鉄拳(元 ヤンバシ会 驀,元沖縄 驀(まっしぐら)宜野王)"
   },
   {
     "id": "hatsuki",
-    "name": "MK友人会 千両(元 千竜パンダ蓮翔,八輝,千寿)"
+    "display_name": "MK友人会 千両",
+    "former_names": [
+      "千竜パンダ蓮翔",
+      "八輝",
+      "千寿"
+    ],
+    "exact_title": "MK友人会 千両(元 千竜パンダ蓮翔,八輝,千寿)"
   },
   {
     "id": "kokutenouki",
-    "name": "黒天桜輝"
+    "display_name": "黒天桜輝",
+    "former_names": [],
+    "exact_title": "黒天桜輝"
   },
   {
     "id": "yoshidadairiki",
-    "name": "吉田大力"
+    "display_name": "吉田大力",
+    "former_names": [],
+    "exact_title": "吉田大力"
   },
   {
     "id": "toyoshimatatsushinhou",
-    "name": "豊島達心宝"
+    "display_name": "豊島達心宝",
+    "former_names": [],
+    "exact_title": "豊島達心宝"
   },
   {
     "id": "seishinpandamihou",
-    "name": "誠信パンダ美宝"
+    "display_name": "誠信パンダ美宝",
+    "former_names": [],
+    "exact_title": "誠信パンダ美宝"
   },
   {
     "id": "sahiragou",
-    "name": "伊波進號(元 佐平号)"
+    "display_name": "伊波進號",
+    "former_names": [
+      "佐平号"
+    ],
+    "exact_title": "伊波進號(元 佐平号)"
   },
   {
     "id": "kaishinzan",
-    "name": "海進山"
+    "display_name": "海進山",
+    "former_names": [],
+    "exact_title": "海進山"
   },
   {
     "id": "paburo",
-    "name": "覇武露"
+    "display_name": "覇武露",
+    "former_names": [],
+    "exact_title": "覇武露"
   },
   {
     "id": "sankoushinryu",
-    "name": "三幸真琉"
+    "display_name": "三幸真琉",
+    "former_names": [],
+    "exact_title": "三幸真琉"
   },
   {
     "id": "sakishinryu",
-    "name": "咲進龍(元 昭和62年生 昇進龍)"
+    "display_name": "咲進龍",
+    "former_names": [
+      "昭和62年生 昇進龍"
+    ],
+    "exact_title": "咲進龍(元 昭和62年生 昇進龍)"
   },
   {
     "id": "motoyamayuihou",
-    "name": "結宝(元 基山結宝)"
+    "display_name": "結宝",
+    "former_names": [
+      "基山結宝"
+    ],
+    "exact_title": "結宝(元 基山結宝)"
   },
   {
     "id": "kingorca",
-    "name": "王King orca鯱"
+    "display_name": "王King orca鯱",
+    "former_names": [],
+    "exact_title": "王King orca鯱"
   },
   {
     "id": "motoyamataison",
-    "name": "基山太孫"
+    "display_name": "基山太孫",
+    "former_names": [],
+    "exact_title": "基山太孫"
   },
   {
     "id": "okibakugeki",
-    "name": "隠岐爆撃(元 王将)"
+    "display_name": "隠岐爆撃",
+    "former_names": [
+      "王将"
+    ],
+    "exact_title": "隠岐爆撃(元 王将)"
   },
   {
     "id": "syoryuken",
-    "name": "白闘山(元 昇龍拳,蒙武)"
+    "display_name": "白闘山",
+    "former_names": [
+      "昇龍拳",
+      "蒙武"
+    ],
+    "exact_title": "白闘山(元 昇龍拳,蒙武)"
   },
   {
     "id": "bunan",
-    "name": "武南"
+    "display_name": "武南",
+    "former_names": [],
+    "exact_title": "武南"
   },
   {
     "id": "hukudasyouten",
-    "name": "福田商店万葉号"
+    "display_name": "福田商店万葉号",
+    "former_names": [],
+    "exact_title": "福田商店万葉号"
   },
   {
     "id": "yuhasogyutennouou",
-    "name": "友羽総業天王鬼(元沖縄 南星神刃,勝山天王)"
+    "display_name": "友羽総業天王鬼",
+    "former_names": [
+      "沖縄 南星神刃",
+      "勝山天王"
+    ],
+    "exact_title": "友羽総業天王鬼(元沖縄 南星神刃,勝山天王)"
   },
   {
     "id": "yuritataltsutyu",
-    "name": "ゆーりーたっちゅう"
+    "display_name": "ゆーりーたっちゅう",
+    "former_names": [],
+    "exact_title": "ゆーりーたっちゅう"
   },
   {
     "id": "mamikazeraishin",
-    "name": "神風蛇鬼徠慎號"
+    "display_name": "神風蛇鬼徠慎號",
+    "former_names": [],
+    "exact_title": "神風蛇鬼徠慎號"
   },
   {
     "id": "renshin",
-    "name": "蓮-Renshin-心(元八重山 チーズ)"
+    "display_name": "蓮-Renshin-心",
+    "former_names": [
+      "八重山 チーズ"
+    ],
+    "exact_title": "蓮-Renshin-心(元八重山 チーズ)"
   },
   {
     "id": "sentosyaneru",
-    "name": "猛虎(元 戦闘シャネル)"
+    "display_name": "猛虎",
+    "former_names": [
+      "戦闘シャネル"
+    ],
+    "exact_title": "猛虎(元 戦闘シャネル)"
   },
   {
     "id": "yushinking",
-    "name": "友心キング"
+    "display_name": "友心キング",
+    "former_names": [],
+    "exact_title": "友心キング"
   },
   {
     "id": "kyokusyoryu",
-    "name": "極小龍"
+    "display_name": "極小龍",
+    "former_names": [],
+    "exact_title": "極小龍"
   },
   {
     "id": "rikkun",
-    "name": "RIKKUN"
+    "display_name": "RIKKUN",
+    "former_names": [],
+    "exact_title": "RIKKUN"
   },
   {
     "id": "yugeki",
-    "name": "遊撃"
+    "display_name": "遊撃",
+    "former_names": [],
+    "exact_title": "遊撃"
   },
   {
     "id": "%e4%b9%be%e5%9d%a4%e4%b8%80%e6%93%b2%e6%b5%ac%e5%8f%b6%e5%8f%b7",
-    "name": "乾坤一擲浬叶号"
+    "display_name": "乾坤一擲浬叶号",
+    "former_names": [],
+    "exact_title": "乾坤一擲浬叶号"
   },
   {
     "id": "matoi",
-    "name": "纒"
+    "display_name": "纒",
+    "former_names": [],
+    "exact_title": "纒"
   },
   {
     "id": "tyurasan",
-    "name": "美(ちゅらさん)三(元 大勝金龍)"
+    "display_name": "美(ちゅらさん)三",
+    "former_names": [
+      "大勝金龍"
+    ],
+    "exact_title": "美(ちゅらさん)三(元 大勝金龍)"
   },
   {
     "id": "%e8%99%8e%e5%a3%b1%e8%aa%89",
-    "name": "虎壱誉"
+    "display_name": "虎壱誉",
+    "former_names": [],
+    "exact_title": "虎壱誉"
   },
   {
     "id": "%e5%8d%97%e6%b5%b7%e7%8e%8b%e5%87%b0",
-    "name": "南海王凰"
+    "display_name": "南海王凰",
+    "former_names": [],
+    "exact_title": "南海王凰"
   },
   {
     "id": "mr-k",
-    "name": "Mr.K"
+    "display_name": "Mr.K",
+    "former_names": [],
+    "exact_title": "Mr.K"
   },
   {
     "id": "akatora",
-    "name": "赤とら(元 美王,朱闘嵐)"
+    "display_name": "赤とら",
+    "former_names": [
+      "美王",
+      "朱闘嵐"
+    ],
+    "exact_title": "赤とら(元 美王,朱闘嵐)"
   },
   {
     "id": "onidaruma",
-    "name": "鬼達磨"
+    "display_name": "鬼達磨",
+    "former_names": [],
+    "exact_title": "鬼達磨"
   },
   {
     "id": "itadaki",
-    "name": "頂"
+    "display_name": "頂",
+    "former_names": [],
+    "exact_title": "頂"
   },
   {
     "id": "itsuki-2",
-    "name": "壱~itsuki~輝"
+    "display_name": "壱~itsuki~輝",
+    "former_names": [],
+    "exact_title": "壱~itsuki~輝"
   },
   {
     "id": "nidaime-raltukipandakoshin",
-    "name": "二代目 ラッキーパンダ航心"
+    "display_name": "二代目 ラッキーパンダ航心",
+    "former_names": [],
+    "exact_title": "二代目 ラッキーパンダ航心"
   },
   {
     "id": "%e5%bc%b7%e8%a5%b2%e8%be%9b%e5%af%8c%e5%a3%ab",
-    "name": "強襲辛富士"
+    "display_name": "強襲辛富士",
+    "former_names": [],
+    "exact_title": "強襲辛富士"
   },
   {
     "id": "%e8%b1%8a%e9%a2%a8%e3%83%91%e3%83%b3%e3%83%80",
-    "name": "豊風パンダ"
+    "display_name": "豊風パンダ",
+    "former_names": [],
+    "exact_title": "豊風パンダ"
   },
   {
     "id": "%e8%bd%9f%e5%8a%9b",
-    "name": "轟力"
+    "display_name": "轟力",
+    "former_names": [],
+    "exact_title": "轟力"
   },
   {
     "id": "%e4%b8%80%e8%99%8e%e5%85%83-%e5%b8%86%e8%88%b9%e8%8a%b1",
-    "name": "一虎(元 帆船花)"
+    "display_name": "一虎",
+    "former_names": [
+      "帆船花"
+    ],
+    "exact_title": "一虎(元 帆船花)"
   },
   {
     "id": "%e4%b8%80%e6%92%83%e3%83%9e%e3%83%ab%e3%81%a1%e3%82%83%e3%82%93",
-    "name": "一撃マルちゃん"
+    "display_name": "一撃マルちゃん",
+    "former_names": [],
+    "exact_title": "一撃マルちゃん"
   },
   {
     "id": "%e5%86%85%e8%88%9e%e3%80%86%e4%b9%b1",
-    "name": "内舞〆乱"
+    "display_name": "内舞〆乱",
+    "former_names": [],
+    "exact_title": "内舞〆乱"
   },
   {
     "id": "%e9%97%98%e5%b0%86%e2%99%a1%e5%87%9b%e3%80%85%e5%85%83-%e5%8b%87%e6%b0%97%e5%87%9b%e3%80%85",
-    "name": "闘将♡凛々(元 勇気凛々)"
+    "display_name": "闘将♡凛々",
+    "former_names": [
+      "勇気凛々"
+    ],
+    "exact_title": "闘将♡凛々(元 勇気凛々)"
   },
   {
     "id": "%e9%be%8d%e8%8b%b1%e3%83%88%e3%82%ac%e3%82%a4",
-    "name": "龍英トガイ"
+    "display_name": "龍英トガイ",
+    "former_names": [],
+    "exact_title": "龍英トガイ"
   },
   {
     "id": "%e5%88%80%e5%89%a3%e4%b9%b1%e8%88%9eaka",
-    "name": "RED BULL(元 刀剣乱舞Aka)"
+    "display_name": "RED BULL",
+    "former_names": [
+      "刀剣乱舞Aka"
+    ],
+    "exact_title": "RED BULL(元 刀剣乱舞Aka)"
   },
   {
     "id": "%e9%be%8d%e7%be%bd%e8%bc%9d%e9%a1%98%e5%a4%a2",
-    "name": "龍羽輝願夢(元沖縄 みゆわの願夢,優力也願夢)"
+    "display_name": "龍羽輝願夢",
+    "former_names": [
+      "沖縄 みゆわの願夢",
+      "優力也願夢"
+    ],
+    "exact_title": "龍羽輝願夢(元沖縄 みゆわの願夢,優力也願夢)"
   },
   {
     "id": "%e4%b8%8e%e9%82%a3%e5%9b%bd%e7%89%a1%e4%b8%b9",
-    "name": "与那国牡丹"
+    "display_name": "与那国牡丹",
+    "former_names": [],
+    "exact_title": "与那国牡丹"
   },
   {
     "id": "%e8%bc%9d%e3%81%91%e2%98%86%e7%9c%9f%e9%be%8d%e6%98%9f",
-    "name": "輝け☆真龍星"
+    "display_name": "輝け☆真龍星",
+    "former_names": [],
+    "exact_title": "輝け☆真龍星"
   },
   {
     "id": "%e5%a4%a9%e7%a5%9e%e6%9c%83-%e9%97%98%e7%89%99%e5%a8%81",
-    "name": "天神會 闘牙威"
+    "display_name": "天神會 闘牙威",
+    "former_names": [],
+    "exact_title": "天神會 闘牙威"
   },
   {
     "id": "%e5%8d%83%e7%ab%9c",
-    "name": "千竜"
+    "display_name": "千竜",
+    "former_names": [],
+    "exact_title": "千竜"
   },
   {
     "id": "51%e3%83%92%e3%83%bc%e3%82%b2%e3%83%bc%e5%85%83-%e6%98%ad%e5%90%89%e3%81%ae%e3%83%92%e3%83%bc%e3%82%b2%e3%83%bc",
-    "name": "52(ごっつ)ヒーゲー(元 昭吉のヒーゲー,51ヒーゲー)"
+    "display_name": "52(ごっつ)ヒーゲー",
+    "former_names": [
+      "昭吉のヒーゲー",
+      "51ヒーゲー"
+    ],
+    "exact_title": "52(ごっつ)ヒーゲー(元 昭吉のヒーゲー,51ヒーゲー)"
   },
   {
     "id": "%e6%88%a6%e9%97%98%e5%88%83%e7%89%99%e5%af%a6%e5%b7%a5%e6%a5%ad",
-    "name": "戦闘刃牙實工業"
+    "display_name": "戦闘刃牙實工業",
+    "former_names": [],
+    "exact_title": "戦闘刃牙實工業"
   },
   {
     "id": "%e5%9b%9b%e5%bc%b7%e5%b5%90-%e7%99%bd%e9%9a%86",
-    "name": "四強嵐 白隆"
+    "display_name": "四強嵐 白隆",
+    "former_names": [],
+    "exact_title": "四強嵐 白隆"
   },
   {
     "id": "%e7%88%86%e7%9c%9f%e4%b8%b8",
-    "name": "爆真丸"
+    "display_name": "爆真丸",
+    "former_names": [],
+    "exact_title": "爆真丸"
   },
   {
     "id": "%e5%b1%b1%e5%b5%90",
-    "name": "山嵐"
+    "display_name": "山嵐",
+    "former_names": [],
+    "exact_title": "山嵐"
   },
   {
     "id": "%e5%bc%98%e5%81%a5%e5%8f%8b%e4%ba%ba%e4%bc%9a%e5%8b%9d%e5%8d%97%e6%a1%9c",
-    "name": "弘健友人会勝南桜"
+    "display_name": "弘健友人会勝南桜",
+    "former_names": [],
+    "exact_title": "弘健友人会勝南桜"
   },
   {
     "id": "%e9%87%8d%e7%94%b0%e5%bb%ba%e8%a8%ad%e8%99%9f",
-    "name": "重田建設號"
+    "display_name": "重田建設號",
+    "former_names": [],
+    "exact_title": "重田建設號"
   },
   {
     "id": "%e5%84%aa%e8%aa%a0%e3%82%a2%e3%82%b3%e3%83%bc%e5%85%83-%e5%a4%a9%e5%bf%83%e3%81%95%e3%81%8f%e3%82%89%e5%85%83%e6%b2%96%e7%b8%84-%e5%8d%97%e6%98%9f%e6%9c%b1%e8%98%ad",
-    "name": "優誠アコー(元 天心さくら,元沖縄 南星朱蘭)"
+    "display_name": "優誠アコー",
+    "former_names": [
+      "天心さくら",
+      "沖縄 南星朱蘭"
+    ],
+    "exact_title": "優誠アコー(元 天心さくら,元沖縄 南星朱蘭)"
   },
   {
     "id": "%e6%86%b2%e5%a3%bd%e9%be%8d",
-    "name": "憲(壽)龍"
+    "display_name": "憲(壽)龍",
+    "former_names": [],
+    "exact_title": "憲(壽)龍"
   },
   {
     "id": "%e3%81%97%e3%82%93%e3%82%8a%e3%82%85%e3%81%86",
-    "name": "しんりゅう"
+    "display_name": "しんりゅう",
+    "former_names": [],
+    "exact_title": "しんりゅう"
   },
   {
     "id": "%e6%9d%be%e7%94%b0%e8%87%aa%e5%8b%95%e8%bb%8a-%e5%84%aa%e9%99%bd%e7%8e%8b",
-    "name": "輝赤(元 松田自動車 優陽王,虎王)"
+    "display_name": "輝赤",
+    "former_names": [
+      "松田自動車 優陽王",
+      "虎王"
+    ],
+    "exact_title": "輝赤(元 松田自動車 優陽王,虎王)"
   },
   {
     "id": "%e6%98%8a%e9%9b%85",
-    "name": "昊雅"
+    "display_name": "昊雅",
+    "former_names": [],
+    "exact_title": "昊雅"
   },
   {
     "id": "%e3%83%95%e3%82%af%e3%82%b7%e3%83%9e%e5%bb%ba%e8%a3%85-%e3%83%9d%e3%83%81",
-    "name": "フクシマ建装 ポチ"
+    "display_name": "フクシマ建装 ポチ",
+    "former_names": [],
+    "exact_title": "フクシマ建装 ポチ"
   },
   {
     "id": "%e5%8f%8b%e8%8a%b1%e5%bd%a2-%e5%85%89%e3%81%a1%e3%82%83%e3%82%93%e5%8f%b7%e3%83%91%e3%83%bc%e3%83%88ii%e5%85%83%e5%85%ab%e9%87%8d%e5%b1%b1-%e4%ba%8c%e4%bb%a3%e7%9b%ae%e3%82%ac%e3%83%9e%e3%81%a1",
-    "name": "角信(元 友花形&nbsp;光ちゃん号パートII,元八重山 二代目ガマちゃんパンダ)"
+    "display_name": "角信",
+    "former_names": [
+      "友花形&nbsp;光ちゃん号パートII",
+      "八重山 二代目ガマちゃんパンダ"
+    ],
+    "exact_title": "角信(元 友花形&nbsp;光ちゃん号パートII,元八重山 二代目ガマちゃんパンダ)"
   },
   {
     "id": "%e8%bc%9d%e5%bf%83%e5%a3%b1",
-    "name": "輝心壱"
+    "display_name": "輝心壱",
+    "former_names": [],
+    "exact_title": "輝心壱"
   },
   {
     "id": "%e6%82%a0%e9%9d%92%e7%85%8c",
-    "name": "悠青煌"
+    "display_name": "悠青煌",
+    "former_names": [],
+    "exact_title": "悠青煌"
   },
   {
     "id": "%e5%b9%b8%e5%92%8c%e9%be%8d%e5%85%83-%e5%86%86%e9%a6%99%e5%8f%8b%e5%8a%9b%e8%99%9f",
-    "name": "幸和龍(元 円香友力號)"
+    "display_name": "幸和龍",
+    "former_names": [
+      "円香友力號"
+    ],
+    "exact_title": "幸和龍(元 円香友力號)"
   },
   {
     "id": "%e5%a3%b1%e8%a6%87",
-    "name": "壱 いつは 覇"
+    "display_name": "壱 いつは 覇",
+    "former_names": [],
+    "exact_title": "壱 いつは 覇"
   },
   {
     "id": "%e5%a4%a2%e7%bf%94%e9%be%8d",
-    "name": "夢翔龍"
+    "display_name": "夢翔龍",
+    "former_names": [],
+    "exact_title": "夢翔龍"
   },
   {
     "id": "%e5%a4%a7%e9%87%91%e5%89%9b",
-    "name": "大金剛"
+    "display_name": "大金剛",
+    "former_names": [],
+    "exact_title": "大金剛"
   },
   {
     "id": "%e7%91%a0%e8%a1%a3%e5%a4%a7%e5%8a%9b",
-    "name": "瑠衣大力"
+    "display_name": "瑠衣大力",
+    "former_names": [],
+    "exact_title": "瑠衣大力"
   },
   {
     "id": "%e4%b8%8e%e8%ab%96%e6%8b%b3%e6%b3%95-%e5%8b%87%e3%83%88%e3%82%ac%e3%82%a4%e8%93%ae%e6%96%97",
-    "name": "与論拳法 勇トガイ蓮斗(元沖縄 マチー大城 昇龍)"
+    "display_name": "与論拳法 勇トガイ蓮斗",
+    "former_names": [
+      "沖縄 マチー大城 昇龍"
+    ],
+    "exact_title": "与論拳法 勇トガイ蓮斗(元沖縄 マチー大城 昇龍)"
   },
   {
     "id": "%e9%97%98%e5%b0%86%e2%98%86%e5%b2%a9%e9%89%84",
-    "name": "闘将☆岩鉄"
+    "display_name": "闘将☆岩鉄",
+    "former_names": [],
+    "exact_title": "闘将☆岩鉄"
   },
   {
     "id": "%e9%9b%b7%e7%a5%9e%e6%a1%9c%e8%8f%af%e3%82%ad%e3%82%ba%e3%83%8a%e8%99%9f",
-    "name": "雷神桜華キズナ號"
+    "display_name": "雷神桜華キズナ號",
+    "former_names": [],
+    "exact_title": "雷神桜華キズナ號"
   },
   {
     "id": "%e8%a6%87%e7%90%a5%e6%88%91",
-    "name": "覇琥我"
+    "display_name": "覇琥我",
+    "former_names": [],
+    "exact_title": "覇琥我"
   },
   {
     "id": "%e3%81%a0%e3%81%a0%e5%90%89%e4%ba%8c%e4%b8%96",
-    "name": "だだ吉二世"
+    "display_name": "だだ吉二世",
+    "former_names": [],
+    "exact_title": "だだ吉二世"
   },
   {
     "id": "%e6%8b%b3%e7%8e%8b",
-    "name": "拳王"
+    "display_name": "拳王",
+    "former_names": [],
+    "exact_title": "拳王"
   },
   {
     "id": "%e6%a5%b5%e6%98%87",
-    "name": "極心(元 極昇)"
+    "display_name": "極心",
+    "former_names": [
+      "極昇"
+    ],
+    "exact_title": "極心(元 極昇)"
   },
   {
     "id": "%e5%bf%97%e6%82%9f%e9%83%8e%e6%9c%83-%e5%a4%a9%e6%98%87%e9%be%8d",
-    "name": "志悟郎會 天昇龍"
+    "display_name": "志悟郎會 天昇龍",
+    "former_names": [],
+    "exact_title": "志悟郎會 天昇龍"
   },
   {
     "id": "%e3%81%94%e3%81%86%e3%81%a1%e3%82%83%e3%82%93",
-    "name": "ごうちゃん"
+    "display_name": "ごうちゃん",
+    "former_names": [],
+    "exact_title": "ごうちゃん"
   },
   {
     "id": "%e6%a3%ae%e5%b1%b1%e5%8f%b7",
-    "name": "彊寅花姫(元 森山号)"
+    "display_name": "彊寅花姫",
+    "former_names": [
+      "森山号"
+    ],
+    "exact_title": "彊寅花姫(元 森山号)"
   },
   {
     "id": "%e5%a4%a7%e5%92%8c%e6%92%ab%e5%ad%90",
-    "name": "大和撫子"
+    "display_name": "大和撫子",
+    "former_names": [],
+    "exact_title": "大和撫子"
   },
   {
     "id": "%e3%82%86%e3%81%86%e3%82%8a%e3%83%96%e3%83%ab%e5%b5%90",
-    "name": "ゆうりブル嵐"
+    "display_name": "ゆうりブル嵐",
+    "former_names": [],
+    "exact_title": "ゆうりブル嵐"
   },
   {
     "id": "%e5%b9%b3%e6%88%9018%e3%83%bb19%e5%b9%b4%e7%94%9f-%e4%be%8d%e8%a1%9b%e5%85%83-%e6%85%88%e8%8b%b1%e4%be%91%e7%8e%84%e4%be%8d%e8%8b%b1",
-    "name": "平成18・19年生 侍衛(元 慈英,侑玄侍英,元八重山 ジェイ)"
+    "display_name": "平成18・19年生 侍衛",
+    "former_names": [
+      "慈英",
+      "侑玄侍英",
+      "八重山 ジェイ"
+    ],
+    "exact_title": "平成18・19年生 侍衛(元 慈英,侑玄侍英,元八重山 ジェイ)"
   },
   {
     "id": "%e6%a1%93%e9%a8%8e",
-    "name": "桓騎"
+    "display_name": "桓騎",
+    "former_names": [],
+    "exact_title": "桓騎"
   },
   {
     "id": "%e5%a4%a7%e5%bf%83%e3%83%8b%e3%83%bc%e3%82%ba",
-    "name": "大心ニーズ"
+    "display_name": "大心ニーズ",
+    "former_names": [],
+    "exact_title": "大心ニーズ"
   },
   {
     "id": "%e7%87%88%e9%80%b2%e5%8a%9b",
-    "name": "燈進力"
+    "display_name": "燈進力",
+    "former_names": [],
+    "exact_title": "燈進力"
   },
   {
     "id": "%e4%b8%8a%e6%98%87%e8%bc%9d%e9%be%8d%e5%b9%b8",
-    "name": "上昇輝龍幸"
+    "display_name": "上昇輝龍幸",
+    "former_names": [],
+    "exact_title": "上昇輝龍幸"
   },
   {
     "id": "%e3%81%9f%e3%81%bf%e3%81%93%e8%8a%b1%e5%bd%a2",
-    "name": "たみこ花形(元八重山 パプリカ光ちゃん)"
+    "display_name": "たみこ花形",
+    "former_names": [
+      "八重山 パプリカ光ちゃん"
+    ],
+    "exact_title": "たみこ花形(元八重山 パプリカ光ちゃん)"
   },
   {
     "id": "%e6%ad%a6%e5%b0%86%e7%99%bd%e5%b5%90",
-    "name": "武将白嵐"
+    "display_name": "武将白嵐",
+    "former_names": [],
+    "exact_title": "武将白嵐"
   },
   {
     "id": "%e4%ba%8c%e4%bb%a3%e7%9b%ae-%e5%90%89%e5%b7%9d%e5%ae%9f%e6%a5%ad",
-    "name": "二代目 吉川実業"
+    "display_name": "二代目 吉川実業",
+    "former_names": [],
+    "exact_title": "二代目 吉川実業"
   },
   {
     "id": "%e5%87%9c%e9%81%93",
-    "name": "凜道"
+    "display_name": "凜道",
+    "former_names": [],
+    "exact_title": "凜道"
   },
   {
     "id": "%e5%a4%a7%e8%88%9e%e4%bc%b8",
-    "name": "大舞伸"
+    "display_name": "大舞伸",
+    "former_names": [],
+    "exact_title": "大舞伸"
   },
   {
     "id": "%e7%90%b4%e9%be%8d%e7%8e%8b",
-    "name": "琴龍王"
+    "display_name": "琴龍王",
+    "former_names": [],
+    "exact_title": "琴龍王"
   },
   {
     "id": "%e9%96%a2%e5%a4%a9%e3%83%88%e3%82%ac%e3%82%a4",
-    "name": "関天トガイ"
+    "display_name": "関天トガイ",
+    "former_names": [],
+    "exact_title": "関天トガイ"
   },
   {
     "id": "%e6%99%83%e7%ab%9c%e3%83%88%e3%82%ac%e3%82%a4",
-    "name": "晃竜トガイ"
+    "display_name": "晃竜トガイ",
+    "former_names": [],
+    "exact_title": "晃竜トガイ"
   },
   {
     "id": "%e7%aa%81%e6%92%83%e2%98%85%c6%b6",
-    "name": "平成13･14年生 Z(元 突撃★Ƶ)"
+    "display_name": "平成13･14年生 Z",
+    "former_names": [
+      "突撃★Ƶ"
+    ],
+    "exact_title": "平成13･14年生 Z(元 突撃★Ƶ)"
   },
   {
     "id": "%e4%b8%80%e5%a4%a9%e5%bc%b5",
-    "name": "56赤棟蛇(元 一天張)"
+    "display_name": "56赤棟蛇",
+    "former_names": [
+      "一天張"
+    ],
+    "exact_title": "56赤棟蛇(元 一天張)"
   },
   {
     "id": "%e4%bd%8f%e6%9c%a8%e9%87%8e-%e7%94%b7%e6%a2%85%e6%b2%a2",
-    "name": "住木野 男梅沢"
+    "display_name": "住木野 男梅沢",
+    "former_names": [],
+    "exact_title": "住木野 男梅沢"
   },
   {
     "id": "%e4%b8%8a%e9%9d%a2%e7%b8%84%f0%9f%8d%bacrown",
-    "name": "上面縄🍺CROWN"
+    "display_name": "上面縄🍺CROWN",
+    "former_names": [],
+    "exact_title": "上面縄🍺CROWN"
   },
   {
     "id": "%e5%ae%87%e8%89%af%e9%83%a8%e5%bc%b7%e7%8e%8b",
-    "name": "宇良部強王"
+    "display_name": "宇良部強王",
+    "former_names": [],
+    "exact_title": "宇良部強王"
   },
   {
     "id": "%e7%b5%90%e5%85%8e%e8%a6%87",
-    "name": "結兎覇"
+    "display_name": "結兎覇",
+    "former_names": [],
+    "exact_title": "結兎覇"
   },
   {
     "id": "%e5%a4%a7%e5%8b%9d%e5%8a%9b%e5%85%83-%e5%bc%b7%e8%a5%b2%e5%a4%a7%e5%8a%9b",
-    "name": "大(勝)力(元 強襲大力)"
+    "display_name": "大(勝)力",
+    "former_names": [
+      "強襲大力"
+    ],
+    "exact_title": "大(勝)力(元 強襲大力)"
   },
   {
     "id": "%e3%82%b5%e3%83%a0%e3%83%a9%e3%82%a4%e5%85%83%e6%b2%96%e7%b8%84-%e6%96%b0%e5%8a%9b%e6%ad%a6%e5%a3%ab%e6%ad%a6%e5%a3%ab",
-    "name": "サムライ(元沖縄 新力武士,武士)"
+    "display_name": "サムライ",
+    "former_names": [
+      "沖縄 新力武士",
+      "武士"
+    ],
+    "exact_title": "サムライ(元沖縄 新力武士,武士)"
   },
   {
     "id": "%e5%a4%a7%e9%ba%92%e9%ba%9f",
-    "name": "大麒麟"
+    "display_name": "大麒麟",
+    "former_names": [],
+    "exact_title": "大麒麟"
   },
   {
     "id": "%e6%a0%84%e4%bb%81%e5%a4%a7%e5%8a%9b",
-    "name": "栄仁大力"
+    "display_name": "栄仁大力",
+    "former_names": [],
+    "exact_title": "栄仁大力"
   },
   {
     "id": "%e8%99%8e%e5%87%b0",
-    "name": "虎凰"
+    "display_name": "虎凰",
+    "former_names": [],
+    "exact_title": "虎凰"
   },
   {
     "id": "%e4%ba%9c%e8%8f%af%e6%a2%a8%e5%85%83%e6%b2%96%e7%b8%84-%e4%ba%9c%e8%8f%af%e6%a2%a8%e8%b1%aa%e9%be%8d",
-    "name": "黄金無双(元 亜華梨,元沖縄 亜華梨豪龍)"
+    "display_name": "黄金無双",
+    "former_names": [
+      "亜華梨",
+      "沖縄 亜華梨豪龍"
+    ],
+    "exact_title": "黄金無双(元 亜華梨,元沖縄 亜華梨豪龍)"
   },
   {
     "id": "%e9%be%8d%e8%9b%87",
-    "name": "龍蛇"
+    "display_name": "龍蛇",
+    "former_names": [],
+    "exact_title": "龍蛇"
   },
   {
     "id": "__trashed",
-    "name": "茜"
+    "display_name": "茜",
+    "former_names": [],
+    "exact_title": "茜"
   },
   {
     "id": "%e8%b5%a4%e6%a1%9c%e5%ae%9d",
-    "name": "赤桜宝"
+    "display_name": "赤桜宝",
+    "former_names": [],
+    "exact_title": "赤桜宝"
   },
   {
     "id": "%e7%90%89%e7%90%83%e7%8f%80%e6%84%9b",
-    "name": "琉球珀愛"
+    "display_name": "琉球珀愛",
+    "former_names": [],
+    "exact_title": "琉球珀愛"
   },
   {
     "id": "%e4%b9%be%e5%9d%a4%e4%b8%80%e6%93%b2%e8%b5%a4%e6%a1%9c%e5%8f%b7",
-    "name": "乾坤一擲赤桜号"
+    "display_name": "乾坤一擲赤桜号",
+    "former_names": [],
+    "exact_title": "乾坤一擲赤桜号"
   },
   {
     "id": "%e9%be%8d%e6%a1%9c%e5%a4%a7%e3%83%90%e3%83%81",
-    "name": "龍桜大バチ"
+    "display_name": "龍桜大バチ",
+    "former_names": [],
+    "exact_title": "龍桜大バチ"
   },
   {
     "id": "%e9%ae%ab%e5%b3%b6%e3%83%91%e3%83%b3%e3%83%80",
-    "name": "鮫島パンダ"
+    "display_name": "鮫島パンダ",
+    "former_names": [],
+    "exact_title": "鮫島パンダ"
   },
   {
     "id": "%e5%8d%83%e8%a3%95%e7%95%9c%e7%94%a3-%e5%85%89%e9%be%8d",
-    "name": "千裕畜産 光龍"
+    "display_name": "千裕畜産 光龍",
+    "former_names": [],
+    "exact_title": "千裕畜産 光龍"
   },
   {
     "id": "%e6%a0%84%e5%8f%b7",
-    "name": "力心(元 ブルースカイ農園 栄号)"
+    "display_name": "力心",
+    "former_names": [
+      "ブルースカイ農園 栄号"
+    ],
+    "exact_title": "力心(元 ブルースカイ農園 栄号)"
   },
   {
     "id": "%e5%81%a5%e5%ae%9d",
-    "name": "健宝"
+    "display_name": "健宝",
+    "former_names": [],
+    "exact_title": "健宝"
   },
   {
     "id": "%e9%a2%a8%e9%9b%85",
-    "name": "風雅"
+    "display_name": "風雅",
+    "former_names": [],
+    "exact_title": "風雅"
   },
   {
     "id": "%e7%aa%81%e6%92%83%e7%99%bd%e5%b5%90%e5%85%83%e6%b2%96%e7%b8%84-%e7%8d%a3%e7%8e%8b%e3%83%91%e3%83%b3%e3%83%80%e7%aa%81%e6%92%83%e7%99%bd%e5%b5%90%e4%bc%8a%e6%b3%a2%e9%87%8d%e6%a9%9f%e2%98%86",
-    "name": "3年3組 突撃白嵐(元沖縄 獣王パンダ,突撃白嵐,伊波重機☆白嵐)"
+    "display_name": "3年3組 突撃白嵐",
+    "former_names": [
+      "沖縄 獣王パンダ",
+      "突撃白嵐",
+      "伊波重機☆白嵐"
+    ],
+    "exact_title": "3年3組 突撃白嵐(元沖縄 獣王パンダ,突撃白嵐,伊波重機☆白嵐)"
   },
   {
     "id": "%e7%aa%81%e6%92%83%e5%87%b0%e5%bf%97%e8%99%9f",
-    "name": "突撃凰志號"
+    "display_name": "突撃凰志號",
+    "former_names": [],
+    "exact_title": "突撃凰志號"
   },
   {
     "id": "%e3%81%84%e3%81%a4%e3%81%8d%e3%82%ab%e3%82%ad%e3%83%a4%e3%83%bc%e5%85%83%e6%b2%96%e7%b8%84-%e4%b8%8b%e5%9c%b0%e3%82%ab%e3%82%ad%e3%83%a4%e3%83%bc%e5%85%a8%e5%8b%9d%e5%b7%a5%e6%a5%ad%e3%82%ab",
-    "name": "いつきカキヤー(元沖縄 下地カキヤー,全勝工業カキヤー)"
+    "display_name": "いつきカキヤー",
+    "former_names": [
+      "沖縄 下地カキヤー",
+      "全勝工業カキヤー"
+    ],
+    "exact_title": "いつきカキヤー(元沖縄 下地カキヤー,全勝工業カキヤー)"
   },
   {
     "id": "%e7%88%86%e9%97%98",
-    "name": "〜爆battou闘〜"
+    "display_name": "〜爆battou闘〜",
+    "former_names": [],
+    "exact_title": "〜爆battou闘〜"
   },
   {
     "id": "%e6%81%b5%e7%99%bd%e7%ab%9c%e5%85%83%e6%b2%96%e7%b8%84-%e3%81%b9%e3%82%8b%e3%81%98%e3%82%83%e3%82%93",
-    "name": "恵白竜(元沖縄 べるじゃん)"
+    "display_name": "恵白竜",
+    "former_names": [
+      "沖縄 べるじゃん"
+    ],
+    "exact_title": "恵白竜(元沖縄 べるじゃん)"
   },
   {
     "id": "joker",
-    "name": "JOKER"
+    "display_name": "JOKER",
+    "former_names": [],
+    "exact_title": "JOKER"
   },
   {
     "id": "%e6%b5%b7%e7%b5%86%e5%bf%83%e5%a4%a9%e5%8f%a2%e9%9b%b2%e5%89%a3",
-    "name": "海(絆)心天叢雲剣"
+    "display_name": "海(絆)心天叢雲剣",
+    "former_names": [],
+    "exact_title": "海(絆)心天叢雲剣"
   },
   {
     "id": "%e6%94%bf%e5%b2%a1%e5%a1%97%e8%a3%85-%e5%92%8c%e6%a8%b9%e7%88%86%e5%bc%be",
-    "name": "政岡塗装 和樹爆弾"
+    "display_name": "政岡塗装 和樹爆弾",
+    "former_names": [],
+    "exact_title": "政岡塗装 和樹爆弾"
   },
   {
     "id": "%e7%aa%81%e6%92%83%e3%81%82%e3%81%8b%e3%82%8a%e5%8f%b7",
-    "name": "突撃あかり号"
+    "display_name": "突撃あかり号",
+    "former_names": [],
+    "exact_title": "突撃あかり号"
   },
   {
     "id": "%e3%83%9f%e3%83%8b%e8%bc%9d%e3%83%9f%e3%83%8b%e3%82%aa%e3%83%b3",
-    "name": "ミニ(輝)ミニオン"
+    "display_name": "ミニ(輝)ミニオン",
+    "former_names": [],
+    "exact_title": "ミニ(輝)ミニオン"
   },
   {
     "id": "%e9%a2%af%e8%8d%92%e5%8f%b7",
-    "name": "颯荒号"
+    "display_name": "颯荒号",
+    "former_names": [],
+    "exact_title": "颯荒号"
   },
   {
     "id": "%e9%be%8d%e7%a0%b4%e6%89%93",
-    "name": "龍破打"
+    "display_name": "龍破打",
+    "former_names": [],
+    "exact_title": "龍破打"
   },
   {
     "id": "%e9%9a%a0%e5%b2%90%e7%88%86%e5%bc%be",
-    "name": "隠岐爆弾"
+    "display_name": "隠岐爆弾",
+    "former_names": [],
+    "exact_title": "隠岐爆弾"
   },
   {
     "id": "%e6%8b%b3%e5%bf%83",
-    "name": "ヤンバシ会 凛然(元 拳心)"
+    "display_name": "ヤンバシ会 凛然",
+    "former_names": [
+      "拳心"
+    ],
+    "exact_title": "ヤンバシ会 凛然(元 拳心)"
   },
   {
     "id": "%e6%9d%b1%e4%b8%ad60%e5%90%8c%e5%bf%97%e8%99%9f%e5%85%83%e6%b2%96%e7%b8%84-%e7%8e%8b%e9%a7%bf",
-    "name": "東中60同志號(元沖縄 王駿)"
+    "display_name": "東中60同志號",
+    "former_names": [
+      "沖縄 王駿"
+    ],
+    "exact_title": "東中60同志號(元沖縄 王駿)"
   },
   {
     "id": "%e6%81%8b%e7%9c%9f%e7%85%8c",
-    "name": "中原牛(元 恋真煌)"
+    "display_name": "中原牛",
+    "former_names": [
+      "恋真煌"
+    ],
+    "exact_title": "中原牛(元 恋真煌)"
   },
   {
     "id": "%e5%a4%a2%e4%b9%83%e7%88%86%e5%bc%be",
-    "name": "夢乃爆弾"
+    "display_name": "夢乃爆弾",
+    "former_names": [],
+    "exact_title": "夢乃爆弾"
   },
   {
     "id": "%e6%9c%a8%e5%81%b6%e3%81%ae%e5%9d%8a",
-    "name": "木偶の坊"
+    "display_name": "木偶の坊",
+    "former_names": [],
+    "exact_title": "木偶の坊"
   },
   {
     "id": "%e4%b8%80%e9%96%83%e5%b0%8f%e5%8a%9b-%e3%82%b7%e3%83%ad%e3%82%a4%e3%83%b3%e3%82%b8%e3%83%a3%e3%83%bc",
-    "name": "一閃小力 シロインジャー"
+    "display_name": "一閃小力 シロインジャー",
+    "former_names": [],
+    "exact_title": "一閃小力 シロインジャー"
   },
   {
     "id": "%e8%99%8e-tiger-mask-%e9%9d%a2",
-    "name": "虎 tiger mask 面"
+    "display_name": "虎 tiger mask 面",
+    "former_names": [],
+    "exact_title": "虎 tiger mask 面"
   },
   {
     "id": "%e6%88%a6%e9%97%98%e8%bd%9f%e5%a4%a9",
-    "name": "戦闘轟天"
+    "display_name": "戦闘轟天",
+    "former_names": [],
+    "exact_title": "戦闘轟天"
   },
   {
     "id": "%e7%a6%8f%e4%b8%8e%e5%a4%a7%e5%8a%9b",
-    "name": "福与大力"
+    "display_name": "福与大力",
+    "former_names": [],
+    "exact_title": "福与大力"
   },
   {
     "id": "6125-2",
-    "name": "律〜RITSUKI〜希"
+    "display_name": "律〜RITSUKI〜希",
+    "former_names": [],
+    "exact_title": "律〜RITSUKI〜希"
   },
   {
     "id": "%e9%81%94-hiigerr-%e7%a3%a8",
-    "name": "達 Hiigerr 磨"
+    "display_name": "達 Hiigerr 磨",
+    "former_names": [],
+    "exact_title": "達 Hiigerr 磨"
   },
   {
     "id": "%e7%bf%94%e5%bf%83%e7%9a%87",
-    "name": "翔心皇"
+    "display_name": "翔心皇",
+    "former_names": [],
+    "exact_title": "翔心皇"
   },
   {
     "id": "%e9%be%8d%e6%98%9f%e5%8f%8b%e4%ba%ba-%e5%bf%83%e5%87%b0",
-    "name": "龍星友人 心凰"
+    "display_name": "龍星友人 心凰",
+    "former_names": [],
+    "exact_title": "龍星友人 心凰"
   },
   {
     "id": "%e5%b8%8c%e7%87%97",
-    "name": "希爛(元 希燗)"
+    "display_name": "希爛",
+    "former_names": [
+      "希燗"
+    ],
+    "exact_title": "希爛(元 希燗)"
   },
   {
     "id": "%e5%bd%a9%e5%89%a3%e3%83%88%e3%82%ac%e3%82%a4",
-    "name": "彩剣トガイ"
+    "display_name": "彩剣トガイ",
+    "former_names": [],
+    "exact_title": "彩剣トガイ"
   },
   {
     "id": "%e8%93%ae%e6%8d%b7",
-    "name": "蓮捷"
+    "display_name": "蓮捷",
+    "former_names": [],
+    "exact_title": "蓮捷"
   },
   {
     "id": "%e3%81%a0%e3%81%a0%e5%90%89%e4%ba%8c%e4%b8%96-2",
-    "name": "だだ吉二世"
+    "display_name": "だだ吉二世",
+    "former_names": [],
+    "exact_title": "だだ吉二世"
   },
   {
     "id": "%e5%b9%b3%e6%88%9012%ef%bd%a513%e5%b9%b4%e7%94%9f-%e5%8b%9d%e9%ac%a8",
-    "name": "平成12･13年生 勝鬨"
+    "display_name": "平成12･13年生 勝鬨",
+    "former_names": [],
+    "exact_title": "平成12･13年生 勝鬨"
   },
   {
     "id": "%e5%85%84%e4%b8%b8%e3%83%88%e3%82%ac%e3%82%a4",
-    "name": "兄丸トガイ"
+    "display_name": "兄丸トガイ",
+    "former_names": [],
+    "exact_title": "兄丸トガイ"
   },
   {
     "id": "%e5%87%9b%e5%8b%9d",
-    "name": "凛勝"
+    "display_name": "凛勝",
+    "former_names": [],
+    "exact_title": "凛勝"
   },
   {
     "id": "%e3%83%81%e3%83%93%e3%83%91%e3%83%b3%e3%83%80",
-    "name": "チビパンダ"
+    "display_name": "チビパンダ",
+    "former_names": [],
+    "exact_title": "チビパンダ"
   },
   {
     "id": "%e5%a4%a9%e7%a5%9e%e3%83%91%e3%83%b3%e3%83%80%e6%84%9b%e6%b1%90",
-    "name": "天神パンダ愛汐"
+    "display_name": "天神パンダ愛汐",
+    "former_names": [],
+    "exact_title": "天神パンダ愛汐"
   },
   {
     "id": "%e9%be%8d%e5%bc%a6%e7%a6%8f%e5%8a%9b",
-    "name": "龍弦福力"
+    "display_name": "龍弦福力",
+    "former_names": [],
+    "exact_title": "龍弦福力"
   },
   {
     "id": "%e5%a4%a9%e4%b8%8b%e4%b8%80%e5%93%81",
-    "name": "天下一品"
+    "display_name": "天下一品",
+    "former_names": [],
+    "exact_title": "天下一品"
   },
   {
     "id": "%e5%b0%8f%e5%8e%9f%e8%8d%92%e6%b3%a2%e5%85%83-%e6%88%a6%e9%97%98%e9%af%b1%e5%85%83%e6%b2%96%e7%b8%84-%e6%9c%9d%e8%b2%b4%e9%a6%ac%e5%a4%a9%e7%99%bd%e5%86%a0",
-    "name": "小原荒波(元 戦闘鯱,元沖縄 朝貴,馬天白冠)"
+    "display_name": "小原荒波",
+    "former_names": [
+      "戦闘鯱",
+      "沖縄 朝貴",
+      "馬天白冠"
+    ],
+    "exact_title": "小原荒波(元 戦闘鯱,元沖縄 朝貴,馬天白冠)"
   },
   {
     "id": "%e8%ba%8d%e5%85%83%e6%b2%96%e7%b8%84-%e8%80%80%e7%86%8a%e5%85%83%e9%99%b8%e5%bf%83",
-    "name": "耀(元沖縄 熊元陸心)"
+    "display_name": "耀",
+    "former_names": [
+      "沖縄 熊元陸心"
+    ],
+    "exact_title": "耀(元沖縄 熊元陸心)"
   },
   {
     "id": "%e4%ba%8c%e4%bb%a3%e7%9b%ae-%e5%87%9c%e5%8b%9d%e2%9d%a4%ef%b8%8e%e7%8f%a0%e5%87%9c",
-    "name": "二代目 凜勝❤︎珠凜"
+    "display_name": "二代目 凜勝❤︎珠凜",
+    "former_names": [],
+    "exact_title": "二代目 凜勝❤︎珠凜"
   },
   {
     "id": "%e5%b0%8f%e3%81%8f%e3%82%8e%e3%83%bc%e3%82%80%e3%82%93%e5%a4%a2",
-    "name": "小(くゎーむん)夢"
+    "display_name": "小(くゎーむん)夢",
+    "former_names": [],
+    "exact_title": "小(くゎーむん)夢"
   },
   {
     "id": "%e6%84%9b%e9%80%b2%e9%be%8d",
-    "name": "愛進龍"
+    "display_name": "愛進龍",
+    "former_names": [],
+    "exact_title": "愛進龍"
   },
   {
     "id": "%e7%bf%94%e9%be%8d%e7%9a%87%e3%82%bc%e3%83%83%e3%83%84",
-    "name": "翔龍皇ゼッツ"
+    "display_name": "翔龍皇ゼッツ",
+    "former_names": [],
+    "exact_title": "翔龍皇ゼッツ"
   },
   {
     "id": "%e6%b5%b7%e5%b8%86%e6%b1%90%e5%8d%83%e8%8b%b1%e5%ad%9d%e5%a4%a9%e4%b8%80",
-    "name": "海帆汐千英孝天一"
+    "display_name": "海帆汐千英孝天一",
+    "former_names": [],
+    "exact_title": "海帆汐千英孝天一"
   },
   {
     "id": "%e3%81%97%e3%81%83%e3%81%98%e3%82%83%e7%99%bd%e3%82%bf%e3%83%93%e8%8c%89%e4%b9%9f%e8%99%9f",
-    "name": "しぃじゃ白タビ茉也號"
+    "display_name": "しぃじゃ白タビ茉也號",
+    "former_names": [],
+    "exact_title": "しぃじゃ白タビ茉也號"
   },
   {
     "id": "%e7%b5%86%e5%85%83-%e3%83%91%e3%83%97%e3%83%aa%e3%82%ab",
-    "name": "絆(元 パプリカ)"
+    "display_name": "絆",
+    "former_names": [
+      "パプリカ"
+    ],
+    "exact_title": "絆(元 パプリカ)"
   },
   {
     "id": "%e8%bf%ab%e7%94%b0%e8%88%88%e7%94%a3%e3%83%90%e3%83%aa%e3%82%b6%e3%82%af",
-    "name": "迫田興産バリザク"
+    "display_name": "迫田興産バリザク",
+    "former_names": [],
+    "exact_title": "迫田興産バリザク"
   },
   {
     "id": "%e3%81%8d%e3%82%8a%e3%82%93%e7%b5%84-%e3%81%93%e3%81%93%e3%81%aa%e3%81%a1%e3%82%83%e3%82%93",
-    "name": "きりん組 ここなちゃん"
+    "display_name": "きりん組 ここなちゃん",
+    "former_names": [],
+    "exact_title": "きりん組 ここなちゃん"
   },
   {
     "id": "%e8%8a%b1%e6%8e%9b%e5%8f%8b%e4%ba%ba%e4%bc%9a-%e5%b5%90%e8%a6%87",
-    "name": "花掛友人会 嵐覇"
+    "display_name": "花掛友人会 嵐覇",
+    "former_names": [],
+    "exact_title": "花掛友人会 嵐覇"
   },
   {
     "id": "%e3%83%9f%e3%83%8b%e3%83%8f%e3%83%a4%e3%83%86%e8%99%9f",
-    "name": "ミニハヤテ號"
+    "display_name": "ミニハヤテ號",
+    "former_names": [],
+    "exact_title": "ミニハヤテ號"
   },
   {
     "id": "%e7%bf%94%e9%9a%86%e7%8e%8b",
-    "name": "翔隆王"
+    "display_name": "翔隆王",
+    "former_names": [],
+    "exact_title": "翔隆王"
   },
   {
     "id": "%e7%9f%b3%e5%8e%9f%e5%a4%a7%e5%ae%9d",
-    "name": "石原大宝"
+    "display_name": "石原大宝",
+    "former_names": [],
+    "exact_title": "石原大宝"
   },
   {
     "id": "%e9%a3%9b%e9%ad%9a",
-    "name": "飛魚"
+    "display_name": "飛魚",
+    "former_names": [],
+    "exact_title": "飛魚"
   },
   {
     "id": "6608-2",
-    "name": "三代目 八輝"
+    "display_name": "三代目 八輝",
+    "former_names": [],
+    "exact_title": "三代目 八輝"
   },
   {
     "id": "%e7%89%9b%e8%8b%a5%e7%90%89%e8%bc%9d%e4%b8%b8",
-    "name": "牛若琉輝丸"
+    "display_name": "牛若琉輝丸",
+    "former_names": [],
+    "exact_title": "牛若琉輝丸"
   }
 ]
 
