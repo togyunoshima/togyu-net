@@ -1,180 +1,432 @@
-<script>
-  const params = new URLSearchParams(location.search);
-  const programId = params.get("id");
-
-  const pageTitleEl = document.getElementById("pageTitle");
-  const metaDateEl = document.getElementById("metaDate");
-  const metaPlaceEl = document.getElementById("metaPlace");
-  const metaHostEl = document.getElementById("metaHost");
-  const metaPriceEl = document.getElementById("metaPrice");
-  const bodyEl = document.getElementById("programBody");
-  const errorEl = document.getElementById("error");
-
-  function escapeHtml(str) {
-    return String(str || "")
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#39;");
-  }
-
-  function formatJapaneseDate(dateStr){
-    if(!dateStr) return "";
-    const [y, m, d] = dateStr.split("-");
-    return `${Number(y)}年${Number(m)}月${Number(d)}日`;
-  }
-
-  function getProgramTitle(program){
-    if(program && program.title) return program.title;
-    if(program && program.date) return `${formatJapaneseDate(program.date)} 闘牛大会`;
-    return "対戦表";
-  }
-
-  function normalize(str) {
-    return String(str || "")
-      .replace(/\s+/g, "")
-      .replace(/[（）()]/g, "")
-      .trim();
-  }
-
-  function getBullSearchTargets(bull) {
-    const targets = [];
-
-    if (bull.display_name) targets.push(bull.display_name);
-    if (bull.name) targets.push(bull.name);
-    if (bull.exact_title) targets.push(bull.exact_title);
-
-    if (Array.isArray(bull.former_names)) {
-      bull.former_names.forEach(name => {
-        if (name) {
-          targets.push(name);
-          targets.push("元 " + name);
-          targets.push("元" + name);
-        }
-      });
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>対戦表 | 徳之島闘牛サイト</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Yuji+Syuku&display=swap" rel="stylesheet">
+  <style>
+    body{
+      margin:0;
+      padding:20px 10px 60px;
+      background:#050505;
+      color:#eee;
+      font-family:'Kaisei Tokumin', serif;
     }
 
-    return [...new Set(targets.map(normalize).filter(Boolean))];
-  }
-
-  function findBullIdByName(name, bulls) {
-    const target = normalize(name);
-    const found = bulls.find(bull => getBullSearchTargets(bull).includes(target));
-    return found ? found.id : null;
-  }
-
-  function makeRecordHtml(name, text, bulls){
-    const noteText = String(text || "").trim();
-
-    if(!noteText){
-      return "";
+    .container{
+      max-width:1100px;
+      margin:0 auto;
     }
 
-    if(noteText.includes("デビュー戦")){
-      return `<div class="bull-note">${escapeHtml(noteText)}</div>`;
+    .back-link{
+      display:inline-block;
+      margin-bottom:20px;
+      color:#fff;
+      text-decoration:none;
+      background:#111;
+      border:1px solid #333;
+      padding:10px 14px;
     }
 
-    const hasRecord =
-      /[0-9０-９]+勝/.test(noteText) ||
-      /[0-9０-９]+敗/.test(noteText) ||
-      /引分/.test(noteText);
-
-    if(!hasRecord){
-      return `<div class="bull-note">${escapeHtml(noteText)}</div>`;
+    .back-link:hover{
+      background:#e60000;
+      border-color:#e60000;
     }
 
-    const bullId = findBullIdByName(name, bulls);
-
-    if (!bullId) {
-      return `<div class="bull-note">${escapeHtml(noteText)}</div>`;
+    h1{
+      text-align:center;
+      font-family:'Yuji Syuku', serif;
+      font-size:clamp(2rem, 7vw, 3.8rem);
+      color:#fff;
+      margin:20px 0 30px;
+      text-shadow:3px 3px 0 #e60000,-1px -1px 0 #e60000,1px -1px 0 #e60000,-1px 1px 0 #e60000,1px 1px 0 #e60000;
+      letter-spacing:2px;
     }
 
-    return `
-      <div class="bull-note">
-        <a href="bull.html?id=${encodeURIComponent(bullId)}">
-          ${escapeHtml(noteText)}
-        </a>
+    .event-meta{
+      background:rgba(20,20,20,0.75);
+      border:1px solid #222;
+      margin-bottom:24px;
+    }
+
+    .meta-row{
+      display:grid;
+      grid-template-columns:120px 1fr;
+      border-bottom:1px solid #333;
+    }
+
+    .meta-row:last-child{
+      border-bottom:none;
+    }
+
+    .meta-label{
+      background:#111;
+      color:#f1c40f;
+      font-weight:800;
+      padding:14px 16px;
+    }
+
+    .meta-value{
+      padding:14px 16px;
+      color:#fff;
+    }
+
+    .program-table-wrap{
+      overflow-x:auto;
+      background:rgba(20,20,20,0.75);
+      border:1px solid #222;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:980px;
+    }
+
+    th, td{
+      border:1px solid #333;
+      text-align:center;
+      vertical-align:middle;
+      padding:0;
+    }
+
+    th{
+      background:#111;
+      color:#fff;
+      font-weight:800;
+      padding:16px 8px;
+      font-size:1rem;
+    }
+
+    th.east-head{
+      background:#b60000;
+    }
+
+    th.west-head{
+      background:#d9d9d9;
+      color:#222;
+    }
+
+    th.rank-head{
+      background:#222;
+      color:#f1c40f;
+    }
+
+    th.area-head{
+      background:#222;
+      color:#fff;
+      width:9%;
+    }
+
+    td.area{
+      background:#0a0a0a;
+      color:#fff;
+      font-weight:700;
+      font-size:1.1rem;
+      width:9%;
+      padding:18px 8px;
+    }
+
+    td.east,
+    td.west{
+      width:28%;
+      background:#050505;
+      padding:18px 10px;
+    }
+
+    td.rank{
+      width:16%;
+      background:#0f0f0f;
+      padding:18px 8px;
+    }
+
+    .subtext{
+      color:#f1c40f;
+      font-size:0.9rem;
+      line-height:1.6;
+      margin-bottom:10px;
+      font-weight:700;
+      word-break:break-word;
+    }
+
+    .bull-name{
+      color:#fff;
+      font-size:2rem;
+      line-height:1.3;
+      font-weight:800;
+      margin-bottom:10px;
+      word-break:break-word;
+    }
+
+    .bull-note{
+      color:#ddd;
+      font-size:0.95rem;
+      line-height:1.7;
+      word-break:break-word;
+    }
+
+    .bull-note a{
+      color:#ddd;
+      text-decoration:underline;
+    }
+
+    .bull-note a:hover{
+      color:#fff;
+    }
+
+    .rank-name{
+      color:#f1c40f;
+      font-size:1.8rem;
+      font-weight:800;
+      line-height:1.4;
+      margin-bottom:12px;
+      word-break:break-word;
+    }
+
+    .match-time-placeholder{
+      color:#bbb;
+      font-size:1rem;
+      line-height:1.5;
+    }
+
+    .error{
+      text-align:center;
+      color:#ff8080;
+      margin-top:30px;
+    }
+
+    .note{
+      color:#888;
+      text-align:center;
+      margin-top:18px;
+      font-size:0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="programitiran.html" class="back-link">← 対戦表一覧に戻る</a>
+
+    <h1 id="pageTitle">対戦表</h1>
+
+    <div class="event-meta">
+      <div class="meta-row">
+        <div class="meta-label">日時</div>
+        <div class="meta-value" id="metaDate">読み込み中...</div>
       </div>
-    `;
-  }
+      <div class="meta-row">
+        <div class="meta-label">場所</div>
+        <div class="meta-value" id="metaPlace">読み込み中...</div>
+      </div>
+      <div class="meta-row">
+        <div class="meta-label">主催</div>
+        <div class="meta-value" id="metaHost">未設定</div>
+      </div>
+      <div class="meta-row">
+        <div class="meta-label">入場料</div>
+        <div class="meta-value" id="metaPrice">未設定</div>
+      </div>
+    </div>
 
-  Promise.all([
-    fetch("data/programs.json").then(res => res.json()),
-    fetch("data/matches.json").then(res => res.json()),
-    fetch("data/bulls.json").then(res => res.json())
-  ])
-  .then(([programs, matches, bulls]) => {
-    const program = programs.find(p => p.id === programId);
-    const list = matches.filter(m => m.program === programId);
+    <div class="program-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="area-head">地区</th>
+            <th class="east-head">東方</th>
+            <th class="rank-head">番付</th>
+            <th class="west-head">西方</th>
+            <th class="area-head">地区</th>
+          </tr>
+        </thead>
+        <tbody id="programBody"></tbody>
+      </table>
+    </div>
 
-    if (!programId) {
-      errorEl.textContent = "大会IDがありません。";
-      return;
+    <div class="error" id="error"></div>
+    <div class="note">※ 今の徳之島闘牛サイトの対戦表に近い形で表示しています。</div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const programId = params.get("id");
+
+    const pageTitleEl = document.getElementById("pageTitle");
+    const metaDateEl = document.getElementById("metaDate");
+    const metaPlaceEl = document.getElementById("metaPlace");
+    const metaHostEl = document.getElementById("metaHost");
+    const metaPriceEl = document.getElementById("metaPrice");
+    const bodyEl = document.getElementById("programBody");
+    const errorEl = document.getElementById("error");
+
+    function escapeHtml(str) {
+      return String(str || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
     }
 
-    if (program) {
-      pageTitleEl.textContent = getProgramTitle(program);
-      metaDateEl.textContent = formatJapaneseDate(program.date) || "未設定";
-      metaPlaceEl.textContent = program.location || program.place || "未設定";
-      metaHostEl.textContent = program.host || "未設定";
-      metaPriceEl.textContent = program.price || "未設定";
-    } else {
-      pageTitleEl.textContent = `${programId} 対戦表`;
-      metaDateEl.textContent = "未設定";
-      metaPlaceEl.textContent = "未設定";
+    function formatJapaneseDate(dateStr){
+      if(!dateStr) return "";
+      const [y, m, d] = dateStr.split("-");
+      return `${Number(y)}年${Number(m)}月${Number(d)}日`;
     }
 
-    if (list.length === 0) {
-      bodyEl.innerHTML = `
-        <tr>
-          <td colspan="5" style="padding:20px;color:#ff8080;">この大会の対戦データはまだありません。</td>
-        </tr>
-      `;
-      return;
+    function getProgramTitle(program){
+      if(program && program.title) return program.title;
+      if(program && program.date) return `${formatJapaneseDate(program.date)} 闘牛大会`;
+      return "対戦表";
     }
 
-    const html = list.map(match => {
-      const eastArea = match.east_area || match.eastArea || match.left_area || "";
-      const westArea = match.west_area || match.westArea || match.right_area || "";
-      const eastName = match.east || match.winner || "";
-      const westName = match.west || match.loser || "";
-      const rank = match.rank || "VS";
-      const eastSub = match.east_sub || match.eastSub || "";
-      const eastNote = match.east_note || match.eastNote || "";
-      const westSub = match.west_sub || match.westSub || "";
-      const westNote = match.west_note || match.westNote || "";
+    function normalize(str) {
+      return String(str || "")
+        .replace(/\s+/g, "")
+        .replace(/[（）()]/g, "")
+        .trim();
+    }
+
+    function getBullSearchTargets(bull) {
+      const targets = [];
+
+      if (bull.display_name) targets.push(bull.display_name);
+      if (bull.name) targets.push(bull.name);
+      if (bull.exact_title) targets.push(bull.exact_title);
+
+      if (Array.isArray(bull.former_names)) {
+        bull.former_names.forEach(name => {
+          if (name) {
+            targets.push(name);
+            targets.push("元 " + name);
+            targets.push("元" + name);
+          }
+        });
+      }
+
+      return [...new Set(targets.map(normalize).filter(Boolean))];
+    }
+
+    function findBullIdByName(name, bulls) {
+      const target = normalize(name);
+      const found = bulls.find(bull => getBullSearchTargets(bull).includes(target));
+      return found ? found.id : null;
+    }
+
+    function makeRecordHtml(name, text, bulls){
+      const noteText = String(text || "").trim();
+
+      if(!noteText){
+        return "";
+      }
+
+      if(noteText.includes("デビュー戦")){
+        return `<div class="bull-note">${escapeHtml(noteText)}</div>`;
+      }
+
+      const hasRecord =
+        /[0-9０-９]+勝/.test(noteText) ||
+        /[0-9０-９]+敗/.test(noteText) ||
+        /引分/.test(noteText);
+
+      if(!hasRecord){
+        return `<div class="bull-note">${escapeHtml(noteText)}</div>`;
+      }
+
+      const bullId = findBullIdByName(name, bulls);
+
+      if (!bullId) {
+        return `<div class="bull-note">${escapeHtml(noteText)}</div>`;
+      }
 
       return `
-        <tr>
-          <td class="area">${escapeHtml(eastArea)}</td>
-
-          <td class="east">
-            ${eastSub ? `<div class="subtext">${escapeHtml(eastSub)}</div>` : ``}
-            <div class="bull-name">${escapeHtml(eastName)}</div>
-            ${makeRecordHtml(eastName, eastNote, bulls)}
-          </td>
-
-          <td class="rank">
-            <div class="rank-name">${escapeHtml(rank)}</div>
-            <div class="match-time-placeholder">│ --:-- │</div>
-          </td>
-
-          <td class="west">
-            ${westSub ? `<div class="subtext">${escapeHtml(westSub)}</div>` : ``}
-            <div class="bull-name">${escapeHtml(westName)}</div>
-            ${makeRecordHtml(westName, westNote, bulls)}
-          </td>
-
-          <td class="area">${escapeHtml(westArea)}</td>
-        </tr>
+        <div class="bull-note">
+          <a href="bull.html?id=${encodeURIComponent(bullId)}">
+            ${escapeHtml(noteText)}
+          </a>
+        </div>
       `;
-    }).join("");
+    }
 
-    bodyEl.innerHTML = html;
-  })
-  .catch(err => {
-    errorEl.textContent = "データの読み込みに失敗しました。";
-    console.error(err);
-  });
-</script>
+    Promise.all([
+      fetch("data/programs.json").then(res => res.json()),
+      fetch("data/matches.json").then(res => res.json()),
+      fetch("data/bulls.json").then(res => res.json())
+    ])
+    .then(([programs, matches, bulls]) => {
+      const program = programs.find(p => p.id === programId);
+      const list = matches.filter(m => m.program === programId);
+
+      if (!programId) {
+        errorEl.textContent = "大会IDがありません。";
+        return;
+      }
+
+      if (program) {
+        pageTitleEl.textContent = getProgramTitle(program);
+        metaDateEl.textContent = formatJapaneseDate(program.date) || "未設定";
+        metaPlaceEl.textContent = program.location || program.place || "未設定";
+        metaHostEl.textContent = program.host || "未設定";
+        metaPriceEl.textContent = program.price || "未設定";
+      } else {
+        pageTitleEl.textContent = `${programId} 対戦表`;
+        metaDateEl.textContent = "未設定";
+        metaPlaceEl.textContent = "未設定";
+      }
+
+      if (list.length === 0) {
+        bodyEl.innerHTML = `
+          <tr>
+            <td colspan="5" style="padding:20px;color:#ff8080;">この大会の対戦データはまだありません。</td>
+          </tr>
+        `;
+        return;
+      }
+
+      const html = list.map(match => {
+        const eastArea = match.east_area || match.eastArea || match.left_area || "";
+        const westArea = match.west_area || match.westArea || match.right_area || "";
+        const eastName = match.east || match.winner || "";
+        const westName = match.west || match.loser || "";
+        const rank = match.rank || "VS";
+        const eastSub = match.east_sub || match.eastSub || "";
+        const eastNote = match.east_note || match.eastNote || "";
+        const westSub = match.west_sub || match.westSub || "";
+        const westNote = match.west_note || match.westNote || "";
+
+        return `
+          <tr>
+            <td class="area">${escapeHtml(eastArea)}</td>
+
+            <td class="east">
+              ${eastSub ? `<div class="subtext">${escapeHtml(eastSub)}</div>` : ``}
+              <div class="bull-name">${escapeHtml(eastName)}</div>
+              ${makeRecordHtml(eastName, eastNote, bulls)}
+            </td>
+
+            <td class="rank">
+              <div class="rank-name">${escapeHtml(rank)}</div>
+              <div class="match-time-placeholder">│ --:-- │</div>
+            </td>
+
+            <td class="west">
+              ${westSub ? `<div class="subtext">${escapeHtml(westSub)}</div>` : ``}
+              <div class="bull-name">${escapeHtml(westName)}</div>
+              ${makeRecordHtml(westName, westNote, bulls)}
+            </td>
+
+            <td class="area">${escapeHtml(westArea)}</td>
+          </tr>
+        `;
+      }).join("");
+
+      bodyEl.innerHTML = html;
+    })
+    .catch(err => {
+      errorEl.textContent = "データの読み込みに失敗しました。";
+      console.error(err);
+    });
+  </script>
+</body>
+</html>
