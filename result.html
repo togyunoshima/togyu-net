@@ -132,6 +132,14 @@
       padding:12px 4px;
     }
 
+    .result-mark{
+      color:#fff;
+      font-size:0.68rem;
+      line-height:1.1;
+      margin-bottom:3px;
+      min-height:0.8em;
+    }
+
     .subtext{
       color:#f1c40f;
       font-size:0.68rem;
@@ -155,8 +163,8 @@
 
     .bull-note{
       color:#ddd;
-      font-size:0.68rem;
-      line-height:1.3;
+      font-size:0.62rem;
+      line-height:1.2;
       white-space:normal;
       word-break:break-word;
     }
@@ -172,18 +180,18 @@
 
     .rank-name{
       color:#f1c40f;
-      font-size:0.78rem;
+      font-size:0.68rem;
       font-weight:800;
-      line-height:1.2;
+      line-height:1.15;
       white-space:normal;
       word-break:break-word;
-      margin-bottom:6px;
+      margin-bottom:4px;
     }
 
     .match-time{
       color:#ddd;
-      font-size:0.72rem;
-      line-height:1.25;
+      font-size:0.62rem;
+      line-height:1.1;
       white-space:nowrap;
     }
 
@@ -252,6 +260,11 @@
         padding:8px 2px;
       }
 
+      .result-mark{
+        font-size:0.34rem;
+        margin-bottom:2px;
+      }
+
       .subtext{
         font-size:0.4rem;
         line-height:1.15;
@@ -259,25 +272,25 @@
       }
 
       .bull-name{
-        font-size:0.64rem;
+        font-size:0.6rem;
         line-height:1.05;
         margin-bottom:4px;
       }
 
       .bull-note{
-        font-size:0.38rem;
-        line-height:1.1;
+        font-size:0.34rem;
+        line-height:1.05;
       }
 
       .rank-name{
-        font-size:0.42rem;
-        line-height:1.1;
-        margin-bottom:4px;
+        font-size:0.36rem;
+        line-height:1.05;
+        margin-bottom:3px;
       }
 
       .match-time{
-        font-size:0.4rem;
-        line-height:1.1;
+        font-size:0.34rem;
+        line-height:1.0;
       }
     }
   </style>
@@ -377,7 +390,6 @@
       if (bull.display_name) targets.push(bull.display_name);
       if (bull.name) targets.push(bull.name);
       if (bull.exact_title) targets.push(bull.exact_title);
-
       if (Array.isArray(bull.former_names)) {
         bull.former_names.forEach(name => {
           if (name) {
@@ -399,17 +411,22 @@
     function splitNote(text){
       const raw = String(text || "").trim();
       if(!raw) return [];
-      const cleaned = raw.replaceAll("/", " ").replace(/\s+/g, " ").trim();
 
-      const recordMatch = cleaned.match(/.*?(?:勝|敗|引分)[^)]*/);
-      const ownerMatch = cleaned.match(/(牛主：[^)]*|牛主:[^)]*)/);
+      const cleaned = raw.replaceAll("/", " ").replace(/\s+/g, " ").trim();
+      const ownerMatch = cleaned.match(/(牛主：[^ ]+(?: [^ ]+)*)|(牛主:[^ ]+(?: [^ ]+)*)/);
+      const owner = ownerMatch ? ownerMatch[0].trim() : "";
+
+      let withoutOwner = cleaned;
+      if (owner) {
+        withoutOwner = cleaned.replace(owner, "").trim();
+      }
 
       const lines = [];
-      if(recordMatch) lines.push(recordMatch[0].trim());
-      if(ownerMatch) lines.push(ownerMatch[0].trim());
+      if (withoutOwner) lines.push(withoutOwner);
+      if (owner) lines.push(owner);
+      if (lines.length === 0) lines.push(cleaned);
 
-      if(lines.length === 0) lines.push(cleaned);
-      return lines.slice(0,2);
+      return lines.slice(0, 2);
     }
 
     function makeRecordHtml(name, text, bulls){
@@ -442,10 +459,9 @@
       return escapeHtml(text).replaceAll(" / ", "<br>").replaceAll("/", "<br>");
     }
 
-    function formatCenterLine(mark, time){
-      const m = mark ? escapeHtml(mark) : "";
+    function formatCenterLine(time){
       const t = time ? escapeHtml(time) : "--:--";
-      return `${m}｜${t}｜`;
+      return `｜${t}｜`;
     }
 
     Promise.all([
@@ -504,17 +520,17 @@
           <tr>
             <td class="area">${escapeHtml(eastArea)}</td>
             <td class="east">
-              ${eastMark ? `<div class="subtext">${escapeHtml(eastMark)}</div>` : ``}
+              ${eastMark ? `<div class="result-mark">${escapeHtml(eastMark)}</div>` : ``}
               ${eastSub ? `<div class="subtext">${escapeHtml(eastSub)}</div>` : ``}
               <div class="bull-name">${escapeHtml(eastName)}</div>
               ${makeRecordHtml(eastName, eastNote, bulls)}
             </td>
             <td class="rank">
               <div class="rank-name">${formatRank(rank)}</div>
-              <div class="match-time">${formatCenterLine("", time || "不戦勝")}</div>
+              <div class="match-time">${formatCenterLine(time || "不戦勝")}</div>
             </td>
             <td class="west">
-              ${westMark ? `<div class="subtext">${escapeHtml(westMark)}</div>` : ``}
+              ${westMark ? `<div class="result-mark">${escapeHtml(westMark)}</div>` : ``}
               ${westSub ? `<div class="subtext">${escapeHtml(westSub)}</div>` : ``}
               <div class="bull-name">${escapeHtml(westName)}</div>
               ${makeRecordHtml(westName, westNote, bulls)}
