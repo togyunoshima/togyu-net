@@ -95,17 +95,17 @@
     }
 
     td.win{
-      color:#ff4d4d;
+      color:#fff;
       font-weight:800;
     }
 
     td.lose{
-      color:#7db7ff;
+      color:#fff;
       font-weight:800;
     }
 
     td.draw{
-      color:#f1c40f;
+      color:#fff;
       font-weight:800;
     }
 
@@ -196,18 +196,38 @@
         .trim();
     }
 
-    function sameBull(matchName, bull) {
-      if (!matchName || !bull) return false;
+    function getBullNamesForMatch(bull) {
+      const names = [];
 
-      const targetNames = [bull.name, ...(bull.aliases || [])].map(normalize);
-      const candidate = normalize(matchName);
+      if (bull.display_name) names.push(bull.display_name);
+      if (bull.name) names.push(bull.name);
+      if (bull.exact_title) names.push(bull.exact_title);
 
-      return targetNames.includes(candidate);
+      if (Array.isArray(bull.former_names)) {
+        bull.former_names.forEach(name => {
+          if (name) names.push(name);
+          if (name && !name.startsWith("元")) {
+            names.push("元 " + name);
+            names.push("元" + name);
+          }
+        });
+      }
+
+      return [...new Set(names.map(n => normalize(n)).filter(Boolean))];
     }
 
-    function formatAliases(aliases) {
-      if (!aliases || aliases.length === 0) return "";
-      return `(${aliases.join(" / ")})`;
+    function sameBull(matchName, bull) {
+      if (!matchName || !bull) return false;
+      const candidate = normalize(matchName);
+      const targets = getBullNamesForMatch(bull);
+      return targets.includes(candidate);
+    }
+
+    function formatAliases(bull) {
+      if (!Array.isArray(bull.former_names) || bull.former_names.length === 0) {
+        return "";
+      }
+      return `（元: ${bull.former_names.join(" / ")}）`;
     }
 
     Promise.all([
@@ -224,8 +244,9 @@
         return;
       }
 
-      bullNameEl.textContent = bull.name;
-      aliasesEl.textContent = formatAliases(bull.aliases);
+      const displayName = bull.display_name || bull.name || bull.exact_title || "";
+      bullNameEl.textContent = displayName;
+      aliasesEl.textContent = formatAliases(bull);
 
       const fights = matches.filter(match =>
         sameBull(match.winner, bull) ||
@@ -257,7 +278,7 @@
         if (isDraw) {
           leftName = fight.east || fight.winner || "";
           rightName = fight.west || fight.loser || "";
-          centerResult = "引き分け";
+          centerResult = "引分";
 
           if (sameBull(leftName, bull) || sameBull(rightName, bull)) {
             draws++;
@@ -268,41 +289,30 @@
           leftResult = "勝ち";
           rightResult = "負け";
 
-          if (sameBull(fight.winner, bull) || sameBull(leftName, bull)) {
+          if (sameBull(leftName, bull) || sameBull(fight.winner, bull)) {
             wins++;
             mySide = "left";
-          } else if (sameBull(fight.loser, bull) || sameBull(rightName, bull)) {
+          } else if (sameBull(rightName, bull) || sameBull(fight.loser, bull)) {
             losses++;
             mySide = "right";
           }
         }
 
-        const leftClass = isDraw
-          ? ""
-          : mySide === "left"
-            ? "win"
-            : "lose";
-
-        const rightClass = isDraw
-          ? ""
-          : mySide === "right"
-            ? "win"
-            : "lose";
+        const leftClass = isDraw ? "" : (mySide === "left" ? "win" : "lose");
+        const rightClass = isDraw ? "" : (mySide === "right" ? "win" : "lose");
 
         const dateText = fight.date || "";
         const placeText = fight.location || fight.place || fight.arena || "";
         const timeText = fight.time || "";
-        const leftDisplay = leftName || "";
-        const rightDisplay = rightName || "";
 
         return `
           <tr>
             <td>${index + 1}</td>
-            <td class="name-cell">${escapeHtml(leftDisplay)}</td>
+            <td class="name-cell">${escapeHtml(leftName)}</td>
             <td class="${leftClass}">${escapeHtml(leftResult)}</td>
             <td class="${isDraw ? "draw" : ""}">${escapeHtml(centerResult)}</td>
             <td class="${rightClass}">${escapeHtml(rightResult)}</td>
-            <td class="name-cell">${escapeHtml(rightDisplay)}</td>
+            <td class="name-cell">${escapeHtml(rightName)}</td>
             <td>${escapeHtml(timeText)}</td>
             <td>${escapeHtml(dateText)}</td>
             <td>${escapeHtml(placeText)}</td>
@@ -312,7 +322,7 @@
 
       recordBody.innerHTML = rowsHtml;
       summaryEl.innerHTML = `
-        通算成績： <strong>${wins}勝</strong> / <strong>${losses}敗</strong> / <strong>${draws}分</strong><br>
+        通算成績： <strong>${wins}勝</strong> / <strong>${losses}敗</strong> / <strong>${draws}引分</strong><br>
         試合数： <strong>${fights.length}</strong>
       `;
     })
