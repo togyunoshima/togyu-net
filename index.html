@@ -3,13 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>徳之島闘牛サイト | ホーム</title>
+<title>徳之島闘牛サイト</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Yuji+Syuku&display=swap" rel="stylesheet">
 
 <style>
-
-/* --- 基本設定 --- */
 
 body{
 margin:0;
@@ -18,150 +16,87 @@ background:#050505;
 color:#eee;
 font-family:'Kaisei Tokumin', serif;
 text-align:center;
-min-height:100vh;
 }
-
-/* 背景画像 */
-
-.bg-overlay{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background-image:url('IMG_8395.jpg');
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-opacity:0.15;
-filter:grayscale(100%);
-z-index:-1;
-}
-
-/* タイトル */
 
 h1{
 font-family:'Yuji Syuku', serif;
-font-size:clamp(2.2rem,10vw,4.8rem);
+font-size:clamp(2.5rem,8vw,4rem);
 color:#fff;
-margin:30px 0 10px 0;
-letter-spacing:2px;
-text-shadow:3px 3px 0 #e60000,-1px -1px 0 #e60000,1px -1px 0 #e60000,-1px 1px 0 #e60000,1px 1px 0 #e60000;
-position:relative;
+margin:40px 0 20px;
+text-shadow:3px 3px 0 #e60000;
 }
 
-h1::after{
-content:"";
-display:block;
-width:120px;
-height:3px;
-background:#e60000;
-margin:10px auto 0;
-}
-
-/* ナビ */
-
-.header-nav{
-max-width:950px;
-margin:0 auto 40px auto;
+.menu{
+max-width:900px;
+margin:0 auto 40px;
 display:grid;
-grid-template-columns:repeat(6,1fr);
+grid-template-columns:repeat(3,1fr);
 gap:10px;
 }
 
-.nav-item{
-display:flex;
-justify-content:center;
-align-items:center;
-background:rgba(255,255,255,0.08);
-color:#fff;
-text-decoration:none;
+.menu a{
+display:block;
+padding:15px;
+background:#111;
 border:1px solid #333;
-padding:14px 5px;
-font-size:0.9rem;
-font-weight:800;
-transition:all .25s ease;
+text-decoration:none;
+color:#fff;
+font-weight:700;
 }
 
-.nav-item:hover{
+.menu a:hover{
 background:#e60000;
-border-color:#e60000;
-transform:translateY(-3px);
-box-shadow:0 6px 18px rgba(230,0,0,0.35);
 }
 
-.nav-item:nth-child(1),
-.nav-item:nth-child(2),
-.nav-item:nth-child(3){
-grid-column:span 2;
-}
-
-.nav-item:nth-child(4),
-.nav-item:nth-child(5){
-grid-column:span 3;
-}
-
-/* セクション */
-
-.section-container{
-max-width:950px;
-margin:0 auto 40px auto;
+.section{
+max-width:900px;
+margin:40px auto;
 text-align:left;
 }
 
 .section-title{
-font-size:1.2rem;
-color:#f1c40f;
+font-size:1.3rem;
 border-left:5px solid #e60000;
-padding-left:15px;
+padding-left:10px;
 margin-bottom:15px;
 font-weight:800;
 }
 
-/* コンテンツ */
-
-.content-box{
-background:rgba(20,20,20,0.75);
-border:1px solid #222;
-padding:30px 20px;
-color:#aaa;
+.box{
+background:#111;
+border:1px solid #333;
+padding:25px;
 text-align:center;
-backdrop-filter:blur(4px);
 }
 
-/* NEXT FIGHT */
-
-.fight-card{
-font-size:1.2rem;
-font-weight:800;
-letter-spacing:1px;
+.latest{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
 }
 
-.vs{
-color:#e60000;
-margin:0 10px;
+.latest a{
+display:block;
+padding:15px;
+background:#111;
+border:1px solid #333;
+text-decoration:none;
+color:#fff;
+font-weight:700;
 }
 
-/* フッター */
+.latest a:hover{
+background:#e60000;
+}
 
-.footer{
+.arena-list{
+line-height:2;
+}
+
+footer{
 margin-top:60px;
-color:#555;
-font-size:0.75rem;
-}
-
-/* スマホ */
-
-@media (max-width:600px){
-
-h1{
-font-size:2.3rem;
-}
-
-.nav-item{
-font-size:0.75rem;
-}
-
+color:#666;
+font-size:0.8rem;
 }
 
 </style>
@@ -169,81 +104,89 @@ font-size:0.75rem;
 
 <body>
 
-<div class="bg-overlay"></div>
-
 <h1>徳之島闘牛サイト</h1>
 
-<nav class="header-nav">
+<div class="menu">
 
-<a href="index.html" class="nav-item" style="background:#e60000;border-color:#e60000;">ホーム</a>
+<a href="programitiran.html">
+対戦表
+</a>
 
-<a href="programitiran.html" class="nav-item">対戦表</a>
+<a href="search.html">
+戦歴検索
+</a>
 
-<a href="search.html" class="nav-item">戦歴検索</a>
+<a href="prediction.html">
+予想
+</a>
 
-<a href="prediction.html" class="nav-item">予想ページ</a>
+</div>
 
-<a href="champions.html" class="nav-item">徳之島闘牛歴代王者</a>
+<div class="section">
 
-</nav>
+<div class="section-title">
+最新大会
+</div>
 
-<!-- NEXT FIGHT -->
+<div class="box latest" id="latestTournament">
 
-<div class="section-container">
-
-<div class="section-title">NEXT FIGHT</div>
-
-<div class="content-box">
-
-<div class="fight-card">
-
-突撃★ヤッチャ  
-<span class="vs">VS</span>  
-八Hatsuki輝
+読み込み中...
 
 </div>
 
 </div>
 
+<div class="section">
+
+<div class="section-title">
+闘牛場
 </div>
 
-<div class="section-container">
+<div class="box arena-list">
 
-<div class="section-title">最新・人気記事</div>
+徳之島なくさみ館<br>
+松原闘牛場<br><br>
 
-<div class="content-box">
-
-記事一覧（準備中）
-
-</div>
-
-</div>
-
-<div class="section-container">
-
-<div class="section-title">闘牛場のご案内</div>
-
-<div class="content-box">
-
-闘牛場マップ（準備中）
+石川多目的ドーム<br>
+安慶名闘牛場<br>
+今帰仁村営闘牛場<br>
+本部多目的広場闘牛場
 
 </div>
 
 </div>
 
-<div class="section-container">
+<footer>
 
-<div class="section-title">公式Instagram</div>
+© 2026 togyu.net
 
-<div class="content-box">
+</footer>
 
-Instagramフィード（準備中）
+<script>
 
-</div>
+fetch("data/programs.json")
+.then(res=>res.json())
+.then(data=>{
 
-</div>
+const latest=data[data.length-1]
 
-<p class="footer">© 2026 togyu.net</p>
+const html=`
+
+<a href="program.html?id=${latest.id}">
+${latest.title || latest.date}（対戦表）
+</a>
+
+<a href="result.html?id=${latest.id}">
+${latest.title || latest.date}（結果）
+</a>
+
+`
+
+document.getElementById("latestTournament").innerHTML=html
+
+})
+
+</script>
 
 </body>
 </html>
