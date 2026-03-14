@@ -147,6 +147,7 @@
       line-height:1.6;
       margin-bottom:10px;
       font-weight:700;
+      word-break:break-word;
     }
 
     .bull-name{
@@ -163,6 +164,15 @@
       font-size:0.95rem;
       line-height:1.7;
       word-break:break-word;
+    }
+
+    .bull-note a{
+      color:#ddd;
+      text-decoration:underline;
+    }
+
+    .bull-note a:hover{
+      color:#fff;
     }
 
     .rank-name{
@@ -200,7 +210,7 @@
 
     <h1 id="pageTitle">対戦表</h1>
 
-    <div class="event-meta" id="eventMeta">
+    <div class="event-meta">
       <div class="meta-row">
         <div class="meta-label">日時</div>
         <div class="meta-value" id="metaDate">読み込み中...</div>
@@ -235,188 +245,148 @@
     </div>
 
     <div class="error" id="error"></div>
-    <div class="note">※ まずは今のサイトに近い構造で表示しています。細かいデザイン調整は後でまとめて行います。</div>
+    <div class="note">※ 今の徳之島闘牛サイトの対戦表に近い形で表示しています。</div>
   </div>
 
-<script>
-  const params = new URLSearchParams(location.search);
-  const programId = params.get("id");
+  <script>
+    const params = new URLSearchParams(location.search);
+    const programId = params.get("id");
 
-  const pageTitleEl = document.getElementById("pageTitle");
-  const metaDateEl = document.getElementById("metaDate");
-  const metaPlaceEl = document.getElementById("metaPlace");
-  const metaHostEl = document.getElementById("metaHost");
-  const metaPriceEl = document.getElementById("metaPrice");
-  const bodyEl = document.getElementById("programBody");
-  const errorEl = document.getElementById("error");
+    const pageTitleEl = document.getElementById("pageTitle");
+    const metaDateEl = document.getElementById("metaDate");
+    const metaPlaceEl = document.getElementById("metaPlace");
+    const metaHostEl = document.getElementById("metaHost");
+    const metaPriceEl = document.getElementById("metaPrice");
+    const bodyEl = document.getElementById("programBody");
+    const errorEl = document.getElementById("error");
 
-  function escapeHtml(str) {
-    return String(str || "")
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#39;");
-  }
+    function escapeHtml(str) {
+      return String(str || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+    }
 
-  function formatJapaneseDate(dateStr){
-    if(!dateStr) return "";
-    const [y, m, d] = dateStr.split("-");
-    return `${Number(y)}年${Number(m)}月${Number(d)}日`;
-  }
+    function formatJapaneseDate(dateStr){
+      if(!dateStr) return "";
+      const [y, m, d] = dateStr.split("-");
+      return `${Number(y)}年${Number(m)}月${Number(d)}日`;
+    }
 
-  function getProgramTitle(program){
-    if(program && program.title) return program.title;
-    if(program && program.date) return `${formatJapaneseDate(program.date)} 闘牛大会`;
-    return "対戦表";
-  }
+    function getProgramTitle(program){
+      if(program && program.title) return program.title;
+      if(program && program.date) return `${formatJapaneseDate(program.date)} 闘牛大会`;
+      return "対戦表";
+    }
 
-  function normalizeName(str){
-    return String(str || "").replace(/\s+/g, "").trim();
-  }
+    function makeRecordHtml(name, text){
+      const noteText = String(text || "").trim();
 
-  function sameBullName(a, b){
-    return normalizeName(a) === normalizeName(b);
-  }
-
-  function getRecord(name, matches){
-    let win = 0;
-    let lose = 0;
-    let draw = 0;
-
-    matches.forEach(m => {
-      const winner = m.winner || "";
-      const loser = m.loser || "";
-      const east = m.east || "";
-      const west = m.west || "";
-      const isDraw = m.draw === true || m.result === "draw";
-
-      if(isDraw){
-        if(sameBullName(east, name) || sameBullName(west, name)){
-          draw++;
-        }
-      }else{
-        if(sameBullName(winner, name)){
-          win++;
-        }else if(sameBullName(loser, name)){
-          lose++;
-        }
+      if(!noteText){
+        return "";
       }
-    });
 
-    return `${win}勝${lose}敗${draw > 0 ? draw + "引分" : ""}`;
-  }
+      if(noteText.includes("デビュー戦")){
+        return `<div class="bull-note">${escapeHtml(noteText)}</div>`;
+      }
 
-  function makeRecordHtml(name, recordText){
-    const text = String(recordText || "").trim();
+      const hasRecord =
+        /[0-9０-９]+勝/.test(noteText) ||
+        /[0-9０-９]+敗/.test(noteText) ||
+        /引分/.test(noteText);
 
-    if(!text) return "";
-
-    if(text.includes("デビュー戦")){
-      return `<div class="bull-note">${escapeHtml(text)}</div>`;
-    }
-
-    const hasRecord =
-      /[0-9０-９]+勝/.test(text) ||
-      /[0-9０-９]+敗/.test(text) ||
-      /引分/.test(text);
-
-    if(!hasRecord){
-      return `<div class="bull-note">${escapeHtml(text)}</div>`;
-    }
-
-    return `
-      <div class="bull-note">
-        <a href="bull.html?id=${encodeURIComponent(name)}" style="color:#ddd; text-decoration:underline;">
-          ${escapeHtml(text)}
-        </a>
-      </div>
-    `;
-  }
-
-  Promise.all([
-    fetch("data/programs.json").then(res => res.json()),
-    fetch("data/matches.json").then(res => res.json())
-  ])
-  .then(([programs, matches]) => {
-    const program = programs.find(p => p.id === programId);
-    const list = matches.filter(m => m.program === programId);
-
-    if (!programId) {
-      errorEl.textContent = "大会IDがありません。";
-      return;
-    }
-
-    if (program) {
-      pageTitleEl.textContent = getProgramTitle(program);
-      metaDateEl.textContent = formatJapaneseDate(program.date) || "未設定";
-      metaPlaceEl.textContent = program.location || program.place || "未設定";
-      metaHostEl.textContent = program.host || "未設定";
-      metaPriceEl.textContent = program.price || "未設定";
-    } else {
-      pageTitleEl.textContent = `${programId} 対戦表`;
-      metaDateEl.textContent = "未設定";
-      metaPlaceEl.textContent = "未設定";
-    }
-
-    if (list.length === 0) {
-      bodyEl.innerHTML = `
-        <tr>
-          <td colspan="5" style="padding:20px;color:#ff8080;">この大会の対戦データはまだありません。</td>
-        </tr>
-      `;
-      return;
-    }
-
-    const html = list.map(match => {
-      const eastArea = match.east_area || match.eastArea || match.left_area || "";
-      const westArea = match.west_area || match.westArea || match.right_area || "";
-      const eastName = match.east || match.winner || "";
-      const westName = match.west || match.loser || "";
-      const rank = match.rank || "VS";
-      const eastSub = match.east_sub || match.eastSub || "";
-      const eastNote = match.east_note || match.eastNote || "";
-      const westSub = match.west_sub || match.westSub || "";
-      const westNote = match.west_note || match.westNote || "";
-
-      const eastRecordText = eastNote || "";
-      const westRecordText = westNote || "";
-
-      const eastRecordHtml = makeRecordHtml(eastName, eastRecordText);
-      const westRecordHtml = makeRecordHtml(westName, westRecordText);
+      if(!hasRecord){
+        return `<div class="bull-note">${escapeHtml(noteText)}</div>`;
+      }
 
       return `
-        <tr>
-          <td class="area">${escapeHtml(eastArea)}</td>
-
-          <td class="east">
-            ${eastSub ? `<div class="subtext">${escapeHtml(eastSub)}</div>` : ``}
-            <div class="bull-name">${escapeHtml(eastName)}</div>
-            ${eastRecordHtml}
-          </td>
-
-          <td class="rank">
-            <div class="rank-name">${escapeHtml(rank)}</div>
-            <div class="match-time-placeholder">│ --:-- │</div>
-          </td>
-
-          <td class="west">
-            ${westSub ? `<div class="subtext">${escapeHtml(westSub)}</div>` : ``}
-            <div class="bull-name">${escapeHtml(westName)}</div>
-            ${westRecordHtml}
-          </td>
-
-          <td class="area">${escapeHtml(westArea)}</td>
-        </tr>
+        <div class="bull-note">
+          <a href="bull.html?id=${encodeURIComponent(name)}">
+            ${escapeHtml(noteText)}
+          </a>
+        </div>
       `;
-    }).join("");
+    }
 
-    bodyEl.innerHTML = html;
-  })
-  .catch(err => {
-    errorEl.textContent = "データの読み込みに失敗しました。";
-    console.error(err);
-  });
-</script>
+    Promise.all([
+      fetch("data/programs.json").then(res => res.json()),
+      fetch("data/matches.json").then(res => res.json())
+    ])
+    .then(([programs, matches]) => {
+      const program = programs.find(p => p.id === programId);
+      const list = matches.filter(m => m.program === programId);
+
+      if (!programId) {
+        errorEl.textContent = "大会IDがありません。";
+        return;
+      }
+
+      if (program) {
+        pageTitleEl.textContent = getProgramTitle(program);
+        metaDateEl.textContent = formatJapaneseDate(program.date) || "未設定";
+        metaPlaceEl.textContent = program.location || program.place || "未設定";
+        metaHostEl.textContent = program.host || "未設定";
+        metaPriceEl.textContent = program.price || "未設定";
+      } else {
+        pageTitleEl.textContent = `${programId} 対戦表`;
+        metaDateEl.textContent = "未設定";
+        metaPlaceEl.textContent = "未設定";
+      }
+
+      if (list.length === 0) {
+        bodyEl.innerHTML = `
+          <tr>
+            <td colspan="5" style="padding:20px;color:#ff8080;">この大会の対戦データはまだありません。</td>
+          </tr>
+        `;
+        return;
+      }
+
+      const html = list.map(match => {
+        const eastArea = match.east_area || match.eastArea || match.left_area || "";
+        const westArea = match.west_area || match.westArea || match.right_area || "";
+        const eastName = match.east || match.winner || "";
+        const westName = match.west || match.loser || "";
+        const rank = match.rank || "VS";
+        const eastSub = match.east_sub || match.eastSub || "";
+        const eastNote = match.east_note || match.eastNote || "";
+        const westSub = match.west_sub || match.westSub || "";
+        const westNote = match.west_note || match.westNote || "";
+
+        return `
+          <tr>
+            <td class="area">${escapeHtml(eastArea)}</td>
+
+            <td class="east">
+              ${eastSub ? `<div class="subtext">${escapeHtml(eastSub)}</div>` : ``}
+              <div class="bull-name">${escapeHtml(eastName)}</div>
+              ${makeRecordHtml(eastName, eastNote)}
+            </td>
+
+            <td class="rank">
+              <div class="rank-name">${escapeHtml(rank)}</div>
+              <div class="match-time-placeholder">│ --:-- │</div>
+            </td>
+
+            <td class="west">
+              ${westSub ? `<div class="subtext">${escapeHtml(westSub)}</div>` : ``}
+              <div class="bull-name">${escapeHtml(westName)}</div>
+              ${makeRecordHtml(westName, westNote)}
+            </td>
+
+            <td class="area">${escapeHtml(westArea)}</td>
+          </tr>
+        `;
+      }).join("");
+
+      bodyEl.innerHTML = html;
+    })
+    .catch(err => {
+      errorEl.textContent = "データの読み込みに失敗しました。";
+      console.error(err);
+    });
+  </script>
 </body>
 </html>
