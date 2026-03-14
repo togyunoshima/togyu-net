@@ -1,108 +1,278 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
-<meta charset="UTF-8">
-<title>戦歴検索 | 徳之島闘牛サイト</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>戦歴検索 | 徳之島闘牛サイト</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Yuji+Syuku&display=swap" rel="stylesheet">
+  <style>
+    body{
+      margin:0;
+      padding:20px 10px 60px;
+      background:#050505;
+      color:#eee;
+      font-family:'Kaisei Tokumin', serif;
+    }
 
-<style>
+    .container{
+      max-width:900px;
+      margin:0 auto;
+    }
 
-body{
-background:#050505;
-color:#eee;
-font-family:serif;
-text-align:center;
-padding:40px;
-}
+    .back-link{
+      display:inline-block;
+      margin-bottom:20px;
+      color:#fff;
+      text-decoration:none;
+      background:#111;
+      border:1px solid #333;
+      padding:10px 14px;
+    }
 
-h1{
-font-size:36px;
-margin-bottom:40px;
-}
+    .back-link:hover{
+      background:#e60000;
+      border-color:#e60000;
+    }
 
-input{
-padding:12px;
-font-size:18px;
-width:260px;
-}
+    h1{
+      text-align:center;
+      font-family:'Yuji Syuku', serif;
+      font-size:clamp(2rem, 7vw, 3.8rem);
+      color:#fff;
+      margin:20px 0 30px;
+      text-shadow:3px 3px 0 #e60000,-1px -1px 0 #e60000,1px -1px 0 #e60000,-1px 1px 0 #e60000,1px 1px 0 #e60000;
+      letter-spacing:2px;
+    }
 
-button{
-padding:12px 20px;
-font-size:18px;
-background:#e60000;
-color:white;
-border:none;
-cursor:pointer;
-}
+    .search-box{
+      background:rgba(20,20,20,0.75);
+      border:1px solid #222;
+      padding:24px;
+      margin-bottom:24px;
+      text-align:center;
+    }
 
-.result{
-margin-top:40px;
-max-width:600px;
-margin-left:auto;
-margin-right:auto;
-text-align:left;
-}
+    .search-box input{
+      width:min(100%, 420px);
+      padding:14px 16px;
+      font-size:1rem;
+      border:1px solid #333;
+      background:#0d0d0d;
+      color:#fff;
+      font-family:'Kaisei Tokumin', serif;
+      box-sizing:border-box;
+    }
 
-.bull{
-padding:12px;
-border-bottom:1px solid #333;
-cursor:pointer;
-}
+    .search-box button{
+      margin-top:14px;
+      padding:12px 22px;
+      border:none;
+      background:#e60000;
+      color:#fff;
+      font-size:1rem;
+      font-family:'Kaisei Tokumin', serif;
+      cursor:pointer;
+    }
 
-.bull:hover{
-background:#111;
-}
+    .search-box button:hover{
+      background:#ff2a2a;
+    }
 
-</style>
+    .guide{
+      color:#aaa;
+      font-size:0.9rem;
+      margin-top:12px;
+      line-height:1.8;
+    }
 
+    .result-list{
+      display:grid;
+      gap:14px;
+    }
+
+    .result-card{
+      background:rgba(20,20,20,0.75);
+      border:1px solid #222;
+      padding:18px;
+    }
+
+    .result-name{
+      font-size:1.2rem;
+      font-weight:800;
+      color:#fff;
+      margin-bottom:8px;
+      line-height:1.6;
+    }
+
+    .result-alias{
+      color:#bbb;
+      font-size:0.92rem;
+      line-height:1.8;
+      margin-bottom:12px;
+    }
+
+    .result-link{
+      display:inline-block;
+      color:#fff;
+      text-decoration:none;
+      background:#111;
+      border:1px solid #333;
+      padding:8px 14px;
+      font-size:0.95rem;
+    }
+
+    .result-link:hover{
+      background:#e60000;
+      border-color:#e60000;
+    }
+
+    .empty{
+      text-align:center;
+      color:#999;
+      margin-top:24px;
+      line-height:1.8;
+    }
+
+    .note{
+      color:#888;
+      text-align:center;
+      margin-top:18px;
+      font-size:0.85rem;
+    }
+  </style>
 </head>
-
 <body>
+  <div class="container">
+    <a href="index.html" class="back-link">← ホームへ戻る</a>
 
-<h1>戦歴検索</h1>
+    <h1>戦歴検索</h1>
 
-<input type="text" id="searchBox" placeholder="牛の名前を入力">
-<button onclick="searchBull()">検索</button>
+    <div class="search-box">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="牛名・元名を入力"
+      >
+      <br>
+      <button id="searchButton">検索</button>
 
-<div class="result" id="result"></div>
+      <div class="guide">
+        現在の名前だけでなく、元名でも検索できます。<br>
+        例：結一千 / 千竜トガイ富士 / 沖縄 天下一
+      </div>
+    </div>
 
-<script>
+    <div class="result-list" id="resultList"></div>
+    <div class="empty" id="emptyMessage">牛名を入力して検索してください。</div>
 
-let bulls = []
+    <div class="note">※ 現在名・元名・元タイトルをもとに検索できます。</div>
+  </div>
 
-fetch("data/bulls.json")
-.then(res=>res.json())
-.then(data=>{
-bulls=data
-})
+  <script>
+    const searchInput = document.getElementById("searchInput");
+    const searchButton = document.getElementById("searchButton");
+    const resultList = document.getElementById("resultList");
+    const emptyMessage = document.getElementById("emptyMessage");
 
-function searchBull(){
+    let bulls = [];
 
-const word=document.getElementById("searchBox").value
+    function escapeHtml(str) {
+      return String(str || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+    }
 
-const result=bulls.filter(bull =>
-bull.name.includes(word) ||
-(bull.aliases && bull.aliases.join("").includes(word))
-)
+    function normalizeText(text) {
+      return String(text || "")
+        .toLowerCase()
+        .replace(/\s+/g, "")
+        .trim();
+    }
 
-let html=""
+    function getSearchTargets(bull) {
+      const targets = [];
 
-result.forEach(bull=>{
+      if (bull.display_name) targets.push(bull.display_name);
+      if (bull.exact_title) targets.push(bull.exact_title);
 
-html+=`
-<div class="bull" onclick="location.href='bull.html?id=${bull.id}'">
-${bull.name}
-</div>
-`
+      if (Array.isArray(bull.former_names)) {
+        bull.former_names.forEach(name => {
+          if (name) targets.push(name);
+        });
+      }
 
-})
+      return targets;
+    }
 
-document.getElementById("result").innerHTML=html
+    function formatFormerNames(bull) {
+      if (!Array.isArray(bull.former_names) || bull.former_names.length === 0) {
+        return "";
+      }
+      return `元名：${bull.former_names.join(" / ")}`;
+    }
 
-}
+    function renderResults(list) {
+      resultList.innerHTML = "";
 
-</script>
+      if (list.length === 0) {
+        emptyMessage.textContent = "該当する牛が見つかりませんでした。";
+        return;
+      }
 
+      emptyMessage.textContent = "";
+
+      const html = list.map(bull => {
+        const aliasText = formatFormerNames(bull);
+
+        return `
+          <div class="result-card">
+            <div class="result-name">${escapeHtml(bull.display_name || bull.name || "")}</div>
+            ${aliasText ? `<div class="result-alias">${escapeHtml(aliasText)}</div>` : ""}
+            <a class="result-link" href="bull.html?id=${encodeURIComponent(bull.id)}">戦歴を見る</a>
+          </div>
+        `;
+      }).join("");
+
+      resultList.innerHTML = html;
+    }
+
+    function searchBulls() {
+      const keyword = normalizeText(searchInput.value);
+
+      if (!keyword) {
+        resultList.innerHTML = "";
+        emptyMessage.textContent = "牛名を入力して検索してください。";
+        return;
+      }
+
+      const filtered = bulls.filter(bull => {
+        const targets = getSearchTargets(bull);
+        return targets.some(target => normalizeText(target).includes(keyword));
+      });
+
+      renderResults(filtered);
+    }
+
+    fetch("data/bulls.json")
+      .then(res => res.json())
+      .then(data => {
+        bulls = data;
+      })
+      .catch(err => {
+        console.error(err);
+        emptyMessage.textContent = "牛データの読み込みに失敗しました。";
+      });
+
+    searchButton.addEventListener("click", searchBulls);
+
+    searchInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        searchBulls();
+      }
+    });
+  </script>
 </body>
-
 </html>
