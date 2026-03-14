@@ -119,6 +119,37 @@ h1{
   color:#ddd;
 }
 
+.map-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.map-card{
+  background:#111;
+  border:1px solid #333;
+  padding:14px;
+}
+
+.map-card h3{
+  margin:0 0 10px;
+  font-size:1rem;
+  color:#fff;
+}
+
+.map-frame{
+  width:100%;
+  height:260px;
+  border:0;
+}
+
+.map-note{
+  margin-top:10px;
+  color:#aaa;
+  font-size:0.88rem;
+  line-height:1.7;
+}
+
 .small-note{
   color:#999;
   font-size:0.9rem;
@@ -137,6 +168,10 @@ footer{
   }
 
   .latest{
+    grid-template-columns:1fr;
+  }
+
+  .map-grid{
     grid-template-columns:1fr;
   }
 
@@ -160,7 +195,7 @@ footer{
 </div>
 
 <div class="section">
-  <div class="section-title">最新大会</div>
+  <div class="section-title">最新情報</div>
   <div class="box">
     <div class="latest" id="latestTournament">
       <div class="small-note">読み込み中...</div>
@@ -172,12 +207,40 @@ footer{
   <div class="section-title">闘牛場</div>
   <div class="box arena-list">
     なくさみ館<br>
-    松原闘牛場<br><br>
+    松原闘牛場
+  </div>
+</div>
 
-    石川多目的ドーム<br>
-    安慶名闘牛場<br>
-    今帰仁村営闘牛場<br>
-    本部多目的広場闘牛場
+<div class="section">
+  <div class="section-title">Googleマップ</div>
+  <div class="box">
+    <div class="map-grid">
+      <div class="map-card">
+        <h3>なくさみ館</h3>
+        <iframe
+          class="map-frame"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=%E5%BE%B3%E4%B9%8B%E5%B3%B6%20%E3%81%AA%E3%81%8F%E3%81%95%E3%81%BF%E9%A4%A8&output=embed">
+        </iframe>
+      </div>
+
+      <div class="map-card">
+        <h3>松原闘牛場</h3>
+        <iframe
+          class="map-frame"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=%E5%BE%B3%E4%B9%8B%E5%B3%B6%20%E6%9D%BE%E5%8E%9F%E9%97%98%E7%89%9B%E5%A0%B4&output=embed">
+        </iframe>
+      </div>
+    </div>
+
+    <div class="map-note">
+      ※ 地図がうまく出ない場合は、あとでGoogleマップの共有URLに差し替え可能です。
+    </div>
   </div>
 </div>
 
@@ -197,18 +260,15 @@ fetch("data/programs.json")
   }
 
   const latest = data[0];
-
-  const title = latest.title || latest.date || "最新大会";
+  const title = latest.title || latest.date || "最新情報";
 
   const html = `
     <a href="program.html?id=${latest.id}">
-      ${title}<br>
-      対戦表を見る
+      ${title}
     </a>
 
     <a href="result.html?id=${latest.id}">
-      ${title}<br>
-      結果を見る
+      ${title}（結果）
     </a>
   `;
 
