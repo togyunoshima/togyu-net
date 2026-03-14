@@ -208,11 +208,23 @@
     }
 
     function formatFormerNames(bull) {
-      if (!Array.isArray(bull.former_names) || bull.former_names.length === 0) {
-        return "";
-      }
-      return `元名：${bull.former_names.join(" / ")}`;
+
+  if (!Array.isArray(bull.former_names) || bull.former_names.length === 0) {
+    return "";
+  }
+
+  const names = bull.former_names.map(name => {
+
+    if (name.startsWith("沖縄 ")) {
+      return "元沖縄 " + name.replace("沖縄 ", "")
     }
+
+    return "元" + name
+
+  })
+
+  return `（元: ${names.join(" / ")}）`
+}
 
     function renderResults(list) {
       resultList.innerHTML = "";
