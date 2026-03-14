@@ -94,16 +94,8 @@
       color:#fff;
     }
 
-    td.win{
-      color:#fff;
-      font-weight:800;
-    }
-
-    td.lose{
-      color:#fff;
-      font-weight:800;
-    }
-
+    td.win,
+    td.lose,
     td.draw{
       color:#fff;
       font-weight:800;
@@ -200,15 +192,15 @@
       const names = [];
 
       if (bull.display_name) names.push(bull.display_name);
-      if (bull.name) names.push(bull.name);
       if (bull.exact_title) names.push(bull.exact_title);
 
       if (Array.isArray(bull.former_names)) {
         bull.former_names.forEach(name => {
-          if (name) names.push(name);
-          if (name && !name.startsWith("元")) {
-            names.push("元 " + name);
-            names.push("元" + name);
+          if (name) {
+            names.push(name);
+            if (name.startsWith("元")) {
+              names.push(name.replace(/^元\s*/, "").replace(/^元/, ""));
+            }
           }
         });
       }
@@ -223,34 +215,36 @@
       return targets.includes(candidate);
     }
 
-  function formatFormerNames(bull){
+    function formatAliases(bull){
+      if(!Array.isArray(bull.former_names) || bull.former_names.length === 0){
+        return "";
+      }
 
-  if(!Array.isArray(bull.former_names) || bull.former_names.length === 0){
-    return "";
-  }
+      const names = bull.former_names.map(name => {
+        let text = String(name || "").trim();
 
-  const names = bull.former_names.map(name => {
+        if(text.startsWith("元沖縄 ")){
+          return text;
+        }
 
-    let text = String(name || "").trim();
+        if(text.startsWith("元 ")){
+          return text;
+        }
 
-    // すでに元が付いている場合
-    if(text.startsWith("元")){
-      return text;
+        if(text.startsWith("元")){
+          return text;
+        }
+
+        if(text.startsWith("沖縄 ")){
+          return "元沖縄 " + text.replace("沖縄 ", "");
+        }
+
+        return "元" + text;
+      });
+
+      return `（元: ${names.join(" / ")}）`;
     }
 
-    // 沖縄の場合
-    if(text.startsWith("沖縄 ")){
-      return "元沖縄 " + text.replace("沖縄 ", "");
-    }
-
-    // 通常
-    return "元" + text;
-
-  });
-
-  return `（元: ${names.join(" / ")}）`;
-
-}
     Promise.all([
       fetch("data/bulls.json").then(res => res.json()),
       fetch("data/matches.json").then(res => res.json())
@@ -265,7 +259,7 @@
         return;
       }
 
-      const displayName = bull.display_name || bull.name || bull.exact_title || "";
+      const displayName = bull.display_name || bull.exact_title || "";
       bullNameEl.textContent = displayName;
       aliasesEl.textContent = formatAliases(bull);
 
