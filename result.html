@@ -147,6 +147,7 @@
       line-height:1.6;
       margin-bottom:10px;
       font-weight:700;
+      word-break:break-word;
     }
 
     .bull-name{
@@ -285,7 +286,40 @@
       return "結果";
     }
 
-    function makeRecordHtml(name, text){
+    function normalize(str) {
+      return String(str || "")
+        .replace(/\s+/g, "")
+        .replace(/[（）()]/g, "")
+        .trim();
+    }
+
+    function getBullSearchTargets(bull) {
+      const targets = [];
+
+      if (bull.display_name) targets.push(bull.display_name);
+      if (bull.name) targets.push(bull.name);
+      if (bull.exact_title) targets.push(bull.exact_title);
+
+      if (Array.isArray(bull.former_names)) {
+        bull.former_names.forEach(name => {
+          if (name) {
+            targets.push(name);
+            targets.push("元 " + name);
+            targets.push("元" + name);
+          }
+        });
+      }
+
+      return [...new Set(targets.map(normalize).filter(Boolean))];
+    }
+
+    function findBullIdByName(name, bulls) {
+      const target = normalize(name);
+      const found = bulls.find(bull => getBullSearchTargets(bull).includes(target));
+      return found ? found.id : null;
+    }
+
+    function makeRecordHtml(name, text, bulls){
       const noteText = String(text || "").trim();
 
       if(!noteText){
@@ -305,9 +339,15 @@
         return `<div class="bull-note">${escapeHtml(noteText)}</div>`;
       }
 
+      const bullId = findBullIdByName(name, bulls);
+
+      if (!bullId) {
+        return `<div class="bull-note">${escapeHtml(noteText)}</div>`;
+      }
+
       return `
         <div class="bull-note">
-          <a href="bull.html?id=${encodeURIComponent(name)}">
+          <a href="bull.html?id=${encodeURIComponent(bullId)}">
             ${escapeHtml(noteText)}
           </a>
         </div>
@@ -316,9 +356,10 @@
 
     Promise.all([
       fetch("data/programs.json").then(res => res.json()),
-      fetch("data/matches.json").then(res => res.json())
+      fetch("data/matches.json").then(res => res.json()),
+      fetch("data/bulls.json").then(res => res.json())
     ])
-    .then(([programs, matches]) => {
+    .then(([programs, matches, bulls]) => {
       const program = programs.find(p => p.id === programId);
       const list = matches.filter(m => m.program === programId);
 
@@ -368,10 +409,10 @@
           eastMark = "△";
           westMark = "△";
         }else{
-          if(winner === eastName){
+          if(normalize(winner) === normalize(eastName)){
             eastMark = "〇";
           }
-          if(winner === westName){
+          if(normalize(winner) === normalize(westName)){
             westMark = "〇";
           }
         }
@@ -384,7 +425,7 @@
               <div class="result-mark">${escapeHtml(eastMark)}</div>
               ${eastSub ? `<div class="subtext">${escapeHtml(eastSub)}</div>` : ``}
               <div class="bull-name">${escapeHtml(eastName)}</div>
-              ${makeRecordHtml(eastName, eastNote)}
+              ${makeRecordHtml(eastName, eastNote, bulls)}
             </td>
 
             <td class="rank">
@@ -396,7 +437,7 @@
               <div class="result-mark">${escapeHtml(westMark)}</div>
               ${westSub ? `<div class="subtext">${escapeHtml(westSub)}</div>` : ``}
               <div class="bull-name">${escapeHtml(westName)}</div>
-              ${makeRecordHtml(westName, westNote)}
+              ${makeRecordHtml(westName, westNote, bulls)}
             </td>
 
             <td class="area">${escapeHtml(westArea)}</td>
