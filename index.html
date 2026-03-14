@@ -8,177 +8,199 @@
 <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Yuji+Syuku&display=swap" rel="stylesheet">
 
 <style>
+
 body{
-  margin:0;
-  padding:10px;
-  background:#050505;
-  color:#eee;
-  font-family:'Kaisei Tokumin', serif;
-  text-align:center;
-  position:relative;
-  min-height:100vh;
+margin:0;
+padding:10px;
+background:#050505;
+color:#eee;
+font-family:'Kaisei Tokumin', serif;
+text-align:center;
+position:relative;
+min-height:100vh;
 }
 
 .bg-overlay{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background-image:url('IMG_8395.jpg');
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-  opacity:0.18;
-  filter:grayscale(100%);
-  z-index:-1;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background-image:url('IMG_8395.jpg');
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+opacity:0.18;
+filter:grayscale(100%);
+z-index:-1;
 }
 
 h1{
-  font-family:'Yuji Syuku', serif;
-  font-size:clamp(2.6rem,8vw,4.8rem);
-  color:#fff;
-  margin:35px 0 20px;
-  text-shadow:3px 3px 0 #e60000,-1px -1px 0 #e60000,1px -1px 0 #e60000,-1px 1px 0 #e60000,1px 1px 0 #e60000;
-  letter-spacing:2px;
+font-family:'Yuji Syuku', serif;
+font-size:clamp(3rem,8vw,5rem);
+color:#fff;
+margin:35px 0 15px;
+letter-spacing:0.2em;
+text-shadow:
+0 0 3px #fff,
+3px 3px 0 #7a0000,
+5px 5px 0 #e60000,
+8px 8px 18px rgba(230,0,0,0.6);
 }
 
 .menu{
-  max-width:950px;
-  margin:0 auto 40px;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
+max-width:950px;
+margin:0 auto 40px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
 }
 
 .menu a{
-  display:block;
-  padding:15px 10px;
-  background:rgba(20,20,20,0.8);
-  border:1px solid #333;
-  text-decoration:none;
-  color:#fff;
-  font-weight:800;
-  transition:all .25s ease;
+display:block;
+padding:15px;
+background:rgba(20,20,20,0.8);
+border:1px solid #333;
+text-decoration:none;
+color:#fff;
+font-weight:800;
+transition:0.25s;
 }
 
 .menu a:hover{
-  background:#e60000;
-  border-color:#e60000;
-  transform:translateY(-2px);
+background:#e60000;
+border-color:#e60000;
 }
 
 .section{
-  max-width:950px;
-  margin:40px auto;
-  text-align:left;
+max-width:950px;
+margin:40px auto;
+text-align:left;
 }
 
 .section-title{
-  font-size:1.2rem;
-  color:#f1c40f;
-  border-left:5px solid #e60000;
-  padding-left:14px;
-  margin-bottom:15px;
-  font-weight:800;
+font-size:1.2rem;
+color:#f1c40f;
+border-left:5px solid #e60000;
+padding-left:14px;
+margin-bottom:15px;
+font-weight:800;
 }
 
 .box{
-  background:rgba(20,20,20,0.78);
-  border:1px solid #222;
-  padding:24px;
-  backdrop-filter:blur(4px);
+background:rgba(20,20,20,0.78);
+border:1px solid #222;
+padding:24px;
 }
 
-.latest{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
+.latest-list{
+display:grid;
+gap:12px;
 }
 
-.latest a{
-  display:block;
-  padding:18px 12px;
-  background:#111;
-  border:1px solid #333;
-  text-decoration:none;
-  color:#fff;
-  font-weight:700;
-  line-height:1.8;
-  text-align:center;
-  transition:all .25s ease;
+.latest-row{
+display:grid;
+grid-template-columns:1fr auto;
+gap:10px;
 }
 
-.latest a:hover{
-  background:#e60000;
-  border-color:#e60000;
+.latest-main,
+.latest-result{
+display:block;
+padding:16px;
+background:#111;
+border:1px solid #333;
+text-decoration:none;
+color:#fff;
+font-weight:700;
 }
 
-.arena-list{
-  line-height:2;
-  color:#ddd;
+.latest-main:hover,
+.latest-result:hover{
+background:#e60000;
+border-color:#e60000;
 }
 
 .map-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px;
 }
 
 .map-card{
-  background:#111;
-  border:1px solid #333;
-  padding:14px;
+background:#111;
+border:1px solid #333;
+padding:14px;
 }
 
 .map-card h3{
-  margin:0 0 10px;
-  font-size:1rem;
-  color:#fff;
+margin:0 0 10px;
+font-size:1rem;
 }
 
 .map-frame{
-  width:100%;
-  height:260px;
-  border:0;
+width:100%;
+height:260px;
+border:0;
 }
 
-.map-note{
-  margin-top:10px;
-  color:#aaa;
-  font-size:0.88rem;
-  line-height:1.7;
+.instagram-box{
+background:#111;
+border:1px solid #333;
+padding:24px;
+text-align:center;
 }
 
-.small-note{
-  color:#999;
-  font-size:0.9rem;
-  text-align:center;
+.instagram-title{
+font-size:1.2rem;
+font-weight:800;
+margin-bottom:12px;
+}
+
+.instagram-placeholder{
+border:1px dashed #555;
+padding:25px;
+background:#0a0a0a;
+color:#bbb;
+}
+
+.instagram-link{
+display:inline-block;
+margin-top:15px;
+padding:10px 16px;
+background:#1a1a1a;
+color:#fff;
+text-decoration:none;
+border:1px solid #333;
+}
+
+.instagram-link:hover{
+background:#e60000;
+border-color:#e60000;
 }
 
 footer{
-  margin-top:60px;
-  color:#666;
-  font-size:0.8rem;
+margin-top:60px;
+color:#666;
+font-size:0.8rem;
 }
 
 @media (max-width:700px){
-  .menu{
-    grid-template-columns:1fr;
-  }
 
-  .latest{
-    grid-template-columns:1fr;
-  }
-
-  .map-grid{
-    grid-template-columns:1fr;
-  }
-
-  h1{
-    font-size:2.5rem;
-  }
+.menu{
+grid-template-columns:1fr;
 }
+
+.latest-row{
+grid-template-columns:1fr;
+}
+
+.map-grid{
+grid-template-columns:1fr;
+}
+
+}
+
 </style>
 </head>
 
@@ -189,96 +211,132 @@ footer{
 <h1>徳之島闘牛サイト</h1>
 
 <div class="menu">
-  <a href="programitiran.html">対戦表</a>
-  <a href="search.html">戦歴検索</a>
-  <a href="prediction.html">予想</a>
+<a href="programitiran.html">対戦表</a>
+<a href="search.html">戦歴検索</a>
+<a href="prediction.html">予想</a>
 </div>
 
 <div class="section">
-  <div class="section-title">最新情報</div>
-  <div class="box">
-    <div class="latest" id="latestTournament">
-      <div class="small-note">読み込み中...</div>
-    </div>
-  </div>
+
+<div class="section-title">最新情報</div>
+
+<div class="box">
+
+<div class="latest-list" id="latestTournament">
+読み込み中...
+</div>
+
+</div>
+
 </div>
 
 <div class="section">
-  <div class="section-title">闘牛場</div>
-  <div class="box arena-list">
-    なくさみ館<br>
-    松原闘牛場
-  </div>
+
+<div class="section-title">闘牛場</div>
+
+<div class="box">
+
+<div class="map-grid">
+
+<div class="map-card">
+
+<h3>なくさみ館</h3>
+
+<iframe
+class="map-frame"
+src="https://www.google.com/maps?q=%E5%BE%B3%E4%B9%8B%E5%B3%B6%20%E3%81%AA%E3%81%8F%E3%81%95%E3%81%BF%E9%A4%A8&output=embed">
+</iframe>
+
+</div>
+
+<div class="map-card">
+
+<h3>松原闘牛場</h3>
+
+<iframe
+class="map-frame"
+src="https://www.google.com/maps?q=%E5%BE%B3%E4%B9%8B%E5%B3%B6%20%E6%9D%BE%E5%8E%9F%E9%97%98%E7%89%9B%E5%A0%B4&output=embed">
+</iframe>
+
+</div>
+
+</div>
+
+</div>
+
 </div>
 
 <div class="section">
-  <div class="section-title">Googleマップ</div>
-  <div class="box">
-    <div class="map-grid">
-      <div class="map-card">
-        <h3>なくさみ館</h3>
-        <iframe
-          class="map-frame"
-          loading="lazy"
-          allowfullscreen
-          referrerpolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps?q=%E5%BE%B3%E4%B9%8B%E5%B3%B6%20%E3%81%AA%E3%81%8F%E3%81%95%E3%81%BF%E9%A4%A8&output=embed">
-        </iframe>
-      </div>
 
-      <div class="map-card">
-        <h3>松原闘牛場</h3>
-        <iframe
-          class="map-frame"
-          loading="lazy"
-          allowfullscreen
-          referrerpolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps?q=%E5%BE%B3%E4%B9%8B%E5%B3%B6%20%E6%9D%BE%E5%8E%9F%E9%97%98%E7%89%9B%E5%A0%B4&output=embed">
-        </iframe>
-      </div>
-    </div>
+<div class="section-title">Instagram</div>
 
-    <div class="map-note">
-      ※ 地図がうまく出ない場合は、あとでGoogleマップの共有URLに差し替え可能です。
-    </div>
-  </div>
+<div class="box">
+
+<div class="instagram-box">
+
+<div class="instagram-title">@togyunoshima</div>
+
+<div class="instagram-placeholder">
+
+徳之島闘牛サイトの最新情報は  
+公式Instagramでも発信予定です
+
+</div>
+
+<a class="instagram-link"
+href="https://www.instagram.com/togyunoshima"
+target="_blank">
+
+Instagramを見る
+
+</a>
+
+</div>
+
+</div>
+
 </div>
 
 <footer>
-  © 2026 togyu.net
+
+© 2026 togyu.net
+
 </footer>
 
 <script>
+
 fetch("data/programs.json")
 .then(res => res.json())
 .then(data => {
-  if(!data || data.length === 0){
-    document.getElementById("latestTournament").innerHTML = `
-      <div class="small-note">大会データがまだありません。</div>
-    `;
-    return;
-  }
 
-  const latest = data[0];
-  const title = latest.title || latest.date || "最新情報";
+const latestFive=data.slice(0,5)
 
-  const html = `
-    <a href="program.html?id=${latest.id}">
-      ${title}
-    </a>
+const html=latestFive.map(item=>{
 
-    <a href="result.html?id=${latest.id}">
-      ${title}（結果）
-    </a>
-  `;
+const title=item.title || item.date
 
-  document.getElementById("latestTournament").innerHTML = html;
+return `
+
+<div class="latest-row">
+
+<a class="latest-main" href="program.html?id=${item.id}">
+${title}
+</a>
+
+<a class="latest-result" href="result.html?id=${item.id}">
+結果
+</a>
+
+</div>
+
+`
+
+}).join("")
+
+document.getElementById("latestTournament").innerHTML=html
+
 })
-.catch(() => {
-  document.getElementById("latestTournament").innerHTML = `
-    <div class="small-note">大会データの読み込みに失敗しました。</div>
-  `;
-});
+
 </script>
 
 </body>
