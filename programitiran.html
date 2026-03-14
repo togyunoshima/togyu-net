@@ -1,250 +1,202 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>対戦表 | 徳之島闘牛サイト</title>
-    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Yuji+Syuku&family=Oswald:wght@700&display=swap" rel="stylesheet">
-    <style>
-        body { 
-            margin: 0;
-            padding: 10px;
-            background-color: #050505;
-            color: #eee; 
-            font-family: 'Kaisei Tokumin', serif; 
-            text-align: center;
-            position: relative;
-            min-height: 100vh;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>対戦表 | 徳之島闘牛サイト</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Yuji+Syuku&display=swap" rel="stylesheet">
+  <style>
+    body{
+      margin:0;
+      padding:20px 10px 60px;
+      background:#050505;
+      color:#eee;
+      font-family:'Kaisei Tokumin', serif;
+    }
 
-        .bg-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('IMG_8395.jpg'); 
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0.15;
-            filter: grayscale(100%);
-            z-index: -1;
-        }
+    .container{
+      max-width:1100px;
+      margin:0 auto;
+    }
 
-        h1 { 
-            font-family: 'Yuji Syuku', serif;
-            font-size: clamp(2.5rem, 10vw, 4.5rem);
-            color: #fff;
-            margin: 20px 0 40px 0;
-            line-height: 1.1;
-            text-shadow: 3px 3px 0 #e60000, -1px -1px 0 #e60000, 1px -1px 0 #e60000, -1px 1px 0 #e60000, 1px 1px 0 #e60000;
-            letter-spacing: 2px;
-        }
+    h1{
+      font-family:'Yuji Syuku', serif;
+      font-size:clamp(2rem, 7vw, 3.8rem);
+      color:#fff;
+      margin:20px 0 30px;
+      text-align:center;
+      text-shadow:3px 3px 0 #e60000,-1px -1px 0 #e60000,1px -1px 0 #e60000,-1px 1px 0 #e60000,1px 1px 0 #e60000;
+      letter-spacing:2px;
+    }
 
-        .header-nav {
-            max-width: 950px;
-            margin: 0 auto 30px auto;
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 8px;
-        }
+    .back-link{
+      display:inline-block;
+      margin-bottom:20px;
+      color:#fff;
+      text-decoration:none;
+      background:#111;
+      border:1px solid #333;
+      padding:10px 14px;
+    }
 
-        .nav-item {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            text-decoration: none;
-            border: 1px solid #444;
-            padding: 12px 5px;
-            font-size: 0.85rem;
-            font-weight: 800;
-            transition: 0.3s;
-        }
+    .back-link:hover{
+      background:#e60000;
+      border-color:#e60000;
+    }
 
-        .nav-item:hover { background-color: #e60000; border-color: #e60000; }
-        .nav-item:nth-child(1), .nav-item:nth-child(2), .nav-item:nth-child(3) { grid-column: span 2; }
-        .nav-item:nth-child(4), .nav-item:nth-child(5) { grid-column: span 3; }
+    .table-wrap{
+      background:rgba(20,20,20,0.75);
+      border:1px solid #222;
+      overflow-x:auto;
+    }
 
-        .basho-header {
-            max-width: 950px;
-            margin: 40px auto 0 auto;
-            background-color: rgba(34, 34, 34, 0.85);
-            color: #f1c40f;
-            padding: 10px 15px;
-            font-size: 1.15rem;
-            font-weight: 800;
-            border-left: 6px solid #e60000;
-            text-align: left;
-        }
+    table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:880px;
+    }
 
-        .table-container {
-            max-width: 950px;
-            margin: 0 auto 15px auto;
-            border-bottom: 2px solid #e60000;
-            background: rgba(17, 17, 17, 0.7);
-        }
+    th, td{
+      border:1px solid #333;
+      padding:12px 10px;
+      text-align:center;
+      vertical-align:middle;
+      font-size:0.95rem;
+      line-height:1.6;
+    }
 
-        .program-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
-        .program-table td { padding: 20px 10px; border-bottom: 1px solid #222; vertical-align: middle; }
-        .col-date { width: 100px; font-family: 'Oswald', sans-serif; color: #f1c40f; font-size: 1.05rem; text-align: center; }
-        .col-title { font-size: 1.1rem; font-weight: 800; color: #fff; text-align: left; padding-left: 15px !important; }
-        .col-result-box { width: 80px; text-align: center; }
+    th{
+      background:#111;
+      color:#f1c40f;
+      font-weight:800;
+    }
 
-        .btn-result {
-            display: inline-block;
-            background-color: #fff;
-            color: #000;
-            text-decoration: none;
-            padding: 6px 12px;
-            font-weight: 900;
-            font-size: 0.8rem;
-        }
+    .section-row td{
+      background:#0f0f0f;
+      color:#fff;
+      font-weight:800;
+      font-size:1rem;
+      border-top:2px solid #666;
+      border-bottom:2px solid #666;
+      padding:10px;
+    }
 
-        @media (max-width: 600px) {
-            h1 { font-size: 2.2rem; }
-            .nav-item { font-size: 0.75rem; }
-            .col-date { width: 80px; }
-            .col-title { font-size: 0.95rem; }
-        }
-    </style>
+    .program-link,
+    .result-link{
+      color:#9ecbff;
+      text-decoration:underline;
+    }
+
+    .program-link:hover,
+    .result-link:hover{
+      color:#fff;
+    }
+
+    .result-none{
+      color:#999;
+    }
+
+    .note{
+      color:#888;
+      text-align:center;
+      margin-top:18px;
+      font-size:0.85rem;
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <a href="index.html" class="back-link">← ホームへ戻る</a>
 
-<div class="bg-overlay"></div>
+    <h1>対戦表</h1>
 
-<nav class="header-nav">
-    <a href="index.html" class="nav-item">ホーム</a>
-    <a href="programitiran.html" class="nav-item" style="background: #e60000; border-color: #e60000;">対戦表</a>
-    <a href="search.html" class="nav-item">戦歴検索</a>
-    <a href="prediction.html" class="nav-item">予想ページ</a>
-    <a href="champions.html" class="nav-item">徳之島闘牛歴代王者</a>
-</nav>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 22%;">日付</th>
+            <th>大会名(プログラム)</th>
+            <th style="width: 12%;">結果</th>
+          </tr>
+        </thead>
+        <tbody id="programBody"></tbody>
+      </table>
+    </div>
 
-<h1>対戦表</h1>
+    <div class="note">※ 今の徳之島闘牛サイトの一覧仕様に近い形で表示しています。</div>
+  </div>
 
-<div class="basho-header">2026年 3月場所</div>
-<div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date">2026.03.08</td><td class="col-title"><a href="20260308program.html">玉城千春(Kiroro)スペシャルライブ＆<br>平成19・20年生卒業記念ナイター闘牛大会</td><td class="col-result-box"><a href="20260308result.html" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2026.03.07</td><td class="col-title"><a href="20260307program.html">卒業記念ナイター闘牛大会</td><td class="col-result-box"><a href="20260307result.html" class="btn-result">結果</a></td></tr>
-</tbody></table></div>
+  <script>
+    const bodyEl = document.getElementById("programBody");
 
-<div class="basho-header">2026年 1月場所</div>
-<div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date">2026.01.03</td><td class="col-title"><a href="20260103program.html">第42回 徳之島全島一・<br>ミニ軽量級優勝旗争奪戦 徳之島町大会</td><td class="col-result-box"><a href="20260103result.html" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2026.01.02</td><td class="col-title"><a href="20260102program.html">第42回 徳之島中量級優勝旗争奪戦<br>平成2年・3年厄払い闘牛大会</td><td class="col-result-box"><a href="20260102result.html" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2026.01.01</td><td class="col-title"><a href="20260101program.html">第42回 徳之島軽量級優勝旗争奪戦<br>平成17・18年生成人記念闘牛大会</td><td class="col-result-box"><a href="20260101result.html" class="btn-result">結果</a></td></tr>
-</tbody></table></div>
+    function formatJapaneseDate(dateStr){
+      if(!dateStr) return "";
+      const [y, m, d] = dateStr.split("-");
+      return `${Number(y)}年${Number(m)}月${Number(d)}日`;
+    }
 
-<div class="basho-header">2025年 12月場所</div>
-<div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date">2025.12.31</td><td class="col-title">若手オールスター忘年会2025<br>1時だよ！全員集合！</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-</tbody></table></div>
+    function makeSectionLabel(dateStr){
+      if(!dateStr) return "";
+      const [y, m] = dateStr.split("-");
+      return `${Number(y)}年${Number(m)}月場所`;
+    }
 
-<div class="basho-header">2025年 10月場所</div>
-<div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date">2025.10.19</td><td class="col-title">目手久闘牛稽古大会</td><td class="col-result-box"><span style="color:#333">ー</span></td></tr>
-    <tr><td class="col-date">2025.10.05</td><td class="col-title">第41回 徳之島全島一・軽量級優勝旗争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2025.10.04</td><td class="col-title">第41回 徳之島中量級・<br>ミニ軽量級優勝旗争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-</tbody></table></div>
+    function fallbackTitle(program){
+      const dateStr = formatJapaneseDate(program.date);
+      return `${dateStr} 闘牛大会`;
+    }
 
-<div class="basho-header">2025年 9月場所</div>
-<div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date">2025.09.22</td><td class="col-title">秋のナイター闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-</tbody></table></div>
+    fetch("data/programs.json")
+      .then(res => res.json())
+      .then(programs => {
+        const sorted = [...programs].sort((a, b) => b.id.localeCompare(a.id));
 
-<div class="basho-header">2025年 8月場所</div>
-<div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date">2025.08.14</td><td class="col-title">お盆ナイター闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2025.08.13</td><td class="col-title">お盆若手オールスター闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-</tbody></table></div>
+        let html = "";
+        let currentSection = "";
 
-<div class="basho-header">2025年 6月場所</div>
-<div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date">2025.06.28</td><td class="col-title">2025 トライアスロンIN徳之島<br>WELCOME大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-</tbody></table></div>
+        sorted.forEach(program => {
+          const sectionLabel = makeSectionLabel(program.date);
 
-<div class="basho-header">2025年 5月場所</div>
-<div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date">2025.05.19</td><td class="col-title">第66回 奄美群島市町村議員大会開催記念</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2025.05.05</td><td class="col-title">第3回 子どもの日フェスティバル闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2025.05.04</td><td class="col-title">第40回 徳之島全島一・ミニ軽量級争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2025.05.03</td><td class="col-title">第40回 徳之島中量級優勝旗争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2025.05.02</td><td class="col-title">第40回 徳之島軽量級優勝旗争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-</tbody></table></div>
+          if(sectionLabel !== currentSection){
+            currentSection = sectionLabel;
+            html += `
+              <tr class="section-row">
+                <td colspan="3">${sectionLabel}</td>
+              </tr>
+            `;
+          }
 
-<div class="basho-header">2025年 4月場所</div>
-<div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date">2025.04.20</td><td class="col-title">第10回 きびまつりなくさみ大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-</tbody></table></div>
+          const dateText = formatJapaneseDate(program.date);
+          const programTitle = program.title ? program.title : fallbackTitle(program);
 
-<div class="basho-header">2025年 3月場所</div>
-<div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date">2025.03.09</td><td class="col-title">卒業記念全島若手オールスター闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2025.03.08</td><td class="col-title">平成18・19年生卒業記念闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-</tbody></table></div>
+          const programLink = `https://togyunoshima.github.io/togyu-net/program.html?id=${program.id}`;
+          const resultLink = `https://togyunoshima.github.io/togyu-net/result.html?id=${program.id}`;
 
-<div class="basho-header">2025年 1月場所</div>
-<div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date">2025.01.04</td><td class="col-title">昭和40年生還暦記念闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2025.01.03</td><td class="col-title">第39回 徳之島全島一・ミニ軽量級争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2025.01.02</td><td class="col-title">第39回 徳之島中量級優勝旗争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2025.01.01</td><td class="col-title">第39回 徳之島軽量級優勝旗争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-</tbody></table></div>
+          html += `
+            <tr>
+              <td>${dateText}</td>
+              <td>
+                <a class="program-link" href="${programLink}">
+                  ${programTitle}
+                </a>
+              </td>
+              <td>
+                <a class="result-link" href="${resultLink}">結果</a>
+              </td>
+            </tr>
+          `;
+        });
 
-<div class="basho-header">2024年 12月場所</div>
-<div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date">2024.12.31</td><td class="col-title">第2回 若手オールスター忘年会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2024.12.22</td><td class="col-title">道の駅とくのしま オープン記念</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-</tbody></table></div>
-
-<div class="basho-header">2024年 10月場所</div>
-<div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date">2024.10.06</td><td class="col-title">第38回 徳之島全島一・軽量級優勝旗争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2024.10.05</td><td class="col-title">第38回 徳之島中量級・ミニ軽量級優勝旗争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-</tbody></table></div>
-
-<div class="basho-header">2024年 8月場所</div>
-<div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date">2024.08.14</td><td class="col-title">お盆ナイター闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2024.08.11</td><td class="col-title">若手オールスターナイター闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-</tbody></table></div>
-
-<div class="basho-header">2024年 7月場所</div>
-<div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date">2024.07.05</td><td class="col-title">徳之島中央家畜市場購買者歓迎大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-</tbody></table></div>
-
-<div class="basho-header">2024年 6月場所</div>
-<div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date">2024.06.22</td><td class="col-title">2024トライアスロンin徳之島 歓迎大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-</tbody></table></div>
-
-<div class="basho-header">2024年 5月場所</div>
-<div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date">2024.05.12</td><td class="col-title">第9回 徳之島きびまつり 製糖終了なぐさみ</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2024.05.05</td><td class="col-title">第2回 子どもの日フェスティバル</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2024.05.04</td><td class="col-title">第37回 徳之島全島一&ミニ軽量級争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2024.05.03</td><td class="col-title">第37回 徳之島中量級優勝旗争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2024.05.02</td><td class="col-title">第37回 徳之島軽量級優勝旗争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-</tbody></table></div>
-
-<div class="basho-header">2024年 3月場所</div>
-<div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date">2024.03.31</td><td class="col-title">丸正グループ45周年記念若手大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2024.03.09</td><td class="col-title">卒業記念闘牛大会</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-</tbody></table></div>
-
-<div class="basho-header">2024年 1月場所</div>
-<div class="table-container"><table class="program-table"><tbody>
-    <tr><td class="col-date">2024.01.03</td><td class="col-title">第36回 徳之島全島一&ミニ軽量級争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2024.01.02</td><td class="col-title">第36回 徳之島中量級優勝旗争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-    <tr><td class="col-date">2024.01.01</td><td class="col-title">第36回 徳之島軽量級優勝旗争奪戦</td><td class="col-result-box"><a href="#" class="btn-result">結果</a></td></tr>
-</tbody></table></div>
-
-<p style="margin-top:60px; color:#555; font-size:0.75rem;">© 2026 togyu.net</p>
-
+        bodyEl.innerHTML = html;
+      })
+      .catch(err => {
+        bodyEl.innerHTML = `
+          <tr>
+            <td colspan="3" style="color:#ff8080;">大会データの読み込みに失敗しました。</td>
+          </tr>
+        `;
+        console.error(err);
+      });
+  </script>
 </body>
 </html>
