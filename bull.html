@@ -223,22 +223,33 @@
       return targets.includes(candidate);
     }
 
-   function formatAliases(bull) {
-  if (!Array.isArray(bull.former_names) || bull.former_names.length === 0) {
+  function formatFormerNames(bull){
+
+  if(!Array.isArray(bull.former_names) || bull.former_names.length === 0){
     return "";
   }
 
   const names = bull.former_names.map(name => {
-    const text = String(name || "").trim();
 
-    if (text.startsWith("沖縄 ")) {
+    let text = String(name || "").trim();
+
+    // すでに元が付いている場合
+    if(text.startsWith("元")){
+      return text;
+    }
+
+    // 沖縄の場合
+    if(text.startsWith("沖縄 ")){
       return "元沖縄 " + text.replace("沖縄 ", "");
     }
 
+    // 通常
     return "元" + text;
+
   });
 
   return `（元: ${names.join(" / ")}）`;
+
 }
     Promise.all([
       fetch("data/bulls.json").then(res => res.json()),
