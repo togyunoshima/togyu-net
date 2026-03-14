@@ -5,299 +5,289 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>結果 | 徳之島闘牛サイト</title>
   <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Yuji+Syuku&display=swap" rel="stylesheet">
-  <style>
+ <style>
+  body{
+    margin:0;
+    padding:14px 8px 40px;
+    background:#050505;
+    color:#eee;
+    font-family:'Kaisei Tokumin', serif;
+  }
+
+  .container{
+    max-width:1100px;
+    margin:0 auto;
+  }
+
+  .back-link{
+    display:inline-block;
+    margin-bottom:16px;
+    color:#fff;
+    text-decoration:none;
+    background:#111;
+    border:1px solid #333;
+    padding:10px 14px;
+    font-size:0.92rem;
+  }
+
+  .back-link:hover{
+    background:#e60000;
+    border-color:#e60000;
+  }
+
+  h1{
+    text-align:center;
+    font-family:'Yuji Syuku', serif;
+    font-size:clamp(1.35rem, 4.8vw, 3rem);
+    color:#fff;
+    margin:10px 0 22px;
+    text-shadow:3px 3px 0 #e60000,-1px -1px 0 #e60000,1px -1px 0 #e60000,-1px 1px 0 #e60000,1px 1px 0 #e60000;
+    letter-spacing:0.04em;
+    line-height:1.45;
+    white-space:normal;
+    word-break:keep-all;
+    overflow-wrap:anywhere;
+  }
+
+  .event-meta{
+    background:rgba(20,20,20,0.8);
+    border:1px solid #222;
+    margin-bottom:20px;
+  }
+
+  .meta-row{
+    display:grid;
+    grid-template-columns:92px 1fr;
+    border-bottom:1px solid #333;
+  }
+
+  .meta-row:last-child{
+    border-bottom:none;
+  }
+
+  .meta-label{
+    background:#111;
+    color:#f1c40f;
+    font-weight:800;
+    padding:12px 12px;
+    font-size:0.9rem;
+  }
+
+  .meta-value{
+    padding:12px 12px;
+    color:#fff;
+    font-size:0.92rem;
+    line-height:1.6;
+    white-space:normal;
+    word-break:break-word;
+  }
+
+  .program-table-wrap{
+    background:rgba(20,20,20,0.8);
+    border:1px solid #222;
+    overflow-x:auto;
+  }
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    table-layout:fixed;
+    min-width:700px;
+  }
+
+  th, td{
+    border:1px solid #333;
+    text-align:center;
+    vertical-align:middle;
+    padding:0;
+  }
+
+  th{
+    background:#111;
+    color:#fff;
+    font-weight:800;
+    padding:12px 6px;
+    font-size:0.92rem;
+  }
+
+  th.east-head{
+    background:#b60000;
+  }
+
+  th.west-head{
+    background:#d9d9d9;
+    color:#222;
+  }
+
+  th.rank-head{
+    background:#222;
+    color:#f1c40f;
+  }
+
+  th.area-head{
+    background:#222;
+    color:#fff;
+    width:11%;
+  }
+
+  td.area{
+    background:#0a0a0a;
+    color:#fff;
+    font-weight:700;
+    font-size:0.88rem;
+    width:11%;
+    padding:12px 4px;
+    line-height:1.5;
+    word-break:break-word;
+  }
+
+  td.east,
+  td.west{
+    width:30%;
+    background:#050505;
+    padding:14px 6px;
+  }
+
+  td.rank{
+    width:18%;
+    background:#0f0f0f;
+    padding:14px 4px;
+  }
+
+  .subtext{
+    color:#f1c40f;
+    font-size:0.72rem;
+    line-height:1.5;
+    margin-bottom:8px;
+    font-weight:700;
+    white-space:normal;
+    word-break:break-word;
+  }
+
+  .bull-name{
+    color:#fff;
+    font-size:1.2rem;
+    line-height:1.35;
+    font-weight:800;
+    margin-bottom:8px;
+    white-space:normal;
+    word-break:break-word;
+  }
+
+  .bull-note{
+    color:#ddd;
+    font-size:0.72rem;
+    line-height:1.55;
+    white-space:normal;
+    word-break:break-word;
+  }
+
+  .bull-note a{
+    color:#ddd;
+    text-decoration:underline;
+  }
+
+  .bull-note a:hover{
+    color:#fff;
+  }
+
+  .rank-name{
+    color:#f1c40f;
+    font-size:0.9rem;
+    font-weight:800;
+    line-height:1.5;
+    white-space:normal;
+    word-break:break-word;
+  }
+
+  .match-time-placeholder{
+    color:#bbb;
+    font-size:0.82rem;
+    line-height:1.5;
+    margin-top:8px;
+    white-space:nowrap;
+  }
+
+  .error{
+    text-align:center;
+    color:#ff8080;
+    margin-top:24px;
+  }
+
+  .note{
+    color:#888;
+    text-align:center;
+    margin-top:14px;
+    font-size:0.8rem;
+  }
+
+  @media (max-width: 700px){
     body{
-      margin:0;
-      padding:14px 8px 40px;
-      background:#050505;
-      color:#eee;
-      font-family:'Kaisei Tokumin', serif;
-    }
-
-    .container{
-      max-width:1100px;
-      margin:0 auto;
-    }
-
-    .back-link{
-      display:inline-block;
-      margin-bottom:16px;
-      color:#fff;
-      text-decoration:none;
-      background:#111;
-      border:1px solid #333;
-      padding:10px 14px;
-      font-size:0.92rem;
-    }
-
-    .back-link:hover{
-      background:#e60000;
-      border-color:#e60000;
-    }
-
-    h1{
-      text-align:center;
-      font-family:'Yuji Syuku', serif;
-      font-size:clamp(1.8rem, 5.8vw, 3.6rem);
-      color:#fff;
-      margin:10px 0 22px;
-      text-shadow:3px 3px 0 #e60000,-1px -1px 0 #e60000,1px -1px 0 #e60000,-1px 1px 0 #e60000,1px 1px 0 #e60000;
-      letter-spacing:0.08em;
-      line-height:1.35;
-      white-space:normal;
-      word-break:keep-all;
-    }
-
-    .event-meta{
-      background:rgba(20,20,20,0.8);
-      border:1px solid #222;
-      margin-bottom:20px;
+      padding:10px 4px 28px;
     }
 
     .meta-row{
-      display:grid;
-      grid-template-columns:92px 1fr;
-      border-bottom:1px solid #333;
-    }
-
-    .meta-row:last-child{
-      border-bottom:none;
+      grid-template-columns:74px 1fr;
     }
 
     .meta-label{
-      background:#111;
-      color:#f1c40f;
-      font-weight:800;
-      padding:12px 12px;
-      font-size:0.9rem;
+      font-size:0.76rem;
+      padding:10px 8px;
     }
 
     .meta-value{
-      padding:12px 12px;
-      color:#fff;
-      font-size:0.92rem;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-
-    .result-table-wrap{
-      background:rgba(20,20,20,0.8);
-      border:1px solid #222;
-      overflow:hidden;
-    }
-
-    table{
-      width:100%;
-      border-collapse:collapse;
-      table-layout:fixed;
-    }
-
-    th, td{
-      border:1px solid #333;
-      text-align:center;
-      vertical-align:middle;
-      padding:0;
+      font-size:0.74rem;
+      padding:10px 8px;
+      line-height:1.5;
     }
 
     th{
-      background:#111;
-      color:#fff;
-      font-weight:800;
-      padding:12px 6px;
-      font-size:0.92rem;
-    }
-
-    th.east-head{
-      background:#b60000;
-    }
-
-    th.west-head{
-      background:#d9d9d9;
-      color:#222;
-    }
-
-    th.rank-head{
-      background:#222;
-      color:#f1c40f;
-    }
-
-    th.area-head{
-      background:#222;
-      color:#fff;
-      width:11%;
+      font-size:0.7rem;
+      padding:10px 4px;
     }
 
     td.area{
-      background:#0a0a0a;
-      color:#fff;
-      font-weight:700;
-      font-size:0.92rem;
-      width:11%;
-      padding:12px 6px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
+      font-size:0.64rem;
+      padding:10px 2px;
+      line-height:1.35;
     }
 
     td.east,
     td.west{
-      width:30%;
-      background:#050505;
-      padding:14px 8px;
+      padding:10px 4px;
     }
 
     td.rank{
-      width:18%;
-      background:#0f0f0f;
-      padding:14px 6px;
-    }
-
-    .result-mark{
-      color:#fff;
-      font-size:1.15rem;
-      font-weight:800;
-      margin-bottom:6px;
-      min-height:1.3em;
-      white-space:nowrap;
+      padding:10px 3px;
     }
 
     .subtext{
-      color:#f1c40f;
-      font-size:0.76rem;
-      line-height:1.4;
-      margin-bottom:8px;
-      font-weight:700;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
+      font-size:0.54rem;
+      line-height:1.35;
+      margin-bottom:5px;
     }
 
     .bull-name{
-      color:#fff;
-      font-size:1.35rem;
-      line-height:1.2;
-      font-weight:800;
-      margin-bottom:8px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
+      font-size:0.88rem;
+      line-height:1.25;
+      margin-bottom:5px;
     }
 
     .bull-note{
-      color:#ddd;
-      font-size:0.76rem;
-      line-height:1.4;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-
-    .bull-note a{
-      color:#ddd;
-      text-decoration:underline;
-    }
-
-    .bull-note a:hover{
-      color:#fff;
+      font-size:0.5rem;
+      line-height:1.35;
     }
 
     .rank-name{
-      color:#f1c40f;
-      font-size:1.05rem;
-      font-weight:800;
+      font-size:0.64rem;
       line-height:1.35;
-      white-space:pre-line;
-      word-break:keep-all;
     }
 
-    .match-time{
-      color:#ddd;
-      font-size:0.86rem;
-      line-height:1.5;
-      margin-top:8px;
-      white-space:nowrap;
+    .match-time-placeholder{
+      font-size:0.6rem;
     }
-
-    .error{
-      text-align:center;
-      color:#ff8080;
-      margin-top:24px;
-    }
-
-    .note{
-      color:#888;
-      text-align:center;
-      margin-top:14px;
-      font-size:0.8rem;
-    }
-
-    @media (max-width: 700px){
-      body{
-        padding:10px 4px 28px;
-      }
-
-      .meta-row{
-        grid-template-columns:78px 1fr;
-      }
-
-      .meta-label{
-        font-size:0.78rem;
-        padding:10px 8px;
-      }
-
-      .meta-value{
-        font-size:0.78rem;
-        padding:10px 8px;
-      }
-
-      th{
-        font-size:0.72rem;
-        padding:10px 4px;
-      }
-
-      td.area{
-        font-size:0.68rem;
-        padding:10px 2px;
-      }
-
-      td.east,
-      td.west{
-        padding:10px 4px;
-      }
-
-      td.rank{
-        padding:10px 3px;
-      }
-
-      .result-mark{
-        font-size:0.82rem;
-        margin-bottom:4px;
-      }
-
-      .subtext{
-        font-size:0.6rem;
-        margin-bottom:5px;
-      }
-
-      .bull-name{
-        font-size:0.92rem;
-        margin-bottom:5px;
-      }
-
-      .bull-note{
-        font-size:0.58rem;
-      }
-
-      .rank-name{
-        font-size:0.72rem;
-      }
-
-      .match-time{
-        font-size:0.66rem;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
   <div class="container">
