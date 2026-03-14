@@ -5,303 +5,311 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>結果 | 徳之島闘牛サイト</title>
   <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Yuji+Syuku&display=swap" rel="stylesheet">
-<style>
-  body{
-    margin:0;
-    padding:14px 8px 40px;
-    background:#050505;
-    color:#eee;
-    font-family:'Kaisei Tokumin', serif;
-  }
-
-  .container{
-    max-width:1100px;
-    margin:0 auto;
-  }
-
-  .back-link{
-    display:inline-block;
-    margin-bottom:16px;
-    color:#fff;
-    text-decoration:none;
-    background:#111;
-    border:1px solid #333;
-    padding:10px 14px;
-    font-size:0.92rem;
-  }
-
-  .back-link:hover{
-    background:#e60000;
-    border-color:#e60000;
-  }
-
-  h1{
-    text-align:center;
-    font-family:'Yuji Syuku', serif;
-    font-size:clamp(1.35rem, 4.8vw, 3rem);
-    color:#fff;
-    margin:10px 0 22px;
-    text-shadow:3px 3px 0 #e60000,-1px -1px 0 #e60000,1px -1px 0 #e60000,-1px 1px 0 #e60000,1px 1px 0 #e60000;
-    letter-spacing:0.04em;
-    line-height:1.45;
-    white-space:normal;
-    word-break:keep-all;
-    overflow-wrap:anywhere;
-  }
-
-  .event-meta{
-    background:rgba(20,20,20,0.8);
-    border:1px solid #222;
-    margin-bottom:20px;
-  }
-
-  .meta-row{
-    display:grid;
-    grid-template-columns:92px 1fr;
-    border-bottom:1px solid #333;
-  }
-
-  .meta-row:last-child{
-    border-bottom:none;
-  }
-
-  .meta-label{
-    background:#111;
-    color:#f1c40f;
-    font-weight:800;
-    padding:12px 12px;
-    font-size:0.9rem;
-  }
-
-  .meta-value{
-    padding:12px 12px;
-    color:#fff;
-    font-size:0.92rem;
-    line-height:1.6;
-    white-space:normal;
-    word-break:break-word;
-  }
-
-  .result-table-wrap{
-    background:rgba(20,20,20,0.8);
-    border:1px solid #222;
-    overflow-x:auto;
-  }
-
-  table{
-    width:100%;
-    border-collapse:collapse;
-    table-layout:fixed;
-    min-width:700px;
-  }
-
-  th, td{
-    border:1px solid #333;
-    text-align:center;
-    vertical-align:middle;
-    padding:0;
-  }
-
-  th{
-    background:#111;
-    color:#fff;
-    font-weight:800;
-    padding:12px 6px;
-    font-size:0.92rem;
-  }
-
-  th.east-head{
-    background:#b60000;
-  }
-
-  th.west-head{
-    background:#d9d9d9;
-    color:#222;
-  }
-
-  th.rank-head{
-    background:#222;
-    color:#f1c40f;
-  }
-
-  th.area-head{
-    background:#222;
-    color:#fff;
-    width:11%;
-  }
-
-  td.area{
-    background:#0a0a0a;
-    color:#fff;
-    font-weight:700;
-    font-size:0.88rem;
-    width:11%;
-    padding:12px 4px;
-    line-height:1.5;
-    word-break:break-word;
-  }
-
-  td.east,
-  td.west{
-    width:30%;
-    background:#050505;
-    padding:14px 6px;
-  }
-
-  td.rank{
-    width:18%;
-    background:#0f0f0f;
-    padding:14px 4px;
-  }
-
-  .result-mark{
-    color:#fff;
-    font-size:1rem;
-    font-weight:800;
-    margin-bottom:6px;
-    min-height:1.2em;
-    white-space:nowrap;
-  }
-
-  .subtext{
-    color:#f1c40f;
-    font-size:0.72rem;
-    line-height:1.5;
-    margin-bottom:8px;
-    font-weight:700;
-    white-space:normal;
-    word-break:break-word;
-  }
-
-  .bull-name{
-    color:#fff;
-    font-size:1.2rem;
-    line-height:1.35;
-    font-weight:800;
-    margin-bottom:8px;
-    white-space:normal;
-    word-break:break-word;
-  }
-
-  .bull-note{
-    color:#ddd;
-    font-size:0.72rem;
-    line-height:1.55;
-    white-space:normal;
-    word-break:break-word;
-  }
-
-  .bull-note a{
-    color:#ddd;
-    text-decoration:underline;
-  }
-
-  .bull-note a:hover{
-    color:#fff;
-  }
-
-  .rank-name{
-    color:#f1c40f;
-    font-size:0.9rem;
-    font-weight:800;
-    line-height:1.5;
-    white-space:normal;
-    word-break:break-word;
-  }
-
-  .match-time{
-    color:#ddd;
-    font-size:0.8rem;
-    line-height:1.5;
-    margin-top:8px;
-    white-space:nowrap;
-  }
-
-  .error{
-    text-align:center;
-    color:#ff8080;
-    margin-top:24px;
-  }
-
-  .note{
-    color:#888;
-    text-align:center;
-    margin-top:14px;
-    font-size:0.8rem;
-  }
-
-  @media (max-width: 700px){
+  <style>
     body{
-      padding:10px 4px 28px;
+      margin:0;
+      padding:14px 8px 40px;
+      background:#050505;
+      color:#eee;
+      font-family:'Kaisei Tokumin', serif;
+    }
+
+    .container{
+      max-width:1100px;
+      margin:0 auto;
+    }
+
+    .back-link{
+      display:inline-block;
+      margin-bottom:16px;
+      color:#fff;
+      text-decoration:none;
+      background:#111;
+      border:1px solid #333;
+      padding:10px 14px;
+      font-size:0.92rem;
+    }
+
+    .back-link:hover{
+      background:#e60000;
+      border-color:#e60000;
+    }
+
+    h1{
+      text-align:center;
+      font-family:'Yuji Syuku', serif;
+      font-size:clamp(1.8rem, 5.6vw, 3.2rem);
+      color:#fff;
+      margin:10px 0 22px;
+      text-shadow:3px 3px 0 #e60000,-1px -1px 0 #e60000,1px -1px 0 #e60000,-1px 1px 0 #e60000,1px 1px 0 #e60000;
+      letter-spacing:0.04em;
+      line-height:1.45;
+      white-space:normal;
+      word-break:keep-all;
+      overflow-wrap:anywhere;
+    }
+
+    .event-meta{
+      background:rgba(20,20,20,0.8);
+      border:1px solid #222;
+      margin-bottom:20px;
     }
 
     .meta-row{
-      grid-template-columns:74px 1fr;
+      display:grid;
+      grid-template-columns:92px 1fr;
+      border-bottom:1px solid #333;
+    }
+
+    .meta-row:last-child{
+      border-bottom:none;
     }
 
     .meta-label{
-      font-size:0.76rem;
-      padding:10px 8px;
+      background:#111;
+      color:#f1c40f;
+      font-weight:800;
+      padding:12px 12px;
+      font-size:0.9rem;
     }
 
     .meta-value{
-      font-size:0.74rem;
-      padding:10px 8px;
-      line-height:1.5;
+      padding:12px 12px;
+      color:#fff;
+      font-size:0.92rem;
+      line-height:1.6;
+      white-space:normal;
+      word-break:break-word;
+    }
+
+    .result-table-wrap{
+      background:rgba(20,20,20,0.8);
+      border:1px solid #222;
+      overflow-x:hidden;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      table-layout:fixed;
+    }
+
+    th, td{
+      border:1px solid #333;
+      text-align:center;
+      vertical-align:middle;
+      padding:0;
     }
 
     th{
-      font-size:0.7rem;
-      padding:10px 4px;
+      background:#111;
+      color:#fff;
+      font-weight:800;
+      padding:12px 6px;
+      font-size:0.92rem;
+    }
+
+    th.east-head{
+      background:#b60000;
+    }
+
+    th.west-head{
+      background:#d9d9d9;
+      color:#222;
+    }
+
+    th.rank-head{
+      background:#222;
+      color:#f1c40f;
+    }
+
+    th.area-head{
+      background:#222;
+      color:#fff;
+      width:11%;
     }
 
     td.area{
-      font-size:0.64rem;
-      padding:10px 2px;
-      line-height:1.35;
+      background:#0a0a0a;
+      color:#fff;
+      font-weight:700;
+      font-size:0.88rem;
+      width:11%;
+      padding:12px 4px;
+      line-height:1.5;
+      word-break:break-word;
     }
 
     td.east,
     td.west{
-      padding:10px 4px;
+      width:30%;
+      background:#050505;
+      padding:14px 6px;
     }
 
     td.rank{
-      padding:10px 3px;
-    }
-
-    .result-mark{
-      font-size:0.76rem;
-      margin-bottom:4px;
+      width:18%;
+      background:#0f0f0f;
+      padding:14px 4px;
     }
 
     .subtext{
-      font-size:0.54rem;
-      line-height:1.35;
-      margin-bottom:5px;
+      color:#f1c40f;
+      font-size:0.72rem;
+      line-height:1.5;
+      margin-bottom:8px;
+      font-weight:700;
+      white-space:normal;
+      word-break:break-word;
     }
 
     .bull-name{
-      font-size:0.88rem;
-      line-height:1.25;
-      margin-bottom:5px;
+      color:#fff;
+      font-size:1.2rem;
+      line-height:1.35;
+      font-weight:800;
+      margin-bottom:8px;
+      white-space:normal;
+      word-break:break-word;
     }
 
     .bull-note{
-      font-size:0.5rem;
-      line-height:1.35;
+      color:#ddd;
+      font-size:0.72rem;
+      line-height:1.55;
+      white-space:normal;
+      word-break:break-word;
+    }
+
+    .bull-note a{
+      color:#ddd;
+      text-decoration:underline;
+    }
+
+    .bull-note a:hover{
+      color:#fff;
     }
 
     .rank-name{
-      font-size:0.64rem;
-      line-height:1.35;
+      color:#f1c40f;
+      font-size:0.9rem;
+      font-weight:800;
+      line-height:1.5;
+      white-space:pre-line;
+      word-break:break-word;
+      margin-bottom:8px;
     }
 
     .match-time{
-      font-size:0.58rem;
+      color:#ddd;
+      font-size:0.8rem;
+      line-height:1.5;
+      white-space:nowrap;
     }
-  }
-</style>
+
+    .error{
+      text-align:center;
+      color:#ff8080;
+      margin-top:24px;
+    }
+
+    .note{
+      color:#888;
+      text-align:center;
+      margin-top:14px;
+      font-size:0.8rem;
+    }
+
+    @media (max-width: 700px){
+      body{
+        padding:10px 2px 24px;
+      }
+
+      .back-link{
+        font-size:0.76rem;
+        padding:8px 10px;
+      }
+
+      h1{
+        font-size:1.1rem;
+        line-height:1.6;
+        letter-spacing:0.01em;
+        margin:8px 0 16px;
+      }
+
+      .meta-row{
+        grid-template-columns:58px 1fr;
+      }
+
+      .meta-label{
+        font-size:0.68rem;
+        padding:8px 6px;
+      }
+
+      .meta-value{
+        font-size:0.66rem;
+        padding:8px 6px;
+        line-height:1.45;
+      }
+
+      th{
+        font-size:0.6rem;
+        padding:8px 2px;
+      }
+
+      th.area-head{ width:10%; }
+      td.area{ width:10%; }
+
+      td.area{
+        font-size:0.54rem;
+        padding:8px 1px;
+        line-height:1.25;
+      }
+
+      td.east,
+      td.west{
+        width:31%;
+        padding:8px 3px;
+      }
+
+      td.rank{
+        width:18%;
+        padding:8px 2px;
+      }
+
+      .subtext{
+        font-size:0.42rem;
+        line-height:1.25;
+        margin-bottom:4px;
+      }
+
+      .bull-name{
+        font-size:0.7rem;
+        line-height:1.15;
+        margin-bottom:4px;
+      }
+
+      .bull-note{
+        font-size:0.4rem;
+        line-height:1.2;
+      }
+
+      .rank-name{
+        font-size:0.52rem;
+        line-height:1.2;
+        margin-bottom:4px;
+      }
+
+      .match-time{
+        font-size:0.46rem;
+        line-height:1.2;
+      }
+
+      .note{
+        font-size:0.66rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -321,6 +329,10 @@
       <div class="meta-row">
         <div class="meta-label">主催</div>
         <div class="meta-value" id="metaHost">未設定</div>
+      </div>
+      <div class="meta-row">
+        <div class="meta-label">入場料</div>
+        <div class="meta-value" id="metaPrice">未設定</div>
       </div>
     </div>
 
@@ -351,6 +363,7 @@
     const metaDateEl = document.getElementById("metaDate");
     const metaPlaceEl = document.getElementById("metaPlace");
     const metaHostEl = document.getElementById("metaHost");
+    const metaPriceEl = document.getElementById("metaPrice");
     const bodyEl = document.getElementById("resultBody");
     const errorEl = document.getElementById("error");
 
@@ -384,7 +397,6 @@
 
     function getBullSearchTargets(bull) {
       const targets = [];
-
       if (bull.display_name) targets.push(bull.display_name);
       if (bull.name) targets.push(bull.name);
       if (bull.exact_title) targets.push(bull.exact_title);
@@ -398,7 +410,6 @@
           }
         });
       }
-
       return [...new Set(targets.map(normalize).filter(Boolean))];
     }
 
@@ -410,10 +421,7 @@
 
     function makeRecordHtml(name, text, bulls){
       const noteText = String(text || "").trim();
-
-      if(!noteText){
-        return "";
-      }
+      if(!noteText) return "";
 
       if(noteText.includes("デビュー戦")){
         return `<div class="bull-note">${escapeHtml(noteText)}</div>`;
@@ -429,7 +437,6 @@
       }
 
       const bullId = findBullIdByName(name, bulls);
-
       if (!bullId) {
         return `<div class="bull-note">${escapeHtml(noteText)}</div>`;
       }
@@ -447,6 +454,12 @@
       const text = String(rank || "").trim();
       if(!text) return "VS";
       return escapeHtml(text).replaceAll(" / ", "<br>").replaceAll("/", "<br>");
+    }
+
+    function formatCenterLine(mark, time){
+      const m = mark ? escapeHtml(mark) : "";
+      const t = time ? escapeHtml(time) : "--:--";
+      return `${m}｜${t}｜`;
     }
 
     Promise.all([
@@ -468,6 +481,7 @@
         metaDateEl.textContent = formatJapaneseDate(program.date) || "未設定";
         metaPlaceEl.textContent = program.location || program.place || "未設定";
         metaHostEl.textContent = program.host || "未設定";
+        metaPriceEl.textContent = program.price || "未設定";
       } else {
         pageTitleEl.textContent = `${programId} 結果`;
         metaDateEl.textContent = "未設定";
@@ -497,44 +511,30 @@
         const winner = match.winner || "";
         const isDraw = match.draw === true || match.result === "draw";
 
-        let eastMark = "";
-        let westMark = "";
-
+        let centerMark = "";
         if(isDraw){
-          eastMark = "△";
-          westMark = "△";
-        }else{
-          if(normalize(winner) === normalize(eastName)){
-            eastMark = "〇";
-          }
-          if(normalize(winner) === normalize(westName)){
-            westMark = "〇";
-          }
+          centerMark = "△";
+        }else if(normalize(winner) === normalize(eastName) || normalize(winner) === normalize(westName)){
+          centerMark = "〇";
         }
 
         return `
           <tr>
             <td class="area">${escapeHtml(eastArea)}</td>
-
             <td class="east">
-              <div class="result-mark">${escapeHtml(eastMark)}</div>
               ${eastSub ? `<div class="subtext">${escapeHtml(eastSub)}</div>` : ``}
               <div class="bull-name">${escapeHtml(eastName)}</div>
               ${makeRecordHtml(eastName, eastNote, bulls)}
             </td>
-
             <td class="rank">
               <div class="rank-name">${formatRank(rank)}</div>
-              <div class="match-time">│ ${escapeHtml(time)} │</div>
+              <div class="match-time">${formatCenterLine(centerMark, time || "不戦勝")}</div>
             </td>
-
             <td class="west">
-              <div class="result-mark">${escapeHtml(westMark)}</div>
               ${westSub ? `<div class="subtext">${escapeHtml(westSub)}</div>` : ``}
               <div class="bull-name">${escapeHtml(westName)}</div>
               ${makeRecordHtml(westName, westNote, bulls)}
             </td>
-
             <td class="area">${escapeHtml(westArea)}</td>
           </tr>
         `;
