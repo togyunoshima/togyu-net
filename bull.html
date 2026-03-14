@@ -1,68 +1,327 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
-<meta charset="UTF-8">
-<title>闘牛戦歴</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>戦歴 | 徳之島闘牛サイト</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Yuji+Syuku&display=swap" rel="stylesheet">
+  <style>
+    body{
+      margin:0;
+      padding:20px 10px 60px;
+      background:#050505;
+      color:#eee;
+      font-family:'Kaisei Tokumin', serif;
+    }
+
+    .container{
+      max-width:1100px;
+      margin:0 auto;
+    }
+
+    h1{
+      text-align:center;
+      font-family:'Yuji Syuku', serif;
+      font-size:clamp(2rem, 7vw, 3.8rem);
+      color:#fff;
+      margin:20px 0 10px;
+      text-shadow:3px 3px 0 #e60000,-1px -1px 0 #e60000,1px -1px 0 #e60000,-1px 1px 0 #e60000,1px 1px 0 #e60000;
+      letter-spacing:2px;
+    }
+
+    .alias{
+      text-align:center;
+      color:#bbb;
+      margin-bottom:30px;
+      font-size:0.95rem;
+      line-height:1.8;
+    }
+
+    .back-link{
+      display:inline-block;
+      margin-bottom:20px;
+      color:#fff;
+      text-decoration:none;
+      background:#111;
+      border:1px solid #333;
+      padding:10px 14px;
+    }
+
+    .back-link:hover{
+      background:#e60000;
+      border-color:#e60000;
+    }
+
+    .summary{
+      background:rgba(20,20,20,0.75);
+      border:1px solid #222;
+      padding:18px;
+      margin-bottom:20px;
+      text-align:center;
+      font-size:1rem;
+      line-height:1.9;
+    }
+
+    .table-wrap{
+      overflow-x:auto;
+      background:rgba(20,20,20,0.75);
+      border:1px solid #222;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:900px;
+    }
+
+    th, td{
+      border:1px solid #333;
+      padding:10px 8px;
+      text-align:center;
+      vertical-align:middle;
+      font-size:0.92rem;
+      line-height:1.6;
+    }
+
+    th{
+      background:#111;
+      color:#f1c40f;
+      font-weight:800;
+    }
+
+    td.name-cell{
+      font-weight:700;
+      color:#fff;
+    }
+
+    td.win{
+      color:#ff4d4d;
+      font-weight:800;
+    }
+
+    td.lose{
+      color:#7db7ff;
+      font-weight:800;
+    }
+
+    td.draw{
+      color:#f1c40f;
+      font-weight:800;
+    }
+
+    .note{
+      color:#888;
+      text-align:center;
+      margin-top:18px;
+      font-size:0.85rem;
+    }
+
+    .error{
+      text-align:center;
+      color:#ff8080;
+      margin-top:40px;
+    }
+
+    @media (max-width: 700px){
+      body{
+        padding:15px 8px 40px;
+      }
+
+      th, td{
+        font-size:0.82rem;
+        padding:8px 6px;
+      }
+
+      .summary{
+        font-size:0.92rem;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="container">
+    <a href="search.html" class="back-link">← 戦歴検索へ戻る</a>
 
-<h1 id="bull-name"></h1>
+    <h1 id="bullName">戦歴</h1>
+    <div class="alias" id="aliases"></div>
 
-<h2>戦歴</h2>
+    <div class="summary" id="summary">読み込み中...</div>
 
-<div id="record"></div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>牛名</th>
+            <th>勝敗</th>
+            <th></th>
+            <th>勝敗</th>
+            <th>牛名</th>
+            <th>対戦タイム</th>
+            <th>日付</th>
+            <th>場所</th>
+          </tr>
+        </thead>
+        <tbody id="recordBody"></tbody>
+      </table>
+    </div>
 
-<script>
+    <div class="note">※ 今の徳之島闘牛サイトの戦歴表示に近い形で表示しています。</div>
+    <div class="error" id="error"></div>
+  </div>
 
-const params = new URLSearchParams(location.search)
-const bullId = params.get("id")
+  <script>
+    const params = new URLSearchParams(location.search);
+    const bullId = params.get("id");
 
-fetch("data/bulls.json")
-.then(res => res.json())
-.then(bulls => {
+    const bullNameEl = document.getElementById("bullName");
+    const aliasesEl = document.getElementById("aliases");
+    const summaryEl = document.getElementById("summary");
+    const recordBody = document.getElementById("recordBody");
+    const errorEl = document.getElementById("error");
 
-const bull = bulls.find(b => b.id === bullId)
+    function escapeHtml(str) {
+      return String(str || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+    }
 
-document.getElementById("bull-name").textContent = bull.name
+    function normalize(str) {
+      return String(str || "")
+        .replace(/\s+/g, "")
+        .replace(/[（）()]/g, "")
+        .trim();
+    }
 
-fetch("data/matches.json")
-.then(res => res.json())
-.then(matches => {
+    function sameBull(matchName, bull) {
+      if (!matchName || !bull) return false;
 
-const fights = matches.filter(m =>
-m.winner === bull.name ||
-m.loser === bull.name
-)
+      const targetNames = [bull.name, ...(bull.aliases || [])].map(normalize);
+      const candidate = normalize(matchName);
 
-let html = ""
+      return targetNames.includes(candidate);
+    }
 
-fights.forEach(fight => {
+    function formatAliases(aliases) {
+      if (!aliases || aliases.length === 0) return "";
+      return `(${aliases.join(" / ")})`;
+    }
 
-html += `
-<p>
-${fight.date}
-<br>
-${fight.winner} vs ${fight.loser}
-<br>
-${fight.time}
-<br>
-${fight.arena}
-</p>
-<hr>
-`
+    Promise.all([
+      fetch("data/bulls.json").then(res => res.json()),
+      fetch("data/matches.json").then(res => res.json())
+    ])
+    .then(([bulls, matches]) => {
+      const bull = bulls.find(b => b.id === bullId);
 
-})
+      if (!bull) {
+        bullNameEl.textContent = "牛が見つかりません";
+        summaryEl.textContent = "";
+        errorEl.textContent = "bulls.json にこの牛のデータがありません。";
+        return;
+      }
 
-document.getElementById("record").innerHTML = html
+      bullNameEl.textContent = bull.name;
+      aliasesEl.textContent = formatAliases(bull.aliases);
 
-})
+      const fights = matches.filter(match =>
+        sameBull(match.winner, bull) ||
+        sameBull(match.loser, bull) ||
+        sameBull(match.east, bull) ||
+        sameBull(match.west, bull)
+      );
 
-})
+      if (fights.length === 0) {
+        summaryEl.textContent = "この牛の試合データはまだありません。";
+        recordBody.innerHTML = "";
+        return;
+      }
 
-</script>
+      let wins = 0;
+      let losses = 0;
+      let draws = 0;
 
+      const rowsHtml = fights.map((fight, index) => {
+        const isDraw = fight.draw === true || fight.result === "draw";
+
+        let leftName = "";
+        let rightName = "";
+        let leftResult = "";
+        let centerResult = "";
+        let rightResult = "";
+        let mySide = "";
+
+        if (isDraw) {
+          leftName = fight.east || fight.winner || "";
+          rightName = fight.west || fight.loser || "";
+          centerResult = "引き分け";
+
+          if (sameBull(leftName, bull) || sameBull(rightName, bull)) {
+            draws++;
+          }
+        } else {
+          leftName = fight.winner || fight.east || "";
+          rightName = fight.loser || fight.west || "";
+          leftResult = "勝ち";
+          rightResult = "負け";
+
+          if (sameBull(fight.winner, bull) || sameBull(leftName, bull)) {
+            wins++;
+            mySide = "left";
+          } else if (sameBull(fight.loser, bull) || sameBull(rightName, bull)) {
+            losses++;
+            mySide = "right";
+          }
+        }
+
+        const leftClass = isDraw
+          ? ""
+          : mySide === "left"
+            ? "win"
+            : "lose";
+
+        const rightClass = isDraw
+          ? ""
+          : mySide === "right"
+            ? "win"
+            : "lose";
+
+        const dateText = fight.date || "";
+        const placeText = fight.location || fight.place || fight.arena || "";
+        const timeText = fight.time || "";
+        const leftDisplay = leftName || "";
+        const rightDisplay = rightName || "";
+
+        return `
+          <tr>
+            <td>${index + 1}</td>
+            <td class="name-cell">${escapeHtml(leftDisplay)}</td>
+            <td class="${leftClass}">${escapeHtml(leftResult)}</td>
+            <td class="${isDraw ? "draw" : ""}">${escapeHtml(centerResult)}</td>
+            <td class="${rightClass}">${escapeHtml(rightResult)}</td>
+            <td class="name-cell">${escapeHtml(rightDisplay)}</td>
+            <td>${escapeHtml(timeText)}</td>
+            <td>${escapeHtml(dateText)}</td>
+            <td>${escapeHtml(placeText)}</td>
+          </tr>
+        `;
+      }).join("");
+
+      recordBody.innerHTML = rowsHtml;
+      summaryEl.innerHTML = `
+        通算成績： <strong>${wins}勝</strong> / <strong>${losses}敗</strong> / <strong>${draws}分</strong><br>
+        試合数： <strong>${fights.length}</strong>
+      `;
+    })
+    .catch(err => {
+      bullNameEl.textContent = "読み込みエラー";
+      summaryEl.textContent = "";
+      errorEl.textContent = "データの読み込みに失敗しました。";
+      console.error(err);
+    });
+  </script>
 </body>
-
 </html>
