@@ -37,19 +37,20 @@ z-index:-1;
 
 h1{
 font-family:'Yuji Syuku', serif;
-font-size:clamp(3.2rem,9vw,5.8rem);
-color:#fff;
-margin:35px 0 15px;
+font-size:clamp(3.8rem,9vw,6.5rem);
 letter-spacing:0.25em;
+margin:30px 0 15px;
+color:#ffffff;
 
 text-shadow:
-0 0 2px #fff,
-2px 2px 0 #4a0000,
-4px 4px 0 #8b0000,
-6px 6px 0 #e60000,
-0 0 25px rgba(230,0,0,0.7);
+0 0 3px #fff,
+2px 2px 0 #400000,
+4px 4px 0 #700000,
+6px 6px 0 #b30000,
+8px 8px 0 #e60000,
+0 0 30px rgba(230,0,0,0.8);
 
-transform:scaleY(1.05);
+transform:scaleY(1.1);
 }
 
 .menu{
@@ -308,8 +309,8 @@ fetch("data/programs.json")
 .then(data => {
 
 const latestFive = [...data]
-  .sort((a, b) => b.id.localeCompare(a.id))
-  .slice(0, 5)
+  .sort((a,b)=>b.id.localeCompare(a.id))
+  .slice(0,5)
 
 const html = latestFive.map(item => {
 
@@ -324,7 +325,7 @@ ${title}
 </a>
 
 <a class="latest-result" href="result.html?id=${item.id}">
-結果
+${title}（結果）
 </a>
 
 </div>
@@ -335,9 +336,6 @@ ${title}
 
 document.getElementById("latestTournament").innerHTML = html
 
-})
-.catch(() => {
-document.getElementById("latestTournament").innerHTML = "読み込みに失敗しました"
 })
 </script>
 
