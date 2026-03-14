@@ -1,1929 +1,1323 @@
 [
   {
-    "id": "闘〜Touki〜気",
-    "name": "闘〜Touki〜気",
-    "aliases": []
+    "id": "touki",
+    "name": "闘〜Touki〜気"
   },
   {
-    "id": "一心悪餓鬼",
-    "name": "一心悪餓鬼",
-    "aliases": []
+    "id": "iltsushinwarugaki",
+    "name": "一心悪餓鬼"
   },
   {
-    "id": "吉村畜産☆美乱",
-    "name": "吉村畜産☆美乱",
-    "aliases": [
-      "元 前心★美乱"
-    ]
+    "id": "zenshinbiran",
+    "name": "吉村畜産☆美乱(元 前心★美乱)"
   },
   {
-    "id": "結一千",
-    "name": "結一千",
-    "aliases": [
-      "元 千竜トガイ富士",
-      "元沖縄 天下一"
-    ]
+    "id": "senryutogaihuzi",
+    "name": "結一千(元 千竜トガイ富士,元沖縄 天下一)"
   },
   {
-    "id": "龍",
-    "name": "龍",
-    "aliases": [
-      "古)桜 福廣丸(元 龍神大王丸",
-      "大王丸",
-      "(真)大王丸"
-    ]
+    "id": "hukuhiromaru",
+    "name": "龍(古)桜 福廣丸(元 龍神大王丸,大王丸,(真)大王丸)"
   },
   {
-    "id": "トシマ",
-    "name": "トシマ",
-    "aliases": [
-      "元 十島魁力"
-    ]
+    "id": "toshimakairiki",
+    "name": "トシマ(元 十島魁力)"
   },
   {
-    "id": "ぱぁーりーぴぃーぽぉ",
-    "name": "ぱぁーりーぴぃーぽぉ",
-    "aliases": []
+    "id": "paripipo",
+    "name": "ぱぁーりーぴぃーぽぉ"
   },
   {
-    "id": "マルゲン",
-    "name": "マルゲン",
-    "aliases": []
+    "id": "marugen",
+    "name": "マルゲン"
   },
   {
-    "id": "菜々海トガイ来浩桜",
-    "name": "菜々海トガイ来浩桜",
-    "aliases": [
-      "元 来浩桜",
-      "元沖縄 伊良皆圧送来浩桜"
-    ]
+    "id": "raikouou",
+    "name": "菜々海トガイ来浩桜(元 来浩桜,元沖縄 伊良皆圧送来浩桜)"
   },
   {
-    "id": "伊鵬山",
-    "name": "伊鵬山",
-    "aliases": []
+    "id": "ihouzan",
+    "name": "伊鵬山"
   },
   {
-    "id": "美☆星",
-    "name": "美☆星",
-    "aliases": [
-      "元沖縄 華☆丸"
-    ]
+    "id": "tyurabosi",
+    "name": "美☆星(元沖縄 華☆丸)"
   },
   {
-    "id": "成人",
-    "name": "成人",
-    "aliases": [
-      "真"
-    ]
+    "id": "seizindousi",
+    "name": "成人(真)同志"
   },
   {
-    "id": "小美剣刀宝",
-    "name": "小美剣刀宝",
-    "aliases": []
+    "id": "tibiken",
+    "name": "小美剣刀宝"
   },
   {
-    "id": "一番星",
-    "name": "一番星",
-    "aliases": []
+    "id": "itibanbosi",
+    "name": "一番星"
   },
   {
-    "id": "小前田グループ 突撃白龍",
-    "name": "小前田グループ 突撃白龍",
-    "aliases": []
+    "id": "totugekihakuryu",
+    "name": "小前田グループ 突撃白龍"
   },
   {
-    "id": "三男坊碧希",
-    "name": "三男坊碧希",
-    "aliases": []
+    "id": "sannanboaoki",
+    "name": "三男坊碧希"
   },
   {
-    "id": "梵天丸朱雀",
-    "name": "梵天丸朱雀",
-    "aliases": []
+    "id": "bontenmarukujyaku",
+    "name": "梵天丸朱雀"
   },
   {
-    "id": "茉也虎三男坊",
-    "name": "茉也虎三男坊",
-    "aliases": []
+    "id": "mayatorasannanbo",
+    "name": "茉也虎三男坊"
   },
   {
-    "id": "突撃★ヤッチャ",
-    "name": "突撃★ヤッチャ",
-    "aliases": [
-      "元 花掛友人会栄冠"
-    ]
+    "id": "totugekiyaltsutya",
+    "name": "突撃★ヤッチャ(元 花掛友人会栄冠)"
   },
   {
-    "id": "闘魂仲琉正號",
-    "name": "闘魂仲琉正號",
-    "aliases": [
-      "元沖縄 仲琉正"
-    ]
+    "id": "tokonnakaryusyogou",
+    "name": "闘魂仲琉正號(元沖縄 仲琉正)"
   },
   {
-    "id": "海志",
-    "name": "海志",
-    "aliases": [
-      "寅"
-    ]
+    "id": "kaishitenriki",
+    "name": "海志(寅)天力"
   },
   {
-    "id": "絆翔大蛇王Jr",
-    "name": "絆翔大蛇王Jr",
-    "aliases": []
+    "id": "kisyodaijyaojr",
+    "name": "絆翔大蛇王Jr"
   },
   {
-    "id": "賞 トロフィー 杯",
-    "name": "賞 トロフィー 杯",
-    "aliases": [
-      "元 勇松輝",
-      "元沖縄 剛毅花形"
-    ]
+    "id": "yusyoki",
+    "name": "賞 トロフィー 杯(元 勇松輝,元沖縄 剛毅花形)"
   },
   {
-    "id": "福田トガイ",
-    "name": "福田トガイ",
-    "aliases": [
-      "元 楓佳トガイ"
-    ]
+    "id": "hukudatogai",
+    "name": "福田トガイ(元 楓佳トガイ)"
   },
   {
-    "id": "輝利號",
-    "name": "輝利號",
-    "aliases": [
-      "元 一男號"
-    ]
+    "id": "%e8%bc%9d%e5%88%a9%e8%99%9f%e5%85%83-%e4%b8%80%e7%94%b7%e8%99%9f",
+    "name": "輝利號(元 一男號)"
   },
   {
-    "id": "104×2会 力斗夢想",
-    "name": "104×2会 力斗夢想",
-    "aliases": []
+    "id": "rikitomuso",
+    "name": "104×2会 力斗夢想"
   },
   {
-    "id": "晃建設従業員 覇久",
-    "name": "晃建設従業員 覇久",
-    "aliases": []
+    "id": "haku",
+    "name": "晃建設従業員 覇久"
   },
   {
-    "id": "蹴球小僧 極",
-    "name": "蹴球小僧 極",
-    "aliases": [
-      "元 大來心",
-      "極"
-    ]
+    "id": "saltsukakozou-kiwami",
+    "name": "蹴球小僧 極(元 大來心,極)"
   },
   {
-    "id": "鬼虎",
-    "name": "鬼虎",
-    "aliases": []
+    "id": "onitora",
+    "name": "鬼虎"
   },
   {
-    "id": "戦闘ニーズ徠凰",
-    "name": "戦闘ニーズ徠凰",
-    "aliases": []
+    "id": "sentounizuraiou",
+    "name": "戦闘ニーズ徠凰"
   },
   {
-    "id": "春蓮",
-    "name": "春蓮",
-    "aliases": [
-      "元 ヤンバシ会 Kｰ3"
-    ]
+    "id": "haruren",
+    "name": "春蓮(元 ヤンバシ会 Kｰ3)"
   },
   {
-    "id": "伊吹桜",
-    "name": "伊吹桜",
-    "aliases": []
+    "id": "ibukisakura",
+    "name": "伊吹桜"
   },
   {
-    "id": "天龍☆輝",
-    "name": "天龍☆輝",
-    "aliases": []
+    "id": "tenryukagayaki",
+    "name": "天龍☆輝"
   },
   {
-    "id": "全勝工業黄金龍",
-    "name": "全勝工業黄金龍",
-    "aliases": []
+    "id": "zensyokogyoogonryu",
+    "name": "全勝工業黄金龍"
   },
   {
-    "id": "闘魂トラトラ",
-    "name": "闘魂トラトラ",
-    "aliases": []
+    "id": "tokontoratora",
+    "name": "闘魂トラトラ"
   },
   {
-    "id": "閻覇",
-    "name": "閻覇",
-    "aliases": []
+    "id": "enha",
+    "name": "閻覇"
   },
   {
-    "id": "秀吉大宝",
-    "name": "秀吉大宝",
-    "aliases": []
+    "id": "hideyoshitaihou",
+    "name": "秀吉大宝"
   },
   {
-    "id": "勝山無双",
-    "name": "勝山無双",
-    "aliases": []
+    "id": "katuyamamusou",
+    "name": "勝山無双"
   },
   {
-    "id": "二代目 八輝",
-    "name": "二代目 八輝",
-    "aliases": [
-      "元 翔柊王"
-    ]
+    "id": "syousyuking",
+    "name": "二代目 八輝(元 翔柊王)"
   },
   {
-    "id": "林山いとこ会 はる次郎",
-    "name": "林山いとこ会 はる次郎",
-    "aliases": []
+    "id": "haruzirou",
+    "name": "林山いとこ会 はる次郎"
   },
   {
-    "id": "神風パン次郎",
-    "name": "神風パン次郎",
-    "aliases": []
+    "id": "kamikazepanzirou",
+    "name": "神風パン次郎"
   },
   {
-    "id": "闘",
-    "name": "闘",
-    "aliases": [
-      "必勝"
-    ]
+    "id": "kokuhou",
+    "name": "闘(必勝)将 黒★宝"
   },
   {
-    "id": "東",
-    "name": "東",
-    "aliases": [
-      "祈"
-    ]
+    "id": "gon",
+    "name": "東(祈)勝 ゴン"
   },
   {
-    "id": "勇健天一",
-    "name": "勇健天一",
-    "aliases": []
+    "id": "yukenteniti",
+    "name": "勇健天一"
   },
   {
-    "id": "闘将★大力",
-    "name": "闘将★大力",
-    "aliases": []
+    "id": "tosyodairiki",
+    "name": "闘将★大力"
   },
   {
-    "id": "平成13・14年生 爆隆",
-    "name": "平成13・14年生 爆隆",
-    "aliases": []
+    "id": "bakuryu",
+    "name": "平成13・14年生 爆隆"
   },
   {
-    "id": "壱心嵐",
-    "name": "壱心嵐",
-    "aliases": []
+    "id": "iltsushinarashi",
+    "name": "壱心嵐"
   },
   {
-    "id": "友花形 光ちゃん号",
-    "name": "友花形 光ちゃん号",
-    "aliases": []
+    "id": "tomohanagata-miltsutyangou",
+    "name": "友花形 光ちゃん号"
   },
   {
-    "id": "友良牛",
-    "name": "友良牛",
-    "aliases": []
+    "id": "tomoragyu",
+    "name": "友良牛"
   },
   {
-    "id": "真瀬名ヒーラー",
-    "name": "真瀬名ヒーラー",
-    "aliases": []
+    "id": "masenahira",
+    "name": "真瀬名ヒーラー"
   },
   {
-    "id": "黒龍王",
-    "name": "黒龍王",
-    "aliases": []
+    "id": "kokuryuou",
+    "name": "黒龍王"
   },
   {
-    "id": "藤野組 闘'勢琥珀",
-    "name": "藤野組 闘'勢琥珀",
-    "aliases": [
-      "元沖縄 闘勢琥珀"
-    ]
+    "id": "toseikohaku",
+    "name": "藤野組 闘'勢琥珀(元沖縄 闘勢琥珀)"
   },
   {
-    "id": "Superstar ぶちかまし",
-    "name": "Superstar ぶちかまし",
-    "aliases": [
-      "元 永岡牛",
-      "元沖縄 琉仁ぶちかまし"
-    ]
+    "id": "butikamasi",
+    "name": "Superstar ぶちかまし(元 永岡牛,元沖縄 琉仁ぶちかまし)"
   },
   {
-    "id": "琉斗花形",
-    "name": "琉斗花形",
-    "aliases": []
+    "id": "ritohanagata",
+    "name": "琉斗花形"
   },
   {
-    "id": "徳成",
-    "name": "徳成",
-    "aliases": [
-      "元 いぶき"
-    ]
+    "id": "tokunari",
+    "name": "徳成(元 いぶき)"
   },
   {
-    "id": "しゃんしゃん",
-    "name": "しゃんしゃん",
-    "aliases": [
-      "元 超星香香",
-      "三八会",
-      "香香"
-    ]
+    "id": "syansyan",
+    "name": "しゃんしゃん(元 超星香香,三八会,香香)"
   },
   {
-    "id": "三将大俐吹",
-    "name": "三将大俐吹",
-    "aliases": []
+    "id": "%e4%b8%89%e5%b0%86%e5%a4%a7%e4%bf%90%e5%90%b9",
+    "name": "三将大俐吹"
   },
   {
-    "id": "昇",
-    "name": "昇",
-    "aliases": [
-      "政"
-    ]
+    "id": "multsuku",
+    "name": "昇(政)龍 むっく"
   },
   {
-    "id": "ゆうちゃんトガイ",
-    "name": "ゆうちゃんトガイ",
-    "aliases": [
-      "元 晴天荒鷲",
-      "有源紅覇",
-      "元沖縄 紅勝牙"
-    ]
+    "id": "yugenkouha",
+    "name": "ゆうちゃんトガイ(元 晴天荒鷲,有源紅覇,元沖縄 紅勝牙)"
   },
   {
-    "id": "龍天龍晴虎",
-    "name": "龍天龍晴虎",
-    "aliases": []
+    "id": "ryutenryuharutora",
+    "name": "龍天龍晴虎"
   },
   {
-    "id": "栄心晴",
-    "name": "栄心晴",
-    "aliases": [
-      "元 成人記念赤獣王",
-      "二代目赤獣王",
-      "怒倫坊"
-    ]
+    "id": "okorinbo",
+    "name": "栄心晴(元 成人記念赤獣王,二代目赤獣王,怒倫坊)"
   },
   {
-    "id": "てんてんパンダ結愛",
-    "name": "てんてんパンダ結愛",
-    "aliases": [
-      "元 カンフーパンダ"
-    ]
+    "id": "tentenpandayua",
+    "name": "てんてんパンダ結愛(元 カンフーパンダ)"
   },
   {
-    "id": "暴れ無法松",
-    "name": "暴れ無法松",
-    "aliases": []
+    "id": "abaremuhomatsu",
+    "name": "暴れ無法松"
   },
   {
-    "id": "くくる",
-    "name": "くくる",
-    "aliases": [
-      "元 心玖留",
-      "元沖縄 保乃奨",
-      "闘勢心玖留"
-    ]
+    "id": "kukuru",
+    "name": "くくる(元 心玖留,元沖縄 保乃奨,闘勢心玖留)"
   },
   {
-    "id": "兼光白舞",
-    "name": "兼光白舞",
-    "aliases": []
+    "id": "kanemitsuhakumai",
+    "name": "兼光白舞"
   },
   {
-    "id": "大黒天",
-    "name": "大黒天",
-    "aliases": []
+    "id": "daikokuten",
+    "name": "大黒天"
   },
   {
-    "id": "白真竜",
-    "name": "白真竜",
-    "aliases": [
-      "元 白神煌龍",
-      "白神龍"
-    ]
+    "id": "hakushinryu",
+    "name": "白真竜(元 白神煌龍,白神龍)"
   },
   {
-    "id": "天龍はやぶさ",
-    "name": "天龍はやぶさ",
-    "aliases": []
+    "id": "tenryuhayabusa",
+    "name": "天龍はやぶさ"
   },
   {
-    "id": "二代目 力道山",
-    "name": "二代目 力道山",
-    "aliases": []
+    "id": "nidaime-rikidozan",
+    "name": "二代目 力道山"
   },
   {
-    "id": "前心牛",
-    "name": "前心牛",
-    "aliases": []
+    "id": "zenshingyu",
+    "name": "前心牛"
   },
   {
-    "id": "光姫龍",
-    "name": "光姫龍",
-    "aliases": []
+    "id": "%e5%85%89%e5%a7%ab%e9%be%8d",
+    "name": "光姫龍"
   },
   {
-    "id": "まっとーばー",
-    "name": "まっとーばー",
-    "aliases": [
-      "元 天水"
-    ]
+    "id": "maltsutoba",
+    "name": "まっとーばー(元 天水)"
   },
   {
-    "id": "天心★トガイ",
-    "name": "天心★トガイ",
-    "aliases": []
+    "id": "tensintogai",
+    "name": "天心★トガイ"
   },
   {
-    "id": "東和技研龍舞",
-    "name": "東和技研龍舞",
-    "aliases": []
+    "id": "%e6%9d%b1%e5%92%8c%e6%8a%80%e7%a0%94%e9%be%8d%e8%88%9e",
+    "name": "東和技研龍舞"
   },
   {
-    "id": "居酒屋ヤドカリ",
-    "name": "居酒屋ヤドカリ",
-    "aliases": [
-      "元 神風暴威大慎号",
-      "久保商店"
-    ]
+    "id": "kamikazeboitaisingou",
+    "name": "居酒屋ヤドカリ(元 神風暴威大慎号,久保商店)"
   },
   {
-    "id": "疾風",
-    "name": "疾風",
-    "aliases": [
-      "元 常勝ハヤテ",
-      "砕破",
-      "桓騎"
-    ]
+    "id": "jyosyohayate",
+    "name": "疾風(元 常勝ハヤテ,砕破,桓騎)"
   },
   {
-    "id": "珀金龍",
-    "name": "珀金龍",
-    "aliases": []
+    "id": "%e7%8f%80%e9%87%91%e9%be%8d",
+    "name": "珀金龍"
   },
   {
-    "id": "富士龍",
-    "name": "富士龍",
-    "aliases": []
+    "id": "huzitatsu",
+    "name": "富士龍"
   },
   {
-    "id": "三強大力ひまり號",
-    "name": "三強大力ひまり號",
-    "aliases": [
-      "元 ファイティング日葵"
-    ]
+    "id": "fightinghinata",
+    "name": "三強大力ひまり號(元 ファイティング日葵)"
   },
   {
-    "id": "極神龍",
-    "name": "極神龍",
-    "aliases": []
+    "id": "kyokushinryu",
+    "name": "極神龍"
   },
   {
-    "id": "蓮心☆力輝 リンダマン",
-    "name": "蓮心☆力輝 リンダマン",
-    "aliases": [
-      "元 富岡輪蛇"
-    ]
+    "id": "rindaman",
+    "name": "蓮心☆力輝 リンダマン(元 富岡輪蛇)"
   },
   {
-    "id": "JIN",
-    "name": "JIN",
-    "aliases": []
+    "id": "jin",
+    "name": "JIN"
   },
   {
-    "id": "IBIS丸",
-    "name": "IBIS丸",
-    "aliases": []
+    "id": "ibismaru",
+    "name": "IBIS丸"
   },
   {
-    "id": "絆",
-    "name": "絆",
-    "aliases": []
+    "id": "kizuna",
+    "name": "絆"
   },
   {
-    "id": "角 天一",
-    "name": "角 天一",
-    "aliases": [
-      "元 真牛虎",
-      "宗駿五郎丸"
-    ]
+    "id": "munesyungoromaru",
+    "name": "角 天一(元 真牛虎,宗駿五郎丸)"
   },
   {
-    "id": "二代目七錻会 カイドウ",
-    "name": "二代目七錻会 カイドウ",
-    "aliases": [
-      "元 常勝斬鉄",
-      "元沖縄 永昇パンタ",
-      "永昇斬鉄",
-      "航進会斬鉄"
-    ]
+    "id": "nidaimesitibukai-kaido",
+    "name": "二代目七錻会 カイドウ(元 常勝斬鉄,元沖縄 永昇パンタ,永昇斬鉄,航進会斬鉄)"
   },
   {
-    "id": "龍弦一花",
-    "name": "龍弦一花",
-    "aliases": []
+    "id": "ryugenitika",
+    "name": "龍弦一花"
   },
   {
-    "id": "宇堅アコー",
-    "name": "宇堅アコー",
-    "aliases": [
-      "元 琴櫻"
-    ]
+    "id": "ukenako",
+    "name": "宇堅アコー(元 琴櫻)"
   },
   {
-    "id": "剛剣",
-    "name": "剛剣",
-    "aliases": [
-      "元 亀山三兄弟坊ぐわぁ",
-      "知念重機土木☆剛剣"
-    ]
+    "id": "kameyamakyodaiboguwala",
+    "name": "剛剣(元 亀山三兄弟坊ぐわぁ,知念重機土木☆剛剣)"
   },
   {
-    "id": "大砲",
-    "name": "大砲",
-    "aliases": []
+    "id": "taiho",
+    "name": "大砲"
   },
   {
-    "id": "丸勝MARUMO",
-    "name": "丸勝MARUMO",
-    "aliases": [
-      "元 友心MARUMO"
-    ]
+    "id": "marukatsumarumo",
+    "name": "丸勝MARUMO(元 友心MARUMO)"
   },
   {
-    "id": "花掛友人会 カール",
-    "name": "花掛友人会 カール",
-    "aliases": []
+    "id": "hanakakeyuzinkai-karu",
+    "name": "花掛友人会 カール"
   },
   {
-    "id": "猿會小鉄。",
-    "name": "猿會小鉄。",
-    "aliases": [
-      "元 一撃つ。"
-    ]
+    "id": "itigekitsu",
+    "name": "猿會小鉄。(元 一撃つ。)"
   },
   {
-    "id": "突撃心虎",
-    "name": "突撃心虎",
-    "aliases": [
-      "元 三代目 三虎あやね",
-      "三虎郁音"
-    ]
+    "id": "sandaime-santoraayane",
+    "name": "突撃心虎(元 三代目 三虎あやね,三虎郁音)"
   },
   {
-    "id": "なんす嵐",
-    "name": "なんす嵐",
-    "aliases": [
-      "元 ヤンバシ会 仁恋",
-      "ヤンバシ会 喜 琥士郎"
-    ]
+    "id": "%e3%83%a4%e3%83%b3%e3%83%90%e3%82%b7%e4%bc%9a-%e4%bb%81%e6%81%8b",
+    "name": "なんす嵐(元 ヤンバシ会 仁恋,ヤンバシ会 喜 琥士郎)"
   },
   {
-    "id": "亜蛇魔小僧",
-    "name": "亜蛇魔小僧",
-    "aliases": []
+    "id": "ajyamakozo",
+    "name": "亜蛇魔小僧"
   },
   {
-    "id": "新橋會 小次郎",
-    "name": "新橋會 小次郎",
-    "aliases": [
-      "元沖縄 小次郎"
-    ]
+    "id": "shinbashikai-koziro",
+    "name": "新橋會 小次郎(元沖縄 小次郎)"
   },
   {
-    "id": "ダルちゃん",
-    "name": "ダルちゃん",
-    "aliases": [
-      "元 ダルメシアン",
-      "二代目 絆"
-    ]
+    "id": "nidaime-kizuna",
+    "name": "ダルちゃん(元 ダルメシアン,二代目 絆)"
   },
   {
-    "id": "絆結心 島虎",
-    "name": "絆結心 島虎",
-    "aliases": []
+    "id": "kiyushin-shimatora",
+    "name": "絆結心 島虎"
   },
   {
-    "id": "みずき白神鷹",
-    "name": "みずき白神鷹",
-    "aliases": []
+    "id": "mizukihakushinou",
+    "name": "みずき白神鷹"
   },
   {
-    "id": "夢玄白虎",
-    "name": "夢玄白虎",
-    "aliases": [
-      "元 侑玄白虎",
-      "心愛白雪"
-    ]
+    "id": "mugenbyaltsuko",
+    "name": "夢玄白虎(元 侑玄白虎,心愛白雪)"
   },
   {
-    "id": "小美剣武v威",
-    "name": "小美剣武v威",
-    "aliases": [
-      "元 武V威"
-    ]
+    "id": "bui",
+    "name": "小美剣武v威(元 武V威)"
   },
   {
-    "id": "闘将台風秋子号",
-    "name": "闘将台風秋子号",
-    "aliases": []
+    "id": "tosyotaihuakikogou",
+    "name": "闘将台風秋子号"
   },
   {
-    "id": "",
-    "name": "",
-    "aliases": [
-      "富"
-    ]
+    "id": "marutomidoushikaiematyan",
+    "name": "(富)同志会縁真ちゃん"
   },
   {
-    "id": "鬼金坊",
-    "name": "鬼金坊",
-    "aliases": []
+    "id": "kikanbo",
+    "name": "鬼金坊"
   },
   {
-    "id": "丸亀",
-    "name": "丸亀",
-    "aliases": [
-      "愛)同志会(元 闘(将)龍 摩天楼",
-      "つばさ丸亀山号"
-    ]
+    "id": "tosyoryu-matenro",
+    "name": "丸亀(愛)同志会(元 闘(将)龍 摩天楼,つばさ丸亀山号)"
   },
   {
-    "id": "NAKA友人会 勇磨王",
-    "name": "NAKA友人会 勇磨王",
-    "aliases": [
-      "元 哲松"
-    ]
+    "id": "nakayuzinkai-yumaou",
+    "name": "NAKA友人会 勇磨王(元 哲松)"
   },
   {
-    "id": "大仁勝龍宮助号",
-    "name": "大仁勝龍宮助号",
-    "aliases": []
+    "id": "daishinsyoryumiyasukegou",
+    "name": "大仁勝龍宮助号"
   },
   {
-    "id": "摩守進",
-    "name": "摩守進",
-    "aliases": []
+    "id": "mamoshin",
+    "name": "摩守進"
   },
   {
-    "id": "鬼武将",
-    "name": "鬼武将",
-    "aliases": []
+    "id": "onibusyo",
+    "name": "鬼武将"
   },
   {
-    "id": "闘心ニーズ",
-    "name": "闘心ニーズ",
-    "aliases": []
+    "id": "toshinnizu",
+    "name": "闘心ニーズ"
   },
   {
-    "id": "蓮",
-    "name": "蓮",
-    "aliases": []
+    "id": "hatisu",
+    "name": "蓮"
   },
   {
-    "id": "碧心",
-    "name": "碧心",
-    "aliases": []
+    "id": "%e7%a2%a7%e5%bf%83",
+    "name": "碧心"
   },
   {
-    "id": "照天龍",
-    "name": "照天龍",
-    "aliases": []
+    "id": "syotenryu",
+    "name": "照天龍"
   },
   {
-    "id": "孔潤トガイ",
-    "name": "孔潤トガイ",
-    "aliases": [
-      "元 悟羽勇トガイ"
-    ]
+    "id": "kuurutogai",
+    "name": "孔潤トガイ(元 悟羽勇トガイ)"
   },
   {
-    "id": "マルシン荒鷲",
-    "name": "マルシン荒鷲",
-    "aliases": []
+    "id": "marushinarawashi",
+    "name": "マルシン荒鷲"
   },
   {
-    "id": "壱☆輝",
-    "name": "壱☆輝",
-    "aliases": []
+    "id": "itsuki",
+    "name": "壱☆輝"
   },
   {
-    "id": "烈⭕️夏",
-    "name": "烈⭕️夏",
-    "aliases": []
+    "id": "reltsuka",
+    "name": "烈⭕️夏"
   },
   {
-    "id": "倖羽獅子",
-    "name": "倖羽獅子",
-    "aliases": []
+    "id": "shinbaraion",
+    "name": "倖羽獅子"
   },
   {
-    "id": "GOLD☆萌愛",
-    "name": "GOLD☆萌愛",
-    "aliases": []
+    "id": "goldmoa",
+    "name": "GOLD☆萌愛"
   },
   {
-    "id": "丸愛一撃",
-    "name": "丸愛一撃",
-    "aliases": []
+    "id": "maruaiitigeki",
+    "name": "丸愛一撃"
   },
   {
-    "id": "森山工業突撃パンダ",
-    "name": "森山工業突撃パンダ",
-    "aliases": [
-      "元 芳倉美装突撃パンダ",
-      "突撃パンダ絆羽"
-    ]
+    "id": "totugekipandatazuna",
+    "name": "森山工業突撃パンダ(元 芳倉美装突撃パンダ,突撃パンダ絆羽)"
   },
   {
-    "id": "将真琥鉄",
-    "name": "将真琥鉄",
-    "aliases": [
-      "元 将真琥"
-    ]
+    "id": "syoshinkotetu",
+    "name": "将真琥鉄(元 将真琥)"
   },
   {
-    "id": "二代目 友人花形",
-    "name": "二代目 友人花形",
-    "aliases": []
+    "id": "nidaime-yuzinhanagata",
+    "name": "二代目 友人花形"
   },
   {
-    "id": "森組竜芯☆煌輝",
-    "name": "森組竜芯☆煌輝",
-    "aliases": []
+    "id": "morigumiryushinouki",
+    "name": "森組竜芯☆煌輝"
   },
   {
-    "id": "Victory",
-    "name": "Victory",
-    "aliases": [
-      "元 白松昇天山",
-      "伊仙中41年生号"
-    ]
+    "id": "isentyu41nenseigou",
+    "name": "Victory(元 白松昇天山, 伊仙中41年生号)"
   },
   {
-    "id": "豊",
-    "name": "豊",
-    "aliases": [
-      "祈"
-    ]
+    "id": "kokishin",
+    "name": "豊(祈)島 幸輝心"
   },
   {
-    "id": "琴莉號",
-    "name": "琴莉號",
-    "aliases": [
-      "元 池田牛昇進王"
-    ]
+    "id": "kotorigou",
+    "name": "琴莉號(元 池田牛昇進王)"
   },
   {
-    "id": "平成12・13年生 白波",
-    "name": "平成12・13年生 白波",
-    "aliases": []
+    "id": "shiranami",
+    "name": "平成12・13年生 白波"
   },
   {
-    "id": "平成11年生 福龍桜",
-    "name": "平成11年生 福龍桜",
-    "aliases": []
+    "id": "hukuryuou",
+    "name": "平成11年生 福龍桜"
   },
   {
-    "id": "金色聖也",
-    "name": "金色聖也",
-    "aliases": []
+    "id": "goldseiya",
+    "name": "金色聖也"
   },
   {
-    "id": "凰雅",
-    "name": "凰雅",
-    "aliases": [
-      "元 海均将",
-      "力進夏渚"
-    ]
+    "id": "ouga",
+    "name": "凰雅(元 海均将,力進夏渚)"
   },
   {
-    "id": "大昇 鉄平",
-    "name": "大昇 鉄平",
-    "aliases": [
-      "元 炭治郎"
-    ]
+    "id": "taisyo-teltsupei",
+    "name": "大昇 鉄平(元 炭治郎)"
   },
   {
-    "id": "江田幸龍",
-    "name": "江田幸龍",
-    "aliases": []
+    "id": "edakoryu",
+    "name": "江田幸龍"
   },
   {
-    "id": "兄丸軍団 上野兄弟号",
-    "name": "兄丸軍団 上野兄弟号",
-    "aliases": [
-      "元 豊 正国号"
-    ]
+    "id": "toyomasakunigou",
+    "name": "兄丸軍団 上野兄弟号(元 豊 正国号)"
   },
   {
-    "id": "むっちむち 隆心力",
-    "name": "むっちむち 隆心力",
-    "aliases": []
+    "id": "multsutimuti-ryushinriki",
+    "name": "むっちむち 隆心力"
   },
   {
-    "id": "大勝同志会 将軍",
-    "name": "大勝同志会 将軍",
-    "aliases": []
+    "id": "okatudoushikai-syogun",
+    "name": "大勝同志会 将軍"
   },
   {
-    "id": "GALIBAR",
-    "name": "GALIBAR",
-    "aliases": []
+    "id": "galibar",
+    "name": "GALIBAR"
   },
   {
-    "id": "永太若虎號",
-    "name": "永太若虎號",
-    "aliases": []
+    "id": "eitawakatoragou",
+    "name": "永太若虎號"
   },
   {
-    "id": "大三元同志號",
-    "name": "大三元同志號",
-    "aliases": []
+    "id": "daisangendoushigou",
+    "name": "大三元同志號"
   },
   {
-    "id": "闘進",
-    "name": "闘進",
-    "aliases": [
-      "元 蒼龍"
-    ]
+    "id": "toushin",
+    "name": "闘進(元 蒼龍)"
   },
   {
-    "id": "宝緑園花形鉄志號",
-    "name": "宝緑園花形鉄志號",
-    "aliases": [
-      "元 一千映",
-      "二代目 おゆき號"
-    ]
+    "id": "houryokuenhanagatateltsushigou",
+    "name": "宝緑園花形鉄志號(元 一千映,二代目 おゆき號)"
   },
   {
-    "id": "暴れ邪馬丑",
-    "name": "暴れ邪馬丑",
-    "aliases": []
+    "id": "abareyamaushi",
+    "name": "暴れ邪馬丑"
   },
   {
-    "id": "Bar Sinka 武虎煌",
-    "name": "Bar Sinka 武虎煌",
-    "aliases": []
+    "id": "bar-sinka-taketoraou",
+    "name": "Bar Sinka 武虎煌"
   },
   {
-    "id": "上昇一角",
-    "name": "上昇一角",
-    "aliases": [
-      "元 あたり実業"
-    ]
+    "id": "jyosyoiltsukaku",
+    "name": "上昇一角(元 あたり実業)"
   },
   {
-    "id": "八咫烏",
-    "name": "八咫烏",
-    "aliases": [
-      "元 豪縁"
-    ]
+    "id": "yatagarasu",
+    "name": "八咫烏(元 豪縁)"
   },
   {
-    "id": "企画 島牛楽",
-    "name": "企画 島牛楽",
-    "aliases": [
-      "元 二代目 大陸王"
-    ]
+    "id": "kikaku-shimadoraku",
+    "name": "企画 島牛楽(元 二代目 大陸王)"
   },
   {
-    "id": "ラーテル",
-    "name": "ラーテル",
-    "aliases": [
-      "元 突弾ラーテル"
-    ]
+    "id": "rateru",
+    "name": "ラーテル(元 突弾ラーテル)"
   },
   {
-    "id": "友羽総業牙♡鬼",
-    "name": "友羽総業牙♡鬼",
-    "aliases": []
+    "id": "yuhasogyogaltsuki",
+    "name": "友羽総業牙♡鬼"
   },
   {
-    "id": "ベルアコー",
-    "name": "ベルアコー",
-    "aliases": []
+    "id": "beruako",
+    "name": "ベルアコー"
   },
   {
-    "id": "心樹龍",
-    "name": "心樹龍",
-    "aliases": [
-      "元 心花紋"
-    ]
+    "id": "shinkiryu",
+    "name": "心樹龍(元 心花紋)"
   },
   {
-    "id": "黒勝瓶",
-    "name": "黒勝瓶",
-    "aliases": []
+    "id": "kokusyobin",
+    "name": "黒勝瓶"
   },
   {
-    "id": "銭亀",
-    "name": "銭亀",
-    "aliases": [
-      "元 天雅トガイ"
-    ]
+    "id": "tengatogai",
+    "name": "銭亀(元 天雅トガイ)"
   },
   {
-    "id": "上木畜産五大力",
-    "name": "上木畜産五大力",
-    "aliases": [
-      "元 桃若"
-    ]
+    "id": "uekitikusangodairiki",
+    "name": "上木畜産五大力(元 桃若)"
   },
   {
-    "id": "鉄拳",
-    "name": "鉄拳",
-    "aliases": [
-      "元 ヤンバシ会 驀",
-      "元沖縄 驀(まっしぐら)宜野王"
-    ]
+    "id": "yanbashikai-maltsushigura",
+    "name": "鉄拳(元 ヤンバシ会 驀,元沖縄 驀(まっしぐら)宜野王)"
   },
   {
-    "id": "MK友人会 千両",
-    "name": "MK友人会 千両",
-    "aliases": [
-      "元 千竜パンダ蓮翔",
-      "八輝",
-      "千寿"
-    ]
+    "id": "hatsuki",
+    "name": "MK友人会 千両(元 千竜パンダ蓮翔,八輝,千寿)"
   },
   {
-    "id": "黒天桜輝",
-    "name": "黒天桜輝",
-    "aliases": []
+    "id": "kokutenouki",
+    "name": "黒天桜輝"
   },
   {
-    "id": "吉田大力",
-    "name": "吉田大力",
-    "aliases": []
+    "id": "yoshidadairiki",
+    "name": "吉田大力"
   },
   {
-    "id": "豊島達心宝",
-    "name": "豊島達心宝",
-    "aliases": []
+    "id": "toyoshimatatsushinhou",
+    "name": "豊島達心宝"
   },
   {
-    "id": "誠信パンダ美宝",
-    "name": "誠信パンダ美宝",
-    "aliases": []
+    "id": "seishinpandamihou",
+    "name": "誠信パンダ美宝"
   },
   {
-    "id": "伊波進號",
-    "name": "伊波進號",
-    "aliases": [
-      "元 佐平号"
-    ]
+    "id": "sahiragou",
+    "name": "伊波進號(元 佐平号)"
   },
   {
-    "id": "海進山",
-    "name": "海進山",
-    "aliases": []
+    "id": "kaishinzan",
+    "name": "海進山"
   },
   {
-    "id": "覇武露",
-    "name": "覇武露",
-    "aliases": []
+    "id": "paburo",
+    "name": "覇武露"
   },
   {
-    "id": "三幸真琉",
-    "name": "三幸真琉",
-    "aliases": []
+    "id": "sankoushinryu",
+    "name": "三幸真琉"
   },
   {
-    "id": "咲進龍",
-    "name": "咲進龍",
-    "aliases": [
-      "元 昭和62年生 昇進龍"
-    ]
+    "id": "sakishinryu",
+    "name": "咲進龍(元 昭和62年生 昇進龍)"
   },
   {
-    "id": "結宝",
-    "name": "結宝",
-    "aliases": [
-      "元 基山結宝"
-    ]
+    "id": "motoyamayuihou",
+    "name": "結宝(元 基山結宝)"
   },
   {
-    "id": "王King orca鯱",
-    "name": "王King orca鯱",
-    "aliases": []
+    "id": "kingorca",
+    "name": "王King orca鯱"
   },
   {
-    "id": "基山太孫",
-    "name": "基山太孫",
-    "aliases": []
+    "id": "motoyamataison",
+    "name": "基山太孫"
   },
   {
-    "id": "隠岐爆撃",
-    "name": "隠岐爆撃",
-    "aliases": [
-      "元 王将"
-    ]
+    "id": "okibakugeki",
+    "name": "隠岐爆撃(元 王将)"
   },
   {
-    "id": "白闘山",
-    "name": "白闘山",
-    "aliases": [
-      "元 昇龍拳",
-      "蒙武"
-    ]
+    "id": "syoryuken",
+    "name": "白闘山(元 昇龍拳,蒙武)"
   },
   {
-    "id": "武南",
-    "name": "武南",
-    "aliases": []
+    "id": "bunan",
+    "name": "武南"
   },
   {
-    "id": "福田商店万葉号",
-    "name": "福田商店万葉号",
-    "aliases": []
+    "id": "hukudasyouten",
+    "name": "福田商店万葉号"
   },
   {
-    "id": "友羽総業天王鬼",
-    "name": "友羽総業天王鬼",
-    "aliases": [
-      "元沖縄 南星神刃",
-      "勝山天王"
-    ]
+    "id": "yuhasogyutennouou",
+    "name": "友羽総業天王鬼(元沖縄 南星神刃,勝山天王)"
   },
   {
-    "id": "ゆーりーたっちゅう",
-    "name": "ゆーりーたっちゅう",
-    "aliases": []
+    "id": "yuritataltsutyu",
+    "name": "ゆーりーたっちゅう"
   },
   {
-    "id": "神風蛇鬼徠慎號",
-    "name": "神風蛇鬼徠慎號",
-    "aliases": []
+    "id": "mamikazeraishin",
+    "name": "神風蛇鬼徠慎號"
   },
   {
-    "id": "蓮-Renshin-心",
-    "name": "蓮-Renshin-心",
-    "aliases": [
-      "元八重山 チーズ"
-    ]
+    "id": "renshin",
+    "name": "蓮-Renshin-心(元八重山 チーズ)"
   },
   {
-    "id": "猛虎",
-    "name": "猛虎",
-    "aliases": [
-      "元 戦闘シャネル"
-    ]
+    "id": "sentosyaneru",
+    "name": "猛虎(元 戦闘シャネル)"
   },
   {
-    "id": "友心キング",
-    "name": "友心キング",
-    "aliases": []
+    "id": "yushinking",
+    "name": "友心キング"
   },
   {
-    "id": "極小龍",
-    "name": "極小龍",
-    "aliases": []
+    "id": "kyokusyoryu",
+    "name": "極小龍"
   },
   {
-    "id": "RIKKUN",
-    "name": "RIKKUN",
-    "aliases": []
+    "id": "rikkun",
+    "name": "RIKKUN"
   },
   {
-    "id": "遊撃",
-    "name": "遊撃",
-    "aliases": []
+    "id": "yugeki",
+    "name": "遊撃"
   },
   {
-    "id": "乾坤一擲浬叶号",
-    "name": "乾坤一擲浬叶号",
-    "aliases": []
+    "id": "%e4%b9%be%e5%9d%a4%e4%b8%80%e6%93%b2%e6%b5%ac%e5%8f%b6%e5%8f%b7",
+    "name": "乾坤一擲浬叶号"
   },
   {
-    "id": "纒",
-    "name": "纒",
-    "aliases": []
+    "id": "matoi",
+    "name": "纒"
   },
   {
-    "id": "美",
-    "name": "美",
-    "aliases": [
-      "ちゅらさん)三(元 大勝金龍"
-    ]
+    "id": "tyurasan",
+    "name": "美(ちゅらさん)三(元 大勝金龍)"
   },
   {
-    "id": "虎壱誉",
-    "name": "虎壱誉",
-    "aliases": []
+    "id": "%e8%99%8e%e5%a3%b1%e8%aa%89",
+    "name": "虎壱誉"
   },
   {
-    "id": "南海王凰",
-    "name": "南海王凰",
-    "aliases": []
+    "id": "%e5%8d%97%e6%b5%b7%e7%8e%8b%e5%87%b0",
+    "name": "南海王凰"
   },
   {
-    "id": "Mr.K",
-    "name": "Mr.K",
-    "aliases": []
+    "id": "mr-k",
+    "name": "Mr.K"
   },
   {
-    "id": "赤とら",
-    "name": "赤とら",
-    "aliases": [
-      "元 美王",
-      "朱闘嵐"
-    ]
+    "id": "akatora",
+    "name": "赤とら(元 美王,朱闘嵐)"
   },
   {
-    "id": "鬼達磨",
-    "name": "鬼達磨",
-    "aliases": []
+    "id": "onidaruma",
+    "name": "鬼達磨"
   },
   {
-    "id": "頂",
-    "name": "頂",
-    "aliases": []
+    "id": "itadaki",
+    "name": "頂"
   },
   {
-    "id": "壱~itsuki~輝",
-    "name": "壱~itsuki~輝",
-    "aliases": []
+    "id": "itsuki-2",
+    "name": "壱~itsuki~輝"
   },
   {
-    "id": "二代目 ラッキーパンダ航心",
-    "name": "二代目 ラッキーパンダ航心",
-    "aliases": []
+    "id": "nidaime-raltukipandakoshin",
+    "name": "二代目 ラッキーパンダ航心"
   },
   {
-    "id": "強襲辛富士",
-    "name": "強襲辛富士",
-    "aliases": []
+    "id": "%e5%bc%b7%e8%a5%b2%e8%be%9b%e5%af%8c%e5%a3%ab",
+    "name": "強襲辛富士"
   },
   {
-    "id": "豊風パンダ",
-    "name": "豊風パンダ",
-    "aliases": []
+    "id": "%e8%b1%8a%e9%a2%a8%e3%83%91%e3%83%b3%e3%83%80",
+    "name": "豊風パンダ"
   },
   {
-    "id": "轟力",
-    "name": "轟力",
-    "aliases": []
+    "id": "%e8%bd%9f%e5%8a%9b",
+    "name": "轟力"
   },
   {
-    "id": "一虎",
-    "name": "一虎",
-    "aliases": [
-      "元 帆船花"
-    ]
+    "id": "%e4%b8%80%e8%99%8e%e5%85%83-%e5%b8%86%e8%88%b9%e8%8a%b1",
+    "name": "一虎(元 帆船花)"
   },
   {
-    "id": "一撃マルちゃん",
-    "name": "一撃マルちゃん",
-    "aliases": []
+    "id": "%e4%b8%80%e6%92%83%e3%83%9e%e3%83%ab%e3%81%a1%e3%82%83%e3%82%93",
+    "name": "一撃マルちゃん"
   },
   {
-    "id": "内舞〆乱",
-    "name": "内舞〆乱",
-    "aliases": []
+    "id": "%e5%86%85%e8%88%9e%e3%80%86%e4%b9%b1",
+    "name": "内舞〆乱"
   },
   {
-    "id": "闘将♡凛々",
-    "name": "闘将♡凛々",
-    "aliases": [
-      "元 勇気凛々"
-    ]
+    "id": "%e9%97%98%e5%b0%86%e2%99%a1%e5%87%9b%e3%80%85%e5%85%83-%e5%8b%87%e6%b0%97%e5%87%9b%e3%80%85",
+    "name": "闘将♡凛々(元 勇気凛々)"
   },
   {
-    "id": "龍英トガイ",
-    "name": "龍英トガイ",
-    "aliases": []
+    "id": "%e9%be%8d%e8%8b%b1%e3%83%88%e3%82%ac%e3%82%a4",
+    "name": "龍英トガイ"
   },
   {
-    "id": "RED BULL",
-    "name": "RED BULL",
-    "aliases": [
-      "元 刀剣乱舞Aka"
-    ]
+    "id": "%e5%88%80%e5%89%a3%e4%b9%b1%e8%88%9eaka",
+    "name": "RED BULL(元 刀剣乱舞Aka)"
   },
   {
-    "id": "龍羽輝願夢",
-    "name": "龍羽輝願夢",
-    "aliases": [
-      "元沖縄 みゆわの願夢",
-      "優力也願夢"
-    ]
+    "id": "%e9%be%8d%e7%be%bd%e8%bc%9d%e9%a1%98%e5%a4%a2",
+    "name": "龍羽輝願夢(元沖縄 みゆわの願夢,優力也願夢)"
   },
   {
-    "id": "与那国牡丹",
-    "name": "与那国牡丹",
-    "aliases": []
+    "id": "%e4%b8%8e%e9%82%a3%e5%9b%bd%e7%89%a1%e4%b8%b9",
+    "name": "与那国牡丹"
   },
   {
-    "id": "輝け☆真龍星",
-    "name": "輝け☆真龍星",
-    "aliases": []
+    "id": "%e8%bc%9d%e3%81%91%e2%98%86%e7%9c%9f%e9%be%8d%e6%98%9f",
+    "name": "輝け☆真龍星"
   },
   {
-    "id": "天神會 闘牙威",
-    "name": "天神會 闘牙威",
-    "aliases": []
+    "id": "%e5%a4%a9%e7%a5%9e%e6%9c%83-%e9%97%98%e7%89%99%e5%a8%81",
+    "name": "天神會 闘牙威"
   },
   {
-    "id": "千竜",
-    "name": "千竜",
-    "aliases": []
+    "id": "%e5%8d%83%e7%ab%9c",
+    "name": "千竜"
   },
   {
-    "id": "52",
-    "name": "52",
-    "aliases": [
-      "ごっつ)ヒーゲー(元 昭吉のヒーゲー",
-      "51ヒーゲー"
-    ]
+    "id": "51%e3%83%92%e3%83%bc%e3%82%b2%e3%83%bc%e5%85%83-%e6%98%ad%e5%90%89%e3%81%ae%e3%83%92%e3%83%bc%e3%82%b2%e3%83%bc",
+    "name": "52(ごっつ)ヒーゲー(元 昭吉のヒーゲー,51ヒーゲー)"
   },
   {
-    "id": "戦闘刃牙實工業",
-    "name": "戦闘刃牙實工業",
-    "aliases": []
+    "id": "%e6%88%a6%e9%97%98%e5%88%83%e7%89%99%e5%af%a6%e5%b7%a5%e6%a5%ad",
+    "name": "戦闘刃牙實工業"
   },
   {
-    "id": "四強嵐 白隆",
-    "name": "四強嵐 白隆",
-    "aliases": []
+    "id": "%e5%9b%9b%e5%bc%b7%e5%b5%90-%e7%99%bd%e9%9a%86",
+    "name": "四強嵐 白隆"
   },
   {
-    "id": "爆真丸",
-    "name": "爆真丸",
-    "aliases": []
+    "id": "%e7%88%86%e7%9c%9f%e4%b8%b8",
+    "name": "爆真丸"
   },
   {
-    "id": "山嵐",
-    "name": "山嵐",
-    "aliases": []
+    "id": "%e5%b1%b1%e5%b5%90",
+    "name": "山嵐"
   },
   {
-    "id": "弘健友人会勝南桜",
-    "name": "弘健友人会勝南桜",
-    "aliases": []
+    "id": "%e5%bc%98%e5%81%a5%e5%8f%8b%e4%ba%ba%e4%bc%9a%e5%8b%9d%e5%8d%97%e6%a1%9c",
+    "name": "弘健友人会勝南桜"
   },
   {
-    "id": "重田建設號",
-    "name": "重田建設號",
-    "aliases": []
+    "id": "%e9%87%8d%e7%94%b0%e5%bb%ba%e8%a8%ad%e8%99%9f",
+    "name": "重田建設號"
   },
   {
-    "id": "優誠アコー",
-    "name": "優誠アコー",
-    "aliases": [
-      "元 天心さくら",
-      "元沖縄 南星朱蘭"
-    ]
+    "id": "%e5%84%aa%e8%aa%a0%e3%82%a2%e3%82%b3%e3%83%bc%e5%85%83-%e5%a4%a9%e5%bf%83%e3%81%95%e3%81%8f%e3%82%89%e5%85%83%e6%b2%96%e7%b8%84-%e5%8d%97%e6%98%9f%e6%9c%b1%e8%98%ad",
+    "name": "優誠アコー(元 天心さくら,元沖縄 南星朱蘭)"
   },
   {
-    "id": "憲",
-    "name": "憲",
-    "aliases": [
-      "壽"
-    ]
+    "id": "%e6%86%b2%e5%a3%bd%e9%be%8d",
+    "name": "憲(壽)龍"
   },
   {
-    "id": "しんりゅう",
-    "name": "しんりゅう",
-    "aliases": []
+    "id": "%e3%81%97%e3%82%93%e3%82%8a%e3%82%85%e3%81%86",
+    "name": "しんりゅう"
   },
   {
-    "id": "輝赤",
-    "name": "輝赤",
-    "aliases": [
-      "元 松田自動車 優陽王",
-      "虎王"
-    ]
+    "id": "%e6%9d%be%e7%94%b0%e8%87%aa%e5%8b%95%e8%bb%8a-%e5%84%aa%e9%99%bd%e7%8e%8b",
+    "name": "輝赤(元 松田自動車 優陽王,虎王)"
   },
   {
-    "id": "昊雅",
-    "name": "昊雅",
-    "aliases": []
+    "id": "%e6%98%8a%e9%9b%85",
+    "name": "昊雅"
   },
   {
-    "id": "フクシマ建装 ポチ",
-    "name": "フクシマ建装 ポチ",
-    "aliases": []
+    "id": "%e3%83%95%e3%82%af%e3%82%b7%e3%83%9e%e5%bb%ba%e8%a3%85-%e3%83%9d%e3%83%81",
+    "name": "フクシマ建装 ポチ"
   },
   {
-    "id": "角信",
-    "name": "角信",
-    "aliases": [
-      "元 友花形&nbsp;光ちゃん号パートII",
-      "元八重山 二代目ガマちゃんパンダ"
-    ]
+    "id": "%e5%8f%8b%e8%8a%b1%e5%bd%a2-%e5%85%89%e3%81%a1%e3%82%83%e3%82%93%e5%8f%b7%e3%83%91%e3%83%bc%e3%83%88ii%e5%85%83%e5%85%ab%e9%87%8d%e5%b1%b1-%e4%ba%8c%e4%bb%a3%e7%9b%ae%e3%82%ac%e3%83%9e%e3%81%a1",
+    "name": "角信(元 友花形&nbsp;光ちゃん号パートII,元八重山 二代目ガマちゃんパンダ)"
   },
   {
-    "id": "輝心壱",
-    "name": "輝心壱",
-    "aliases": []
+    "id": "%e8%bc%9d%e5%bf%83%e5%a3%b1",
+    "name": "輝心壱"
   },
   {
-    "id": "悠青煌",
-    "name": "悠青煌",
-    "aliases": []
+    "id": "%e6%82%a0%e9%9d%92%e7%85%8c",
+    "name": "悠青煌"
   },
   {
-    "id": "幸和龍",
-    "name": "幸和龍",
-    "aliases": [
-      "元 円香友力號"
-    ]
+    "id": "%e5%b9%b8%e5%92%8c%e9%be%8d%e5%85%83-%e5%86%86%e9%a6%99%e5%8f%8b%e5%8a%9b%e8%99%9f",
+    "name": "幸和龍(元 円香友力號)"
   },
   {
-    "id": "壱 いつは 覇",
-    "name": "壱 いつは 覇",
-    "aliases": []
+    "id": "%e5%a3%b1%e8%a6%87",
+    "name": "壱 いつは 覇"
   },
   {
-    "id": "夢翔龍",
-    "name": "夢翔龍",
-    "aliases": []
+    "id": "%e5%a4%a2%e7%bf%94%e9%be%8d",
+    "name": "夢翔龍"
   },
   {
-    "id": "大金剛",
-    "name": "大金剛",
-    "aliases": []
+    "id": "%e5%a4%a7%e9%87%91%e5%89%9b",
+    "name": "大金剛"
   },
   {
-    "id": "瑠衣大力",
-    "name": "瑠衣大力",
-    "aliases": []
+    "id": "%e7%91%a0%e8%a1%a3%e5%a4%a7%e5%8a%9b",
+    "name": "瑠衣大力"
   },
   {
-    "id": "与論拳法 勇トガイ蓮斗",
-    "name": "与論拳法 勇トガイ蓮斗",
-    "aliases": [
-      "元沖縄 マチー大城 昇龍"
-    ]
+    "id": "%e4%b8%8e%e8%ab%96%e6%8b%b3%e6%b3%95-%e5%8b%87%e3%83%88%e3%82%ac%e3%82%a4%e8%93%ae%e6%96%97",
+    "name": "与論拳法 勇トガイ蓮斗(元沖縄 マチー大城 昇龍)"
   },
   {
-    "id": "闘将☆岩鉄",
-    "name": "闘将☆岩鉄",
-    "aliases": []
+    "id": "%e9%97%98%e5%b0%86%e2%98%86%e5%b2%a9%e9%89%84",
+    "name": "闘将☆岩鉄"
   },
   {
-    "id": "雷神桜華キズナ號",
-    "name": "雷神桜華キズナ號",
-    "aliases": []
+    "id": "%e9%9b%b7%e7%a5%9e%e6%a1%9c%e8%8f%af%e3%82%ad%e3%82%ba%e3%83%8a%e8%99%9f",
+    "name": "雷神桜華キズナ號"
   },
   {
-    "id": "覇琥我",
-    "name": "覇琥我",
-    "aliases": []
+    "id": "%e8%a6%87%e7%90%a5%e6%88%91",
+    "name": "覇琥我"
   },
   {
-    "id": "だだ吉二世",
-    "name": "だだ吉二世",
-    "aliases": []
+    "id": "%e3%81%a0%e3%81%a0%e5%90%89%e4%ba%8c%e4%b8%96",
+    "name": "だだ吉二世"
   },
   {
-    "id": "拳王",
-    "name": "拳王",
-    "aliases": []
+    "id": "%e6%8b%b3%e7%8e%8b",
+    "name": "拳王"
   },
   {
-    "id": "極心",
-    "name": "極心",
-    "aliases": [
-      "元 極昇"
-    ]
+    "id": "%e6%a5%b5%e6%98%87",
+    "name": "極心(元 極昇)"
   },
   {
-    "id": "志悟郎會 天昇龍",
-    "name": "志悟郎會 天昇龍",
-    "aliases": []
+    "id": "%e5%bf%97%e6%82%9f%e9%83%8e%e6%9c%83-%e5%a4%a9%e6%98%87%e9%be%8d",
+    "name": "志悟郎會 天昇龍"
   },
   {
-    "id": "ごうちゃん",
-    "name": "ごうちゃん",
-    "aliases": []
+    "id": "%e3%81%94%e3%81%86%e3%81%a1%e3%82%83%e3%82%93",
+    "name": "ごうちゃん"
   },
   {
-    "id": "彊寅花姫",
-    "name": "彊寅花姫",
-    "aliases": [
-      "元 森山号"
-    ]
+    "id": "%e6%a3%ae%e5%b1%b1%e5%8f%b7",
+    "name": "彊寅花姫(元 森山号)"
   },
   {
-    "id": "大和撫子",
-    "name": "大和撫子",
-    "aliases": []
+    "id": "%e5%a4%a7%e5%92%8c%e6%92%ab%e5%ad%90",
+    "name": "大和撫子"
   },
   {
-    "id": "ゆうりブル嵐",
-    "name": "ゆうりブル嵐",
-    "aliases": []
+    "id": "%e3%82%86%e3%81%86%e3%82%8a%e3%83%96%e3%83%ab%e5%b5%90",
+    "name": "ゆうりブル嵐"
   },
   {
-    "id": "平成18・19年生 侍衛",
-    "name": "平成18・19年生 侍衛",
-    "aliases": [
-      "元 慈英",
-      "侑玄侍英",
-      "元八重山 ジェイ"
-    ]
+    "id": "%e5%b9%b3%e6%88%9018%e3%83%bb19%e5%b9%b4%e7%94%9f-%e4%be%8d%e8%a1%9b%e5%85%83-%e6%85%88%e8%8b%b1%e4%be%91%e7%8e%84%e4%be%8d%e8%8b%b1",
+    "name": "平成18・19年生 侍衛(元 慈英,侑玄侍英,元八重山 ジェイ)"
   },
   {
-    "id": "桓騎",
-    "name": "桓騎",
-    "aliases": []
+    "id": "%e6%a1%93%e9%a8%8e",
+    "name": "桓騎"
   },
   {
-    "id": "大心ニーズ",
-    "name": "大心ニーズ",
-    "aliases": []
+    "id": "%e5%a4%a7%e5%bf%83%e3%83%8b%e3%83%bc%e3%82%ba",
+    "name": "大心ニーズ"
   },
   {
-    "id": "燈進力",
-    "name": "燈進力",
-    "aliases": []
+    "id": "%e7%87%88%e9%80%b2%e5%8a%9b",
+    "name": "燈進力"
   },
   {
-    "id": "上昇輝龍幸",
-    "name": "上昇輝龍幸",
-    "aliases": []
+    "id": "%e4%b8%8a%e6%98%87%e8%bc%9d%e9%be%8d%e5%b9%b8",
+    "name": "上昇輝龍幸"
   },
   {
-    "id": "たみこ花形",
-    "name": "たみこ花形",
-    "aliases": [
-      "元八重山 パプリカ光ちゃん"
-    ]
+    "id": "%e3%81%9f%e3%81%bf%e3%81%93%e8%8a%b1%e5%bd%a2",
+    "name": "たみこ花形(元八重山 パプリカ光ちゃん)"
   },
   {
-    "id": "武将白嵐",
-    "name": "武将白嵐",
-    "aliases": []
+    "id": "%e6%ad%a6%e5%b0%86%e7%99%bd%e5%b5%90",
+    "name": "武将白嵐"
   },
   {
-    "id": "二代目 吉川実業",
-    "name": "二代目 吉川実業",
-    "aliases": []
+    "id": "%e4%ba%8c%e4%bb%a3%e7%9b%ae-%e5%90%89%e5%b7%9d%e5%ae%9f%e6%a5%ad",
+    "name": "二代目 吉川実業"
   },
   {
-    "id": "凜道",
-    "name": "凜道",
-    "aliases": []
+    "id": "%e5%87%9c%e9%81%93",
+    "name": "凜道"
   },
   {
-    "id": "大舞伸",
-    "name": "大舞伸",
-    "aliases": []
+    "id": "%e5%a4%a7%e8%88%9e%e4%bc%b8",
+    "name": "大舞伸"
   },
   {
-    "id": "琴龍王",
-    "name": "琴龍王",
-    "aliases": []
+    "id": "%e7%90%b4%e9%be%8d%e7%8e%8b",
+    "name": "琴龍王"
   },
   {
-    "id": "関天トガイ",
-    "name": "関天トガイ",
-    "aliases": []
+    "id": "%e9%96%a2%e5%a4%a9%e3%83%88%e3%82%ac%e3%82%a4",
+    "name": "関天トガイ"
   },
   {
-    "id": "晃竜トガイ",
-    "name": "晃竜トガイ",
-    "aliases": []
+    "id": "%e6%99%83%e7%ab%9c%e3%83%88%e3%82%ac%e3%82%a4",
+    "name": "晃竜トガイ"
   },
   {
-    "id": "平成13･14年生 Z",
-    "name": "平成13･14年生 Z",
-    "aliases": [
-      "元 突撃★Ƶ"
-    ]
+    "id": "%e7%aa%81%e6%92%83%e2%98%85%c6%b6",
+    "name": "平成13･14年生 Z(元 突撃★Ƶ)"
   },
   {
-    "id": "56赤棟蛇",
-    "name": "56赤棟蛇",
-    "aliases": [
-      "元 一天張"
-    ]
+    "id": "%e4%b8%80%e5%a4%a9%e5%bc%b5",
+    "name": "56赤棟蛇(元 一天張)"
   },
   {
-    "id": "住木野 男梅沢",
-    "name": "住木野 男梅沢",
-    "aliases": []
+    "id": "%e4%bd%8f%e6%9c%a8%e9%87%8e-%e7%94%b7%e6%a2%85%e6%b2%a2",
+    "name": "住木野 男梅沢"
   },
   {
-    "id": "上面縄🍺CROWN",
-    "name": "上面縄🍺CROWN",
-    "aliases": []
+    "id": "%e4%b8%8a%e9%9d%a2%e7%b8%84%f0%9f%8d%bacrown",
+    "name": "上面縄🍺CROWN"
   },
   {
-    "id": "宇良部強王",
-    "name": "宇良部強王",
-    "aliases": []
+    "id": "%e5%ae%87%e8%89%af%e9%83%a8%e5%bc%b7%e7%8e%8b",
+    "name": "宇良部強王"
   },
   {
-    "id": "結兎覇",
-    "name": "結兎覇",
-    "aliases": []
+    "id": "%e7%b5%90%e5%85%8e%e8%a6%87",
+    "name": "結兎覇"
   },
   {
-    "id": "大",
-    "name": "大",
-    "aliases": [
-      "勝)力(元 強襲大力"
-    ]
+    "id": "%e5%a4%a7%e5%8b%9d%e5%8a%9b%e5%85%83-%e5%bc%b7%e8%a5%b2%e5%a4%a7%e5%8a%9b",
+    "name": "大(勝)力(元 強襲大力)"
   },
   {
-    "id": "サムライ",
-    "name": "サムライ",
-    "aliases": [
-      "元沖縄 新力武士",
-      "武士"
-    ]
+    "id": "%e3%82%b5%e3%83%a0%e3%83%a9%e3%82%a4%e5%85%83%e6%b2%96%e7%b8%84-%e6%96%b0%e5%8a%9b%e6%ad%a6%e5%a3%ab%e6%ad%a6%e5%a3%ab",
+    "name": "サムライ(元沖縄 新力武士,武士)"
   },
   {
-    "id": "大麒麟",
-    "name": "大麒麟",
-    "aliases": []
+    "id": "%e5%a4%a7%e9%ba%92%e9%ba%9f",
+    "name": "大麒麟"
   },
   {
-    "id": "栄仁大力",
-    "name": "栄仁大力",
-    "aliases": []
+    "id": "%e6%a0%84%e4%bb%81%e5%a4%a7%e5%8a%9b",
+    "name": "栄仁大力"
   },
   {
-    "id": "虎凰",
-    "name": "虎凰",
-    "aliases": []
+    "id": "%e8%99%8e%e5%87%b0",
+    "name": "虎凰"
   },
   {
-    "id": "黄金無双",
-    "name": "黄金無双",
-    "aliases": [
-      "元 亜華梨",
-      "元沖縄 亜華梨豪龍"
-    ]
+    "id": "%e4%ba%9c%e8%8f%af%e6%a2%a8%e5%85%83%e6%b2%96%e7%b8%84-%e4%ba%9c%e8%8f%af%e6%a2%a8%e8%b1%aa%e9%be%8d",
+    "name": "黄金無双(元 亜華梨,元沖縄 亜華梨豪龍)"
   },
   {
-    "id": "龍蛇",
-    "name": "龍蛇",
-    "aliases": []
+    "id": "%e9%be%8d%e8%9b%87",
+    "name": "龍蛇"
   },
   {
-    "id": "茜",
-    "name": "茜",
-    "aliases": []
+    "id": "__trashed",
+    "name": "茜"
   },
   {
-    "id": "赤桜宝",
-    "name": "赤桜宝",
-    "aliases": []
+    "id": "%e8%b5%a4%e6%a1%9c%e5%ae%9d",
+    "name": "赤桜宝"
   },
   {
-    "id": "琉球珀愛",
-    "name": "琉球珀愛",
-    "aliases": []
+    "id": "%e7%90%89%e7%90%83%e7%8f%80%e6%84%9b",
+    "name": "琉球珀愛"
   },
   {
-    "id": "乾坤一擲赤桜号",
-    "name": "乾坤一擲赤桜号",
-    "aliases": []
+    "id": "%e4%b9%be%e5%9d%a4%e4%b8%80%e6%93%b2%e8%b5%a4%e6%a1%9c%e5%8f%b7",
+    "name": "乾坤一擲赤桜号"
   },
   {
-    "id": "龍桜大バチ",
-    "name": "龍桜大バチ",
-    "aliases": []
+    "id": "%e9%be%8d%e6%a1%9c%e5%a4%a7%e3%83%90%e3%83%81",
+    "name": "龍桜大バチ"
   },
   {
-    "id": "鮫島パンダ",
-    "name": "鮫島パンダ",
-    "aliases": []
+    "id": "%e9%ae%ab%e5%b3%b6%e3%83%91%e3%83%b3%e3%83%80",
+    "name": "鮫島パンダ"
   },
   {
-    "id": "千裕畜産 光龍",
-    "name": "千裕畜産 光龍",
-    "aliases": []
+    "id": "%e5%8d%83%e8%a3%95%e7%95%9c%e7%94%a3-%e5%85%89%e9%be%8d",
+    "name": "千裕畜産 光龍"
   },
   {
-    "id": "力心",
-    "name": "力心",
-    "aliases": [
-      "元 ブルースカイ農園 栄号"
-    ]
+    "id": "%e6%a0%84%e5%8f%b7",
+    "name": "力心(元 ブルースカイ農園 栄号)"
   },
   {
-    "id": "健宝",
-    "name": "健宝",
-    "aliases": []
+    "id": "%e5%81%a5%e5%ae%9d",
+    "name": "健宝"
   },
   {
-    "id": "風雅",
-    "name": "風雅",
-    "aliases": []
+    "id": "%e9%a2%a8%e9%9b%85",
+    "name": "風雅"
   },
   {
-    "id": "3年3組 突撃白嵐",
-    "name": "3年3組 突撃白嵐",
-    "aliases": [
-      "元沖縄 獣王パンダ",
-      "突撃白嵐",
-      "伊波重機☆白嵐"
-    ]
+    "id": "%e7%aa%81%e6%92%83%e7%99%bd%e5%b5%90%e5%85%83%e6%b2%96%e7%b8%84-%e7%8d%a3%e7%8e%8b%e3%83%91%e3%83%b3%e3%83%80%e7%aa%81%e6%92%83%e7%99%bd%e5%b5%90%e4%bc%8a%e6%b3%a2%e9%87%8d%e6%a9%9f%e2%98%86",
+    "name": "3年3組 突撃白嵐(元沖縄 獣王パンダ,突撃白嵐,伊波重機☆白嵐)"
   },
   {
-    "id": "突撃凰志號",
-    "name": "突撃凰志號",
-    "aliases": []
+    "id": "%e7%aa%81%e6%92%83%e5%87%b0%e5%bf%97%e8%99%9f",
+    "name": "突撃凰志號"
   },
   {
-    "id": "いつきカキヤー",
-    "name": "いつきカキヤー",
-    "aliases": [
-      "元沖縄 下地カキヤー",
-      "全勝工業カキヤー"
-    ]
+    "id": "%e3%81%84%e3%81%a4%e3%81%8d%e3%82%ab%e3%82%ad%e3%83%a4%e3%83%bc%e5%85%83%e6%b2%96%e7%b8%84-%e4%b8%8b%e5%9c%b0%e3%82%ab%e3%82%ad%e3%83%a4%e3%83%bc%e5%85%a8%e5%8b%9d%e5%b7%a5%e6%a5%ad%e3%82%ab",
+    "name": "いつきカキヤー(元沖縄 下地カキヤー,全勝工業カキヤー)"
   },
   {
-    "id": "〜爆battou闘〜",
-    "name": "〜爆battou闘〜",
-    "aliases": []
+    "id": "%e7%88%86%e9%97%98",
+    "name": "〜爆battou闘〜"
   },
   {
-    "id": "恵白竜",
-    "name": "恵白竜",
-    "aliases": [
-      "元沖縄 べるじゃん"
-    ]
+    "id": "%e6%81%b5%e7%99%bd%e7%ab%9c%e5%85%83%e6%b2%96%e7%b8%84-%e3%81%b9%e3%82%8b%e3%81%98%e3%82%83%e3%82%93",
+    "name": "恵白竜(元沖縄 べるじゃん)"
   },
   {
-    "id": "JOKER",
-    "name": "JOKER",
-    "aliases": []
+    "id": "joker",
+    "name": "JOKER"
   },
   {
-    "id": "海",
-    "name": "海",
-    "aliases": [
-      "絆"
-    ]
+    "id": "%e6%b5%b7%e7%b5%86%e5%bf%83%e5%a4%a9%e5%8f%a2%e9%9b%b2%e5%89%a3",
+    "name": "海(絆)心天叢雲剣"
   },
   {
-    "id": "政岡塗装 和樹爆弾",
-    "name": "政岡塗装 和樹爆弾",
-    "aliases": []
+    "id": "%e6%94%bf%e5%b2%a1%e5%a1%97%e8%a3%85-%e5%92%8c%e6%a8%b9%e7%88%86%e5%bc%be",
+    "name": "政岡塗装 和樹爆弾"
   },
   {
-    "id": "突撃あかり号",
-    "name": "突撃あかり号",
-    "aliases": []
+    "id": "%e7%aa%81%e6%92%83%e3%81%82%e3%81%8b%e3%82%8a%e5%8f%b7",
+    "name": "突撃あかり号"
   },
   {
-    "id": "ミニ",
-    "name": "ミニ",
-    "aliases": [
-      "輝"
-    ]
+    "id": "%e3%83%9f%e3%83%8b%e8%bc%9d%e3%83%9f%e3%83%8b%e3%82%aa%e3%83%b3",
+    "name": "ミニ(輝)ミニオン"
   },
   {
-    "id": "颯荒号",
-    "name": "颯荒号",
-    "aliases": []
+    "id": "%e9%a2%af%e8%8d%92%e5%8f%b7",
+    "name": "颯荒号"
   },
   {
-    "id": "龍破打",
-    "name": "龍破打",
-    "aliases": []
+    "id": "%e9%be%8d%e7%a0%b4%e6%89%93",
+    "name": "龍破打"
   },
   {
-    "id": "隠岐爆弾",
-    "name": "隠岐爆弾",
-    "aliases": []
+    "id": "%e9%9a%a0%e5%b2%90%e7%88%86%e5%bc%be",
+    "name": "隠岐爆弾"
   },
   {
-    "id": "ヤンバシ会 凛然",
-    "name": "ヤンバシ会 凛然",
-    "aliases": [
-      "元 拳心"
-    ]
+    "id": "%e6%8b%b3%e5%bf%83",
+    "name": "ヤンバシ会 凛然(元 拳心)"
   },
   {
-    "id": "東中60同志號",
-    "name": "東中60同志號",
-    "aliases": [
-      "元沖縄 王駿"
-    ]
+    "id": "%e6%9d%b1%e4%b8%ad60%e5%90%8c%e5%bf%97%e8%99%9f%e5%85%83%e6%b2%96%e7%b8%84-%e7%8e%8b%e9%a7%bf",
+    "name": "東中60同志號(元沖縄 王駿)"
   },
   {
-    "id": "中原牛",
-    "name": "中原牛",
-    "aliases": [
-      "元 恋真煌"
-    ]
+    "id": "%e6%81%8b%e7%9c%9f%e7%85%8c",
+    "name": "中原牛(元 恋真煌)"
   },
   {
-    "id": "夢乃爆弾",
-    "name": "夢乃爆弾",
-    "aliases": []
+    "id": "%e5%a4%a2%e4%b9%83%e7%88%86%e5%bc%be",
+    "name": "夢乃爆弾"
   },
   {
-    "id": "木偶の坊",
-    "name": "木偶の坊",
-    "aliases": []
+    "id": "%e6%9c%a8%e5%81%b6%e3%81%ae%e5%9d%8a",
+    "name": "木偶の坊"
   },
   {
-    "id": "一閃小力 シロインジャー",
-    "name": "一閃小力 シロインジャー",
-    "aliases": []
+    "id": "%e4%b8%80%e9%96%83%e5%b0%8f%e5%8a%9b-%e3%82%b7%e3%83%ad%e3%82%a4%e3%83%b3%e3%82%b8%e3%83%a3%e3%83%bc",
+    "name": "一閃小力 シロインジャー"
   },
   {
-    "id": "虎 tiger mask 面",
-    "name": "虎 tiger mask 面",
-    "aliases": []
+    "id": "%e8%99%8e-tiger-mask-%e9%9d%a2",
+    "name": "虎 tiger mask 面"
   },
   {
-    "id": "戦闘轟天",
-    "name": "戦闘轟天",
-    "aliases": []
+    "id": "%e6%88%a6%e9%97%98%e8%bd%9f%e5%a4%a9",
+    "name": "戦闘轟天"
   },
   {
-    "id": "福与大力",
-    "name": "福与大力",
-    "aliases": []
+    "id": "%e7%a6%8f%e4%b8%8e%e5%a4%a7%e5%8a%9b",
+    "name": "福与大力"
   },
   {
-    "id": "律〜RITSUKI〜希",
-    "name": "律〜RITSUKI〜希",
-    "aliases": []
+    "id": "6125-2",
+    "name": "律〜RITSUKI〜希"
   },
   {
-    "id": "達 Hiigerr 磨",
-    "name": "達 Hiigerr 磨",
-    "aliases": []
+    "id": "%e9%81%94-hiigerr-%e7%a3%a8",
+    "name": "達 Hiigerr 磨"
   },
   {
-    "id": "翔心皇",
-    "name": "翔心皇",
-    "aliases": []
+    "id": "%e7%bf%94%e5%bf%83%e7%9a%87",
+    "name": "翔心皇"
   },
   {
-    "id": "龍星友人 心凰",
-    "name": "龍星友人 心凰",
-    "aliases": []
+    "id": "%e9%be%8d%e6%98%9f%e5%8f%8b%e4%ba%ba-%e5%bf%83%e5%87%b0",
+    "name": "龍星友人 心凰"
   },
   {
-    "id": "希爛",
-    "name": "希爛",
-    "aliases": [
-      "元 希燗"
-    ]
+    "id": "%e5%b8%8c%e7%87%97",
+    "name": "希爛(元 希燗)"
   },
   {
-    "id": "彩剣トガイ",
-    "name": "彩剣トガイ",
-    "aliases": []
+    "id": "%e5%bd%a9%e5%89%a3%e3%83%88%e3%82%ac%e3%82%a4",
+    "name": "彩剣トガイ"
   },
   {
-    "id": "蓮捷",
-    "name": "蓮捷",
-    "aliases": []
+    "id": "%e8%93%ae%e6%8d%b7",
+    "name": "蓮捷"
   },
   {
-    "id": "だだ吉二世",
-    "name": "だだ吉二世",
-    "aliases": []
+    "id": "%e3%81%a0%e3%81%a0%e5%90%89%e4%ba%8c%e4%b8%96-2",
+    "name": "だだ吉二世"
   },
   {
-    "id": "平成12･13年生 勝鬨",
-    "name": "平成12･13年生 勝鬨",
-    "aliases": []
+    "id": "%e5%b9%b3%e6%88%9012%ef%bd%a513%e5%b9%b4%e7%94%9f-%e5%8b%9d%e9%ac%a8",
+    "name": "平成12･13年生 勝鬨"
   },
   {
-    "id": "兄丸トガイ",
-    "name": "兄丸トガイ",
-    "aliases": []
+    "id": "%e5%85%84%e4%b8%b8%e3%83%88%e3%82%ac%e3%82%a4",
+    "name": "兄丸トガイ"
   },
   {
-    "id": "凛勝",
-    "name": "凛勝",
-    "aliases": []
+    "id": "%e5%87%9b%e5%8b%9d",
+    "name": "凛勝"
   },
   {
-    "id": "チビパンダ",
-    "name": "チビパンダ",
-    "aliases": []
+    "id": "%e3%83%81%e3%83%93%e3%83%91%e3%83%b3%e3%83%80",
+    "name": "チビパンダ"
   },
   {
-    "id": "天神パンダ愛汐",
-    "name": "天神パンダ愛汐",
-    "aliases": []
+    "id": "%e5%a4%a9%e7%a5%9e%e3%83%91%e3%83%b3%e3%83%80%e6%84%9b%e6%b1%90",
+    "name": "天神パンダ愛汐"
   },
   {
-    "id": "龍弦福力",
-    "name": "龍弦福力",
-    "aliases": []
+    "id": "%e9%be%8d%e5%bc%a6%e7%a6%8f%e5%8a%9b",
+    "name": "龍弦福力"
   },
   {
-    "id": "天下一品",
-    "name": "天下一品",
-    "aliases": []
+    "id": "%e5%a4%a9%e4%b8%8b%e4%b8%80%e5%93%81",
+    "name": "天下一品"
   },
   {
-    "id": "小原荒波",
-    "name": "小原荒波",
-    "aliases": [
-      "元 戦闘鯱",
-      "元沖縄 朝貴",
-      "馬天白冠"
-    ]
+    "id": "%e5%b0%8f%e5%8e%9f%e8%8d%92%e6%b3%a2%e5%85%83-%e6%88%a6%e9%97%98%e9%af%b1%e5%85%83%e6%b2%96%e7%b8%84-%e6%9c%9d%e8%b2%b4%e9%a6%ac%e5%a4%a9%e7%99%bd%e5%86%a0",
+    "name": "小原荒波(元 戦闘鯱,元沖縄 朝貴,馬天白冠)"
   },
   {
-    "id": "耀",
-    "name": "耀",
-    "aliases": [
-      "元沖縄 熊元陸心"
-    ]
+    "id": "%e8%ba%8d%e5%85%83%e6%b2%96%e7%b8%84-%e8%80%80%e7%86%8a%e5%85%83%e9%99%b8%e5%bf%83",
+    "name": "耀(元沖縄 熊元陸心)"
   },
   {
-    "id": "二代目 凜勝❤︎珠凜",
-    "name": "二代目 凜勝❤︎珠凜",
-    "aliases": []
+    "id": "%e4%ba%8c%e4%bb%a3%e7%9b%ae-%e5%87%9c%e5%8b%9d%e2%9d%a4%ef%b8%8e%e7%8f%a0%e5%87%9c",
+    "name": "二代目 凜勝❤︎珠凜"
   },
   {
-    "id": "小",
-    "name": "小",
-    "aliases": [
-      "くゎーむん"
-    ]
+    "id": "%e5%b0%8f%e3%81%8f%e3%82%8e%e3%83%bc%e3%82%80%e3%82%93%e5%a4%a2",
+    "name": "小(くゎーむん)夢"
   },
   {
-    "id": "愛進龍",
-    "name": "愛進龍",
-    "aliases": []
+    "id": "%e6%84%9b%e9%80%b2%e9%be%8d",
+    "name": "愛進龍"
   },
   {
-    "id": "翔龍皇ゼッツ",
-    "name": "翔龍皇ゼッツ",
-    "aliases": []
+    "id": "%e7%bf%94%e9%be%8d%e7%9a%87%e3%82%bc%e3%83%83%e3%83%84",
+    "name": "翔龍皇ゼッツ"
   },
   {
-    "id": "海帆汐千英孝天一",
-    "name": "海帆汐千英孝天一",
-    "aliases": []
+    "id": "%e6%b5%b7%e5%b8%86%e6%b1%90%e5%8d%83%e8%8b%b1%e5%ad%9d%e5%a4%a9%e4%b8%80",
+    "name": "海帆汐千英孝天一"
   },
   {
-    "id": "しぃじゃ白タビ茉也號",
-    "name": "しぃじゃ白タビ茉也號",
-    "aliases": []
+    "id": "%e3%81%97%e3%81%83%e3%81%98%e3%82%83%e7%99%bd%e3%82%bf%e3%83%93%e8%8c%89%e4%b9%9f%e8%99%9f",
+    "name": "しぃじゃ白タビ茉也號"
   },
   {
-    "id": "絆",
-    "name": "絆",
-    "aliases": [
-      "元 パプリカ"
-    ]
+    "id": "%e7%b5%86%e5%85%83-%e3%83%91%e3%83%97%e3%83%aa%e3%82%ab",
+    "name": "絆(元 パプリカ)"
   },
   {
-    "id": "迫田興産バリザク",
-    "name": "迫田興産バリザク",
-    "aliases": []
+    "id": "%e8%bf%ab%e7%94%b0%e8%88%88%e7%94%a3%e3%83%90%e3%83%aa%e3%82%b6%e3%82%af",
+    "name": "迫田興産バリザク"
   },
   {
-    "id": "きりん組 ここなちゃん",
-    "name": "きりん組 ここなちゃん",
-    "aliases": []
+    "id": "%e3%81%8d%e3%82%8a%e3%82%93%e7%b5%84-%e3%81%93%e3%81%93%e3%81%aa%e3%81%a1%e3%82%83%e3%82%93",
+    "name": "きりん組 ここなちゃん"
   },
   {
-    "id": "花掛友人会 嵐覇",
-    "name": "花掛友人会 嵐覇",
-    "aliases": []
+    "id": "%e8%8a%b1%e6%8e%9b%e5%8f%8b%e4%ba%ba%e4%bc%9a-%e5%b5%90%e8%a6%87",
+    "name": "花掛友人会 嵐覇"
   },
   {
-    "id": "ミニハヤテ號",
-    "name": "ミニハヤテ號",
-    "aliases": []
+    "id": "%e3%83%9f%e3%83%8b%e3%83%8f%e3%83%a4%e3%83%86%e8%99%9f",
+    "name": "ミニハヤテ號"
   },
   {
-    "id": "翔隆王",
-    "name": "翔隆王",
-    "aliases": []
+    "id": "%e7%bf%94%e9%9a%86%e7%8e%8b",
+    "name": "翔隆王"
   },
   {
-    "id": "石原大宝",
-    "name": "石原大宝",
-    "aliases": []
+    "id": "%e7%9f%b3%e5%8e%9f%e5%a4%a7%e5%ae%9d",
+    "name": "石原大宝"
   },
   {
-    "id": "飛魚",
-    "name": "飛魚",
-    "aliases": []
+    "id": "%e9%a3%9b%e9%ad%9a",
+    "name": "飛魚"
   },
   {
-    "id": "三代目 八輝",
-    "name": "三代目 八輝",
-    "aliases": []
+    "id": "6608-2",
+    "name": "三代目 八輝"
   },
   {
-    "id": "牛若琉輝丸",
-    "name": "牛若琉輝丸",
-    "aliases": []
+    "id": "%e7%89%9b%e8%8b%a5%e7%90%89%e8%bc%9d%e4%b8%b8",
+    "name": "牛若琉輝丸"
   }
 ]
+
