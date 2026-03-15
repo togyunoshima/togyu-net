@@ -13,12 +13,34 @@
       color:#eee;
       font-family:'Kaisei Tokumin', serif;
     }
-
     .container{
       max-width:1100px;
       margin:0 auto;
     }
-
+    .top-nav{
+      max-width:1100px;
+      margin:0 auto 18px;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:8px;
+    }
+    .top-nav a{
+      display:block;
+      text-align:center;
+      padding:12px 8px;
+      background:#111;
+      border:1px solid #333;
+      color:#fff;
+      text-decoration:none;
+      font-weight:800;
+      font-size:0.92rem;
+    }
+    .top-nav a:hover{ background:#e60000; }
+    .top-nav a.active{
+      background:#1a1a1a;
+      border-color:#f1c40f;
+      color:#f1c40f;
+    }
     .back-link{
       display:inline-block;
       margin-bottom:16px;
@@ -29,7 +51,6 @@
       padding:10px 14px;
       font-size:0.92rem;
     }
-
     h1{
       text-align:center;
       font-family:'Yuji Syuku', serif;
@@ -48,23 +69,17 @@
       overflow-wrap:anywhere;
       letter-spacing:0.02em;
     }
-
     .event-meta{
       background:rgba(20,20,20,0.8);
       border:1px solid #222;
       margin-bottom:20px;
     }
-
     .meta-row{
       display:grid;
       grid-template-columns:92px 1fr;
       border-bottom:1px solid #333;
     }
-
-    .meta-row:last-child{
-      border-bottom:none;
-    }
-
+    .meta-row:last-child{ border-bottom:none; }
     .meta-label{
       background:#111;
       color:#f1c40f;
@@ -72,7 +87,6 @@
       padding:12px 12px;
       font-size:0.9rem;
     }
-
     .meta-value{
       padding:12px 12px;
       color:#fff;
@@ -81,26 +95,22 @@
       white-space:normal;
       word-break:break-word;
     }
-
     .result-table-wrap{
       background:rgba(20,20,20,0.8);
       border:1px solid #222;
       overflow-x:hidden;
     }
-
     table{
       width:100%;
       border-collapse:collapse;
       table-layout:fixed;
     }
-
     th, td{
       border:1px solid #333;
       text-align:center;
       vertical-align:middle;
       padding:0;
     }
-
     th{
       background:#111;
       color:#fff;
@@ -108,12 +118,10 @@
       padding:12px 6px;
       font-size:0.92rem;
     }
-
     th.east-head{ background:#b60000; }
     th.west-head{ background:#d9d9d9; color:#222; }
     th.rank-head{ background:#222; color:#f1c40f; }
     th.area-head{ background:#222; color:#fff; width:9%; }
-
     td.area{
       background:#0a0a0a;
       color:#fff;
@@ -124,19 +132,16 @@
       line-height:1.35;
       word-break:break-word;
     }
-
     td.east, td.west{
       width:35%;
       background:#050505;
       padding:12px 5px;
     }
-
     td.rank{
       width:12%;
       background:#0f0f0f;
       padding:12px 3px;
     }
-
     .subtext{
       color:#f1c40f;
       font-size:0.68rem;
@@ -147,11 +152,10 @@
       overflow:hidden;
       text-overflow:ellipsis;
     }
-
     .bull-name{
       color:#fff;
-      font-size:1.02rem;
-      line-height:1.05;
+      font-size:1.35rem;
+      line-height:1.22;
       font-weight:800;
       margin-bottom:6px;
       white-space:normal;
@@ -159,162 +163,88 @@
       text-overflow:unset;
       word-break:keep-all;
       overflow-wrap:anywhere;
+      padding-bottom:2px;
     }
-
     .bull-note{
       color:#ddd;
       font-size:0.62rem;
       line-height:1.18;
     }
-
     .bull-note-line{
       display:block;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
     }
-
     .bull-note a{
       color:#ddd;
       text-decoration:underline;
     }
-
-.rank-name{
-  color:#f1c40f;
-  font-size:0.72rem;
-  font-weight:800;
-  line-height:1.1;
-  white-space:normal;
-  word-break:break-word;
-  margin-bottom:3px;
-}
-
+    .rank-name{
+      color:#f1c40f;
+      font-size:0.9rem;
+      font-weight:800;
+      line-height:1.1;
+      white-space:normal;
+      word-break:break-word;
+      margin-bottom:3px;
+    }
     .match-time{
       color:#ddd;
       font-size:0.56rem;
       line-height:1.05;
       white-space:nowrap;
     }
-
     .error{
       text-align:center;
       color:#ff8080;
       margin-top:24px;
     }
-
     .note{
       color:#888;
       text-align:center;
       margin-top:14px;
       font-size:0.8rem;
     }
-
     @media (max-width:700px){
-      body{
-        padding:10px 2px 24px;
-      }
-
-      .back-link{
-        font-size:0.76rem;
-        padding:8px 10px;
-      }
-
-      h1{
-        font-size:1rem;
-        line-height:1.7;
-        margin:8px 0 16px;
-      }
-
-      .meta-row{
-        grid-template-columns:58px 1fr;
-      }
-
-      .meta-label{
-        font-size:0.68rem;
-        padding:8px 6px;
-      }
-
-      .meta-value{
-        font-size:0.66rem;
-        padding:8px 6px;
-        line-height:1.45;
-      }
-
-      th{
-        font-size:0.58rem;
-        padding:8px 2px;
-      }
-
-      td.area{
-        width:10%;
-        font-size:0.48rem;
-        padding:8px 1px;
-        line-height:1.1;
-      }
-
-      td.east, td.west{
-        width:35%;
-        padding:8px 2px;
-      }
-
-      td.rank{
-        width:10%;
-        padding:8px 1px;
-      }
-
-      .subtext{
-        font-size:0.36rem;
-        line-height:1.05;
-        margin-bottom:3px;
-      }
-
-      .bull-name{
-        font-size:0.54rem;
-        line-height:1.0;
-        margin-bottom:3px;
-      }
-
-      .bull-note{
-        font-size:0.32rem;
-        line-height:1.0;
-      }
-
-      .rank-name{
-        font-size:0.28rem;
-        line-height:1.0;
-        margin-bottom:2px;
-      }
-
-      .match-time{
-        font-size:0.28rem;
-        line-height:1.0;
-      }
+      body{ padding:10px 2px 24px; }
+      .top-nav{ gap:4px; margin:0 auto 12px; }
+      .top-nav a{ padding:9px 4px; font-size:0.62rem; }
+      .back-link{ font-size:0.76rem; padding:8px 10px; }
+      h1{ font-size:1rem; line-height:1.7; margin:8px 0 16px; }
+      .meta-row{ grid-template-columns:58px 1fr; }
+      .meta-label{ font-size:0.68rem; padding:8px 6px; }
+      .meta-value{ font-size:0.66rem; padding:8px 6px; line-height:1.45; }
+      th{ font-size:0.58rem; padding:8px 2px; }
+      td.area{ width:10%; font-size:0.48rem; padding:8px 1px; line-height:1.1; }
+      td.east, td.west{ width:35%; padding:8px 2px; }
+      td.rank{ width:10%; padding:8px 1px; }
+      .subtext{ font-size:0.36rem; line-height:1.05; margin-bottom:3px; }
+      .bull-name{ font-size:0.78rem; line-height:1.15; margin-bottom:3px; padding-bottom:1px; }
+      .bull-note{ font-size:0.32rem; line-height:1.0; }
+      .rank-name{ font-size:0.58rem; line-height:1.0; margin-bottom:2px; }
+      .match-time{ font-size:0.28rem; line-height:1.0; }
     }
   </style>
 </head>
 <body>
   <div class="container">
+    <nav class="top-nav">
+      <a href="index.html">ホーム</a>
+      <a href="programitiran.html" class="active">対戦表</a>
+      <a href="search.html">戦歴検索</a>
+      <a href="prediction.html">予想</a>
+    </nav>
+
     <a href="programitiran.html" class="back-link">← 対戦表一覧に戻る</a>
 
     <h1 id="pageTitle">結果</h1>
 
     <div class="event-meta">
-      <div class="meta-row">
-        <div class="meta-label">日時</div>
-        <div class="meta-value" id="metaDate">読み込み中...</div>
-      </div>
-      <div class="meta-row">
-        <div class="meta-label">場所</div>
-        <div class="meta-value" id="metaPlace">読み込み中...</div>
-      </div>
-      <div class="meta-row">
-        <div class="meta-label">主催</div>
-        <div class="meta-value" id="metaHost">未設定</div>
-      </div>
-      <div class="meta-row">
-        <div class="meta-label">入場料</div>
-        <div class="meta-value" id="metaPrice">未設定</div>
-      </div>
+      <div class="meta-row"><div class="meta-label">日時</div><div class="meta-value" id="metaDate">読み込み中...</div></div>
+      <div class="meta-row"><div class="meta-label">場所</div><div class="meta-value" id="metaPlace">読み込み中...</div></div>
+      <div class="meta-row"><div class="meta-label">主催</div><div class="meta-value" id="metaHost">未設定</div></div>
+      <div class="meta-row"><div class="meta-label">入場料</div><div class="meta-value" id="metaPrice">未設定</div></div>
     </div>
 
     <div class="result-table-wrap">
@@ -339,7 +269,6 @@
   <script>
     const params = new URLSearchParams(location.search);
     const programId = params.get("id");
-
     const pageTitleEl = document.getElementById("pageTitle");
     const metaDateEl = document.getElementById("metaDate");
     const metaPlaceEl = document.getElementById("metaPlace");
@@ -356,31 +285,23 @@
         .replaceAll('"', "&quot;")
         .replaceAll("'", "&#39;");
     }
-
     function formatJapaneseDate(dateStr){
       if(!dateStr) return "";
       const [y, m, d] = dateStr.split("-");
       return `${Number(y)}年${Number(m)}月${Number(d)}日`;
     }
-
     function formatDateTime(program){
       const dateText = formatJapaneseDate(program.date || "");
       const start = program.start_time || program.start || "";
       return start ? `${dateText}　${start}` : dateText;
     }
-
     function getProgramTitle(program){
       const title = (program && program.title) ? program.title : "結果";
       return title.replace("&", "&<br>");
     }
-
     function normalize(str) {
-      return String(str || "")
-        .replace(/\s+/g, "")
-        .replace(/[（）()]/g, "")
-        .trim();
+      return String(str || "").replace(/\s+/g, "").replace(/[（）()]/g, "").trim();
     }
-
     function getBullSearchTargets(bull) {
       const targets = [];
       if (bull.display_name) targets.push(bull.display_name);
@@ -397,44 +318,30 @@
       }
       return [...new Set(targets.map(normalize).filter(Boolean))];
     }
-
     function findBullIdByName(name, bulls) {
       const target = normalize(name);
       const found = bulls.find(bull => getBullSearchTargets(bull).includes(target));
       return found ? found.id : null;
     }
-
     function splitNote(text){
       const raw = String(text || "").trim();
       if(!raw) return [];
-
       const cleaned = raw.replaceAll("/", " ").replace(/\s+/g, " ").trim();
       const ownerMatch = cleaned.match(/\(?牛主[:：][^)]+\)?/);
       const owner = ownerMatch ? ownerMatch[0].trim() : "";
-
       let withoutOwner = cleaned;
-      if (owner) {
-        withoutOwner = cleaned.replace(owner, "").trim();
-      }
-
+      if (owner) withoutOwner = cleaned.replace(owner, "").trim();
       const lines = [];
       if (withoutOwner) lines.push(withoutOwner);
       if (owner) lines.push(owner);
       if (lines.length === 0) lines.push(cleaned);
-
       return lines.slice(0, 2);
     }
-
     function makeRecordHtml(name, text, bulls){
       const lines = splitNote(text);
       if(!lines.length) return "";
-
       const joined = lines.join(" ");
-      const hasRecord =
-        /[0-9０-９]+勝/.test(joined) ||
-        /[0-9０-９]+敗/.test(joined) ||
-        /引分/.test(joined);
-
+      const hasRecord = /[0-9０-９]+勝/.test(joined) || /[0-9０-９]+敗/.test(joined) || /引分/.test(joined);
       const bullId = findBullIdByName(name, bulls);
 
       return `
@@ -448,25 +355,16 @@
         </div>
       `;
     }
-
     function formatRank(rank){
       const text = String(rank || "").trim();
       if(!text) return "VS";
       return escapeHtml(text).replaceAll(" / ", "<br>").replaceAll("/", "<br>");
     }
-
     function formatCenterLine(mark, time, side){
       const t = time ? escapeHtml(time) : "--:--";
-
-      if (mark === "△") {
-        return `△｜${t}｜△`;
-      }
-      if (side === "east") {
-        return `〇｜${t}｜`;
-      }
-      if (side === "west") {
-        return `｜${t}｜〇`;
-      }
+      if (mark === "△") return `△｜${t}｜△`;
+      if (side === "east") return `〇｜${t}｜`;
+      if (side === "west") return `｜${t}｜〇`;
       return `｜${t}｜`;
     }
 
@@ -497,7 +395,7 @@
         return;
       }
 
-      const html = list.map(match => {
+      bodyEl.innerHTML = list.map(match => {
         const eastName = match.east || "";
         const westName = match.west || "";
         const winner = match.winner || "";
@@ -538,8 +436,6 @@
           </tr>
         `;
       }).join("");
-
-      bodyEl.innerHTML = html;
     })
     .catch(err => {
       errorEl.textContent = "データの読み込みに失敗しました。";
