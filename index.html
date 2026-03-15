@@ -4,9 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>徳之島闘牛サイト</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Yuji+Syuku&display=swap" rel="stylesheet">
-
 <style>
 body{
   margin:0;
@@ -18,7 +16,6 @@ body{
   position:relative;
   min-height:100vh;
 }
-
 .bg-overlay{
   position:fixed;
   top:0;
@@ -33,12 +30,40 @@ body{
   filter:grayscale(100%);
   z-index:-1;
 }
-
+.container{
+  max-width:1100px;
+  margin:0 auto;
+}
+.top-nav{
+  max-width:1100px;
+  margin:0 auto 18px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+}
+.top-nav a{
+  display:block;
+  text-align:center;
+  padding:12px 8px;
+  background:#111;
+  border:1px solid #333;
+  color:#fff;
+  text-decoration:none;
+  font-weight:800;
+  font-size:0.92rem;
+}
+.top-nav a:hover{
+  background:#e60000;
+}
+.top-nav a.active{
+  background:#1a1a1a;
+  border-color:#f1c40f;
+  color:#f1c40f;
+}
 .site-title-wrap{
   margin:28px 0 22px;
   overflow:hidden;
 }
-
 h1{
   margin:0;
   font-family:'Yuji Syuku', serif;
@@ -55,7 +80,6 @@ h1{
     8px 8px 16px rgba(230,0,0,0.75);
   transform:scaleY(1.08);
 }
-
 .title-line{
   width:min(240px, 65%);
   height:4px;
@@ -63,38 +87,11 @@ h1{
   border-radius:999px;
   background:linear-gradient(90deg, transparent, #8b0000, #e60000, #f1c40f, #e60000, #8b0000, transparent);
 }
-
-.menu{
-  max-width:950px;
-  margin:0 auto 40px;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-}
-
-.menu a{
-  display:block;
-  padding:15px 10px;
-  background:rgba(20,20,20,0.82);
-  border:1px solid #333;
-  text-decoration:none;
-  color:#fff;
-  font-weight:800;
-  transition:all .25s ease;
-}
-
-.menu a:hover{
-  background:#e60000;
-  border-color:#e60000;
-  transform:translateY(-2px);
-}
-
 .section{
   max-width:950px;
   margin:40px auto;
   text-align:left;
 }
-
 .section-title{
   font-size:1.2rem;
   color:#f1c40f;
@@ -103,19 +100,16 @@ h1{
   margin-bottom:15px;
   font-weight:800;
 }
-
 .box{
   background:rgba(20,20,20,0.78);
   border:1px solid #222;
   padding:24px;
   backdrop-filter:blur(4px);
 }
-
 .latest-list{
   display:grid;
   gap:12px;
 }
-
 .latest-item{
   display:block;
   padding:16px 14px;
@@ -125,14 +119,10 @@ h1{
   color:#fff;
   font-weight:700;
   line-height:1.8;
-  transition:all .25s ease;
 }
-
 .latest-item:hover{
   background:#e60000;
-  border-color:#e60000;
 }
-
 .latest-type{
   display:inline-block;
   margin-right:8px;
@@ -140,59 +130,44 @@ h1{
   font-size:0.88rem;
   font-weight:800;
 }
-
 .map-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:14px;
 }
-
 .map-card{
   background:#111;
   border:1px solid #333;
   padding:14px;
 }
-
 .map-card h3{
   margin:0 0 10px;
   font-size:1rem;
   color:#fff;
 }
-
 .map-frame{
   width:100%;
   height:260px;
   border:0;
 }
-
-.map-note{
-  margin-top:10px;
-  color:#aaa;
-  font-size:0.88rem;
-  line-height:1.7;
-}
-
 .instagram-box{
   background:#111;
   border:1px solid #333;
   padding:24px;
   text-align:center;
 }
-
 .instagram-icon{
   width:96px;
   max-width:30%;
   height:auto;
   margin-bottom:12px;
 }
-
 .instagram-title{
   font-size:1.2rem;
   font-weight:800;
   margin-bottom:12px;
   color:#fff;
 }
-
 .instagram-placeholder{
   border:1px dashed #555;
   padding:24px 16px;
@@ -200,7 +175,6 @@ h1{
   line-height:1.9;
   background:#0a0a0a;
 }
-
 .instagram-link{
   display:inline-block;
   margin-top:16px;
@@ -210,183 +184,125 @@ h1{
   text-decoration:none;
   border:1px solid #333;
 }
-
 .instagram-link:hover{
   background:#e60000;
-  border-color:#e60000;
 }
-
 .small-note{
   color:#999;
   font-size:0.9rem;
   text-align:center;
 }
-
 footer{
   margin-top:60px;
   color:#666;
   font-size:0.8rem;
 }
-
 @media (max-width:700px){
-  body{
-    padding:8px;
-  }
-
-  .menu{
-    grid-template-columns:1fr;
-  }
-
-  .map-grid{
-    grid-template-columns:1fr;
-  }
-
-  h1{
-    font-size:clamp(1.9rem, 8vw, 3rem);
-    letter-spacing:0.08em;
-  }
-
-  .section{
-    margin:28px auto;
-  }
-
-  .box{
-    padding:18px;
-  }
+  body{ padding:8px; }
+  .top-nav{ gap:4px; margin:0 auto 12px; }
+  .top-nav a{ padding:9px 4px; font-size:0.62rem; }
+  h1{ font-size:clamp(1.9rem, 8vw, 3rem); letter-spacing:0.08em; }
+  .section{ margin:28px auto; }
+  .box{ padding:18px; }
+  .map-grid{ grid-template-columns:1fr; }
 }
 </style>
 </head>
-
 <body>
-
 <div class="bg-overlay"></div>
 
-<div class="site-title-wrap">
-  <h1>徳之島闘牛サイト</h1>
-  <div class="title-line"></div>
-</div>
+<div class="container">
+  <nav class="top-nav">
+    <a href="index.html" class="active">ホーム</a>
+    <a href="programitiran.html">対戦表</a>
+    <a href="search.html">戦歴検索</a>
+    <a href="prediction.html">予想</a>
+  </nav>
 
-<div class="menu">
-  <a href="programitiran.html">対戦表</a>
-  <a href="search.html">戦歴検索</a>
-  <a href="prediction.html">予想</a>
-</div>
-
-<div class="section">
-  <div class="section-title">最新情報</div>
-  <div class="box">
-    <div class="latest-list" id="latestTournament">
-      <div class="small-note">読み込み中...</div>
-    </div>
+  <div class="site-title-wrap">
+    <h1>徳之島闘牛サイト</h1>
+    <div class="title-line"></div>
   </div>
-</div>
 
-<div class="section">
-  <div class="section-title">闘牛場</div>
-  <div class="box">
-    <div class="map-grid">
-      <div class="map-card">
-        <h3>なくさみ館</h3>
-        <iframe
-          class="map-frame"
-          loading="lazy"
-          allowfullscreen
-          referrerpolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps?q=%E5%BE%B3%E4%B9%8B%E5%B3%B6%20%E3%81%AA%E3%81%8F%E3%81%95%E3%81%BF%E9%A4%A8&output=embed">
-        </iframe>
-      </div>
-
-      <div class="map-card">
-        <h3>松原闘牛場</h3>
-        <iframe
-          class="map-frame"
-          loading="lazy"
-          allowfullscreen
-          referrerpolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps?q=%E5%BE%B3%E4%B9%8B%E5%B3%B6%20%E6%9D%BE%E5%8E%9F%E9%97%98%E7%89%9B%E5%A0%B4&output=embed">
-        </iframe>
+  <div class="section">
+    <div class="section-title">最新情報</div>
+    <div class="box">
+      <div class="latest-list" id="latestTournament">
+        <div class="small-note">読み込み中...</div>
       </div>
     </div>
+  </div>
 
-    <div class="map-note">
-      ※ 地図がずれて見える場合は、あとでGoogleマップ共有URLに差し替えできます。
+  <div class="section">
+    <div class="section-title">闘牛場</div>
+    <div class="box">
+      <div class="map-grid">
+        <div class="map-card">
+          <h3>なくさみ館</h3>
+          <iframe class="map-frame" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=%E5%BE%B3%E4%B9%8B%E5%B3%B6%20%E3%81%AA%E3%81%8F%E3%81%95%E3%81%BF%E9%A4%A8&output=embed"></iframe>
+        </div>
+        <div class="map-card">
+          <h3>松原闘牛場</h3>
+          <iframe class="map-frame" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=%E5%BE%B3%E4%B9%8B%E5%B3%B6%20%E6%9D%BE%E5%8E%9F%E9%97%98%E7%89%9B%E5%A0%B4&output=embed"></iframe>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="section">
-  <div class="section-title">Instagram</div>
-  <div class="box">
-    <div class="instagram-box">
-      <img src="IMG_2085.png" alt="Instagramアイコン" class="instagram-icon">
-
-      <div class="instagram-title">@togyunoshima</div>
-
-      <a
-        class="instagram-link"
-        href="https://www.instagram.com/togyunoshima"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Instagramを見る
-      </a>
+  <div class="section">
+    <div class="section-title">Instagram</div>
+    <div class="box">
+      <div class="instagram-box">
+        <img src="IMG_2085.png" alt="Instagramアイコン" class="instagram-icon">
+        <div class="instagram-title">@togyunoshima</div>
+        <div class="instagram-placeholder">徳之島闘牛サイトの公式Instagram</div>
+        <a class="instagram-link" href="https://www.instagram.com/togyunoshima" target="_blank" rel="noopener noreferrer">Instagramを見る</a>
+      </div>
     </div>
   </div>
-</div>
 
-<footer>
-  © 2026 togyu.net
-</footer>
+  <footer>© 2026 togyu.net</footer>
+</div>
 
 <script>
 fetch("data/programs.json")
 .then(res => res.json())
 .then(data => {
   if(!data || data.length === 0){
-    document.getElementById("latestTournament").innerHTML = `
-      <div class="small-note">大会データがまだありません。</div>
-    `;
+    document.getElementById("latestTournament").innerHTML = `<div class="small-note">大会データがまだありません。</div>`;
     return;
   }
 
   const sorted = [...data].sort((a,b) => b.id.localeCompare(a.id));
-
   const articles = [];
+
   sorted.forEach(item => {
     const title = item.title || item.date || "最新情報";
 
     articles.push({
-      type: "対戦表",
       label: title,
-      href: `program.html?id=${item.id}`
+      href: `program.html?id=${item.id}`,
+      type: "対戦表"
     });
 
     articles.push({
-      type: "結果",
       label: `${title}（結果）`,
-      href: `result.html?id=${item.id}`
+      href: `result.html?id=${item.id}`,
+      type: "結果"
     });
   });
 
   const latestFive = articles.slice(0, 5);
 
-  const html = latestFive.map(article => {
-    return `
-      <a class="latest-item" href="${article.href}">
-        <span class="latest-type">${article.type}</span>
-        ${article.label}
-      </a>
-    `;
-  }).join("");
-
-  document.getElementById("latestTournament").innerHTML = html;
+  document.getElementById("latestTournament").innerHTML = latestFive.map(article => `
+    <a class="latest-item" href="${article.href}">
+      <span class="latest-type">${article.type}</span>${article.label}
+    </a>
+  `).join("");
 })
 .catch(() => {
-  document.getElementById("latestTournament").innerHTML = `
-    <div class="small-note">大会データの読み込みに失敗しました。</div>
-  `;
+  document.getElementById("latestTournament").innerHTML = `<div class="small-note">大会データの読み込みに失敗しました。</div>`;
 });
 </script>
-
 </body>
 </html>
