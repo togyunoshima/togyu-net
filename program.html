@@ -518,25 +518,34 @@ function makeRecordHtml(name, text, bulls){
   if(!lines.length) return "";
 
   const joined = lines.join(" ");
-  const bullId = findBullIdByName(name, bulls);
 
   const hasRecord =
     /[0-9０-９]+勝/.test(joined) ||
     /[0-9０-９]+敗/.test(joined) ||
     /引分/.test(joined);
 
-  const hasFormerName =
-    /元[^\s/]+/.test(joined) ||
-    /元[^\s/]+ [^\s/]+/.test(joined);
+  const currentBullId = findBullIdByName(name, bulls);
+
+  function findBullIdFromLine(line){
+    const cleaned = String(line || "")
+      .replace(/[()（）]/g, "")
+      .replace(/牛主[:：].*$/, "")
+      .trim();
+
+    const found = bulls.find(bull => {
+      const targets = getBullSearchTargets(bull);
+      return targets.some(target =>
+        cleaned.includes(target) || target.includes(cleaned)
+      );
+    });
+
+    return found ? found.id : null;
+  }
 
   return `
     <div class="bull-note">
       ${lines.map(line => {
         const safeLine = escapeHtml(line);
-
-        if (!bullId) {
-          return `<span class="bull-note-line">${safeLine}</span>`;
-        }
 
         if (line.includes("牛主")) {
           return `<span class="bull-note-line">${safeLine}</span>`;
@@ -547,17 +556,17 @@ function makeRecordHtml(name, text, bulls){
         }
 
         if (hasRecord) {
-          if (/[0-9０-９]+勝/.test(line) || /[0-9０-９]+敗/.test(line) || /引分/.test(line)) {
-            return `<span class="bull-note-line"><a href="bull.html?id=${encodeURIComponent(bullId)}">${safeLine}</a></span>`;
+          if (currentBullId && (/[0-9０-９]+勝/.test(line) || /[0-9０-９]+敗/.test(line) || /引分/.test(line))) {
+            return `<span class="bull-note-line"><a href="bull.html?id=${encodeURIComponent(currentBullId)}">${safeLine}</a></span>`;
           }
           return `<span class="bull-note-line">${safeLine}</span>`;
         }
 
-        if (!hasRecord && hasFormerName) {
-          if (/元/.test(line)) {
-            return `<span class="bull-note-line"><a href="bull.html?id=${encodeURIComponent(bullId)}">${safeLine}</a></span>`;
+        if (/元/.test(line)) {
+          const formerBullId = findBullIdFromLine(line);
+          if (formerBullId) {
+            return `<span class="bull-note-line"><a href="bull.html?id=${encodeURIComponent(formerBullId)}">${safeLine}</a></span>`;
           }
-          return `<span class="bull-note-line">${safeLine}</span>`;
         }
 
         return `<span class="bull-note-line">${safeLine}</span>`;
