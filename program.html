@@ -13,10 +13,12 @@
       color:#eee;
       font-family:'Kaisei Tokumin', serif;
     }
+
     .container{
       max-width:1100px;
       margin:0 auto;
     }
+
     .back-link{
       display:inline-block;
       margin-bottom:16px;
@@ -27,13 +29,19 @@
       padding:10px 14px;
       font-size:0.92rem;
     }
+
     h1{
       text-align:center;
       font-family:'Yuji Syuku', serif;
       font-size:clamp(1.5rem, 4.8vw, 3rem);
       color:#fff;
       margin:10px 0 22px;
-      text-shadow:3px 3px 0 #e60000,-1px -1px 0 #e60000,1px -1px 0 #e60000,-1px 1px 0 #e60000,1px 1px 0 #e60000;
+      text-shadow:
+        3px 3px 0 #e60000,
+        -1px -1px 0 #e60000,
+        1px -1px 0 #e60000,
+        -1px 1px 0 #e60000,
+        1px 1px 0 #e60000;
       line-height:1.55;
       white-space:normal;
       word-break:keep-all;
@@ -46,14 +54,17 @@
       border:1px solid #222;
       margin-bottom:20px;
     }
+
     .meta-row{
       display:grid;
       grid-template-columns:92px 1fr;
       border-bottom:1px solid #333;
     }
+
     .meta-row:last-child{
       border-bottom:none;
     }
+
     .meta-label{
       background:#111;
       color:#f1c40f;
@@ -61,6 +72,7 @@
       padding:12px 12px;
       font-size:0.9rem;
     }
+
     .meta-value{
       padding:12px 12px;
       color:#fff;
@@ -75,17 +87,20 @@
       border:1px solid #222;
       overflow-x:hidden;
     }
+
     table{
       width:100%;
       border-collapse:collapse;
       table-layout:fixed;
     }
+
     th, td{
       border:1px solid #333;
       text-align:center;
       vertical-align:middle;
       padding:0;
     }
+
     th{
       background:#111;
       color:#fff;
@@ -93,30 +108,33 @@
       padding:12px 6px;
       font-size:0.92rem;
     }
+
     th.east-head{ background:#b60000; }
     th.west-head{ background:#d9d9d9; color:#222; }
     th.rank-head{ background:#222; color:#f1c40f; }
-    th.area-head{ background:#222; color:#fff; width:10%; }
+    th.area-head{ background:#222; color:#fff; width:9%; }
 
     td.area{
       background:#0a0a0a;
       color:#fff;
       font-weight:700;
       font-size:0.88rem;
-      width:10%;
+      width:9%;
       padding:12px 4px;
       line-height:1.35;
       word-break:break-word;
     }
+
     td.east, td.west{
-      width:33%;
+      width:35%;
       background:#050505;
       padding:12px 5px;
     }
+
     td.rank{
-      width:14%;
+      width:12%;
       background:#0f0f0f;
-      padding:12px 4px;
+      padding:12px 3px;
     }
 
     .subtext{
@@ -129,27 +147,33 @@
       overflow:hidden;
       text-overflow:ellipsis;
     }
+
     .bull-name{
       color:#fff;
-      font-size:1.15rem;
-      line-height:1.12;
+      font-size:1.02rem;
+      line-height:1.05;
       font-weight:800;
       margin-bottom:6px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
+      white-space:normal;
+      overflow:visible;
+      text-overflow:unset;
+      word-break:keep-all;
+      overflow-wrap:anywhere;
     }
+
     .bull-note{
       color:#ddd;
       font-size:0.62rem;
       line-height:1.18;
     }
+
     .bull-note-line{
       display:block;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
     }
+
     .bull-note a{
       color:#ddd;
       text-decoration:underline;
@@ -157,17 +181,18 @@
 
     .rank-name{
       color:#f1c40f;
-      font-size:0.62rem;
+      font-size:0.56rem;
       font-weight:800;
-      line-height:1.08;
+      line-height:1.05;
       white-space:normal;
       word-break:break-word;
-      margin-bottom:4px;
+      margin-bottom:3px;
     }
+
     .match-time-placeholder{
       color:#bbb;
-      font-size:0.68rem;
-      line-height:1.15;
+      font-size:0.56rem;
+      line-height:1.05;
       white-space:nowrap;
     }
 
@@ -176,6 +201,7 @@
       color:#ff8080;
       margin-top:24px;
     }
+
     .note{
       color:#888;
       text-align:center;
@@ -187,65 +213,81 @@
       body{
         padding:10px 2px 24px;
       }
+
       .back-link{
         font-size:0.76rem;
         padding:8px 10px;
       }
+
       h1{
         font-size:1rem;
         line-height:1.7;
         margin:8px 0 16px;
       }
+
       .meta-row{
         grid-template-columns:58px 1fr;
       }
+
       .meta-label{
         font-size:0.68rem;
         padding:8px 6px;
       }
+
       .meta-value{
         font-size:0.66rem;
         padding:8px 6px;
         line-height:1.45;
       }
+
       th{
         font-size:0.58rem;
         padding:8px 2px;
       }
+
       td.area{
-        font-size:0.5rem;
+        width:10%;
+        font-size:0.48rem;
         padding:8px 1px;
-        line-height:1.15;
+        line-height:1.1;
       }
+
       td.east, td.west{
-        width:34%;
-        padding:8px 3px;
-      }
-      td.rank{
-        width:12%;
+        width:35%;
         padding:8px 2px;
       }
+
+      td.rank{
+        width:10%;
+        padding:8px 1px;
+      }
+
       .subtext{
         font-size:0.36rem;
         line-height:1.05;
         margin-bottom:3px;
       }
+
       .bull-name{
-        font-size:0.6rem;
+        font-size:0.54rem;
         line-height:1.0;
         margin-bottom:3px;
       }
+
       .bull-note{
         font-size:0.32rem;
         line-height:1.0;
       }
+
       .rank-name{
-        font-size:0.32rem;
+        font-size:0.28rem;
         line-height:1.0;
         margin-bottom:2px;
       }
+
       .match-time-placeholder{
-        font-size:0.38rem;
+        font-size:0.28rem;
+        line-height:1.0;
       }
     }
   </style>
@@ -367,7 +409,6 @@
       if(!raw) return [];
 
       const cleaned = raw.replaceAll("/", " ").replace(/\s+/g, " ").trim();
-
       const ownerMatch = cleaned.match(/\(?牛主[:：][^)]+\)?/);
       const owner = ownerMatch ? ownerMatch[0].trim() : "";
 
@@ -379,6 +420,7 @@
       const lines = [];
       if (withoutOwner) lines.push(withoutOwner);
       if (owner) lines.push(owner);
+      if (lines.length === 0) lines.push(cleaned);
 
       return lines.slice(0, 2);
     }
