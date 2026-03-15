@@ -1,124 +1,191 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>対戦表一覧 | 徳之島闘牛サイト</title>
-<link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Yuji+Syuku&display=swap" rel="stylesheet">
-<style>
-body{
-  margin:0;
-  padding:10px 8px 40px;
-  background:#050505;
-  color:#eee;
-  font-family:'Kaisei Tokumin', serif;
-}
-.container{
-  max-width:1100px;
-  margin:0 auto;
-}
-.top-nav{
-  max-width:1100px;
-  margin:0 auto 18px;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:8px;
-}
-.top-nav a{
-  display:block;
-  text-align:center;
-  padding:12px 8px;
-  background:#111;
-  border:1px solid #333;
-  color:#fff;
-  text-decoration:none;
-  font-weight:800;
-  font-size:0.92rem;
-}
-.top-nav a:hover{ background:#e60000; }
-.top-nav a.active{
-  background:#1a1a1a;
-  border-color:#f1c40f;
-  color:#f1c40f;
-}
-h1{
-  text-align:center;
-  font-family:'Yuji Syuku', serif;
-  font-size:clamp(1.8rem,5vw,3.4rem);
-  margin:14px 0 20px;
-  color:#fff;
-  text-shadow:3px 3px 0 #e60000;
-}
-.list{
-  display:grid;
-  gap:12px;
-}
-.item{
-  background:#111;
-  border:1px solid #333;
-  padding:16px;
-}
-.item-title{
-  font-size:1rem;
-  font-weight:800;
-  margin-bottom:12px;
-  line-height:1.6;
-}
-.item-links{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
-.item-links a{
-  display:block;
-  text-align:center;
-  padding:10px;
-  background:#1a1a1a;
-  border:1px solid #333;
-  color:#fff;
-  text-decoration:none;
-}
-.item-links a:hover{
-  background:#e60000;
-}
-@media (max-width:700px){
-  .top-nav{ gap:4px; margin:0 auto 12px; }
-  .top-nav a{ padding:9px 4px; font-size:0.62rem; }
-  .item-links{ grid-template-columns:1fr; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>対戦表一覧 | 徳之島闘牛サイト</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Yuji+Syuku&display=swap" rel="stylesheet">
+  <style>
+    body{
+      margin:0;
+      padding:10px 8px 40px;
+      background:#050505;
+      color:#eee;
+      font-family:'Kaisei Tokumin', serif;
+    }
+
+    .container{
+      max-width:1100px;
+      margin:0 auto;
+    }
+
+    .top-nav{
+      max-width:1100px;
+      margin:0 auto 18px;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:8px;
+    }
+
+    .top-nav a{
+      display:block;
+      text-align:center;
+      padding:12px 8px;
+      background:#111;
+      border:1px solid #333;
+      color:#fff;
+      text-decoration:none;
+      font-weight:800;
+      font-size:0.92rem;
+    }
+
+    .top-nav a:hover{
+      background:#e60000;
+    }
+
+    .top-nav a.active{
+      background:#1a1a1a;
+      border-color:#f1c40f;
+      color:#f1c40f;
+    }
+
+    h1{
+      text-align:center;
+      font-family:'Yuji Syuku', serif;
+      font-size:clamp(2rem, 6vw, 3.8rem);
+      color:#fff;
+      margin:18px 0 26px;
+      text-shadow:
+        3px 3px 0 #e60000,
+        -1px -1px 0 #e60000,
+        1px -1px 0 #e60000,
+        -1px 1px 0 #e60000,
+        1px 1px 0 #e60000;
+      letter-spacing:0.08em;
+    }
+
+    .program-list{
+      display:grid;
+      gap:12px;
+    }
+
+    .program-item{
+      background:rgba(20,20,20,0.78);
+      border:1px solid #222;
+      padding:18px;
+    }
+
+    .program-title{
+      color:#fff;
+      font-size:1rem;
+      font-weight:800;
+      line-height:1.7;
+      margin-bottom:12px;
+    }
+
+    .program-links{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+
+    .program-links a{
+      display:block;
+      text-align:center;
+      padding:12px 10px;
+      background:#111;
+      border:1px solid #333;
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+    }
+
+    .program-links a:hover{
+      background:#e60000;
+      border-color:#e60000;
+    }
+
+    .empty{
+      text-align:center;
+      color:#999;
+      padding:24px 0;
+    }
+
+    @media (max-width:700px){
+      .top-nav{
+        gap:4px;
+        margin:0 auto 12px;
+      }
+
+      .top-nav a{
+        padding:9px 4px;
+        font-size:0.62rem;
+      }
+
+      .program-item{
+        padding:14px;
+      }
+
+      .program-title{
+        font-size:0.82rem;
+        line-height:1.6;
+      }
+
+      .program-links{
+        grid-template-columns:1fr 1fr;
+        gap:8px;
+      }
+
+      .program-links a{
+        font-size:0.72rem;
+        padding:10px 6px;
+      }
+    }
+  </style>
 </head>
 <body>
-<div class="container">
-  <nav class="top-nav">
-    <a href="index.html">ホーム</a>
-    <a href="programitiran.html" class="active">対戦表</a>
-    <a href="search.html">戦歴検索</a>
-    <a href="prediction.html">予想</a>
-  </nav>
+  <div class="container">
 
-  <h1>対戦表一覧</h1>
-  <div id="programList" class="list">読み込み中...</div>
-</div>
+    <nav class="top-nav">
+      <a href="index.html">ホーム</a>
+      <a href="programitiran.html" class="active">対戦表</a>
+      <a href="search.html">戦歴検索</a>
+      <a href="prediction.html">予想</a>
+    </nav>
 
-<script>
-fetch("data/programs.json")
-.then(res => res.json())
-.then(data => {
-  const sorted = [...data].sort((a,b) => b.id.localeCompare(a.id));
-  document.getElementById("programList").innerHTML = sorted.map(item => `
-    <div class="item">
-      <div class="item-title">${item.title || item.date}</div>
-      <div class="item-links">
-        <a href="program.html?id=${item.id}">対戦表</a>
-        <a href="result.html?id=${item.id}">結果</a>
-      </div>
+    <h1>対戦表一覧</h1>
+
+    <div id="programList" class="program-list">
+      <div class="empty">読み込み中...</div>
     </div>
-  `).join("");
-})
-.catch(() => {
-  document.getElementById("programList").textContent = "データの読み込みに失敗しました。";
-});
-</script>
+  </div>
+
+  <script>
+    fetch("data/programs.json")
+      .then(res => res.json())
+      .then(data => {
+        const sorted = [...data].sort((a, b) => b.id.localeCompare(a.id));
+
+        if (!sorted.length) {
+          document.getElementById("programList").innerHTML =
+            '<div class="empty">大会データがまだありません。</div>';
+          return;
+        }
+
+        document.getElementById("programList").innerHTML = sorted.map(item => `
+          <div class="program-item">
+            <div class="program-title">${item.title || item.date || item.id}</div>
+            <div class="program-links">
+              <a href="program.html?id=${item.id}">対戦表</a>
+              <a href="result.html?id=${item.id}">結果</a>
+            </div>
+          </div>
+        `).join("");
+      })
+      .catch(() => {
+        document.getElementById("programList").innerHTML =
+          '<div class="empty">データの読み込みに失敗しました。</div>';
+      });
+  </script>
 </body>
 </html>
