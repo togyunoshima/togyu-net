@@ -316,12 +316,12 @@ function renderPrograms(data){
                 <tr>
                   <td class="date-col">${formatJapaneseDate(item.date) || item.id}</td>
                   <td class="title-col">
-                    <a class="program-link" href="program.html?id=${item.id}">
+                    <a class="program-link" href="program.html?id=${encodeURIComponent(item.id)}">
                       ${item.title || item.id}
                     </a>
                   </td>
                   <td class="result-col">
-                    <a class="result-link" href="result.html?id=${item.id}">
+                    <a class="result-link" href="result.html?id=${encodeURIComponent(item.id)}">
                       結果
                     </a>
                   </td>
@@ -338,7 +338,7 @@ function renderPrograms(data){
 fetch("data/programs.json")
   .then(res => res.json())
   .then(data => {
-    allPrograms = [...data].sort((a,b) => b.id.localeCompare(a.id));
+    allPrograms = [...data].sort((a,b) => String(b.id).localeCompare(String(a.id)));
     renderPrograms(allPrograms);
   })
   .catch(() => {
