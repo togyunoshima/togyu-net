@@ -3,310 +3,368 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>対戦表一覧 | 徳之島闘牛サイト</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Yuji+Syuku&display=swap" rel="stylesheet">
 
 <style>
-
 body{
-margin:0;
-padding:10px 8px 40px;
-background:#050505;
-color:#eee;
-font-family:'Kaisei Tokumin', serif;
-position:relative;
-min-height:100vh;
+  margin:0;
+  padding:10px 8px 40px;
+  background:#050505;
+  color:#eee;
+  font-family:'Kaisei Tokumin', serif;
+  position:relative;
+  min-height:100vh;
 }
 
-/* 背景画像 */
-
 .bg-overlay{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background-image:url('IMG_8395.jpg');
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-opacity:0.18;
-filter:grayscale(100%);
-z-index:-1;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-image:url('IMG_8395.jpg');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  opacity:0.18;
+  filter:grayscale(100%);
+  z-index:-1;
 }
 
 .container{
-max-width:1100px;
-margin:0 auto;
+  max-width:1100px;
+  margin:0 auto;
 }
 
-/* メニューバー */
-
 .top-nav{
-max-width:1100px;
-margin:0 auto 18px;
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:8px;
+  max-width:1100px;
+  margin:0 auto 18px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
 }
 
 .top-nav a{
-display:block;
-text-align:center;
-padding:12px 8px;
-background:#111;
-border:1px solid #333;
-color:#fff;
-text-decoration:none;
-font-weight:800;
-font-size:0.92rem;
+  display:block;
+  text-align:center;
+  padding:12px 8px;
+  background:#111;
+  border:1px solid #333;
+  color:#fff;
+  text-decoration:none;
+  font-weight:800;
+  font-size:0.92rem;
 }
 
 .top-nav a:hover{
-background:#e60000;
+  background:#e60000;
+  border-color:#e60000;
 }
 
 .top-nav a.active{
-background:#1a1a1a;
-border-color:#f1c40f;
-color:#f1c40f;
+  background:#1a1a1a;
+  border-color:#f1c40f;
+  color:#f1c40f;
 }
 
 h1{
-text-align:center;
-font-family:'Yuji Syuku', serif;
-font-size:clamp(2rem, 6vw, 3.8rem);
-color:#fff;
-margin:18px 0 26px;
-text-shadow:
-3px 3px 0 #e60000,
--1px -1px 0 #e60000,
-1px -1px 0 #e60000,
--1px 1px 0 #e60000,
-1px 1px 0 #e60000;
+  text-align:center;
+  font-family:'Yuji Syuku', serif;
+  font-size:clamp(2rem, 6vw, 3.8rem);
+  color:#fff;
+  margin:18px 0 20px;
+  text-shadow:
+    3px 3px 0 #e60000,
+    -1px -1px 0 #e60000,
+    1px -1px 0 #e60000,
+    -1px 1px 0 #e60000,
+    1px 1px 0 #e60000;
 }
 
-/* 表 */
+.search-box{
+  max-width:720px;
+  margin:0 auto 24px;
+  background:rgba(20,20,20,0.5);
+  border:1px solid #222;
+  backdrop-filter:blur(4px);
+  padding:18px;
+}
+
+.search-box input{
+  width:100%;
+  box-sizing:border-box;
+  padding:12px 14px;
+  border:1px solid #333;
+  background:#0d0d0d;
+  color:#fff;
+  font-family:'Kaisei Tokumin', serif;
+  font-size:0.95rem;
+}
+
+.search-note{
+  margin-top:10px;
+  color:#bbb;
+  font-size:0.82rem;
+  line-height:1.7;
+}
+
+.month-block{
+  margin-bottom:24px;
+}
+
+.month-title{
+  font-size:1.1rem;
+  color:#f1c40f;
+  border-left:5px solid #e60000;
+  padding-left:12px;
+  margin:0 0 12px;
+  font-weight:800;
+}
 
 .list-wrap{
-background:rgba(20,20,20,0.65); /* 透過 */
-border:1px solid #222;
-backdrop-filter:blur(3px);
-overflow:hidden;
+  background:rgba(20,20,20,0.35);
+  border:1px solid #222;
+  backdrop-filter:blur(6px);
+  overflow:hidden;
 }
 
 table{
-width:100%;
-border-collapse:collapse;
+  width:100%;
+  border-collapse:collapse;
 }
 
 th,td{
-border:1px solid #333;
-padding:12px 10px;
-text-align:center;
-vertical-align:middle;
+  border:1px solid #333;
+  padding:12px 10px;
+  text-align:center;
+  vertical-align:middle;
 }
 
 th{
-background:rgba(0,0,0,0.7);
-color:#f1c40f;
-font-weight:800;
+  background:rgba(0,0,0,0.45);
+  color:#f1c40f;
+  font-weight:800;
 }
 
 td{
-background:rgba(0,0,0,0.55);
-color:#fff;
+  background:rgba(0,0,0,0.25);
+  color:#fff;
 }
 
-/* 列幅調整 */
-
 td.date-col{
-width:16%;
-white-space:nowrap;
+  width:16%;
+  white-space:nowrap;
 }
 
 td.title-col{
-width:68%;
-text-align:left;
+  width:68%;
+  text-align:left;
 }
 
 td.result-col{
-width:16%;
-white-space:nowrap;
+  width:16%;
+  white-space:nowrap;
 }
-
-/* リンク */
 
 .program-link,
 .result-link{
-color:#fff;
-text-decoration:none;
+  color:#fff;
+  text-decoration:none;
 }
 
 .program-link:hover,
 .result-link:hover{
-color:#f1c40f;
-text-decoration:underline;
+  color:#f1c40f;
+  text-decoration:underline;
 }
 
 .empty{
-text-align:center;
-color:#aaa;
-padding:24px 0;
+  text-align:center;
+  color:#aaa;
+  padding:24px 0;
 }
-
-/* スマホ */
 
 @media (max-width:700px){
+  body{
+    padding:10px 4px 24px;
+  }
 
-body{
-padding:10px 4px 24px;
+  .top-nav{
+    gap:4px;
+    margin:0 auto 12px;
+  }
+
+  .top-nav a{
+    padding:9px 4px;
+    font-size:0.62rem;
+  }
+
+  .search-box{
+    padding:14px;
+  }
+
+  .search-box input{
+    font-size:0.82rem;
+    padding:10px 12px;
+  }
+
+  .search-note{
+    font-size:0.7rem;
+  }
+
+  th,td{
+    padding:9px 6px;
+    font-size:0.68rem;
+  }
+
+  td.date-col{
+    width:18%;
+  }
+
+  td.title-col{
+    width:64%;
+  }
+
+  td.result-col{
+    width:18%;
+  }
+
+  .month-title{
+    font-size:0.92rem;
+  }
 }
-
-.top-nav{
-gap:4px;
-margin:0 auto 12px;
-}
-
-.top-nav a{
-padding:9px 4px;
-font-size:0.62rem;
-}
-
-th,td{
-padding:9px 6px;
-font-size:0.68rem;
-}
-
-td.date-col{
-width:18%;
-}
-
-td.title-col{
-width:64%;
-}
-
-td.result-col{
-width:18%;
-}
-
-}
-
 </style>
 </head>
 
 <body>
-
 <div class="bg-overlay"></div>
 
 <div class="container">
 
-<nav class="top-nav">
-<a href="index.html">ホーム</a>
-<a href="programitiran.html" class="active">対戦表</a>
-<a href="search.html">戦歴検索</a>
-<a href="prediction.html">予想</a>
-</nav>
+  <nav class="top-nav">
+    <a href="index.html">ホーム</a>
+    <a href="programitiran.html" class="active">対戦表</a>
+    <a href="search.html">戦歴検索</a>
+    <a href="prediction.html">予想</a>
+  </nav>
 
-<h1>対戦表一覧</h1>
+  <h1>対戦表一覧</h1>
 
-<div class="list-wrap">
+  <div class="search-box">
+    <input type="text" id="programSearch" placeholder="大会名・日付で検索">
+    <div class="search-note">
+      例：2026年3月 / 卒業記念 / ナイター / 玉城千春
+    </div>
+  </div>
 
-<table>
-
-<thead>
-<tr>
-<th>日付</th>
-<th>大会名（プログラム）</th>
-<th>結果</th>
-</tr>
-</thead>
-
-<tbody id="programList">
-
-<tr>
-<td colspan="3" class="empty">読み込み中...</td>
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
+  <div id="programArea">
+    <div class="empty">読み込み中...</div>
+  </div>
 
 </div>
 
 <script>
-
 function formatJapaneseDate(dateStr){
+  if(!dateStr) return "";
+  const [y,m,d] = dateStr.split("-");
+  return `${Number(y)}年${Number(m)}月${Number(d)}日`;
+}
 
-if(!dateStr) return "";
+function normalizeText(text){
+  return String(text || "").toLowerCase().replace(/\s+/g, "").trim();
+}
 
-const [y,m,d] = dateStr.split("-");
+function getMonthLabel(dateStr){
+  if(!dateStr) return "日付未設定";
+  const [y,m] = dateStr.split("-");
+  return `${Number(y)}年${Number(m)}月場所`;
+}
 
-return `${Number(y)}年${Number(m)}月${Number(d)}日`;
+let allPrograms = [];
 
+function renderPrograms(data){
+  const area = document.getElementById("programArea");
+
+  if(!data.length){
+    area.innerHTML = `<div class="empty">該当する大会が見つかりませんでした。</div>`;
+    return;
+  }
+
+  const grouped = {};
+  data.forEach(item => {
+    const month = getMonthLabel(item.date);
+    if(!grouped[month]) grouped[month] = [];
+    grouped[month].push(item);
+  });
+
+  area.innerHTML = Object.entries(grouped).map(([month, items]) => {
+    return `
+      <div class="month-block">
+        <div class="month-title">${month}</div>
+        <div class="list-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>日付</th>
+                <th>大会名（プログラム）</th>
+                <th>結果</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${items.map(item => `
+                <tr>
+                  <td class="date-col">${formatJapaneseDate(item.date) || item.id}</td>
+                  <td class="title-col">
+                    <a class="program-link" href="program.html?id=${item.id}">
+                      ${item.title || item.id}
+                    </a>
+                  </td>
+                  <td class="result-col">
+                    <a class="result-link" href="result.html?id=${item.id}">
+                      結果
+                    </a>
+                  </td>
+                </tr>
+              `).join("")}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `;
+  }).join("");
 }
 
 fetch("data/programs.json")
+  .then(res => res.json())
+  .then(data => {
+    allPrograms = [...data].sort((a,b) => b.id.localeCompare(a.id));
+    renderPrograms(allPrograms);
+  })
+  .catch(() => {
+    document.getElementById("programArea").innerHTML = `
+      <div class="empty">データの読み込みに失敗しました。</div>
+    `;
+  });
 
-.then(res=>res.json())
+document.getElementById("programSearch").addEventListener("input", (e) => {
+  const keyword = normalizeText(e.target.value);
 
-.then(data=>{
+  if(!keyword){
+    renderPrograms(allPrograms);
+    return;
+  }
 
-const sorted=[...data].sort((a,b)=>b.id.localeCompare(a.id));
+  const filtered = allPrograms.filter(item => {
+    const dateText = formatJapaneseDate(item.date);
+    const monthText = getMonthLabel(item.date);
+    const titleText = item.title || "";
+    const target = normalizeText(`${dateText} ${monthText} ${titleText} ${item.id}`);
+    return target.includes(keyword);
+  });
 
-if(!sorted.length){
-
-document.getElementById("programList").innerHTML=`
-<tr>
-<td colspan="3" class="empty">大会データがまだありません。</td>
-</tr>
-`;
-
-return;
-
-}
-
-document.getElementById("programList").innerHTML=sorted.map(item=>`
-
-<tr>
-
-<td class="date-col">
-${formatJapaneseDate(item.date) || item.id}
-</td>
-
-<td class="title-col">
-<a class="program-link" href="program.html?id=${item.id}">
-${item.title || item.id}
-</a>
-</td>
-
-<td class="result-col">
-<a class="result-link" href="result.html?id=${item.id}">
-結果
-</a>
-</td>
-
-</tr>
-
-`).join("");
-
-})
-
-.catch(()=>{
-
-document.getElementById("programList").innerHTML=`
-<tr>
-<td colspan="3" class="empty">データの読み込みに失敗しました。</td>
-</tr>
-`;
-
+  renderPrograms(filtered);
 });
-
 </script>
-
 </body>
 </html>
