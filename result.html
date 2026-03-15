@@ -13,10 +13,12 @@
       color:#eee;
       font-family:'Kaisei Tokumin', serif;
     }
+
     .container{
       max-width:1100px;
       margin:0 auto;
     }
+
     .top-nav{
       max-width:1100px;
       margin:0 auto 18px;
@@ -24,6 +26,7 @@
       grid-template-columns:repeat(4,1fr);
       gap:8px;
     }
+
     .top-nav a{
       display:block;
       text-align:center;
@@ -35,22 +38,17 @@
       font-weight:800;
       font-size:0.92rem;
     }
-    .top-nav a:hover{ background:#e60000; }
+
+    .top-nav a:hover{
+      background:#e60000;
+    }
+
     .top-nav a.active{
       background:#1a1a1a;
       border-color:#f1c40f;
       color:#f1c40f;
     }
-    .back-link{
-      display:inline-block;
-      margin-bottom:16px;
-      color:#fff;
-      text-decoration:none;
-      background:#111;
-      border:1px solid #333;
-      padding:10px 14px;
-      font-size:0.92rem;
-    }
+
     h1{
       text-align:center;
       font-family:'Yuji Syuku', serif;
@@ -69,17 +67,23 @@
       overflow-wrap:anywhere;
       letter-spacing:0.02em;
     }
+
     .event-meta{
       background:rgba(20,20,20,0.8);
       border:1px solid #222;
       margin-bottom:20px;
     }
+
     .meta-row{
       display:grid;
       grid-template-columns:92px 1fr;
       border-bottom:1px solid #333;
     }
-    .meta-row:last-child{ border-bottom:none; }
+
+    .meta-row:last-child{
+      border-bottom:none;
+    }
+
     .meta-label{
       background:#111;
       color:#f1c40f;
@@ -87,6 +91,7 @@
       padding:12px 12px;
       font-size:0.9rem;
     }
+
     .meta-value{
       padding:12px 12px;
       color:#fff;
@@ -95,22 +100,26 @@
       white-space:normal;
       word-break:break-word;
     }
+
     .result-table-wrap{
       background:rgba(20,20,20,0.8);
       border:1px solid #222;
       overflow-x:hidden;
     }
+
     table{
       width:100%;
       border-collapse:collapse;
       table-layout:fixed;
     }
+
     th, td{
       border:1px solid #333;
       text-align:center;
       vertical-align:middle;
       padding:0;
     }
+
     th{
       background:#111;
       color:#fff;
@@ -118,10 +127,12 @@
       padding:12px 6px;
       font-size:0.92rem;
     }
+
     th.east-head{ background:#b60000; }
     th.west-head{ background:#d9d9d9; color:#222; }
     th.rank-head{ background:#222; color:#f1c40f; }
     th.area-head{ background:#222; color:#fff; width:9%; }
+
     td.area{
       background:#0a0a0a;
       color:#fff;
@@ -132,16 +143,19 @@
       line-height:1.35;
       word-break:break-word;
     }
+
     td.east, td.west{
       width:35%;
       background:#050505;
       padding:12px 5px;
     }
+
     td.rank{
       width:12%;
       background:#0f0f0f;
       padding:12px 3px;
     }
+
     .subtext{
       color:#f1c40f;
       font-size:0.68rem;
@@ -152,10 +166,11 @@
       overflow:hidden;
       text-overflow:ellipsis;
     }
+
     .bull-name{
       color:#fff;
-      font-size:1.35rem;
-      line-height:1.22;
+      font-size:1.28rem;
+      line-height:1.18;
       font-weight:800;
       margin-bottom:6px;
       white-space:normal;
@@ -165,21 +180,25 @@
       overflow-wrap:anywhere;
       padding-bottom:2px;
     }
+
     .bull-note{
       color:#ddd;
-      font-size:0.62rem;
-      line-height:1.18;
+      font-size:0.7rem;
+      line-height:1.22;
     }
+
     .bull-note-line{
       display:block;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
     }
+
     .bull-note a{
       color:#ddd;
       text-decoration:underline;
     }
+
     .rank-name{
       color:#f1c40f;
       font-size:0.9rem;
@@ -189,41 +208,113 @@
       word-break:break-word;
       margin-bottom:3px;
     }
+
     .match-time{
       color:#ddd;
-      font-size:0.56rem;
-      line-height:1.05;
+      font-size:0.74rem;
+      line-height:1.08;
       white-space:nowrap;
     }
+
     .error{
       text-align:center;
       color:#ff8080;
       margin-top:24px;
     }
+
     .note{
       color:#888;
       text-align:center;
       margin-top:14px;
       font-size:0.8rem;
     }
+
     @media (max-width:700px){
-      body{ padding:10px 2px 24px; }
-      .top-nav{ gap:4px; margin:0 auto 12px; }
-      .top-nav a{ padding:9px 4px; font-size:0.62rem; }
-      .back-link{ font-size:0.76rem; padding:8px 10px; }
-      h1{ font-size:1rem; line-height:1.7; margin:8px 0 16px; }
-      .meta-row{ grid-template-columns:58px 1fr; }
-      .meta-label{ font-size:0.68rem; padding:8px 6px; }
-      .meta-value{ font-size:0.66rem; padding:8px 6px; line-height:1.45; }
-      th{ font-size:0.58rem; padding:8px 2px; }
-      td.area{ width:10%; font-size:0.48rem; padding:8px 1px; line-height:1.1; }
-      td.east, td.west{ width:35%; padding:8px 2px; }
-      td.rank{ width:10%; padding:8px 1px; }
-      .subtext{ font-size:0.36rem; line-height:1.05; margin-bottom:3px; }
-      .bull-name{ font-size:0.78rem; line-height:1.15; margin-bottom:3px; padding-bottom:1px; }
-      .bull-note{ font-size:0.32rem; line-height:1.0; }
-      .rank-name{ font-size:0.58rem; line-height:1.0; margin-bottom:2px; }
-      .match-time{ font-size:0.28rem; line-height:1.0; }
+      body{
+        padding:10px 2px 24px;
+      }
+
+      .top-nav{
+        gap:4px;
+        margin:0 auto 12px;
+      }
+
+      .top-nav a{
+        padding:9px 4px;
+        font-size:0.62rem;
+      }
+
+      h1{
+        font-size:1rem;
+        line-height:1.7;
+        margin:8px 0 16px;
+      }
+
+      .meta-row{
+        grid-template-columns:58px 1fr;
+      }
+
+      .meta-label{
+        font-size:0.68rem;
+        padding:8px 6px;
+      }
+
+      .meta-value{
+        font-size:0.66rem;
+        padding:8px 6px;
+        line-height:1.45;
+      }
+
+      th{
+        font-size:0.58rem;
+        padding:8px 2px;
+      }
+
+      td.area{
+        width:10%;
+        font-size:0.48rem;
+        padding:8px 1px;
+        line-height:1.1;
+      }
+
+      td.east, td.west{
+        width:35%;
+        padding:8px 2px;
+      }
+
+      td.rank{
+        width:10%;
+        padding:8px 1px;
+      }
+
+      .subtext{
+        font-size:0.36rem;
+        line-height:1.05;
+        margin-bottom:3px;
+      }
+
+      .bull-name{
+        font-size:0.72rem;
+        line-height:1.12;
+        margin-bottom:3px;
+        padding-bottom:1px;
+      }
+
+      .bull-note{
+        font-size:0.36rem;
+        line-height:1.08;
+      }
+
+      .rank-name{
+        font-size:0.58rem;
+        line-height:1.0;
+        margin-bottom:2px;
+      }
+
+      .match-time{
+        font-size:0.42rem;
+        line-height:1.0;
+      }
     }
   </style>
 </head>
@@ -235,8 +326,6 @@
       <a href="search.html">戦歴検索</a>
       <a href="prediction.html">予想</a>
     </nav>
-
-    <a href="programitiran.html" class="back-link">← 対戦表一覧に戻る</a>
 
     <h1 id="pageTitle">結果</h1>
 
