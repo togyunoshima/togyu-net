@@ -513,25 +513,58 @@
       return lines.slice(0, 2);
     }
 
-    function makeRecordHtml(name, text, bulls){
-      const lines = splitNote(text);
-      if(!lines.length) return "";
-      const joined = lines.join(" ");
-      const hasRecord = /[0-9０-９]+勝/.test(joined) || /[0-9０-９]+敗/.test(joined) || /引分/.test(joined);
-      const bullId = findBullIdByName(name, bulls);
+function makeRecordHtml(name, text, bulls){
+  const lines = splitNote(text);
+  if(!lines.length) return "";
 
-      return `
-        <div class="bull-note">
-          ${lines.map(line => {
-            if (hasRecord && bullId && !line.includes("牛主")) {
-              return `<span class="bull-note-line"><a href="bull.html?id=${encodeURIComponent(bullId)}">${escapeHtml(line)}</a></span>`;
-            }
-            return `<span class="bull-note-line">${escapeHtml(line)}</span>`;
-          }).join("")}
-        </div>
-      `;
-    }
+  const joined = lines.join(" ");
+  const bullId = findBullIdByName(name, bulls);
 
+  const hasRecord =
+    /[0-9０-９]+勝/.test(joined) ||
+    /[0-9０-９]+敗/.test(joined) ||
+    /引分/.test(joined);
+
+  const hasFormerName =
+    /元[^\s/]+/.test(joined) ||
+    /元[^\s/]+ [^\s/]+/.test(joined);
+
+  return `
+    <div class="bull-note">
+      ${lines.map(line => {
+        const safeLine = escapeHtml(line);
+
+        if (!bullId) {
+          return `<span class="bull-note-line">${safeLine}</span>`;
+        }
+
+        if (line.includes("牛主")) {
+          return `<span class="bull-note-line">${safeLine}</span>`;
+        }
+
+        if (/デビュー戦/.test(line)) {
+          return `<span class="bull-note-line">${safeLine}</span>`;
+        }
+
+        if (hasRecord) {
+          if (/[0-9０-９]+勝/.test(line) || /[0-9０-９]+敗/.test(line) || /引分/.test(line)) {
+            return `<span class="bull-note-line"><a href="bull.html?id=${encodeURIComponent(bullId)}">${safeLine}</a></span>`;
+          }
+          return `<span class="bull-note-line">${safeLine}</span>`;
+        }
+
+        if (!hasRecord && hasFormerName) {
+          if (/元/.test(line)) {
+            return `<span class="bull-note-line"><a href="bull.html?id=${encodeURIComponent(bullId)}">${safeLine}</a></span>`;
+          }
+          return `<span class="bull-note-line">${safeLine}</span>`;
+        }
+
+        return `<span class="bull-note-line">${safeLine}</span>`;
+      }).join("")}
+    </div>
+  `;
+}
     function formatRank(rank){
       const text = String(rank || "").trim();
       if(!text) return "VS";
