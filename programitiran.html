@@ -1,202 +1,124 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>対戦表 | 徳之島闘牛サイト</title>
-  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Yuji+Syuku&display=swap" rel="stylesheet">
-  <style>
-    body{
-      margin:0;
-      padding:20px 10px 60px;
-      background:#050505;
-      color:#eee;
-      font-family:'Kaisei Tokumin', serif;
-    }
-
-    .container{
-      max-width:1100px;
-      margin:0 auto;
-    }
-
-    h1{
-      font-family:'Yuji Syuku', serif;
-      font-size:clamp(2rem, 7vw, 3.8rem);
-      color:#fff;
-      margin:20px 0 30px;
-      text-align:center;
-      text-shadow:3px 3px 0 #e60000,-1px -1px 0 #e60000,1px -1px 0 #e60000,-1px 1px 0 #e60000,1px 1px 0 #e60000;
-      letter-spacing:2px;
-    }
-
-    .back-link{
-      display:inline-block;
-      margin-bottom:20px;
-      color:#fff;
-      text-decoration:none;
-      background:#111;
-      border:1px solid #333;
-      padding:10px 14px;
-    }
-
-    .back-link:hover{
-      background:#e60000;
-      border-color:#e60000;
-    }
-
-    .table-wrap{
-      background:rgba(20,20,20,0.75);
-      border:1px solid #222;
-      overflow-x:auto;
-    }
-
-    table{
-      width:100%;
-      border-collapse:collapse;
-      min-width:880px;
-    }
-
-    th, td{
-      border:1px solid #333;
-      padding:12px 10px;
-      text-align:center;
-      vertical-align:middle;
-      font-size:0.95rem;
-      line-height:1.6;
-    }
-
-    th{
-      background:#111;
-      color:#f1c40f;
-      font-weight:800;
-    }
-
-    .section-row td{
-      background:#0f0f0f;
-      color:#fff;
-      font-weight:800;
-      font-size:1rem;
-      border-top:2px solid #666;
-      border-bottom:2px solid #666;
-      padding:10px;
-    }
-
-    .program-link,
-    .result-link{
-      color:#9ecbff;
-      text-decoration:underline;
-    }
-
-    .program-link:hover,
-    .result-link:hover{
-      color:#fff;
-    }
-
-    .result-none{
-      color:#999;
-    }
-
-    .note{
-      color:#888;
-      text-align:center;
-      margin-top:18px;
-      font-size:0.85rem;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>対戦表一覧 | 徳之島闘牛サイト</title>
+<link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Yuji+Syuku&display=swap" rel="stylesheet">
+<style>
+body{
+  margin:0;
+  padding:10px 8px 40px;
+  background:#050505;
+  color:#eee;
+  font-family:'Kaisei Tokumin', serif;
+}
+.container{
+  max-width:1100px;
+  margin:0 auto;
+}
+.top-nav{
+  max-width:1100px;
+  margin:0 auto 18px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+}
+.top-nav a{
+  display:block;
+  text-align:center;
+  padding:12px 8px;
+  background:#111;
+  border:1px solid #333;
+  color:#fff;
+  text-decoration:none;
+  font-weight:800;
+  font-size:0.92rem;
+}
+.top-nav a:hover{ background:#e60000; }
+.top-nav a.active{
+  background:#1a1a1a;
+  border-color:#f1c40f;
+  color:#f1c40f;
+}
+h1{
+  text-align:center;
+  font-family:'Yuji Syuku', serif;
+  font-size:clamp(1.8rem,5vw,3.4rem);
+  margin:14px 0 20px;
+  color:#fff;
+  text-shadow:3px 3px 0 #e60000;
+}
+.list{
+  display:grid;
+  gap:12px;
+}
+.item{
+  background:#111;
+  border:1px solid #333;
+  padding:16px;
+}
+.item-title{
+  font-size:1rem;
+  font-weight:800;
+  margin-bottom:12px;
+  line-height:1.6;
+}
+.item-links{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+.item-links a{
+  display:block;
+  text-align:center;
+  padding:10px;
+  background:#1a1a1a;
+  border:1px solid #333;
+  color:#fff;
+  text-decoration:none;
+}
+.item-links a:hover{
+  background:#e60000;
+}
+@media (max-width:700px){
+  .top-nav{ gap:4px; margin:0 auto 12px; }
+  .top-nav a{ padding:9px 4px; font-size:0.62rem; }
+  .item-links{ grid-template-columns:1fr; }
+}
+</style>
 </head>
 <body>
-  <div class="container">
-    <a href="index.html" class="back-link">← ホームへ戻る</a>
+<div class="container">
+  <nav class="top-nav">
+    <a href="index.html">ホーム</a>
+    <a href="programitiran.html" class="active">対戦表</a>
+    <a href="search.html">戦歴検索</a>
+    <a href="prediction.html">予想</a>
+  </nav>
 
-    <h1>対戦表</h1>
+  <h1>対戦表一覧</h1>
+  <div id="programList" class="list">読み込み中...</div>
+</div>
 
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th style="width: 22%;">日付</th>
-            <th>大会名(プログラム)</th>
-            <th style="width: 12%;">結果</th>
-          </tr>
-        </thead>
-        <tbody id="programBody"></tbody>
-      </table>
+<script>
+fetch("data/programs.json")
+.then(res => res.json())
+.then(data => {
+  const sorted = [...data].sort((a,b) => b.id.localeCompare(a.id));
+  document.getElementById("programList").innerHTML = sorted.map(item => `
+    <div class="item">
+      <div class="item-title">${item.title || item.date}</div>
+      <div class="item-links">
+        <a href="program.html?id=${item.id}">対戦表</a>
+        <a href="result.html?id=${item.id}">結果</a>
+      </div>
     </div>
-
-    <div class="note">※ 今の徳之島闘牛サイトの一覧仕様に近い形で表示しています。</div>
-  </div>
-
-  <script>
-    const bodyEl = document.getElementById("programBody");
-
-    function formatJapaneseDate(dateStr){
-      if(!dateStr) return "";
-      const [y, m, d] = dateStr.split("-");
-      return `${Number(y)}年${Number(m)}月${Number(d)}日`;
-    }
-
-    function makeSectionLabel(dateStr){
-      if(!dateStr) return "";
-      const [y, m] = dateStr.split("-");
-      return `${Number(y)}年${Number(m)}月場所`;
-    }
-
-    function fallbackTitle(program){
-      const dateStr = formatJapaneseDate(program.date);
-      return `${dateStr} 闘牛大会`;
-    }
-
-    fetch("data/programs.json")
-      .then(res => res.json())
-      .then(programs => {
-        const sorted = [...programs].sort((a, b) => b.id.localeCompare(a.id));
-
-        let html = "";
-        let currentSection = "";
-
-        sorted.forEach(program => {
-          const sectionLabel = makeSectionLabel(program.date);
-
-          if(sectionLabel !== currentSection){
-            currentSection = sectionLabel;
-            html += `
-              <tr class="section-row">
-                <td colspan="3">${sectionLabel}</td>
-              </tr>
-            `;
-          }
-
-          const dateText = formatJapaneseDate(program.date);
-          const programTitle = program.title ? program.title : fallbackTitle(program);
-
-          const programLink = `https://togyunoshima.github.io/togyu-net/program.html?id=${program.id}`;
-          const resultLink = `https://togyunoshima.github.io/togyu-net/result.html?id=${program.id}`;
-
-          html += `
-            <tr>
-              <td>${dateText}</td>
-              <td>
-                <a class="program-link" href="${programLink}">
-                  ${programTitle}
-                </a>
-              </td>
-              <td>
-                <a class="result-link" href="${resultLink}">結果</a>
-              </td>
-            </tr>
-          `;
-        });
-
-        bodyEl.innerHTML = html;
-      })
-      .catch(err => {
-        bodyEl.innerHTML = `
-          <tr>
-            <td colspan="3" style="color:#ff8080;">大会データの読み込みに失敗しました。</td>
-          </tr>
-        `;
-        console.error(err);
-      });
-  </script>
+  `).join("");
+})
+.catch(() => {
+  document.getElementById("programList").textContent = "データの読み込みに失敗しました。";
+});
+</script>
 </body>
 </html>
