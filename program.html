@@ -571,7 +571,7 @@
       `;
 
       const programRow = season.map(p=>{
-        const label = `${formatMonthDay(p.date)}（プログラム）`;
+        const label = `${formatMonthDay(p.date)}`;
         const current = String(p.id)===String(program.id) && pageType==="program";
 
         if(current){
