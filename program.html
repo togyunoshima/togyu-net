@@ -1,413 +1,370 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>対戦表 | 徳之島闘牛サイト</title>
-  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Yuji+Syuku&display=swap" rel="stylesheet">
-  <style>
-    body{
-      margin:0;
-      padding:14px 8px 40px;
-      background:#050505;
-      color:#eee;
-      font-family:'Kaisei Tokumin', serif;
-    }
-    .container{
-      max-width:1100px;
-      margin:0 auto;
-    }
-    .top-nav{
-      max-width:1100px;
-      margin:0 auto 18px;
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:8px;
-    }
-    .top-nav a{
-      display:block;
-      text-align:center;
-      padding:12px 8px;
-      background:#111;
-      border:1px solid #333;
-      color:#fff;
-      text-decoration:none;
-      font-weight:800;
-      font-size:0.92rem;
-    }
-    .top-nav a:hover{ background:#e60000; }
-    .top-nav a.active{
-      background:#1a1a1a;
-      border-color:#f1c40f;
-      color:#f1c40f;
-    }
-    .back-link{
-      display:inline-block;
-      margin-bottom:16px;
-      color:#fff;
-      text-decoration:none;
-      background:#111;
-      border:1px solid #333;
-      padding:10px 14px;
-      font-size:0.92rem;
-    }
-    h1{
-      text-align:center;
-      font-family:'Yuji Syuku', serif;
-      font-size:clamp(1.5rem, 4.8vw, 3rem);
-      color:#fff;
-      margin:10px 0 22px;
-      text-shadow:3px 3px 0 #e60000,-1px -1px 0 #e60000,1px -1px 0 #e60000,-1px 1px 0 #e60000,1px 1px 0 #e60000;
-      line-height:1.55;
-      white-space:normal;
-      word-break:keep-all;
-      overflow-wrap:anywhere;
-      letter-spacing:0.02em;
-    }
-    .event-meta{
-      background:rgba(20,20,20,0.8);
-      border:1px solid #222;
-      margin-bottom:20px;
-    }
-    .meta-row{
-      display:grid;
-      grid-template-columns:92px 1fr;
-      border-bottom:1px solid #333;
-    }
-    .meta-row:last-child{ border-bottom:none; }
-    .meta-label{
-      background:#111;
-      color:#f1c40f;
-      font-weight:800;
-      padding:12px 12px;
-      font-size:0.9rem;
-    }
-    .meta-value{
-      padding:12px 12px;
-      color:#fff;
-      font-size:0.92rem;
-      line-height:1.6;
-      white-space:normal;
-      word-break:break-word;
-    }
-    .program-table-wrap{
-      background:rgba(20,20,20,0.8);
-      border:1px solid #222;
-      overflow-x:hidden;
-    }
-    table{
-      width:100%;
-      border-collapse:collapse;
-      table-layout:fixed;
-    }
-    th, td{
-      border:1px solid #333;
-      text-align:center;
-      vertical-align:middle;
-      padding:0;
-    }
-    th{
-      background:#111;
-      color:#fff;
-      font-weight:800;
-      padding:12px 6px;
-      font-size:0.92rem;
-    }
-    th.east-head{ background:#b60000; }
-    th.west-head{ background:#d9d9d9; color:#222; }
-    th.rank-head{ background:#222; color:#f1c40f; }
-    th.area-head{ background:#222; color:#fff; width:9%; }
-    td.area{
-      background:#0a0a0a;
-      color:#fff;
-      font-weight:700;
-      font-size:0.88rem;
-      width:9%;
-      padding:12px 4px;
-      line-height:1.35;
-      word-break:break-word;
-    }
-    td.east, td.west{
-      width:35%;
-      background:#050505;
-      padding:12px 5px;
-    }
-    td.rank{
-      width:12%;
-      background:#0f0f0f;
-      padding:12px 3px;
-    }
-    .subtext{
-      color:#f1c40f;
-      font-size:0.68rem;
-      line-height:1.25;
-      margin-bottom:6px;
-      font-weight:700;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-    .bull-name{
-      color:#fff;
-      font-size:1.35rem;
-      line-height:1.22;
-      font-weight:800;
-      margin-bottom:6px;
-      white-space:normal;
-      overflow:visible;
-      text-overflow:unset;
-      word-break:keep-all;
-      overflow-wrap:anywhere;
-      padding-bottom:2px;
-    }
-    .bull-note{
-      color:#ddd;
-      font-size:0.62rem;
-      line-height:1.18;
-    }
-    .bull-note-line{
-      display:block;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-    .bull-note a{
-      color:#ddd;
-      text-decoration:underline;
-    }
-    .rank-name{
-      color:#f1c40f;
-      font-size:0.9rem;
-      font-weight:800;
-      line-height:1.1;
-      white-space:normal;
-      word-break:break-word;
-      margin-bottom:3px;
-    }
-    .match-time-placeholder{
-      color:#bbb;
-      font-size:0.56rem;
-      line-height:1.05;
-      white-space:nowrap;
-    }
-    .error{
-      text-align:center;
-      color:#ff8080;
-      margin-top:24px;
-    }
-    .note{
-      color:#888;
-      text-align:center;
-      margin-top:14px;
-      font-size:0.8rem;
-    }
-    @media (max-width:700px){
-      body{ padding:10px 2px 24px; }
-      .top-nav{ gap:4px; margin:0 auto 12px; }
-      .top-nav a{ padding:9px 4px; font-size:0.62rem; }
-      .back-link{ font-size:0.76rem; padding:8px 10px; }
-      h1{ font-size:1rem; line-height:1.7; margin:8px 0 16px; }
-      .meta-row{ grid-template-columns:58px 1fr; }
-      .meta-label{ font-size:0.68rem; padding:8px 6px; }
-      .meta-value{ font-size:0.66rem; padding:8px 6px; line-height:1.45; }
-      th{ font-size:0.58rem; padding:8px 2px; }
-      td.area{ width:10%; font-size:0.48rem; padding:8px 1px; line-height:1.1; }
-      td.east, td.west{ width:35%; padding:8px 2px; }
-      td.rank{ width:10%; padding:8px 1px; }
-      .subtext{ font-size:0.36rem; line-height:1.05; margin-bottom:3px; }
-      .bull-name{ font-size:0.78rem; line-height:1.15; margin-bottom:3px; padding-bottom:1px; }
-      .bull-note{ font-size:0.32rem; line-height:1.0; }
-      .rank-name{ font-size:0.58rem; line-height:1.0; margin-bottom:2px; }
-      .match-time-placeholder{ font-size:0.28rem; line-height:1.0; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>対戦表一覧 | 徳之島闘牛サイト</title>
+<link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Yuji+Syuku&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  padding:10px 8px 40px;
+  background:#050505;
+  color:#eee;
+  font-family:'Kaisei Tokumin', serif;
+  position:relative;
+  min-height:100vh;
+}
+
+.bg-overlay{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-image:url('IMG_8395.jpg');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  opacity:0.18;
+  filter:grayscale(100%);
+  z-index:-1;
+}
+
+.container{
+  max-width:1100px;
+  margin:0 auto;
+}
+
+.top-nav{
+  max-width:1100px;
+  margin:0 auto 18px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+}
+
+.top-nav a{
+  display:block;
+  text-align:center;
+  padding:12px 8px;
+  background:#111;
+  border:1px solid #333;
+  color:#fff;
+  text-decoration:none;
+  font-weight:800;
+  font-size:0.92rem;
+}
+
+.top-nav a:hover{
+  background:#e60000;
+  border-color:#e60000;
+}
+
+.top-nav a.active{
+  background:#1a1a1a;
+  border-color:#f1c40f;
+  color:#f1c40f;
+}
+
+h1{
+  text-align:center;
+  font-family:'Yuji Syuku', serif;
+  font-size:clamp(2rem, 6vw, 3.8rem);
+  color:#fff;
+  margin:18px 0 20px;
+  text-shadow:
+    3px 3px 0 #e60000,
+    -1px -1px 0 #e60000,
+    1px -1px 0 #e60000,
+    -1px 1px 0 #e60000,
+    1px 1px 0 #e60000;
+}
+
+.search-box{
+  max-width:720px;
+  margin:0 auto 24px;
+  background:rgba(20,20,20,0.5);
+  border:1px solid #222;
+  backdrop-filter:blur(4px);
+  padding:18px;
+}
+
+.search-box input{
+  width:100%;
+  box-sizing:border-box;
+  padding:12px 14px;
+  border:1px solid #333;
+  background:#0d0d0d;
+  color:#fff;
+  font-family:'Kaisei Tokumin', serif;
+  font-size:0.95rem;
+}
+
+.search-note{
+  margin-top:10px;
+  color:#bbb;
+  font-size:0.82rem;
+  line-height:1.7;
+}
+
+.month-block{
+  margin-bottom:24px;
+}
+
+.month-title{
+  font-size:1.1rem;
+  color:#f1c40f;
+  border-left:5px solid #e60000;
+  padding-left:12px;
+  margin:0 0 12px;
+  font-weight:800;
+}
+
+.list-wrap{
+  background:rgba(20,20,20,0.35);
+  border:1px solid #222;
+  backdrop-filter:blur(6px);
+  overflow:hidden;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th,td{
+  border:1px solid #333;
+  padding:12px 10px;
+  text-align:center;
+  vertical-align:middle;
+}
+
+th{
+  background:rgba(0,0,0,0.45);
+  color:#f1c40f;
+  font-weight:800;
+}
+
+td{
+  background:rgba(0,0,0,0.25);
+  color:#fff;
+}
+
+td.date-col{
+  width:16%;
+  white-space:nowrap;
+}
+
+td.title-col{
+  width:68%;
+  text-align:left;
+}
+
+td.result-col{
+  width:16%;
+  white-space:nowrap;
+}
+
+.program-link,
+.result-link{
+  color:#fff;
+  text-decoration:none;
+}
+
+.program-link:hover,
+.result-link:hover{
+  color:#f1c40f;
+  text-decoration:underline;
+}
+
+.empty{
+  text-align:center;
+  color:#aaa;
+  padding:24px 0;
+}
+
+@media (max-width:700px){
+  body{
+    padding:10px 4px 24px;
+  }
+
+  .top-nav{
+    gap:4px;
+    margin:0 auto 12px;
+  }
+
+  .top-nav a{
+    padding:9px 4px;
+    font-size:0.62rem;
+  }
+
+  .search-box{
+    padding:14px;
+  }
+
+  .search-box input{
+    font-size:0.82rem;
+    padding:10px 12px;
+  }
+
+  .search-note{
+    font-size:0.7rem;
+  }
+
+  th,td{
+    padding:9px 6px;
+    font-size:0.68rem;
+  }
+
+  td.date-col{
+    width:18%;
+  }
+
+  td.title-col{
+    width:64%;
+  }
+
+  td.result-col{
+    width:18%;
+  }
+
+  .month-title{
+    font-size:0.92rem;
+  }
+}
+</style>
 </head>
+
 <body>
-  <div class="container">
-    <nav class="top-nav">
-      <a href="index.html">ホーム</a>
-      <a href="programitiran.html" class="active">対戦表</a>
-      <a href="search.html">戦歴検索</a>
-      <a href="prediction.html">予想</a>
-    </nav>
+<div class="bg-overlay"></div>
 
-    <a href="programitiran.html" class="back-link">← 対戦表一覧に戻る</a>
+<div class="container">
 
-    <h1 id="pageTitle">対戦表</h1>
+  <nav class="top-nav">
+    <a href="index.html">ホーム</a>
+    <a href="programitiran.html" class="active">対戦表</a>
+    <a href="search.html">戦歴検索</a>
+    <a href="prediction.html">予想</a>
+  </nav>
 
-    <div class="event-meta">
-      <div class="meta-row"><div class="meta-label">日時</div><div class="meta-value" id="metaDate">読み込み中...</div></div>
-      <div class="meta-row"><div class="meta-label">場所</div><div class="meta-value" id="metaPlace">読み込み中...</div></div>
-      <div class="meta-row"><div class="meta-label">主催</div><div class="meta-value" id="metaHost">未設定</div></div>
-      <div class="meta-row"><div class="meta-label">入場料</div><div class="meta-value" id="metaPrice">未設定</div></div>
+  <h1>対戦表一覧</h1>
+
+  <div class="search-box">
+    <input type="text" id="programSearch" placeholder="大会名・日付で検索">
+    <div class="search-note">
+      例：2026年3月 / 卒業記念 / ナイター / 玉城千春
     </div>
-
-    <div class="program-table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th class="area-head">地区</th>
-            <th class="east-head">東方</th>
-            <th class="rank-head">番付</th>
-            <th class="west-head">西方</th>
-            <th class="area-head">地区</th>
-          </tr>
-        </thead>
-        <tbody id="programBody"></tbody>
-      </table>
-    </div>
-
-    <div class="error" id="error"></div>
-    <div class="note">※ 今の徳之島闘牛サイトの対戦表に近い形で表示しています。</div>
   </div>
 
-  <script>
-    const params = new URLSearchParams(location.search);
-    const programId = params.get("id");
-    const pageTitleEl = document.getElementById("pageTitle");
-    const metaDateEl = document.getElementById("metaDate");
-    const metaPlaceEl = document.getElementById("metaPlace");
-    const metaHostEl = document.getElementById("metaHost");
-    const metaPriceEl = document.getElementById("metaPrice");
-    const bodyEl = document.getElementById("programBody");
-    const errorEl = document.getElementById("error");
+  <div id="programArea">
+    <div class="empty">読み込み中...</div>
+  </div>
 
-    function escapeHtml(str) {
-      return String(str || "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#39;");
-    }
-    function formatJapaneseDate(dateStr){
-      if(!dateStr) return "";
-      const [y, m, d] = dateStr.split("-");
-      return `${Number(y)}年${Number(m)}月${Number(d)}日`;
-    }
-    function formatDateTime(program){
-      const dateText = formatJapaneseDate(program.date || "");
-      const start = program.start_time || program.start || "";
-      return start ? `${dateText}　${start}` : dateText;
-    }
-    function getProgramTitle(program){
-      const title = (program && program.title) ? program.title : "対戦表";
-      return title.replace("&", "&<br>");
-    }
-    function normalize(str) {
-      return String(str || "").replace(/\s+/g, "").replace(/[（）()]/g, "").trim();
-    }
-    function getBullSearchTargets(bull) {
-      const targets = [];
-      if (bull.display_name) targets.push(bull.display_name);
-      if (bull.name) targets.push(bull.name);
-      if (bull.exact_title) targets.push(bull.exact_title);
-      if (Array.isArray(bull.former_names)) {
-        bull.former_names.forEach(name => {
-          if (name) {
-            targets.push(name);
-            targets.push("元 " + name);
-            targets.push("元" + name);
-          }
-        });
-      }
-      return [...new Set(targets.map(normalize).filter(Boolean))];
-    }
-    function findBullIdByName(name, bulls) {
-      const target = normalize(name);
-      const found = bulls.find(bull => getBullSearchTargets(bull).includes(target));
-      return found ? found.id : null;
-    }
-    function splitNote(text){
-      const raw = String(text || "").trim();
-      if(!raw) return [];
-      const cleaned = raw.replaceAll("/", " ").replace(/\s+/g, " ").trim();
-      const ownerMatch = cleaned.match(/\(?牛主[:：][^)]+\)?/);
-      const owner = ownerMatch ? ownerMatch[0].trim() : "";
-      let withoutOwner = cleaned;
-      if (owner) withoutOwner = cleaned.replace(owner, "").trim();
-      const lines = [];
-      if (withoutOwner) lines.push(withoutOwner);
-      if (owner) lines.push(owner);
-      if (lines.length === 0) lines.push(cleaned);
-      return lines.slice(0, 2);
-    }
-    function makeRecordHtml(name, text, bulls){
-      const lines = splitNote(text);
-      if(!lines.length) return "";
-      const joined = lines.join(" ");
-      const hasRecord = /[0-9０-９]+勝/.test(joined) || /[0-9０-９]+敗/.test(joined) || /引分/.test(joined);
-      const bullId = findBullIdByName(name, bulls);
+</div>
 
-      return `
-        <div class="bull-note">
-          ${lines.map(line => {
-            if (hasRecord && bullId && !line.includes("牛主")) {
-              return `<span class="bull-note-line"><a href="bull.html?id=${encodeURIComponent(bullId)}">${escapeHtml(line)}</a></span>`;
-            }
-            return `<span class="bull-note-line">${escapeHtml(line)}</span>`;
-          }).join("")}
+<script>
+function formatJapaneseDate(dateStr){
+  if(!dateStr) return "";
+  const [y,m,d] = dateStr.split("-");
+  return `${Number(y)}年${Number(m)}月${Number(d)}日`;
+}
+
+function normalizeText(text){
+  return String(text || "").toLowerCase().replace(/\s+/g, "").trim();
+}
+
+function getMonthLabel(dateStr){
+  if(!dateStr) return "日付未設定";
+  const [y,m] = dateStr.split("-");
+  return `${Number(y)}年${Number(m)}月場所`;
+}
+
+let allPrograms = [];
+
+function renderPrograms(data){
+  const area = document.getElementById("programArea");
+
+  if(!data.length){
+    area.innerHTML = `<div class="empty">該当する大会が見つかりませんでした。</div>`;
+    return;
+  }
+
+  const grouped = {};
+  data.forEach(item => {
+    const month = getMonthLabel(item.date);
+    if(!grouped[month]) grouped[month] = [];
+    grouped[month].push(item);
+  });
+
+  area.innerHTML = Object.entries(grouped).map(([month, items]) => {
+    return `
+      <div class="month-block">
+        <div class="month-title">${month}</div>
+        <div class="list-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>日付</th>
+                <th>大会名（プログラム）</th>
+                <th>結果</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${items.map(item => `
+                <tr>
+                  <td class="date-col">${formatJapaneseDate(item.date) || item.id}</td>
+                  <td class="title-col">
+                    <a class="program-link" href="program.html?id=${item.id}">
+                      ${item.title || item.id}
+                    </a>
+                  </td>
+                  <td class="result-col">
+                    <a class="result-link" href="result.html?id=${item.id}">
+                      結果
+                    </a>
+                  </td>
+                </tr>
+              `).join("")}
+            </tbody>
+          </table>
         </div>
-      `;
-    }
-    function formatRank(rank){
-      const text = String(rank || "").trim();
-      if(!text) return "VS";
-      return escapeHtml(text).replaceAll(" / ", "<br>").replaceAll("/", "<br>");
-    }
+      </div>
+    `;
+  }).join("");
+}
 
-    Promise.all([
-      fetch("data/programs.json").then(res => res.json()),
-      fetch("data/matches.json").then(res => res.json()),
-      fetch("data/bulls.json").then(res => res.json())
-    ])
-    .then(([programs, matches, bulls]) => {
-      const program = programs.find(p => p.id === programId);
-      const list = matches.filter(m => m.program === programId);
+fetch("data/programs.json")
+  .then(res => res.json())
+  .then(data => {
+    allPrograms = [...data].sort((a,b) => b.id.localeCompare(a.id));
+    renderPrograms(allPrograms);
+  })
+  .catch(() => {
+    document.getElementById("programArea").innerHTML = `
+      <div class="empty">データの読み込みに失敗しました。</div>
+    `;
+  });
 
-      if (!programId) {
-        errorEl.textContent = "大会IDがありません。";
-        return;
-      }
+document.getElementById("programSearch").addEventListener("input", (e) => {
+  const keyword = normalizeText(e.target.value);
 
-      if (program) {
-        pageTitleEl.innerHTML = getProgramTitle(program);
-        metaDateEl.textContent = formatDateTime(program) || "未設定";
-        metaPlaceEl.textContent = program.location || program.place || "未設定";
-        metaHostEl.textContent = program.host || "未設定";
-        metaPriceEl.textContent = program.price || "未設定";
-      }
+  if(!keyword){
+    renderPrograms(allPrograms);
+    return;
+  }
 
-      if (list.length === 0) {
-        bodyEl.innerHTML = `<tr><td colspan="5" style="padding:20px;color:#ff8080;">この大会の対戦データはまだありません。</td></tr>`;
-        return;
-      }
+  const filtered = allPrograms.filter(item => {
+    const dateText = formatJapaneseDate(item.date);
+    const monthText = getMonthLabel(item.date);
+    const titleText = item.title || "";
+    const target = normalizeText(`${dateText} ${monthText} ${titleText} ${item.id}`);
+    return target.includes(keyword);
+  });
 
-      bodyEl.innerHTML = list.map(match => `
-        <tr>
-          <td class="area">${escapeHtml(match.east_area || "")}</td>
-          <td class="east">
-            ${(match.east_sub || "") ? `<div class="subtext">${escapeHtml(match.east_sub)}</div>` : ``}
-            <div class="bull-name">${escapeHtml(match.east || "")}</div>
-            ${makeRecordHtml(match.east || "", match.east_note || "", bulls)}
-          </td>
-          <td class="rank">
-            <div class="rank-name">${formatRank(match.rank || "VS")}</div>
-            <div class="match-time-placeholder">│ --:-- │</div>
-          </td>
-          <td class="west">
-            ${(match.west_sub || "") ? `<div class="subtext">${escapeHtml(match.west_sub)}</div>` : ``}
-            <div class="bull-name">${escapeHtml(match.west || "")}</div>
-            ${makeRecordHtml(match.west || "", match.west_note || "", bulls)}
-          </td>
-          <td class="area">${escapeHtml(match.west_area || "")}</td>
-        </tr>
-      `).join("");
-    })
-    .catch(err => {
-      errorEl.textContent = "データの読み込みに失敗しました。";
-      console.error(err);
-    });
-  </script>
+  renderPrograms(filtered);
+});
+</script>
 </body>
 </html>
