@@ -223,6 +223,44 @@
       min-height:1.2em;
     }
 
+    .season-links{
+      margin:28px auto 0;
+      width:fit-content;
+      max-width:100%;
+    }
+
+    .season-table{
+      border-collapse:collapse;
+      margin:auto;
+      background:rgba(255,255,255,0.04);
+    }
+
+    .season-table td{
+      border:1px solid #333;
+      padding:10px 14px;
+      text-align:center;
+      vertical-align:middle;
+      background:rgba(255,255,255,0.03);
+    }
+
+    .season-title{
+      font-weight:800;
+      color:#fff;
+      line-height:1.5;
+      min-width:90px;
+    }
+
+    .season-link{
+      color:#7fb3ff;
+      text-decoration:underline;
+      font-weight:700;
+    }
+
+    .season-current{
+      color:#fff;
+      font-weight:800;
+    }
+
     .error{
       text-align:center;
       color:#ff8080;
@@ -322,26 +360,36 @@
         font-size:0.42rem;
         line-height:1.0;
       }
-    }
-    body{
-  position:relative;
-  min-height:100vh;
-}
 
-.bg-overlay{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background-image:url('IMG_8395.jpg');
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-  opacity:0.18;
-  filter:grayscale(100%);
-  z-index:-1;
-}
+      .season-table td{
+        padding:8px 10px;
+        font-size:0.72rem;
+      }
+
+      .season-title{
+        min-width:72px;
+      }
+    }
+
+    body{
+      position:relative;
+      min-height:100vh;
+    }
+
+    .bg-overlay{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background-image:url('IMG_8395.jpg');
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      opacity:0.18;
+      filter:grayscale(100%);
+      z-index:-1;
+    }
   </style>
 </head>
 <body>
@@ -379,6 +427,8 @@
       </table>
     </div>
 
+    <div id="seasonLinks" class="season-links"></div>
+
     <div class="error" id="error"></div>
     <div class="note">※ 今の徳之島闘牛サイトの対戦表に近い形で表示しています。</div>
   </div>
@@ -393,6 +443,7 @@
     const metaPriceEl = document.getElementById("metaPrice");
     const bodyEl = document.getElementById("programBody");
     const errorEl = document.getElementById("error");
+    const seasonLinksEl = document.getElementById("seasonLinks");
 
     function escapeHtml(str) {
       return String(str || "")
@@ -402,23 +453,28 @@
         .replaceAll('"', "&quot;")
         .replaceAll("'", "&#39;");
     }
+
     function formatJapaneseDate(dateStr){
       if(!dateStr) return "";
       const [y, m, d] = dateStr.split("-");
       return `${Number(y)}年${Number(m)}月${Number(d)}日`;
     }
+
     function formatDateTime(program){
       const dateText = formatJapaneseDate(program.date || "");
       const start = program.start_time || program.start || "";
       return start ? `${dateText}　${start}` : dateText;
     }
+
     function getProgramTitle(program){
       const title = (program && program.title) ? program.title : "対戦表";
       return title.replace("&", "&<br>");
     }
+
     function normalize(str) {
       return String(str || "").replace(/\s+/g, "").replace(/[（）()]/g, "").trim();
     }
+
     function getBullSearchTargets(bull) {
       const targets = [];
       if (bull.display_name) targets.push(bull.display_name);
@@ -435,11 +491,13 @@
       }
       return [...new Set(targets.map(normalize).filter(Boolean))];
     }
+
     function findBullIdByName(name, bulls) {
       const target = normalize(name);
       const found = bulls.find(bull => getBullSearchTargets(bull).includes(target));
       return found ? found.id : null;
     }
+
     function splitNote(text){
       const raw = String(text || "").trim();
       if(!raw) return [];
@@ -454,6 +512,7 @@
       if (lines.length === 0) lines.push(cleaned);
       return lines.slice(0, 2);
     }
+
     function makeRecordHtml(name, text, bulls){
       const lines = splitNote(text);
       if(!lines.length) return "";
@@ -472,10 +531,85 @@
         </div>
       `;
     }
+
     function formatRank(rank){
       const text = String(rank || "").trim();
       if(!text) return "VS";
       return escapeHtml(text).replaceAll(" / ", "<br>").replaceAll("/", "<br>");
+    }
+
+    function formatMonthDay(date){
+      const [,m,d] = date.split("-");
+      return `${Number(m)}月${Number(d)}日`;
+    }
+
+    function renderSeasonLinks(program, programs, pageType){
+      if(!program || !program.date){
+        seasonLinksEl.innerHTML = "";
+        return;
+      }
+
+      const [year,month] = program.date.split("-");
+
+      const season = programs
+        .filter(p=>{
+          if(!p.date) return false;
+          const [y,m] = p.date.split("-");
+          return y===year && m===month;
+        })
+        .sort((a,b)=>a.date.localeCompare(b.date));
+
+      if(!season.length){
+        seasonLinksEl.innerHTML = "";
+        return;
+      }
+
+      const header = `
+        <td class="season-title" rowspan="2">
+          ${year}年<br>${Number(month)}月場所
+        </td>
+      `;
+
+      const programRow = season.map(p=>{
+        const label = `${formatMonthDay(p.date)}（プログラム）`;
+        const current = String(p.id)===String(program.id) && pageType==="program";
+
+        if(current){
+          return `<td><span class="season-current">${label}</span></td>`;
+        }
+
+        return `<td>
+          <a class="season-link" href="program.html?id=${encodeURIComponent(p.id)}">
+            ${label}
+          </a>
+        </td>`;
+      }).join("");
+
+      const resultRow = season.map(p=>{
+        const current = String(p.id)===String(program.id) && pageType==="result";
+
+        if(current){
+          return `<td><span class="season-current">結果</span></td>`;
+        }
+
+        return `<td>
+          <a class="season-link" href="result.html?id=${encodeURIComponent(p.id)}">
+            結果
+          </a>
+        </td>`;
+      }).join("");
+
+      seasonLinksEl.innerHTML = `
+        <table class="season-table">
+          <tr>
+            ${header}
+            ${programRow}
+          </tr>
+          <tr>
+            ${resultRow}
+          </tr>
+        </table>
+      `;
     }
 
     Promise.all([
@@ -499,6 +633,8 @@
         metaHostEl.textContent = program.host || "未設定";
         metaPriceEl.textContent = program.price || "未設定";
       }
+
+      renderSeasonLinks(program, programs, "program");
 
       if (list.length === 0) {
         bodyEl.innerHTML = `<tr><td colspan="5" style="padding:20px;color:#ff8080;">この大会の対戦データはまだありません。</td></tr>`;
