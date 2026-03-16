@@ -723,7 +723,7 @@
     }
 
     function isChampionMatch(rank){
-      const text = String(rank || "").trim();
+      const text = String(rank || "").replace(/\s+/g, "").trim();
       return [
         "全島一優勝旗争奪戦",
         "中量級優勝旗争奪戦",
@@ -734,12 +734,8 @@
 
     function renderSideTag(rank, side){
       if(!isChampionMatch(rank)) return "";
-      if(side === "east"){
-        return `<div class="champion-tag">チャンピオン</div>`;
-      }
-      if(side === "west"){
-        return `<div class="challenger-tag">チャレンジャー</div>`;
-      }
+      if(side === "east") return `<div class="champion-tag">チャンピオン</div>`;
+      if(side === "west") return `<div class="challenger-tag">チャレンジャー</div>`;
       return "";
     }
 
@@ -752,7 +748,7 @@
         '$1<br><span class="bull-small">($2)</span><br>$3'
       );
 
-      safe = safe.replace(/([^\s])〜(.*?)〜([^\s])/g,
+      safe = safe.replace(/([^\s])[〜~](.*?)[〜~]([^\s])/g,
         '$1<br><span class="bull-small">〜$2〜</span><br>$3'
       );
 
