@@ -18,7 +18,10 @@
 
     .bg-overlay{
       position:fixed;
-      inset:0;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
       background-image:url('IMG_8395.jpg');
       background-size:cover;
       background-position:center;
@@ -45,8 +48,7 @@
       display:block;
       text-align:center;
       padding:12px 8px;
-      background:rgba(20,20,20,0.72);
-      backdrop-filter:blur(4px);
+      background:#111;
       border:1px solid #333;
       color:#fff;
       text-decoration:none;
@@ -77,6 +79,8 @@
         -1px 1px 0 #e60000,
         1px 1px 0 #e60000;
       line-height:1.55;
+      white-space:normal;
+      word-break:keep-all;
       overflow-wrap:anywhere;
       letter-spacing:0.02em;
     }
@@ -99,17 +103,19 @@
 
     .meta-label{
       background:rgba(20,20,20,0.72);
+      backdrop-filter:blur(4px);
       color:#f1c40f;
       font-weight:800;
-      padding:12px;
+      padding:12px 12px;
       font-size:0.9rem;
     }
 
     .meta-value{
-      padding:12px;
+      padding:12px 12px;
       color:#fff;
       font-size:0.92rem;
       line-height:1.6;
+      white-space:normal;
       word-break:break-word;
     }
 
@@ -128,130 +134,107 @@
     th, td{
       border:1px solid #333;
       text-align:center;
-      vertical-align:top;
+      vertical-align:middle;
       padding:0;
     }
 
     th{
       background:rgba(20,20,20,0.72);
+      backdrop-filter:blur(4px);
       color:#fff;
       font-weight:800;
-      padding:10px 1px;
+      padding:12px 6px;
       font-size:0.92rem;
     }
 
-    th.area-head{
-      background:#222;
-      color:#fff;
-      width:9%;
-    }
-
-    th.east-head{
-      background:#b60000;
-      width:34%;
-    }
-
-    th.rank-head{
-      background:#222;
-      color:#f1c40f;
-      width:14%;
-    }
-
-    th.west-head{
-      background:#d9d9d9;
-      color:#222;
-      width:34%;
-    }
+    th.east-head{ background:#b60000; }
+    th.west-head{ background:#d9d9d9; color:#222; }
+    th.rank-head{ background:#222; color:#f1c40f; width:14%; }
+    th.area-head{ background:#222; color:#fff; width:10%; }
 
     td.area{
       background:#0a0a0a;
       color:#fff;
       font-weight:700;
       font-size:0.88rem;
-      padding:10px 2px 6px;
-      line-height:1.1;
+      width:10%;
+      padding:12px 4px;
+      line-height:1.15;
       white-space:nowrap;
       word-break:keep-all;
-      overflow-wrap:normal;
     }
 
     td.east, td.west{
+      width:33%;
       background:#050505;
-      padding:6px 3px 7px;
+      padding:12px 5px;
+      position:relative;
     }
 
     td.rank{
+      width:14%;
       background:#0f0f0f;
-      padding:6px 0 6px;
+      padding:8px 2px;
     }
 
-    .cell-inner{
-      min-height:118px;
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-start;
-    }
-
-    .side-tag{
-      min-height:0.72rem;
-      margin-bottom:2px;
+    .champion-tag,
+    .challenger-tag{
+      position:absolute;
+      top:6px;
       font-weight:800;
-      line-height:1.0;
+      line-height:1;
       letter-spacing:0.02em;
-      visibility:hidden;
+      z-index:2;
     }
 
-    .side-tag.show{
-      visibility:visible;
-    }
-
-    .side-tag.east{
+    .champion-tag{
+      left:6px;
       color:#e60000;
-      text-align:left;
       font-size:0.58rem;
     }
 
-    .side-tag.west{
+    .challenger-tag{
+      right:6px;
       color:#4da3ff;
-      text-align:right;
       font-size:0.58rem;
     }
 
     .subtext{
       color:#f1c40f;
       font-size:0.78rem;
-      line-height:1.1;
-      margin-bottom:3px;
+      line-height:1.2;
+      margin-bottom:5px;
       font-weight:700;
+      white-space:normal;
+      overflow:visible;
+      text-overflow:unset;
       word-break:break-word;
-      overflow-wrap:anywhere;
-      min-height:1.3em;
+      min-height:1.2em;
     }
 
     .bull-name{
       color:#fff;
-      margin-bottom:4px;
-      line-height:1.02;
-      word-break:break-word;
-      overflow-wrap:anywhere;
-      min-height:2.3em;
+      margin-bottom:6px;
+      padding-bottom:2px;
+      line-height:1.08;
+      min-height:2.6em;
     }
 
     .bull-top{
-      font-size:0.98rem;
-      line-height:1.02;
+      font-size:0.96rem;
+      line-height:1.08;
       font-weight:700;
     }
 
     .bull-middle{
-      font-size:0.88rem;
-      line-height:1.02;
+      font-size:0.86rem;
+      line-height:1.08;
       font-weight:700;
     }
 
     .bull-main{
-      font-size:1.36rem;
-      line-height:1.02;
+      font-size:1.34rem;
+      line-height:1.08;
       font-weight:800;
     }
 
@@ -264,25 +247,26 @@
 
     .bull-note{
       color:#ddd;
-      font-size:0.74rem;
-      line-height:1.08;
-      min-height:1.6em;
+      font-size:0.76rem;
+      line-height:1.2;
     }
 
     .bull-note.note-small{
       font-size:0.68rem;
-      line-height:1.06;
+      line-height:1.12;
     }
 
     .bull-note.note-xsmall{
       font-size:0.62rem;
-      line-height:1.04;
+      line-height:1.06;
     }
 
     .bull-note-line{
       display:block;
+      white-space:normal;
+      overflow:visible;
+      text-overflow:unset;
       word-break:break-word;
-      overflow-wrap:anywhere;
     }
 
     .bull-note a{
@@ -290,36 +274,23 @@
       text-decoration:underline;
     }
 
-    .rank-inner{
-      min-height:118px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      padding:0 1px;
-    }
-
     .rank-name{
       color:#f1c40f;
-      font-size:0.90rem;
+      font-size:0.9rem;
       font-weight:800;
-      line-height:0.98;
+      line-height:1.05;
+      white-space:normal;
       word-break:break-word;
-      overflow-wrap:anywhere;
-      margin-bottom:2px;
-      width:100%;
+      margin-bottom:3px;
+      padding:0 2px;
     }
 
     .match-time-placeholder{
       color:#bbb;
       font-size:0.74rem;
-      line-height:1.04;
+      line-height:1.08;
       white-space:nowrap;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      min-height:1.1em;
-      width:100%;
+      min-height:1.2em;
     }
 
     .season-links{
@@ -402,77 +373,67 @@
         line-height:1.45;
       }
 
-      th.area-head{ width:9%; }
-      th.east-head{ width:34%; }
-      th.rank-head{ width:14%; }
-      th.west-head{ width:34%; }
-
       th{
         font-size:0.58rem;
-        padding:8px 0;
+        padding:8px 2px;
       }
 
+      th.area-head{ width:10%; }
+      th.rank-head{ width:14%; }
+
       td.area{
+        width:10%;
         font-size:0.46rem;
-        padding:6px 1px 4px;
+        padding:8px 1px;
         line-height:1.0;
-        white-space:nowrap;
-        word-break:keep-all;
       }
 
       td.east, td.west{
-        padding:4px 1px 5px;
+        width:33%;
+        padding:8px 2px;
       }
 
       td.rank{
-        padding:4px 0 4px;
+        width:14%;
+        padding:8px 1px;
       }
 
-      .cell-inner,
-      .rank-inner{
-        min-height:88px;
+      .champion-tag{
+        left:4px;
+        top:4px;
+        font-size:0.34rem;
       }
 
-      .side-tag{
-        min-height:0.36rem;
-        margin-bottom:1px;
-      }
-
-      .side-tag.east,
-      .side-tag.west{
-        font-size:0.30rem;
+      .challenger-tag{
+        right:4px;
+        top:4px;
+        font-size:0.34rem;
       }
 
       .subtext{
         font-size:0.38rem;
-        line-height:1.0;
-        margin-bottom:1px;
-        min-height:1.1em;
-      }
-
-      .bull-name{
-        min-height:2.1em;
+        line-height:1.05;
+        margin-bottom:3px;
       }
 
       .bull-top{
-        font-size:0.47rem;
-        line-height:1.0;
+        font-size:0.50rem;
+        line-height:1.05;
       }
 
       .bull-middle{
-        font-size:0.42rem;
-        line-height:1.0;
+        font-size:0.44rem;
+        line-height:1.05;
       }
 
       .bull-main{
         font-size:0.78rem;
-        line-height:1.02;
+        line-height:1.08;
       }
 
       .bull-note{
         font-size:0.36rem;
-        line-height:1.0;
-        min-height:1.4em;
+        line-height:1.08;
       }
 
       .bull-note.note-small{
@@ -485,8 +446,8 @@
 
       .rank-name{
         font-size:0.54rem;
-        line-height:0.95;
-        margin-bottom:1px;
+        line-height:1.0;
+        margin-bottom:2px;
       }
 
       .match-time-placeholder{
@@ -507,7 +468,7 @@
 </head>
 <body>
   <div class="bg-overlay"></div>
-
+  
   <div class="container">
     <nav class="top-nav">
       <a href="index.html">ホーム</a>
@@ -542,6 +503,7 @@
     </div>
 
     <div id="seasonLinks" class="season-links"></div>
+
     <div class="error" id="error"></div>
   </div>
 
@@ -569,19 +531,20 @@
 
     function formatJapaneseDate(dateStr){
       if(!dateStr) return "";
-      const parts = dateStr.split("-");
-      return Number(parts[0]) + "年" + Number(parts[1]) + "月" + Number(parts[2]) + "日";
+      const [y, m, d] = dateStr.split("-");
+      return `${Number(y)}年${Number(m)}月${Number(d)}日`;
     }
 
     function formatDateTime(program){
       const dateText = formatJapaneseDate(program.date || "");
       const start = program.start_time || program.start || "";
-      return start ? dateText + "　" + start : dateText;
+      return start ? `${dateText}　${start}` : dateText;
     }
 
     function splitHostSupport(hostText){
       const text = String(hostText || "").trim();
-      if(!text) return { host:"未設定", support:"なし" };
+      if(!text) return {host:"未設定", support:"なし"};
+
       const match = text.match(/^(.*?)(?:\s*後援[:：]\s*)(.+)$/);
       if(match){
         return {
@@ -589,7 +552,7 @@
           support: match[2].trim() || "なし"
         };
       }
-      return { host:text, support:"なし" };
+      return {host:text, support:"なし"};
     }
 
     function getProgramTitle(program){
@@ -598,17 +561,7 @@
     }
 
     function normalize(str) {
-      return String(str || "")
-        .replace(/\s+/g, "")
-        .replace(/[（）()]/g, "")
-        .trim();
-    }
-
-    function normalizeRankKey(rank){
-      return String(rank || "")
-        .replace(/\s+/g, "")
-        .replace(/[／/]/g, "")
-        .trim();
+      return String(str || "").replace(/\s+/g, "").replace(/[（）()]/g, "").trim();
     }
 
     function getBullSearchTargets(bull) {
@@ -651,16 +604,18 @@
 
     function getNoteClass(text){
       const len = String(text || "").replace(/\s+/g, "").length;
-      if(len >= 38) return "note-xsmall";
-      if(len >= 24) return "note-small";
+      if(len >= 34) return "note-xsmall";
+      if(len >= 22) return "note-small";
       return "";
     }
 
     function makeRecordHtml(name, text, bulls){
       const lines = splitNote(text);
       if(!lines.length) return "";
+
       const joined = lines.join(" ");
       const noteClass = getNoteClass(joined);
+
       const hasRecord =
         /[0-9０-９]+勝/.test(joined) ||
         /[0-9０-９]+敗/.test(joined) ||
@@ -676,46 +631,51 @@
 
         const found = bulls.find(bull => {
           const targets = getBullSearchTargets(bull);
-          return targets.some(target => cleaned.includes(target) || target.includes(cleaned));
+          return targets.some(target =>
+            cleaned.includes(target) || target.includes(cleaned)
+          );
         });
 
         return found ? found.id : null;
       }
 
-      const html = lines.map(line => {
-        const safeLine = escapeHtml(line);
+      return `
+        <div class="bull-note ${noteClass}">
+          ${lines.map(line => {
+            const safeLine = escapeHtml(line);
 
-        if (line.includes("牛主")) {
-          return '<span class="bull-note-line">' + safeLine + '</span>';
-        }
+            if (line.includes("牛主")) {
+              return `<span class="bull-note-line">${safeLine}</span>`;
+            }
 
-        if (/デビュー戦/.test(line)) {
-          return '<span class="bull-note-line">' + safeLine + '</span>';
-        }
+            if (/デビュー戦/.test(line)) {
+              return `<span class="bull-note-line">${safeLine}</span>`;
+            }
 
-        if (hasRecord) {
-          if (currentBullId && (/[0-9０-９]+勝/.test(line) || /[0-9０-９]+敗/.test(line) || /引分/.test(line))) {
-            return '<span class="bull-note-line"><a href="bull.html?id=' + encodeURIComponent(currentBullId) + '">' + safeLine + '</a></span>';
-          }
-          return '<span class="bull-note-line">' + safeLine + '</span>';
-        }
+            if (hasRecord) {
+              if (currentBullId && (/[0-9０-９]+勝/.test(line) || /[0-9０-９]+敗/.test(line) || /引分/.test(line))) {
+                return `<span class="bull-note-line"><a href="bull.html?id=${encodeURIComponent(currentBullId)}">${safeLine}</a></span>`;
+              }
+              return `<span class="bull-note-line">${safeLine}</span>`;
+            }
 
-        if (/元/.test(line)) {
-          const formerBullId = findBullIdFromLine(line);
-          if (formerBullId) {
-            return '<span class="bull-note-line"><a href="bull.html?id=' + encodeURIComponent(formerBullId) + '">' + safeLine + '</a></span>';
-          }
-        }
+            if (/元/.test(line)) {
+              const formerBullId = findBullIdFromLine(line);
+              if (formerBullId) {
+                return `<span class="bull-note-line"><a href="bull.html?id=${encodeURIComponent(formerBullId)}">${safeLine}</a></span>`;
+              }
+            }
 
-        return '<span class="bull-note-line">' + safeLine + '</span>';
-      }).join("");
-
-      return '<div class="bull-note ' + noteClass + '">' + html + '</div>';
+            return `<span class="bull-note-line">${safeLine}</span>`;
+          }).join("")}
+        </div>
+      `;
     }
 
     function formatRank(rank){
       const text = String(rank || "").trim();
       if(!text) return "VS";
+
       return escapeHtml(text)
         .replaceAll(" / ", "<br>")
         .replaceAll("/", "<br>")
@@ -723,8 +683,8 @@
     }
 
     function formatMonthDay(date){
-      const parts = date.split("-");
-      return Number(parts[1]) + "月" + Number(parts[2]) + "日";
+      const [,m,d] = date.split("-");
+      return `${Number(m)}月${Number(d)}日`;
     }
 
     function renderSeasonLinks(program, programs, pageType){
@@ -733,96 +693,127 @@
         return;
       }
 
-      const ym = program.date.split("-");
-      const year = ym[0];
-      const month = ym[1];
+      const [year,month] = program.date.split("-");
 
       const season = programs
-        .filter(p => {
+        .filter(p=>{
           if(!p.date) return false;
-          const parts = p.date.split("-");
-          return parts[0] === year && parts[1] === month;
+          const [y,m] = p.date.split("-");
+          return y===year && m===month;
         })
-        .sort((a,b) => a.date.localeCompare(b.date));
+        .sort((a,b)=>a.date.localeCompare(b.date));
 
       if(!season.length){
         seasonLinksEl.innerHTML = "";
         return;
       }
 
-      const header = '<td class="season-title" rowspan="2">' + year + '年<br>' + Number(month) + '月場所</td>';
+      const header = `
+        <td class="season-title" rowspan="2">
+          ${year}年<br>${Number(month)}月場所
+        </td>
+      `;
 
-      const programRow = season.map(p => {
-        const label = formatMonthDay(p.date);
-        const current = String(p.id) === String(program.id) && pageType === "program";
+      const programRow = season.map(p=>{
+        const label = `${formatMonthDay(p.date)}`;
+        const current = String(p.id)===String(program.id) && pageType==="program";
+
         if(current){
-          return '<td><span class="season-current">' + label + '</span></td>';
+          return `<td><span class="season-current">${label}</span></td>`;
         }
-        return '<td><a class="season-link" href="program.html?id=' + encodeURIComponent(p.id) + '">' + label + '</a></td>';
+
+        return `<td>
+          <a class="season-link" href="program.html?id=${encodeURIComponent(p.id)}">
+            ${label}
+          </a>
+        </td>`;
       }).join("");
 
-      const resultRow = season.map(p => {
-        const current = String(p.id) === String(program.id) && pageType === "result";
+      const resultRow = season.map(p=>{
+        const current = String(p.id)===String(program.id) && pageType==="result";
+
         if(current){
-          return '<td><span class="season-current">結果</span></td>';
+          return `<td><span class="season-current">結果</span></td>`;
         }
-        return '<td><a class="season-link" href="result.html?id=' + encodeURIComponent(p.id) + '">結果</a></td>';
+
+        return `<td>
+          <a class="season-link" href="result.html?id=${encodeURIComponent(p.id)}">
+            結果
+          </a>
+        </td>`;
       }).join("");
 
-      seasonLinksEl.innerHTML = '<table class="season-table"><tr>' + header + programRow + '</tr><tr>' + resultRow + '</tr></table>';
+      seasonLinksEl.innerHTML = `
+        <table class="season-table">
+          <tr>
+            ${header}
+            ${programRow}
+          </tr>
+          <tr>
+            ${resultRow}
+          </tr>
+        </table>
+      `;
     }
 
     function isChampionMatch(rank){
-      const key = normalizeRankKey(rank);
+      const text = String(rank || "").replace(/\s+/g, "").trim();
       return (
-        key.includes("全島一優勝旗争奪戦") ||
-        key.includes("中量級優勝旗争奪戦") ||
-        key.includes("軽量級優勝旗争奪戦") ||
-        key.includes("ミニ軽量級優勝旗争奪戦")
+        text.includes("全島一優勝旗争奪戦") ||
+        text.includes("中量級優勝旗争奪戦") ||
+        text.includes("軽量級優勝旗争奪戦") ||
+        text.includes("ミニ軽量級優勝旗争奪戦")
       );
     }
 
     function renderSideTag(rank, side){
-      if(!isChampionMatch(rank)){
-        return '<div class="side-tag ' + side + '"></div>';
-      }
+      if(!isChampionMatch(rank)) return "";
       if(side === "east"){
-        return '<div class="side-tag east show">チャンピオン</div>';
+        return `<div class="champion-tag">チャンピオン</div>`;
       }
-      return '<div class="side-tag west show">チャレンジャー</div>';
+      if(side === "west"){
+        return `<div class="challenger-tag">チャレンジャー</div>`;
+      }
+      return "";
     }
 
     function formatBullName(name){
       if(!name) return "";
+
       let safe = escapeHtml(name);
-      safe = safe.replace(/([^\s])\((.*?)\)([^\s])/g, '$1<br><span class="bull-small">($2)</span><br>$3');
-      safe = safe.replace(/([^\s])[〜~](.*?)[〜~]([^\s])/g, '$1<br><span class="bull-small">〜$2〜</span><br>$3');
-      safe = safe.replace(/([^\s])\s+([A-Za-z0-9★☆'&.\-]+)\s+([^\s])/g, '$1<br><span class="bull-small">$2</span><br>$3');
+
+      safe = safe.replace(/([^\s])\((.*?)\)([^\s])/g,
+        '$1<br><span class="bull-small">($2)</span><br>$3'
+      );
+
+      safe = safe.replace(/([^\s])[〜~](.*?)[〜~]([^\s])/g,
+        '$1<br><span class="bull-small">〜$2〜</span><br>$3'
+      );
+
+      safe = safe.replace(/([^\s])\s+([A-Za-z0-9★☆'&.\-]+)\s+([^\s])/g,
+        '$1<br><span class="bull-small">$2</span><br>$3'
+      );
+
       safe = safe.replace(/ /g, "<br>");
 
       const lines = safe.split("<br>").filter(Boolean);
+
       if(lines.length >= 2){
-        const first = '<div class="bull-top">' + lines[0] + '</div>';
-        const last = '<div class="bull-main">' + lines[lines.length - 1] + '</div>';
-        const middle = lines.slice(1, -1).map(line => '<div class="bull-middle">' + line + '</div>').join("");
+        const first = `<div class="bull-top">${lines[0]}</div>`;
+        const last = `<div class="bull-main">${lines[lines.length - 1]}</div>`;
+        const middle = lines.slice(1, -1)
+          .map(line => `<div class="bull-middle">${line}</div>`)
+          .join("");
         return first + middle + last;
       }
-      return '<div class="bull-main">' + safe + '</div>';
+
+      return `<div class="bull-main">${safe}</div>`;
     }
 
     Promise.all([
-      fetch("data/programs.json").then(res => {
-        if (!res.ok) throw new Error("programs.json 読み込み失敗");
-        return res.json();
-      }),
-      fetch("data/matches.json").then(res => {
-        if (!res.ok) throw new Error("matches.json 読み込み失敗");
-        return res.json();
-      }),
-      fetch("data/bulls.json").then(res => {
-        if (!res.ok) throw new Error("bulls.json 読み込み失敗");
-        return res.json();
-      })
+      fetch("data/programs.json").then(res => res.json()),
+      fetch("data/matches.json").then(res => res.json()),
+      fetch("data/bulls.json").then(res => res.json())
     ])
     .then(([programs, matches, bulls]) => {
       const program = programs.find(p => String(p.id) === programId);
@@ -846,38 +837,35 @@
       renderSeasonLinks(program, programs, "program");
 
       if (list.length === 0) {
-        bodyEl.innerHTML = '<tr><td colspan="5" style="padding:20px;color:#ff8080;">この大会の対戦データはまだありません。</td></tr>';
+        bodyEl.innerHTML = `<tr><td colspan="5" style="padding:20px;color:#ff8080;">この大会の対戦データはまだありません。</td></tr>`;
         return;
       }
 
-      bodyEl.innerHTML = list.map(match => {
-        const eastSub = match.east_sub ? '<div class="subtext">' + escapeHtml(match.east_sub) + '</div>' : '<div class="subtext"></div>';
-        const westSub = match.west_sub ? '<div class="subtext">' + escapeHtml(match.west_sub) + '</div>' : '<div class="subtext"></div>';
-
-        return '<tr>'
-          + '<td class="area">' + escapeHtml(match.east_area || "") + '</td>'
-          + '<td class="east"><div class="cell-inner">'
-          + renderSideTag(match.rank || "", "east")
-          + eastSub
-          + '<div class="bull-name">' + formatBullName(match.east || "") + '</div>'
-          + makeRecordHtml(match.east || "", match.east_note || "", bulls)
-          + '</div></td>'
-          + '<td class="rank"><div class="rank-inner">'
-          + '<div class="rank-name">' + formatRank(match.rank || "VS") + '</div>'
-          + '<div class="match-time-placeholder">│ --:-- │</div>'
-          + '</div></td>'
-          + '<td class="west"><div class="cell-inner">'
-          + renderSideTag(match.rank || "", "west")
-          + westSub
-          + '<div class="bull-name">' + formatBullName(match.west || "") + '</div>'
-          + makeRecordHtml(match.west || "", match.west_note || "", bulls)
-          + '</div></td>'
-          + '<td class="area">' + escapeHtml(match.west_area || "") + '</td>'
-          + '</tr>';
-      }).join("");
+      bodyEl.innerHTML = list.map(match => `
+        <tr>
+          <td class="area">${escapeHtml(match.east_area || "")}</td>
+          <td class="east">
+            ${renderSideTag(match.rank || "", "east")}
+            ${(match.east_sub || "") ? `<div class="subtext">${escapeHtml(match.east_sub)}</div>` : ``}
+            <div class="bull-name">${formatBullName(match.east || "")}</div>
+            ${makeRecordHtml(match.east || "", match.east_note || "", bulls)}
+          </td>
+          <td class="rank">
+            <div class="rank-name">${formatRank(match.rank || "VS")}</div>
+            <div class="match-time-placeholder">│ --:-- │</div>
+          </td>
+          <td class="west">
+            ${renderSideTag(match.rank || "", "west")}
+            ${(match.west_sub || "") ? `<div class="subtext">${escapeHtml(match.west_sub)}</div>` : ``}
+            <div class="bull-name">${formatBullName(match.west || "")}</div>
+            ${makeRecordHtml(match.west || "", match.west_note || "", bulls)}
+          </td>
+          <td class="area">${escapeHtml(match.west_area || "")}</td>
+        </tr>
+      `).join("");
     })
     .catch(err => {
-      errorEl.textContent = "データの読み込みに失敗しました: " + err.message;
+      errorEl.textContent = "データの読み込みに失敗しました。";
       console.error(err);
     });
   </script>
