@@ -168,6 +168,7 @@
       width:35%;
       background:#050505;
       padding:12px 5px;
+      position:relative;
     }
 
     td.rank{
@@ -176,9 +177,31 @@
       padding:12px 3px;
     }
 
+    .champion-tag,
+    .challenger-tag{
+      position:absolute;
+      top:6px;
+      font-weight:800;
+      line-height:1;
+      letter-spacing:0.02em;
+      z-index:2;
+    }
+
+    .champion-tag{
+      left:6px;
+      color:#e60000;
+      font-size:0.58rem;
+    }
+
+    .challenger-tag{
+      right:6px;
+      color:#4da3ff;
+      font-size:0.58rem;
+    }
+
     .subtext{
       color:#f1c40f;
-      font-size:0.68rem;
+      font-size:0.78rem;
       line-height:1.2;
       margin-bottom:5px;
       font-weight:700;
@@ -217,12 +240,13 @@
       font-size:0.72em;
       opacity:0.95;
       font-weight:700;
+      letter-spacing:0.02em;
     }
 
     .bull-note{
       color:#ddd;
-      font-size:0.68rem;
-      line-height:1.18;
+      font-size:0.76rem;
+      line-height:1.2;
     }
 
     .bull-note-line{
@@ -367,9 +391,21 @@
         padding:8px 1px;
       }
 
-      .subtext{
+      .champion-tag{
+        left:4px;
+        top:4px;
         font-size:0.34rem;
-        line-height:1.05;
+      }
+
+      .challenger-tag{
+        right:4px;
+        top:4px;
+        font-size:0.34rem;
+      }
+
+      .subtext{
+        font-size:0.40rem;
+        line-height:1.08;
         margin-bottom:3px;
       }
 
@@ -393,8 +429,8 @@
       }
 
       .bull-note{
-        font-size:0.34rem;
-        line-height:1.06;
+        font-size:0.38rem;
+        line-height:1.08;
       }
 
       .rank-name{
@@ -602,15 +638,16 @@
       `;
     }
 
-   function formatRank(rank){
-  const text = String(rank || "").trim();
-  if(!text) return "VS";
+    function formatRank(rank){
+      const text = String(rank || "").trim();
+      if(!text) return "VS";
 
-  return escapeHtml(text)
-    .replaceAll(" / ", "<br>")
-    .replaceAll("/", "<br>")
-    .replace(/ +/g, "<br>");
-}
+      return escapeHtml(text)
+        .replaceAll(" / ", "<br>")
+        .replaceAll("/", "<br>")
+        .replace(/ +/g, "<br>");
+    }
+
     function formatMonthDay(date){
       const [,m,d] = date.split("-");
       return `${Number(m)}月${Number(d)}日`;
@@ -685,42 +722,60 @@
       `;
     }
 
+    function isChampionMatch(rank){
+      const text = String(rank || "").trim();
+      return [
+        "全島一優勝旗争奪戦",
+        "中量級優勝旗争奪戦",
+        "軽量級優勝旗争奪戦",
+        "ミニ軽量級優勝旗争奪戦"
+      ].includes(text);
+    }
+
+    function renderSideTag(rank, side){
+      if(!isChampionMatch(rank)) return "";
+      if(side === "east"){
+        return `<div class="champion-tag">チャンピオン</div>`;
+      }
+      if(side === "west"){
+        return `<div class="challenger-tag">チャレンジャー</div>`;
+      }
+      return "";
+    }
+
     function formatBullName(name){
-  if(!name) return "";
+      if(!name) return "";
 
-  let safe = escapeHtml(name);
+      let safe = escapeHtml(name);
 
-  // 〇(〇〇)〇 → 真ん中の()を小さくして改行
-  safe = safe.replace(/([^\s])\((.*?)\)([^\s])/g,
-    '$1<br><span class="bull-small">($2)</span><br>$3'
-  );
+      safe = safe.replace(/([^\s])\((.*?)\)([^\s])/g,
+        '$1<br><span class="bull-small">($2)</span><br>$3'
+      );
 
-  // 〇〜〇〇〜〇 → 真ん中の〜〜を小さくして改行
-  safe = safe.replace(/([^\s])〜(.*?)〜([^\s])/g,
-    '$1<br><span class="bull-small">〜$2〜</span><br>$3'
-  );
+      safe = safe.replace(/([^\s])〜(.*?)〜([^\s])/g,
+        '$1<br><span class="bull-small">〜$2〜</span><br>$3'
+      );
 
-  // 漢字 英語 漢字 → 真ん中の英語を小さくして改行
-  safe = safe.replace(/([^\s])\s+([A-Za-z0-9★☆'&.\-]+)\s+([^\s])/g,
-    '$1<br><span class="bull-small">$2</span><br>$3'
-  );
+      safe = safe.replace(/([^\s])\s+([A-Za-z0-9★☆'&.\-]+)\s+([^\s])/g,
+        '$1<br><span class="bull-small">$2</span><br>$3'
+      );
 
-  // 残りのスペースは改行
-  safe = safe.replace(/ /g, "<br>");
+      safe = safe.replace(/ /g, "<br>");
 
-  const lines = safe.split("<br>").filter(Boolean);
+      const lines = safe.split("<br>").filter(Boolean);
 
-  if(lines.length >= 2){
-    const first = `<div class="bull-top">${lines[0]}</div>`;
-    const last = `<div class="bull-main">${lines[lines.length - 1]}</div>`;
-    const middle = lines.slice(1, -1)
-      .map(line => `<div class="bull-middle">${line}</div>`)
-      .join("");
-    return first + middle + last;
-  }
+      if(lines.length >= 2){
+        const first = `<div class="bull-top">${lines[0]}</div>`;
+        const last = `<div class="bull-main">${lines[lines.length - 1]}</div>`;
+        const middle = lines.slice(1, -1)
+          .map(line => `<div class="bull-middle">${line}</div>`)
+          .join("");
+        return first + middle + last;
+      }
 
-  return `<div class="bull-main">${safe}</div>`;
-}
+      return `<div class="bull-main">${safe}</div>`;
+    }
+
     Promise.all([
       fetch("data/programs.json").then(res => res.json()),
       fetch("data/matches.json").then(res => res.json()),
@@ -754,6 +809,7 @@
         <tr>
           <td class="area">${escapeHtml(match.east_area || "")}</td>
           <td class="east">
+            ${renderSideTag(match.rank || "", "east")}
             ${(match.east_sub || "") ? `<div class="subtext">${escapeHtml(match.east_sub)}</div>` : ``}
             <div class="bull-name">${formatBullName(match.east || "")}</div>
             ${makeRecordHtml(match.east || "", match.east_note || "", bulls)}
@@ -763,6 +819,7 @@
             <div class="match-time-placeholder">│ --:-- │</div>
           </td>
           <td class="west">
+            ${renderSideTag(match.rank || "", "west")}
             ${(match.west_sub || "") ? `<div class="subtext">${escapeHtml(match.west_sub)}</div>` : ``}
             <div class="bull-name">${formatBullName(match.west || "")}</div>
             ${makeRecordHtml(match.west || "", match.west_note || "", bulls)}
