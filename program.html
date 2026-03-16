@@ -78,7 +78,6 @@
         1px 1px 0 #e60000;
       line-height:1.55;
       white-space:normal;
-      word-break:keep-all;
       overflow-wrap:anywhere;
       letter-spacing:0.02em;
     }
@@ -101,7 +100,6 @@
 
     .meta-label{
       background:rgba(20,20,20,0.72);
-      backdrop-filter:blur(4px);
       color:#f1c40f;
       font-weight:800;
       padding:12px;
@@ -138,7 +136,6 @@
 
     th{
       background:rgba(20,20,20,0.72);
-      backdrop-filter:blur(4px);
       color:#fff;
       font-weight:800;
       padding:12px 2px;
@@ -173,7 +170,6 @@
       color:#fff;
       font-weight:700;
       font-size:0.88rem;
-      width:8%;
       padding:12px 2px 8px;
       line-height:1.18;
       word-break:break-word;
@@ -181,13 +177,11 @@
     }
 
     td.east, td.west{
-      width:36%;
       background:#050505;
       padding:8px 4px 10px;
     }
 
     td.rank{
-      width:12%;
       background:#0f0f0f;
       padding:8px 0 8px;
     }
@@ -200,7 +194,6 @@
     }
 
     .side-tag{
-      display:block;
       min-height:0.9rem;
       margin-bottom:4px;
       font-weight:800;
@@ -244,8 +237,7 @@
       white-space:normal;
       word-break:break-word;
       overflow-wrap:anywhere;
-      min-height:3.4em;
-      overflow:visible;
+      min-height:3.3em;
     }
 
     .bull-top{
@@ -295,7 +287,6 @@
       white-space:normal;
       word-break:break-word;
       overflow-wrap:anywhere;
-      overflow:visible;
     }
 
     .bull-note a{
@@ -458,7 +449,7 @@
       }
 
       .bull-name{
-        min-height:3.15em;
+        min-height:3.1em;
       }
 
       .bull-top{
@@ -576,8 +567,8 @@
 
     function formatJapaneseDate(dateStr){
       if(!dateStr) return "";
-      const [y, m, d] = dateStr.split("-");
-      return Number(y) + "年" + Number(m) + "月" + Number(d) + "日";
+      const parts = dateStr.split("-");
+      return Number(parts[0]) + "年" + Number(parts[1]) + "月" + Number(parts[2]) + "日";
     }
 
     function formatDateTime(program){
@@ -588,7 +579,7 @@
 
     function splitHostSupport(hostText){
       const text = String(hostText || "").trim();
-      if(!text) return {host:"未設定", support:"なし"};
+      if(!text) return { host:"未設定", support:"なし" };
 
       const match = text.match(/^(.*?)(?:\s*後援[:：]\s*)(.+)$/);
       if(match){
@@ -597,7 +588,8 @@
           support: match[2].trim() || "なし"
         };
       }
-      return {host:text, support:"なし"};
+
+      return { host:text, support:"なし" };
     }
 
     function getProgramTitle(program){
@@ -624,6 +616,7 @@
       if (bull.display_name) targets.push(bull.display_name);
       if (bull.name) targets.push(bull.name);
       if (bull.exact_title) targets.push(bull.exact_title);
+
       if (Array.isArray(bull.former_names)) {
         bull.former_names.forEach(name => {
           if (name) {
@@ -633,6 +626,7 @@
           }
         });
       }
+
       return [...new Set(targets.map(normalize).filter(Boolean))];
     }
 
@@ -645,15 +639,19 @@
     function splitNote(text){
       const raw = String(text || "").trim();
       if(!raw) return [];
+
       const cleaned = raw.replaceAll("/", " ").replace(/\s+/g, " ").trim();
       const ownerMatch = cleaned.match(/\(?牛主[:：][^)]+\)?/);
       const owner = ownerMatch ? ownerMatch[0].trim() : "";
+
       let withoutOwner = cleaned;
       if (owner) withoutOwner = cleaned.replace(owner, "").trim();
+
       const lines = [];
       if (withoutOwner) lines.push(withoutOwner);
       if (owner) lines.push(owner);
       if (lines.length === 0) lines.push(cleaned);
+
       return lines.slice(0, 2);
     }
 
@@ -686,50 +684,47 @@
 
         const found = bulls.find(bull => {
           const targets = getBullSearchTargets(bull);
-          return targets.some(target =>
-            cleaned.includes(target) || target.includes(cleaned)
-          );
+          return targets.some(target => cleaned.includes(target) || target.includes(cleaned));
         });
 
         return found ? found.id : null;
       }
 
-      return `
-        <div class="bull-note ${noteClass}">
-          ${lines.map(line => {
-            const safeLine = escapeHtml(line);
+      const html = lines.map(line => {
+        const safeLine = escapeHtml(line);
 
-            if (line.includes("牛主")) {
-              return `<span class="bull-note-line">${safeLine}</span>`;
-            }
+        if (line.includes("牛主")) {
+          return '<span class="bull-note-line">' + safeLine + '</span>';
+        }
 
-            if (/デビュー戦/.test(line)) {
-              return `<span class="bull-note-line">${safeLine}</span>`;
-            }
+        if (/デビュー戦/.test(line)) {
+          return '<span class="bull-note-line">' + safeLine + '</span>';
+        }
 
-            if (hasRecord) {
-              if (currentBullId && (/[0-9０-９]+勝/.test(line) || /[0-9０-９]+敗/.test(line) || /引分/.test(line))) {
-                return `<span class="bull-note-line"><a href="bull.html?id=${encodeURIComponent(currentBullId)}">${safeLine}</a></span>`;
-              }
-              return `<span class="bull-note-line">${safeLine}</span>`;
-            }
+        if (hasRecord) {
+          if (currentBullId && (/[0-9０-９]+勝/.test(line) || /[0-9０-９]+敗/.test(line) || /引分/.test(line))) {
+            return '<span class="bull-note-line"><a href="bull.html?id=' + encodeURIComponent(currentBullId) + '">' + safeLine + '</a></span>';
+          }
+          return '<span class="bull-note-line">' + safeLine + '</span>';
+        }
 
-            if (/元/.test(line)) {
-              const formerBullId = findBullIdFromLine(line);
-              if (formerBullId) {
-                return `<span class="bull-note-line"><a href="bull.html?id=${encodeURIComponent(formerBullId)}">${safeLine}</a></span>`;
-              }
-            }
+        if (/元/.test(line)) {
+          const formerBullId = findBullIdFromLine(line);
+          if (formerBullId) {
+            return '<span class="bull-note-line"><a href="bull.html?id=' + encodeURIComponent(formerBullId) + '">' + safeLine + '</a></span>';
+          }
+        }
 
-            return `<span class="bull-note-line">${safeLine}</span>`;
-          }).join("")}
-        </div>
-      `;
+        return '<span class="bull-note-line">' + safeLine + '</span>';
+      }).join("");
+
+      return '<div class="bull-note ' + noteClass + '">' + html + '</div>';
     }
 
     function formatRank(rank){
       const text = String(rank || "").trim();
       if(!text) return "VS";
+
       return escapeHtml(text)
         .replaceAll(" / ", "<br>")
         .replaceAll("/", "<br>")
@@ -752,36 +747,38 @@
       const month = ym[1];
 
       const season = programs
-        .filter(p=>{
+        .filter(p => {
           if(!p.date) return false;
           const parts = p.date.split("-");
           return parts[0] === year && parts[1] === month;
         })
-        .sort((a,b)=>a.date.localeCompare(b.date));
+        .sort((a,b) => a.date.localeCompare(b.date));
 
       if(!season.length){
         seasonLinksEl.innerHTML = "";
         return;
       }
 
-      const header = `<td class="season-title" rowspan="2">${year}年<br>${Number(month)}月場所</td>`;
+      const header = '<td class="season-title" rowspan="2">' + year + '年<br>' + Number(month) + '月場所</td>';
 
-      const programRow = season.map(p=>{
+      const programRow = season.map(p => {
         const label = formatMonthDay(p.date);
         const current = String(p.id) === String(program.id) && pageType === "program";
-        return current
-          ? `<td><span class="season-current">${label}</span></td>`
-          : `<td><a class="season-link" href="program.html?id=${encodeURIComponent(p.id)}">${label}</a></td>`;
+        if(current){
+          return '<td><span class="season-current">' + label + '</span></td>';
+        }
+        return '<td><a class="season-link" href="program.html?id=' + encodeURIComponent(p.id) + '">' + label + '</a></td>';
       }).join("");
 
-      const resultRow = season.map(p=>{
+      const resultRow = season.map(p => {
         const current = String(p.id) === String(program.id) && pageType === "result";
-        return current
-          ? `<td><span class="season-current">結果</span></td>`
-          : `<td><a class="season-link" href="result.html?id=${encodeURIComponent(p.id)}">結果</a></td>`;
+        if(current){
+          return '<td><span class="season-current">結果</span></td>';
+        }
+        return '<td><a class="season-link" href="result.html?id=' + encodeURIComponent(p.id) + '">結果</a></td>';
       }).join("");
 
-      seasonLinksEl.innerHTML = `<table class="season-table"><tr>${header}${programRow}</tr><tr>${resultRow}</tr></table>`;
+      seasonLinksEl.innerHTML = '<table class="season-table"><tr>' + header + programRow + '</tr><tr>' + resultRow + '</tr></table>';
     }
 
     function isChampionMatch(rank){
@@ -796,11 +793,12 @@
 
     function renderSideTag(rank, side){
       if(!isChampionMatch(rank)){
-        return `<div class="side-tag ${side}"></div>`;
+        return '<div class="side-tag ' + side + '"></div>';
       }
-      return side === "east"
-        ? `<div class="side-tag east show">チャンピオン</div>`
-        : `<div class="side-tag west show">チャレンジャー</div>`;
+      if(side === "east"){
+        return '<div class="side-tag east show">チャンピオン</div>';
+      }
+      return '<div class="side-tag west show">チャレンジャー</div>';
     }
 
     function formatBullName(name){
@@ -816,19 +814,28 @@
       const lines = safe.split("<br>").filter(Boolean);
 
       if(lines.length >= 2){
-        const first = `<div class="bull-top">${lines[0]}</div>`;
-        const last = `<div class="bull-main">${lines[lines.length - 1]}</div>`;
-        const middle = lines.slice(1, -1).map(line => `<div class="bull-middle">${line}</div>`).join("");
+        const first = '<div class="bull-top">' + lines[0] + '</div>';
+        const last = '<div class="bull-main">' + lines[lines.length - 1] + '</div>';
+        const middle = lines.slice(1, -1).map(line => '<div class="bull-middle">' + line + '</div>').join("");
         return first + middle + last;
       }
 
-      return `<div class="bull-main">${safe}</div>`;
+      return '<div class="bull-main">' + safe + '</div>';
     }
 
     Promise.all([
-      fetch("data/programs.json").then(res => res.json()),
-      fetch("data/matches.json").then(res => res.json()),
-      fetch("data/bulls.json").then(res => res.json())
+      fetch("data/programs.json").then(res => {
+        if (!res.ok) throw new Error("programs.json 読み込み失敗");
+        return res.json();
+      }),
+      fetch("data/matches.json").then(res => {
+        if (!res.ok) throw new Error("matches.json 読み込み失敗");
+        return res.json();
+      }),
+      fetch("data/bulls.json").then(res => {
+        if (!res.ok) throw new Error("bulls.json 読み込み失敗");
+        return res.json();
+      })
     ])
     .then(([programs, matches, bulls]) => {
       const program = programs.find(p => String(p.id) === programId);
@@ -849,58 +856,41 @@
         metaPriceEl.textContent = program.price || "未設定";
       }
 
-      renderSeasonLinks(program, programs, "result");
+      renderSeasonLinks(program, programs, "program");
 
       if (list.length === 0) {
-        bodyEl.innerHTML = `<tr><td colspan="5" style="padding:20px;color:#ff8080;">この大会の結果データはまだありません。</td></tr>`;
+        bodyEl.innerHTML = '<tr><td colspan="5" style="padding:20px;color:#ff8080;">この大会の対戦データはまだありません。</td></tr>';
         return;
       }
 
       bodyEl.innerHTML = list.map(match => {
-        const eastName = match.east || "";
-        const westName = match.west || "";
-        const winner = match.winner || "";
-        const isDraw = match.draw === true || match.result === "draw";
+        const eastSub = match.east_sub ? '<div class="subtext">' + escapeHtml(match.east_sub) + '</div>' : '<div class="subtext"></div>';
+        const westSub = match.west_sub ? '<div class="subtext">' + escapeHtml(match.west_sub) + '</div>' : '<div class="subtext"></div>';
 
-        let winnerSide = "";
-        if (!isDraw && normalize(winner) === normalize(eastName)) {
-          winnerSide = "east";
-        } else if (!isDraw && normalize(winner) === normalize(westName)) {
-          winnerSide = "west";
-        }
-
-        return `
-          <tr>
-            <td class="area">${escapeHtml(match.east_area || "")}</td>
-            <td class="east">
-              <div class="cell-inner">
-                ${renderSideTag(match.rank || "", "east")}
-                ${(match.east_sub || "") ? `<div class="subtext">${escapeHtml(match.east_sub)}</div>` : `<div class="subtext"></div>`}
-                <div class="bull-name">${formatBullName(eastName)}</div>
-                ${makeRecordHtml(eastName, match.east_note || "", bulls)}
-              </div>
-            </td>
-            <td class="rank">
-              <div class="rank-inner">
-                <div class="rank-name">${formatRank(match.rank || "VS")}</div>
-                ${formatCenterLine(match.time || "不戦勝", winnerSide, isDraw)}
-              </div>
-            </td>
-            <td class="west">
-              <div class="cell-inner">
-                ${renderSideTag(match.rank || "", "west")}
-                ${(match.west_sub || "") ? `<div class="subtext">${escapeHtml(match.west_sub)}</div>` : `<div class="subtext"></div>`}
-                <div class="bull-name">${formatBullName(westName)}</div>
-                ${makeRecordHtml(westName, match.west_note || "", bulls)}
-              </div>
-            </td>
-            <td class="area">${escapeHtml(match.west_area || "")}</td>
-          </tr>
-        `;
+        return '<tr>'
+          + '<td class="area">' + escapeHtml(match.east_area || "") + '</td>'
+          + '<td class="east"><div class="cell-inner">'
+          + renderSideTag(match.rank || "", "east")
+          + eastSub
+          + '<div class="bull-name">' + formatBullName(match.east || "") + '</div>'
+          + makeRecordHtml(match.east || "", match.east_note || "", bulls)
+          + '</div></td>'
+          + '<td class="rank"><div class="rank-inner">'
+          + '<div class="rank-name">' + formatRank(match.rank || "VS") + '</div>'
+          + '<div class="match-time-placeholder">│ --:-- │</div>'
+          + '</div></td>'
+          + '<td class="west"><div class="cell-inner">'
+          + renderSideTag(match.rank || "", "west")
+          + westSub
+          + '<div class="bull-name">' + formatBullName(match.west || "") + '</div>'
+          + makeRecordHtml(match.west || "", match.west_note || "", bulls)
+          + '</div></td>'
+          + '<td class="area">' + escapeHtml(match.west_area || "") + '</td>'
+          + '</tr>';
       }).join("");
     })
     .catch(err => {
-      errorEl.textContent = "データの読み込みに失敗しました。";
+      errorEl.textContent = "データの読み込みに失敗しました: " + err.message;
       console.error(err);
     });
   </script>
