@@ -144,65 +144,64 @@
       backdrop-filter:blur(4px);
       color:#fff;
       font-weight:800;
-      padding:12px 6px;
+      padding:12px 4px;
       font-size:0.92rem;
     }
 
     th.east-head{ background:#b60000; }
     th.west-head{ background:#d9d9d9; color:#222; }
     th.rank-head{ background:#222; color:#f1c40f; }
-    th.area-head{ background:#222; color:#fff; width:9%; }
+    th.area-head{ background:#222; color:#fff; width:8%; }
 
     td.area{
       background:#0a0a0a;
       color:#fff;
       font-weight:700;
-      font-size:0.88rem;
-      width:9%;
-      padding:12px 4px;
-      line-height:1.35;
+      font-size:0.84rem;
+      width:8%;
+      padding:10px 2px;
+      line-height:1.25;
       word-break:break-word;
     }
 
     td.east, td.west{
-      width:35%;
+      width:38%;
       background:#050505;
-      padding:12px 5px;
-      position:relative;
+      padding:8px 4px;
+      vertical-align:top;
     }
 
     td.rank{
-      width:12%;
+      width:8%;
       background:#0f0f0f;
-      padding:12px 3px;
+      padding:8px 0;
     }
 
-    .champion-tag,
-    .challenger-tag{
-      position:absolute;
-      top:6px;
+    .side-tag{
+      display:block;
+      min-height:0.8rem;
+      margin-bottom:4px;
       font-weight:800;
-      line-height:1;
+      line-height:1.05;
       letter-spacing:0.02em;
-      z-index:2;
     }
 
-    .champion-tag{
-      left:6px;
+    .side-tag.east{
       color:#e60000;
+      text-align:left;
       font-size:0.58rem;
     }
 
-    .challenger-tag{
-      right:6px;
+    .side-tag.west{
       color:#4da3ff;
+      text-align:right;
       font-size:0.58rem;
     }
 
     .subtext{
       color:#f1c40f;
-      font-size:0.78rem;
-      line-height:1.2;
+      font-size:0.76rem;
+      line-height:1.18;
       margin-bottom:5px;
       font-weight:700;
       white-space:normal;
@@ -215,24 +214,28 @@
       color:#fff;
       margin-bottom:6px;
       padding-bottom:2px;
-      line-height:1.08;
+      line-height:1.04;
+      white-space:normal;
+      overflow:visible;
+      text-overflow:unset;
+      word-break:break-word;
     }
 
     .bull-top{
-      font-size:0.96rem;
-      line-height:1.08;
+      font-size:0.94rem;
+      line-height:1.02;
       font-weight:700;
     }
 
     .bull-middle{
-      font-size:0.86rem;
-      line-height:1.08;
+      font-size:0.82rem;
+      line-height:1.02;
       font-weight:700;
     }
 
     .bull-main{
       font-size:1.34rem;
-      line-height:1.08;
+      line-height:1.04;
       font-weight:800;
     }
 
@@ -245,15 +248,21 @@
 
     .bull-note{
       color:#ddd;
-      font-size:0.76rem;
-      line-height:1.2;
+      font-size:0.72rem;
+      line-height:1.16;
+    }
+
+    .bull-note.compact{
+      font-size:0.64rem;
+      line-height:1.12;
     }
 
     .bull-note-line{
       display:block;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
+      white-space:normal;
+      overflow:visible;
+      text-overflow:unset;
+      word-break:break-word;
     }
 
     .bull-note a{
@@ -263,23 +272,24 @@
 
     .rank-name{
       color:#f1c40f;
-      font-size:0.9rem;
+      font-size:0.82rem;
       font-weight:800;
-      line-height:1.1;
+      line-height:1.02;
       white-space:normal;
       word-break:break-word;
-      margin-bottom:3px;
+      margin-bottom:2px;
+      padding:0 1px;
     }
 
     .match-time-placeholder{
       color:#bbb;
-      font-size:0.74rem;
-      line-height:1.08;
+      font-size:0.72rem;
+      line-height:1.02;
       white-space:nowrap;
       display:flex;
       align-items:center;
       justify-content:center;
-      min-height:1.2em;
+      min-height:1.1em;
     }
 
     .season-links{
@@ -370,77 +380,86 @@
       }
 
       th{
-        font-size:0.58rem;
-        padding:8px 2px;
+        font-size:0.56rem;
+        padding:8px 1px;
       }
 
+      th.area-head{ width:8%; }
+
       td.area{
-        width:10%;
-        font-size:0.48rem;
+        width:8%;
+        font-size:0.44rem;
         padding:8px 1px;
-        line-height:1.1;
+        line-height:1.06;
       }
 
       td.east, td.west{
-        width:35%;
-        padding:8px 2px;
+        width:39%;
+        padding:5px 2px;
       }
 
       td.rank{
-        width:10%;
-        padding:8px 1px;
+        width:6%;
+        padding:5px 0;
       }
 
-      .champion-tag{
-        left:4px;
-        top:4px;
-        font-size:0.34rem;
+      .side-tag{
+        min-height:0.45rem;
+        margin-bottom:2px;
       }
 
-      .challenger-tag{
-        right:4px;
-        top:4px;
-        font-size:0.34rem;
+      .side-tag.east{
+        font-size:0.30rem;
+      }
+
+      .side-tag.west{
+        font-size:0.30rem;
       }
 
       .subtext{
-        font-size:0.40rem;
-        line-height:1.08;
+        font-size:0.38rem;
+        line-height:1.06;
         margin-bottom:3px;
       }
 
       .bull-top{
-        font-size:0.50rem;
-        line-height:1.05;
+        font-size:0.48rem;
+        line-height:1.0;
       }
 
       .bull-middle{
-        font-size:0.44rem;
-        line-height:1.05;
+        font-size:0.42rem;
+        line-height:1.0;
       }
 
       .bull-main{
-        font-size:0.78rem;
-        line-height:1.08;
+        font-size:0.82rem;
+        line-height:1.03;
       }
 
       .bull-small{
-        font-size:0.72em;
+        font-size:0.70em;
       }
 
       .bull-note{
-        font-size:0.38rem;
-        line-height:1.08;
+        font-size:0.36rem;
+        line-height:1.06;
+      }
+
+      .bull-note.compact{
+        font-size:0.31rem;
+        line-height:1.02;
       }
 
       .rank-name{
-        font-size:0.58rem;
-        line-height:1.0;
-        margin-bottom:2px;
+        font-size:0.52rem;
+        line-height:0.98;
+        margin-bottom:1px;
+        padding:0;
       }
 
       .match-time-placeholder{
-        font-size:0.42rem;
+        font-size:0.40rem;
         line-height:1.0;
       }
 
@@ -457,7 +476,7 @@
 </head>
 <body>
   <div class="bg-overlay"></div>
-  
+
   <div class="container">
     <nav class="top-nav">
       <a href="index.html">ホーム</a>
@@ -581,6 +600,7 @@
       if(!lines.length) return "";
 
       const joined = lines.join(" ");
+      const compactClass = joined.length > 26 ? "compact" : "";
 
       const hasRecord =
         /[0-9０-９]+勝/.test(joined) ||
@@ -606,7 +626,7 @@
       }
 
       return `
-        <div class="bull-note">
+        <div class="bull-note ${compactClass}">
           ${lines.map(line => {
             const safeLine = escapeHtml(line);
 
@@ -688,11 +708,7 @@
           return `<td><span class="season-current">${label}</span></td>`;
         }
 
-        return `<td>
-          <a class="season-link" href="program.html?id=${encodeURIComponent(p.id)}">
-            ${label}
-          </a>
-        </td>`;
+        return `<td><a class="season-link" href="program.html?id=${encodeURIComponent(p.id)}">${label}</a></td>`;
       }).join("");
 
       const resultRow = season.map(p=>{
@@ -702,22 +718,13 @@
           return `<td><span class="season-current">結果</span></td>`;
         }
 
-        return `<td>
-          <a class="season-link" href="result.html?id=${encodeURIComponent(p.id)}">
-            結果
-          </a>
-        </td>`;
+        return `<td><a class="season-link" href="result.html?id=${encodeURIComponent(p.id)}">結果</a></td>`;
       }).join("");
 
       seasonLinksEl.innerHTML = `
         <table class="season-table">
-          <tr>
-            ${header}
-            ${programRow}
-          </tr>
-          <tr>
-            ${resultRow}
-          </tr>
+          <tr>${header}${programRow}</tr>
+          <tr>${resultRow}</tr>
         </table>
       `;
     }
@@ -734,8 +741,12 @@
 
     function renderSideTag(rank, side){
       if(!isChampionMatch(rank)) return "";
-      if(side === "east") return `<div class="champion-tag">チャンピオン</div>`;
-      if(side === "west") return `<div class="challenger-tag">チャレンジャー</div>`;
+      if(side === "east"){
+        return `<div class="side-tag east">チャンピオン</div>`;
+      }
+      if(side === "west"){
+        return `<div class="side-tag west">チャレンジャー</div>`;
+      }
       return "";
     }
 
