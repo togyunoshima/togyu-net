@@ -6,6 +6,12 @@
   <title>対戦表 | 徳之島闘牛サイト</title>
   <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Yuji+Syuku&display=swap" rel="stylesheet">
   <style>
+    :root{
+      --area-col: 10%;
+      --rank-col: 14%;
+      --side-col: 33%;
+    }
+
     body{
       margin:0;
       padding:14px 8px 40px;
@@ -131,6 +137,10 @@
       table-layout:fixed;
     }
 
+    col.area-col{ width:var(--area-col); }
+    col.rank-col{ width:var(--rank-col); }
+    col.side-col{ width:var(--side-col); }
+
     th, td{
       border:1px solid #333;
       text-align:center;
@@ -149,15 +159,14 @@
 
     th.east-head{ background:#b60000; }
     th.west-head{ background:#d9d9d9; color:#222; }
-    th.rank-head{ background:#222; color:#f1c40f; width:14%; }
-    th.area-head{ background:#222; color:#fff; width:10%; }
+    th.rank-head{ background:#222; color:#f1c40f; }
+    th.area-head{ background:#222; color:#fff; }
 
     td.area{
       background:#0a0a0a;
       color:#fff;
       font-weight:700;
       font-size:0.88rem;
-      width:10%;
       padding:12px 4px;
       line-height:1.15;
       white-space:nowrap;
@@ -165,14 +174,12 @@
     }
 
     td.east, td.west{
-      width:33%;
       background:#050505;
-      padding:12px 5px;
+      padding:10px 5px 8px;
       position:relative;
     }
 
     td.rank{
-      width:14%;
       background:#0f0f0f;
       padding:8px 2px;
     }
@@ -202,39 +209,39 @@
     .subtext{
       color:#f1c40f;
       font-size:0.78rem;
-      line-height:1.2;
-      margin-bottom:5px;
+      line-height:1.12;
+      margin-bottom:2px;
       font-weight:700;
       white-space:normal;
       overflow:visible;
       text-overflow:unset;
       word-break:break-word;
-      min-height:1.2em;
+      min-height:1.1em;
     }
 
     .bull-name{
       color:#fff;
-      margin-bottom:6px;
-      padding-bottom:2px;
-      line-height:1.08;
-      min-height:2.6em;
+      margin-bottom:3px;
+      padding-bottom:0;
+      line-height:1.04;
+      min-height:2.25em;
     }
 
     .bull-top{
       font-size:0.96rem;
-      line-height:1.08;
+      line-height:1.04;
       font-weight:700;
     }
 
     .bull-middle{
       font-size:0.86rem;
-      line-height:1.08;
+      line-height:1.04;
       font-weight:700;
     }
 
     .bull-main{
       font-size:1.34rem;
-      line-height:1.08;
+      line-height:1.04;
       font-weight:800;
     }
 
@@ -247,18 +254,18 @@
 
     .bull-note{
       color:#ddd;
-      font-size:0.76rem;
-      line-height:1.2;
+      font-size:0.74rem;
+      line-height:1.08;
     }
 
     .bull-note.note-small{
       font-size:0.68rem;
-      line-height:1.12;
+      line-height:1.05;
     }
 
     .bull-note.note-xsmall{
       font-size:0.62rem;
-      line-height:1.06;
+      line-height:1.02;
     }
 
     .bull-note-line{
@@ -278,19 +285,19 @@
       color:#f1c40f;
       font-size:0.9rem;
       font-weight:800;
-      line-height:1.05;
+      line-height:1.02;
       white-space:normal;
       word-break:break-word;
       margin-bottom:3px;
-      padding:0 2px;
+      padding:0 1px;
     }
 
     .match-time-placeholder{
       color:#bbb;
       font-size:0.74rem;
-      line-height:1.08;
+      line-height:1.05;
       white-space:nowrap;
-      min-height:1.2em;
+      min-height:1.1em;
     }
 
     .season-links{
@@ -378,23 +385,17 @@
         padding:8px 2px;
       }
 
-      th.area-head{ width:10%; }
-      th.rank-head{ width:14%; }
-
       td.area{
-        width:10%;
         font-size:0.46rem;
         padding:8px 1px;
         line-height:1.0;
       }
 
       td.east, td.west{
-        width:33%;
-        padding:8px 2px;
+        padding:8px 2px 6px;
       }
 
       td.rank{
-        width:14%;
         padding:8px 1px;
       }
 
@@ -412,28 +413,33 @@
 
       .subtext{
         font-size:0.38rem;
-        line-height:1.05;
-        margin-bottom:3px;
+        line-height:1.04;
+        margin-bottom:1px;
+      }
+
+      .bull-name{
+        margin-bottom:2px;
+        min-height:2.1em;
       }
 
       .bull-top{
         font-size:0.50rem;
-        line-height:1.05;
+        line-height:1.03;
       }
 
       .bull-middle{
         font-size:0.44rem;
-        line-height:1.05;
+        line-height:1.03;
       }
 
       .bull-main{
         font-size:0.78rem;
-        line-height:1.08;
+        line-height:1.05;
       }
 
       .bull-note{
         font-size:0.36rem;
-        line-height:1.08;
+        line-height:1.04;
       }
 
       .bull-note.note-small{
@@ -446,7 +452,7 @@
 
       .rank-name{
         font-size:0.54rem;
-        line-height:1.0;
+        line-height:0.98;
         margin-bottom:2px;
       }
 
@@ -489,6 +495,13 @@
 
     <div class="program-table-wrap">
       <table>
+        <colgroup>
+          <col class="area-col">
+          <col class="side-col">
+          <col class="rank-col">
+          <col class="side-col">
+          <col class="area-col">
+        </colgroup>
         <thead>
           <tr>
             <th class="area-head">地区</th>
@@ -675,11 +688,41 @@
     function formatRank(rank){
       const text = String(rank || "").trim();
       if(!text) return "VS";
+      return text
+        .split(/\s+/)
+        .map(v => escapeHtml(v))
+        .join("<br>");
+    }
 
-      return escapeHtml(text)
-        .replaceAll(" / ", "<br>")
-        .replaceAll("/", "<br>")
-        .replace(/ +/g, "<br>");
+    function getRankMaxTokenLength(list){
+      let maxLen = 0;
+      list.forEach(match => {
+        const tokens = String(match.rank || "")
+          .trim()
+          .split(/\s+/)
+          .filter(Boolean);
+        tokens.forEach(token => {
+          const len = token.replace(/[／/]/g, "").length;
+          if(len > maxLen) maxLen = len;
+        });
+      });
+      return maxLen;
+    }
+
+    function adjustRankColumnWidth(list){
+      const maxLen = getRankMaxTokenLength(list);
+
+      let rankWidth = 14;
+      if(maxLen >= 8) rankWidth = 16;
+      else if(maxLen >= 6) rankWidth = 15;
+      else if(maxLen <= 3) rankWidth = 12;
+
+      const areaWidth = 10;
+      const sideWidth = (100 - areaWidth * 2 - rankWidth) / 2;
+
+      document.documentElement.style.setProperty("--area-col", areaWidth + "%");
+      document.documentElement.style.setProperty("--rank-col", rankWidth + "%");
+      document.documentElement.style.setProperty("--side-col", sideWidth + "%");
     }
 
     function formatMonthDay(date){
@@ -780,34 +823,39 @@
     function formatBullName(name){
       if(!name) return "";
 
-      let safe = escapeHtml(name);
+      let raw = String(name);
 
-      safe = safe.replace(/([^\s])\((.*?)\)([^\s])/g,
-        '$1<br><span class="bull-small">($2)</span><br>$3'
-      );
+      raw = raw.replace(/([^\s])(\([^)]+\))([^\s])/g, "$1\n__SMALL__$2__END__\n$3");
+      raw = raw.replace(/([^\s])(〜[^〜]+〜)([^\s])/g, "$1\n__SMALL__$2__END__\n$3");
+      raw = raw.replace(/([^\s])(~[^~]+~)([^\s])/g, "$1\n__SMALL__$2__END__\n$3");
+      raw = raw.replace(/([^\s])\s+([A-Za-z0-9★☆'&.\-]+)\s+([^\s])/g, "$1\n__SMALL__$2__END__\n$3");
 
-      safe = safe.replace(/([^\s])[〜~](.*?)[〜~]([^\s])/g,
-        '$1<br><span class="bull-small">〜$2〜</span><br>$3'
-      );
+      const parts = raw
+        .split(/\n+/)
+        .map(v => v.trim())
+        .filter(Boolean);
 
-      safe = safe.replace(/([^\s])\s+([A-Za-z0-9★☆'&.\-]+)\s+([^\s])/g,
-        '$1<br><span class="bull-small">$2</span><br>$3'
-      );
+      if(parts.length >= 2){
+        const first = parts[0];
+        const last = parts[parts.length - 1];
+        const middle = parts.slice(1, -1);
 
-      safe = safe.replace(/ /g, "<br>");
-
-      const lines = safe.split("<br>").filter(Boolean);
-
-      if(lines.length >= 2){
-        const first = `<div class="bull-top">${lines[0]}</div>`;
-        const last = `<div class="bull-main">${lines[lines.length - 1]}</div>`;
-        const middle = lines.slice(1, -1)
-          .map(line => `<div class="bull-middle">${line}</div>`)
-          .join("");
-        return first + middle + last;
+        const firstHtml = `<div class="bull-top">${renderBullChunk(first)}</div>`;
+        const middleHtml = middle.map(v => `<div class="bull-middle">${renderBullChunk(v)}</div>`).join("");
+        const lastHtml = `<div class="bull-main">${renderBullChunk(last)}</div>`;
+        return firstHtml + middleHtml + lastHtml;
       }
 
-      return `<div class="bull-main">${safe}</div>`;
+      return `<div class="bull-main">${renderBullChunk(parts[0] || raw)}</div>`;
+    }
+
+    function renderBullChunk(text){
+      const str = String(text || "");
+      if(str.startsWith("__SMALL__") && str.endsWith("__END__")){
+        const inner = str.replace(/^__SMALL__/, "").replace(/__END__$/, "");
+        return `<span class="bull-small">${escapeHtml(inner)}</span>`;
+      }
+      return escapeHtml(str);
     }
 
     Promise.all([
@@ -835,6 +883,7 @@
       }
 
       renderSeasonLinks(program, programs, "program");
+      adjustRankColumnWidth(list);
 
       if (list.length === 0) {
         bodyEl.innerHTML = `<tr><td colspan="5" style="padding:20px;color:#ff8080;">この大会の対戦データはまだありません。</td></tr>`;
@@ -846,7 +895,7 @@
           <td class="area">${escapeHtml(match.east_area || "")}</td>
           <td class="east">
             ${renderSideTag(match.rank || "", "east")}
-            ${(match.east_sub || "") ? `<div class="subtext">${escapeHtml(match.east_sub)}</div>` : ``}
+            ${(match.east_sub || "") ? `<div class="subtext">${escapeHtml(match.east_sub)}</div>` : `<div class="subtext"></div>`}
             <div class="bull-name">${formatBullName(match.east || "")}</div>
             ${makeRecordHtml(match.east || "", match.east_note || "", bulls)}
           </td>
@@ -856,7 +905,7 @@
           </td>
           <td class="west">
             ${renderSideTag(match.rank || "", "west")}
-            ${(match.west_sub || "") ? `<div class="subtext">${escapeHtml(match.west_sub)}</div>` : ``}
+            ${(match.west_sub || "") ? `<div class="subtext">${escapeHtml(match.west_sub)}</div>` : `<div class="subtext"></div>`}
             <div class="bull-name">${formatBullName(match.west || "")}</div>
             ${makeRecordHtml(match.west || "", match.west_note || "", bulls)}
           </td>
