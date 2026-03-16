@@ -602,12 +602,15 @@
       `;
     }
 
-    function formatRank(rank){
-      const text = String(rank || "").trim();
-      if(!text) return "VS";
-      return escapeHtml(text).replaceAll(" / ", "<br>").replaceAll("/", "<br>");
-    }
+   function formatRank(rank){
+  const text = String(rank || "").trim();
+  if(!text) return "VS";
 
+  return escapeHtml(text)
+    .replaceAll(" / ", "<br>")
+    .replaceAll("/", "<br>")
+    .replace(/ +/g, "<br>");
+}
     function formatMonthDay(date){
       const [,m,d] = date.split("-");
       return `${Number(m)}月${Number(d)}日`;
@@ -683,35 +686,41 @@
     }
 
     function formatBullName(name){
-      if(!name) return "";
+  if(!name) return "";
 
-      let safe = escapeHtml(name);
+  let safe = escapeHtml(name);
 
-      safe = safe.replace(/([^\s])\((.*?)\)([^\s])/g,
-        '$1<br><span class="bull-small">($2)</span><br>$3'
-      );
+  // 〇(〇〇)〇 → 真ん中の()を小さくして改行
+  safe = safe.replace(/([^\s])\((.*?)\)([^\s])/g,
+    '$1<br><span class="bull-small">($2)</span><br>$3'
+  );
 
-      safe = safe.replace(/([^\s])〜(.*?)〜([^\s])/g,
-        '$1<br><span class="bull-small">〜$2〜</span><br>$3'
-      );
+  // 〇〜〇〇〜〇 → 真ん中の〜〜を小さくして改行
+  safe = safe.replace(/([^\s])〜(.*?)〜([^\s])/g,
+    '$1<br><span class="bull-small">〜$2〜</span><br>$3'
+  );
 
-      safe = safe.replace(/ /g,"<br>");
+  // 漢字 英語 漢字 → 真ん中の英語を小さくして改行
+  safe = safe.replace(/([^\s])\s+([A-Za-z0-9★☆'&.\-]+)\s+([^\s])/g,
+    '$1<br><span class="bull-small">$2</span><br>$3'
+  );
 
-      const lines = safe.split("<br>").filter(Boolean);
+  // 残りのスペースは改行
+  safe = safe.replace(/ /g, "<br>");
 
-      if(lines.length >= 2){
-        const first = `<div class="bull-top">${lines[0]}</div>`;
-        const last = `<div class="bull-main">${lines[lines.length - 1]}</div>`;
-        const middle = lines.slice(1, -1).map(line => {
-          const cls = line.includes('bull-small') ? 'bull-middle' : 'bull-middle';
-          return `<div class="${cls}">${line}</div>`;
-        }).join("");
-        return first + middle + last;
-      }
+  const lines = safe.split("<br>").filter(Boolean);
 
-      return `<div class="bull-main">${safe}</div>`;
-    }
+  if(lines.length >= 2){
+    const first = `<div class="bull-top">${lines[0]}</div>`;
+    const last = `<div class="bull-main">${lines[lines.length - 1]}</div>`;
+    const middle = lines.slice(1, -1)
+      .map(line => `<div class="bull-middle">${line}</div>`)
+      .join("");
+    return first + middle + last;
+  }
 
+  return `<div class="bull-main">${safe}</div>`;
+}
     Promise.all([
       fetch("data/programs.json").then(res => res.json()),
       fetch("data/matches.json").then(res => res.json()),
