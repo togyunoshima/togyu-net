@@ -8,8 +8,8 @@
   <style>
     :root{
       --area-col: 10%;
-      --rank-col: 18%;
-      --side-col: 31%;
+      --rank-col: 22%;
+      --side-col: 29%;
     }
 
     body{
@@ -175,7 +175,7 @@
 
     td.east, td.west{
       background:#050505;
-      padding:8px 4px 6px;
+      padding:8px 4px 5px;
       position:relative;
     }
 
@@ -209,40 +209,40 @@
     .subtext{
       color:#f1c40f;
       font-size:0.78rem;
-      line-height:1.1;
+      line-height:1.08;
       margin-bottom:1px;
       font-weight:700;
       white-space:normal;
       overflow:visible;
       text-overflow:unset;
       word-break:break-word;
-      min-height:1.05em;
+      min-height:1.02em;
     }
 
     .bull-name{
       color:#fff;
-      margin-bottom:2px;
-      line-height:1.02;
-      min-height:2.1em;
+      margin-bottom:1px;
+      line-height:1.03;
+      min-height:2.08em;
       word-break:break-word;
       overflow-wrap:anywhere;
     }
 
     .bull-top{
       font-size:0.95rem;
-      line-height:1.02;
+      line-height:1.03;
       font-weight:700;
     }
 
     .bull-middle{
       font-size:0.86rem;
-      line-height:1.02;
+      line-height:1.03;
       font-weight:700;
     }
 
     .bull-main{
       font-size:1.34rem;
-      line-height:1.02;
+      line-height:1.03;
       font-weight:800;
     }
 
@@ -257,19 +257,19 @@
 
     .bull-note{
       color:#ddd;
-      font-size:0.80rem;
-      line-height:1.08;
+      font-size:0.84rem;
+      line-height:1.12;
       margin-top:0;
     }
 
     .bull-note.note-small{
-      font-size:0.74rem;
-      line-height:1.05;
+      font-size:0.77rem;
+      line-height:1.09;
     }
 
     .bull-note.note-xsmall{
-      font-size:0.68rem;
-      line-height:1.02;
+      font-size:0.70rem;
+      line-height:1.06;
     }
 
     .bull-note-line{
@@ -397,7 +397,7 @@
       }
 
       td.east, td.west{
-        padding:7px 2px 5px;
+        padding:7px 2px 4px;
       }
 
       td.rank{
@@ -447,16 +447,16 @@
       }
 
       .bull-note{
-        font-size:0.39rem;
-        line-height:1.03;
+        font-size:0.41rem;
+        line-height:1.05;
       }
 
       .bull-note.note-small{
-        font-size:0.35rem;
+        font-size:0.37rem;
       }
 
       .bull-note.note-xsmall{
-        font-size:0.31rem;
+        font-size:0.33rem;
       }
 
       .rank-name{
@@ -703,30 +703,24 @@
         .join("<br>");
     }
 
-    function getRankMaxTokenLength(list){
-      let maxLen = 0;
-      list.forEach(match => {
-        const tokens = String(match.rank || "")
-          .trim()
-          .split(/\s+/)
-          .filter(Boolean);
-        tokens.forEach(token => {
-          const len = token.replace(/[／/]/g, "").length;
-          if(len > maxLen) maxLen = len;
-        });
-      });
-      return maxLen;
+    function getRankScore(rank){
+      const tokens = String(rank || "").trim().split(/\s+/).filter(Boolean);
+      const longest = tokens.reduce((m, t) => Math.max(m, t.length), 0);
+      const total = tokens.join("").length;
+      return longest * 2 + total;
     }
 
     function adjustRankColumnWidth(list){
-      const maxLen = getRankMaxTokenLength(list);
-      let rankWidth = 18;
+      let maxScore = 0;
+      list.forEach(match => {
+        maxScore = Math.max(maxScore, getRankScore(match.rank || ""));
+      });
 
-      if(maxLen >= 12) rankWidth = 24;
-      else if(maxLen >= 10) rankWidth = 22;
-      else if(maxLen >= 8) rankWidth = 20;
-      else if(maxLen >= 6) rankWidth = 18;
-      else rankWidth = 16;
+      let rankWidth = 22;
+      if(maxScore >= 34) rankWidth = 28;
+      else if(maxScore >= 28) rankWidth = 26;
+      else if(maxScore >= 22) rankWidth = 24;
+      else rankWidth = 22;
 
       const areaWidth = 10;
       const sideWidth = (100 - areaWidth * 2 - rankWidth) / 2;
