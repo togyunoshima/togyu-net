@@ -175,7 +175,7 @@
 
     td.east, td.west{
       background:#050505;
-      padding:8px 4px 5px;
+      padding:7px 4px 4px;
       position:relative;
     }
 
@@ -187,7 +187,7 @@
     .champion-tag,
     .challenger-tag{
       position:absolute;
-      top:6px;
+      top:5px;
       font-weight:800;
       line-height:1;
       letter-spacing:0.02em;
@@ -209,40 +209,40 @@
     .subtext{
       color:#f1c40f;
       font-size:0.78rem;
-      line-height:1.08;
-      margin-bottom:1px;
+      line-height:1.05;
+      margin-bottom:0;
       font-weight:700;
       white-space:normal;
       overflow:visible;
       text-overflow:unset;
       word-break:break-word;
-      min-height:1.02em;
+      min-height:1.0em;
     }
 
     .bull-name{
       color:#fff;
-      margin-bottom:1px;
-      line-height:1.03;
-      min-height:2.08em;
+      margin:0 0 1px;
+      line-height:1.02;
+      min-height:2.02em;
       word-break:break-word;
       overflow-wrap:anywhere;
     }
 
     .bull-top{
       font-size:0.95rem;
-      line-height:1.03;
+      line-height:1.02;
       font-weight:700;
     }
 
     .bull-middle{
       font-size:0.86rem;
-      line-height:1.03;
+      line-height:1.02;
       font-weight:700;
     }
 
     .bull-main{
       font-size:1.34rem;
-      line-height:1.03;
+      line-height:1.02;
       font-weight:800;
     }
 
@@ -257,19 +257,19 @@
 
     .bull-note{
       color:#ddd;
-      font-size:0.84rem;
-      line-height:1.12;
+      font-size:0.86rem;
+      line-height:1.06;
       margin-top:0;
     }
 
     .bull-note.note-small{
-      font-size:0.77rem;
-      line-height:1.09;
+      font-size:0.79rem;
+      line-height:1.05;
     }
 
     .bull-note.note-xsmall{
-      font-size:0.70rem;
-      line-height:1.06;
+      font-size:0.72rem;
+      line-height:1.04;
     }
 
     .bull-note-line{
@@ -397,7 +397,7 @@
       }
 
       td.east, td.west{
-        padding:7px 2px 4px;
+        padding:6px 2px 3px;
       }
 
       td.rank{
@@ -418,13 +418,13 @@
 
       .subtext{
         font-size:0.38rem;
-        line-height:1.02;
-        margin-bottom:1px;
+        line-height:1.01;
+        margin-bottom:0;
       }
 
       .bull-name{
         margin-bottom:1px;
-        min-height:2em;
+        min-height:1.95em;
       }
 
       .bull-top{
@@ -447,16 +447,16 @@
       }
 
       .bull-note{
-        font-size:0.41rem;
+        font-size:0.42rem;
         line-height:1.05;
       }
 
       .bull-note.note-small{
-        font-size:0.37rem;
+        font-size:0.38rem;
       }
 
       .bull-note.note-xsmall{
-        font-size:0.33rem;
+        font-size:0.34rem;
       }
 
       .rank-name{
@@ -609,19 +609,34 @@
       return found ? found.id : null;
     }
 
-    function splitNote(text){
+    function splitNoteParts(text){
       const raw = String(text || "").trim();
-      if(!raw) return [];
-      const cleaned = raw.replaceAll("/", " ").replace(/\s+/g, " ").trim();
-      const ownerMatch = cleaned.match(/\(?牛主[:：][^)]+\)?/);
+      if(!raw) return {record:"", former:"", owner:""};
+
+      const normalized = raw.replaceAll("/", " ").replace(/\s+/g, " ").trim();
+
+      const ownerMatch = normalized.match(/\(?牛主[:：][^)]+\)?/);
       const owner = ownerMatch ? ownerMatch[0].trim() : "";
-      let withoutOwner = cleaned;
-      if (owner) withoutOwner = cleaned.replace(owner, "").trim();
-      const lines = [];
-      if (withoutOwner) lines.push(withoutOwner);
-      if (owner) lines.push(owner);
-      if (lines.length === 0) lines.push(cleaned);
-      return lines.slice(0, 2);
+
+      let remain = normalized;
+      if(owner){
+        remain = remain.replace(owner, "").trim();
+      }
+
+      let former = "";
+      let record = remain;
+
+      const formerMatch = remain.match(/(元\s*[^ ]+(?:\s+[^ ]+)*)$/);
+      if(formerMatch){
+        former = formerMatch[1].trim();
+        record = remain.replace(formerMatch[1], "").trim();
+      }
+
+      return {
+        record: record || "",
+        former: former || "",
+        owner: owner || ""
+      };
     }
 
     function getNoteClass(text){
@@ -632,20 +647,15 @@
     }
 
     function makeRecordHtml(name, text, bulls){
-      const lines = splitNote(text);
-      if(!lines.length) return "";
+      const parts = splitNoteParts(text);
+      if(!parts.record && !parts.former && !parts.owner) return "";
 
-      const joined = lines.join(" ");
+      const joined = [parts.record, parts.former, parts.owner].filter(Boolean).join(" ");
       const noteClass = getNoteClass(joined);
-
-      const hasRecord =
-        /[0-9０-９]+勝/.test(joined) ||
-        /[0-9０-９]+敗/.test(joined) ||
-        /引分/.test(joined);
 
       const currentBullId = findBullIdByName(name, bulls);
 
-      function findBullIdFromLine(line){
+      function findBullIdFromText(line){
         const cleaned = String(line || "")
           .replace(/[()（）]/g, "")
           .replace(/牛主[:：].*$/, "")
@@ -661,37 +671,38 @@
         return found ? found.id : null;
       }
 
-      return `
-        <div class="bull-note ${noteClass}">
-          ${lines.map(line => {
-            const safeLine = escapeHtml(line);
+      const rows = [];
 
-            if (line.includes("牛主")) {
-              return `<span class="bull-note-line">${safeLine}</span>`;
-            }
+      if(parts.record){
+        const safeRecord = escapeHtml(parts.record);
+        const hasRecord =
+          /[0-9０-９]+勝/.test(parts.record) ||
+          /[0-9０-９]+敗/.test(parts.record) ||
+          /引分/.test(parts.record);
 
-            if (/デビュー戦/.test(line)) {
-              return `<span class="bull-note-line">${safeLine}</span>`;
-            }
+        if(hasRecord && currentBullId){
+          rows.push(`<span class="bull-note-line"><a href="bull.html?id=${encodeURIComponent(currentBullId)}">${safeRecord}</a></span>`);
+        }else{
+          rows.push(`<span class="bull-note-line">${safeRecord}</span>`);
+        }
+      }
 
-            if (hasRecord) {
-              if (currentBullId && (/[0-9０-９]+勝/.test(line) || /[0-9０-９]+敗/.test(line) || /引分/.test(line))) {
-                return `<span class="bull-note-line"><a href="bull.html?id=${encodeURIComponent(currentBullId)}">${safeLine}</a></span>`;
-              }
-              return `<span class="bull-note-line">${safeLine}</span>`;
-            }
+      if(parts.former){
+        const safeFormer = escapeHtml(parts.former);
+        const formerBullId = findBullIdFromText(parts.former);
 
-            if (/元/.test(line)) {
-              const formerBullId = findBullIdFromLine(line);
-              if (formerBullId) {
-                return `<span class="bull-note-line"><a href="bull.html?id=${encodeURIComponent(formerBullId)}">${safeLine}</a></span>`;
-              }
-            }
+        if(!parts.record && formerBullId){
+          rows.push(`<span class="bull-note-line"><a href="bull.html?id=${encodeURIComponent(formerBullId)}">${safeFormer}</a></span>`);
+        }else{
+          rows.push(`<span class="bull-note-line">${safeFormer}</span>`);
+        }
+      }
 
-            return `<span class="bull-note-line">${safeLine}</span>`;
-          }).join("")}
-        </div>
-      `;
+      if(parts.owner){
+        rows.push(`<span class="bull-note-line">${escapeHtml(parts.owner)}</span>`);
+      }
+
+      return `<div class="bull-note ${noteClass}">${rows.join("")}</div>`;
     }
 
     function formatRank(rank){
@@ -707,7 +718,7 @@
       const tokens = String(rank || "").trim().split(/\s+/).filter(Boolean);
       const longest = tokens.reduce((m, t) => Math.max(m, t.length), 0);
       const total = tokens.join("").length;
-      return longest * 2 + total;
+      return longest * 2.4 + total;
     }
 
     function adjustRankColumnWidth(list){
@@ -717,9 +728,10 @@
       });
 
       let rankWidth = 22;
-      if(maxScore >= 34) rankWidth = 28;
-      else if(maxScore >= 28) rankWidth = 26;
-      else if(maxScore >= 22) rankWidth = 24;
+      if(maxScore >= 38) rankWidth = 30;
+      else if(maxScore >= 32) rankWidth = 28;
+      else if(maxScore >= 26) rankWidth = 26;
+      else if(maxScore >= 20) rankWidth = 24;
       else rankWidth = 22;
 
       const areaWidth = 10;
@@ -804,8 +816,15 @@
       `;
     }
 
+    function normalizeRankForJudge(rank){
+      return String(rank || "")
+        .replace(/<br\s*\/?>/gi, "")
+        .replace(/[ 　\t\r\n]+/g, "")
+        .trim();
+    }
+
     function isChampionMatch(rank){
-      const text = String(rank || "").replace(/\s+/g, "").trim();
+      const text = normalizeRankForJudge(rank);
       return (
         text.includes("全島一優勝旗争奪戦") ||
         text.includes("中量級優勝旗争奪戦") ||
@@ -825,8 +844,23 @@
       return "";
     }
 
+    function isPrefixSmallToken(token){
+      const t = String(token || "").trim();
+      if(!t) return false;
+      return (
+        /^二代目$/.test(t) ||
+        /^三代目$/.test(t) ||
+        /^四代目$/.test(t) ||
+        /^五代目$/.test(t) ||
+        /^平成.+年生$/.test(t) ||
+        /^昭和.+年生$/.test(t) ||
+        /^令和.+年生$/.test(t) ||
+        /^.+年生$/.test(t)
+      );
+    }
+
     function formatBullName(name){
-      const raw = String(name || "");
+      const raw = String(name || "").trim();
       if(!raw) return `<div class="bull-main"></div>`;
 
       const triple = raw.match(/^(.+?)\s+([A-Za-z0-9★☆'&.\-]+)\s+(.+)$/);
@@ -842,6 +876,11 @@
       const wave = raw.match(/^(.+?)([〜~][^〜~]+[〜~])(.+)$/);
       if(wave){
         return `<div class="bull-main">${escapeHtml(wave[1])}<span class="bull-small-inline">${escapeHtml(wave[2])}</span>${escapeHtml(wave[3])}</div>`;
+      }
+
+      const parts = raw.split(/\s+/).filter(Boolean);
+      if(parts.length >= 2 && isPrefixSmallToken(parts[0])){
+        return `<div class="bull-main"><span class="bull-small-inline">${escapeHtml(parts[0])}</span> ${escapeHtml(parts.slice(1).join(" "))}</div>`;
       }
 
       return `<div class="bull-main">${escapeHtml(raw)}</div>`;
