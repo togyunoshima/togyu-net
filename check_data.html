@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -143,17 +142,23 @@ function buildBullTargets(bull){
 }
 
 function extractFormerNames(note){
-  const text = String(note || "");
+  const text = String(note || "").trim();
   if(!text) return [];
 
-  const candidates = [];
-  const splitParts = text.split(/[\/／]/).map(s => s.trim()).filter(Boolean);
+  const ownerMatch = text.match(/\(牛主[:：][^)]+\)/);
+  if (!ownerMatch) return [];
 
+  const afterOwner = text.slice(ownerMatch.index + ownerMatch[0].length).trim();
+  if (!afterOwner) return [];
+
+  const candidates = [];
+
+  const splitParts = afterOwner.split(/[\/／]/).map(s => s.trim()).filter(Boolean);
   splitParts.forEach(part => {
     if (/^元/.test(part)) candidates.push(part);
   });
 
-  const matches = text.match(/元[^()（）\/／]+/g);
+  const matches = afterOwner.match(/元[^()（）\/／]+/g);
   if (matches) candidates.push(...matches);
 
   return [...new Set(candidates.map(s => s.trim()).filter(Boolean))];
@@ -167,12 +172,7 @@ function findBullByName(name, bulls){
 }
 
 function findBullByFormerNameText(text, bulls){
-  const cleaned = normalize(
-    String(text || "")
-      .replace(/牛主[:：].*$/, "")
-      .replace(/デビュー戦/g, "")
-  );
-
+  const cleaned = normalize(String(text || ""));
   if(!cleaned) return null;
 
   let best = null;
