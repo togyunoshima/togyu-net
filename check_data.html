@@ -1,1 +1,326 @@
 
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>データチェック | 徳之島闘牛サイト</title>
+  <style>
+    body{
+      margin:0;
+      padding:20px;
+      background:#050505;
+      color:#eee;
+      font-family:-apple-system,BlinkMacSystemFont,"Yu Gothic",sans-serif;
+    }
+
+    .container{
+      max-width:1000px;
+      margin:auto;
+    }
+
+    h1{
+      margin-bottom:20px;
+    }
+
+    .box{
+      background:#111;
+      border:1px solid #333;
+      padding:16px;
+      margin-bottom:16px;
+    }
+
+    .ok{ color:#9be27d; }
+    .warn{ color:#ffd166; }
+    .bad{ color:#ff8080; }
+
+    .issue{
+      border-top:1px solid #333;
+      padding:10px 0;
+      line-height:1.6;
+      word-break:break-word;
+    }
+
+    .issue:first-child{
+      border-top:none;
+      padding-top:0;
+    }
+
+    .summary{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:10px;
+    }
+
+    .card{
+      background:#0c0c0c;
+      border:1px solid #333;
+      padding:12px;
+    }
+
+    .num{
+      font-size:1.5rem;
+      font-weight:bold;
+    }
+
+    .muted{
+      color:#aaa;
+    }
+
+    code{
+      background:#0b0b0b;
+      border:1px solid #333;
+      padding:2px 6px;
+      border-radius:4px;
+    }
+
+    @media (max-width:700px){
+      .summary{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <h1>データチェック</h1>
+
+  <div class="box">
+    このページは
+    <b>programs.json / matches.json / bulls.json</b>
+    を読み込んでデータ整合性をチェックします。<br>
+    <span class="muted">置き場所: <code>index.html</code> と同じ階層に <code>check_data.html</code>、その下に <code>data</code> フォルダ</span>
+  </div>
+
+  <div class="box">
+    <div class="summary" id="summary"></div>
+  </div>
+
+  <div class="box">
+    <div id="status">読み込み中...</div>
+  </div>
+
+  <div class="box">
+    <div id="issues"></div>
+  </div>
+
+</div>
+
+<script>
+function normalize(str){
+  return String(str || "")
+    .replace(/\s+/g, "")
+    .replace(/[()（）]/g, "")
+    .replace(/[・･]/g, "")
+    .trim();
+}
+
+function issue(type, title, detail){
+  return { type, title, detail };
+}
+
+function buildBullTargets(bull){
+  const targets = [];
+
+  if (bull.display_name) targets.push(bull.display_name);
+  if (bull.name) targets.push(bull.name);
+  if (bull.exact_title) targets.push(bull.exact_title);
+
+  if (Array.isArray(bull.former_names)) {
+    bull.former_names.forEach(name => {
+      if (!name) return;
+      targets.push(name);
+      targets.push(String(name).replace(/^元\s*/, ""));
+      targets.push(String(name).replace(/^元/, ""));
+      targets.push("元 " + String(name).replace(/^元\s*/, "").replace(/^元/, ""));
+      targets.push("元" + String(name).replace(/^元\s*/, "").replace(/^元/, ""));
+    });
+  }
+
+  return [...new Set(targets.map(normalize).filter(Boolean))];
+}
+
+function extractFormerNames(note){
+  const text = String(note || "");
+  if(!text) return [];
+
+  const candidates = [];
+  const splitParts = text.split(/[\/／]/).map(s => s.trim()).filter(Boolean);
+
+  splitParts.forEach(part => {
+    if (/^元/.test(part)) candidates.push(part);
+  });
+
+  const matches = text.match(/元[^()（）\/／]+/g);
+  if (matches) candidates.push(...matches);
+
+  return [...new Set(candidates.map(s => s.trim()).filter(Boolean))];
+}
+
+function findBullByName(name, bulls){
+  const target = normalize(name);
+  if(!target) return null;
+
+  return bulls.find(bull => buildBullTargets(bull).includes(target)) || null;
+}
+
+function findBullByFormerNameText(text, bulls){
+  const cleaned = normalize(
+    String(text || "")
+      .replace(/牛主[:：].*$/, "")
+      .replace(/デビュー戦/g, "")
+  );
+
+  if(!cleaned) return null;
+
+  let best = null;
+  let bestLen = 0;
+
+  bulls.forEach(bull => {
+    buildBullTargets(bull).forEach(target => {
+      if (!target) return;
+      if (cleaned.includes(target) || target.includes(cleaned)) {
+        if (target.length > bestLen) {
+          best = bull;
+          bestLen = target.length;
+        }
+      }
+    });
+  });
+
+  return best;
+}
+
+async function run(){
+  let programs, matches, bulls;
+
+  try{
+    [programs, matches, bulls] = await Promise.all([
+      fetch("data/programs.json").then(r => r.json()),
+      fetch("data/matches.json").then(r => r.json()),
+      fetch("data/bulls.json").then(r => r.json())
+    ]);
+  }catch(e){
+    document.getElementById("status").innerHTML = "<span class='bad'>JSONの読み込みに失敗しました。</span>";
+    document.getElementById("issues").innerHTML = `
+      <div class="issue">
+        <b class="bad">読み込みエラー</b><br>
+        <div>check_data.html の場所か、<code>data/programs.json</code> / <code>data/matches.json</code> / <code>data/bulls.json</code> の場所を確認してね。</div>
+      </div>
+    `;
+    return;
+  }
+
+  const issues = [];
+  const programIds = new Set(programs.map(p => String(p.id)));
+  const matchIds = new Set();
+
+  matches.forEach(m => {
+    const id = String(m.id || "");
+
+    if (id) {
+      if (matchIds.has(id)) {
+        issues.push(issue("bad", "match id が重複", `id=${id}`));
+      }
+      matchIds.add(id);
+    } else {
+      issues.push(issue("warn", "match id が空", `program=${String(m.program || "")}`));
+    }
+
+    if (!m.program || !programIds.has(String(m.program))) {
+      issues.push(issue("bad", "program id が programs.json に存在しない", `match id=${id || "(なし)"} / program=${String(m.program || "")}`));
+    }
+
+    if (!m.east || !m.west) {
+      issues.push(issue("bad", "east / west の牛名が空", `match id=${id || "(なし)"}`));
+    }
+
+    const eastBull = findBullByName(m.east, bulls);
+    const westBull = findBullByName(m.west, bulls);
+
+    if (!eastBull) {
+      issues.push(issue("warn", "east の牛名が bulls.json と一致しない", `match id=${id || "(なし)"} / east=${String(m.east || "")}`));
+    }
+
+    if (!westBull) {
+      issues.push(issue("warn", "west の牛名が bulls.json と一致しない", `match id=${id || "(なし)"} / west=${String(m.west || "")}`));
+    }
+
+    const eastFormerNames = extractFormerNames(m.east_note || "");
+    const westFormerNames = extractFormerNames(m.west_note || "");
+
+    eastFormerNames.forEach(name => {
+      if (!findBullByFormerNameText(name, bulls)) {
+        issues.push(issue("warn", "east_note の元名が bulls.json と一致しない", `match id=${id || "(なし)"} / ${name}`));
+      }
+    });
+
+    westFormerNames.forEach(name => {
+      if (!findBullByFormerNameText(name, bulls)) {
+        issues.push(issue("warn", "west_note の元名が bulls.json と一致しない", `match id=${id || "(なし)"} / ${name}`));
+      }
+    });
+
+    const isDraw = m.draw === true || m.result === "draw";
+    const east = normalize(m.east);
+    const west = normalize(m.west);
+    const winner = normalize(m.winner);
+    const loser = normalize(m.loser);
+
+    if (isDraw) {
+      if (m.winner || m.loser) {
+        issues.push(issue("warn", "引分なのに winner / loser が入っている", `match id=${id || "(なし)"}`));
+      }
+    } else {
+      if (m.winner && winner !== east && winner !== west) {
+        issues.push(issue("bad", "winner が east / west と一致しない", `match id=${id || "(なし)"} / winner=${String(m.winner)}`));
+      }
+
+      if (m.loser && loser !== east && loser !== west) {
+        issues.push(issue("bad", "loser が east / west と一致しない", `match id=${id || "(なし)"} / loser=${String(m.loser)}`));
+      }
+
+      if (m.winner && m.loser && winner === loser) {
+        issues.push(issue("bad", "winner と loser が同じ", `match id=${id || "(なし)"}`));
+      }
+    }
+
+    if (!("time" in m) || String(m.time || "").trim() === "") {
+      issues.push(issue("warn", "time が空", `match id=${id || "(なし)"}`));
+    }
+  });
+
+  document.getElementById("summary").innerHTML = `
+    <div class="card">大会<div class="num">${programs.length}</div></div>
+    <div class="card">試合<div class="num">${matches.length}</div></div>
+    <div class="card">牛<div class="num">${bulls.length}</div></div>
+    <div class="card">問題<div class="num">${issues.length}</div></div>
+  `;
+
+  if (!issues.length) {
+    document.getElementById("status").innerHTML = "<span class='ok'>問題なし</span>";
+    document.getElementById("issues").innerHTML = "<div class='ok'>OK！大きい問題は見つからなかったよ。</div>";
+    return;
+  }
+
+  const badCount = issues.filter(i => i.type === "bad").length;
+  const warnCount = issues.filter(i => i.type === "warn").length;
+
+  document.getElementById("status").innerHTML =
+    `<span class='${badCount ? "bad" : "warn"}'>要修正 ${badCount}件 / 注意 ${warnCount}件</span>`;
+
+  document.getElementById("issues").innerHTML = issues.map(i => `
+    <div class="issue">
+      <b class="${i.type === "bad" ? "bad" : "warn"}">${i.title}</b><br>
+      ${i.detail}
+    </div>
+  `).join("");
+}
+
+run();
+</script>
+
+</body>
+</html>
