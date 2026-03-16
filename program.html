@@ -12,6 +12,23 @@
       background:#050505;
       color:#eee;
       font-family:'Kaisei Tokumin', serif;
+      position:relative;
+      min-height:100vh;
+    }
+
+    .bg-overlay{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background-image:url('IMG_8395.jpg');
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      opacity:0.18;
+      filter:grayscale(100%);
+      z-index:-1;
     }
 
     .container{
@@ -162,32 +179,50 @@
     .subtext{
       color:#f1c40f;
       font-size:0.68rem;
-      line-height:1.25;
-      margin-bottom:6px;
+      line-height:1.2;
+      margin-bottom:5px;
       font-weight:700;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
+      white-space:normal;
+      overflow:visible;
+      text-overflow:unset;
+      word-break:break-word;
     }
 
     .bull-name{
       color:#fff;
-      font-size:1.28rem;
-      line-height:1.18;
-      font-weight:800;
       margin-bottom:6px;
-      white-space:normal;
-      overflow:visible;
-      text-overflow:unset;
-      word-break:keep-all;
-      overflow-wrap:anywhere;
       padding-bottom:2px;
+      line-height:1.08;
+    }
+
+    .bull-top{
+      font-size:0.96rem;
+      line-height:1.08;
+      font-weight:700;
+    }
+
+    .bull-middle{
+      font-size:0.86rem;
+      line-height:1.08;
+      font-weight:700;
+    }
+
+    .bull-main{
+      font-size:1.34rem;
+      line-height:1.08;
+      font-weight:800;
+    }
+
+    .bull-small{
+      font-size:0.72em;
+      opacity:0.95;
+      font-weight:700;
     }
 
     .bull-note{
       color:#ddd;
-      font-size:0.7rem;
-      line-height:1.22;
+      font-size:0.68rem;
+      line-height:1.18;
     }
 
     .bull-note-line{
@@ -333,21 +368,33 @@
       }
 
       .subtext{
-        font-size:0.36rem;
+        font-size:0.34rem;
         line-height:1.05;
         margin-bottom:3px;
       }
 
-      .bull-name{
-        font-size:0.72rem;
-        line-height:1.12;
-        margin-bottom:3px;
-        padding-bottom:1px;
+      .bull-top{
+        font-size:0.50rem;
+        line-height:1.05;
+      }
+
+      .bull-middle{
+        font-size:0.44rem;
+        line-height:1.05;
+      }
+
+      .bull-main{
+        font-size:0.78rem;
+        line-height:1.08;
+      }
+
+      .bull-small{
+        font-size:0.72em;
       }
 
       .bull-note{
-        font-size:0.36rem;
-        line-height:1.08;
+        font-size:0.34rem;
+        line-height:1.06;
       }
 
       .rank-name{
@@ -369,26 +416,6 @@
       .season-title{
         min-width:72px;
       }
-    }
-
-    body{
-      position:relative;
-      min-height:100vh;
-    }
-
-    .bg-overlay{
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      background-image:url('IMG_8395.jpg');
-      background-size:cover;
-      background-position:center;
-      background-repeat:no-repeat;
-      opacity:0.18;
-      filter:grayscale(100%);
-      z-index:-1;
     }
   </style>
 </head>
@@ -513,67 +540,68 @@
       return lines.slice(0, 2);
     }
 
-function makeRecordHtml(name, text, bulls){
-  const lines = splitNote(text);
-  if(!lines.length) return "";
+    function makeRecordHtml(name, text, bulls){
+      const lines = splitNote(text);
+      if(!lines.length) return "";
 
-  const joined = lines.join(" ");
+      const joined = lines.join(" ");
 
-  const hasRecord =
-    /[0-9０-９]+勝/.test(joined) ||
-    /[0-9０-９]+敗/.test(joined) ||
-    /引分/.test(joined);
+      const hasRecord =
+        /[0-9０-９]+勝/.test(joined) ||
+        /[0-9０-９]+敗/.test(joined) ||
+        /引分/.test(joined);
 
-  const currentBullId = findBullIdByName(name, bulls);
+      const currentBullId = findBullIdByName(name, bulls);
 
-  function findBullIdFromLine(line){
-    const cleaned = String(line || "")
-      .replace(/[()（）]/g, "")
-      .replace(/牛主[:：].*$/, "")
-      .trim();
+      function findBullIdFromLine(line){
+        const cleaned = String(line || "")
+          .replace(/[()（）]/g, "")
+          .replace(/牛主[:：].*$/, "")
+          .trim();
 
-    const found = bulls.find(bull => {
-      const targets = getBullSearchTargets(bull);
-      return targets.some(target =>
-        cleaned.includes(target) || target.includes(cleaned)
-      );
-    });
+        const found = bulls.find(bull => {
+          const targets = getBullSearchTargets(bull);
+          return targets.some(target =>
+            cleaned.includes(target) || target.includes(cleaned)
+          );
+        });
 
-    return found ? found.id : null;
-  }
+        return found ? found.id : null;
+      }
 
-  return `
-    <div class="bull-note">
-      ${lines.map(line => {
-        const safeLine = escapeHtml(line);
+      return `
+        <div class="bull-note">
+          ${lines.map(line => {
+            const safeLine = escapeHtml(line);
 
-        if (line.includes("牛主")) {
-          return `<span class="bull-note-line">${safeLine}</span>`;
-        }
+            if (line.includes("牛主")) {
+              return `<span class="bull-note-line">${safeLine}</span>`;
+            }
 
-        if (/デビュー戦/.test(line)) {
-          return `<span class="bull-note-line">${safeLine}</span>`;
-        }
+            if (/デビュー戦/.test(line)) {
+              return `<span class="bull-note-line">${safeLine}</span>`;
+            }
 
-        if (hasRecord) {
-          if (currentBullId && (/[0-9０-９]+勝/.test(line) || /[0-9０-９]+敗/.test(line) || /引分/.test(line))) {
-            return `<span class="bull-note-line"><a href="bull.html?id=${encodeURIComponent(currentBullId)}">${safeLine}</a></span>`;
-          }
-          return `<span class="bull-note-line">${safeLine}</span>`;
-        }
+            if (hasRecord) {
+              if (currentBullId && (/[0-9０-９]+勝/.test(line) || /[0-9０-９]+敗/.test(line) || /引分/.test(line))) {
+                return `<span class="bull-note-line"><a href="bull.html?id=${encodeURIComponent(currentBullId)}">${safeLine}</a></span>`;
+              }
+              return `<span class="bull-note-line">${safeLine}</span>`;
+            }
 
-        if (/元/.test(line)) {
-          const formerBullId = findBullIdFromLine(line);
-          if (formerBullId) {
-            return `<span class="bull-note-line"><a href="bull.html?id=${encodeURIComponent(formerBullId)}">${safeLine}</a></span>`;
-          }
-        }
+            if (/元/.test(line)) {
+              const formerBullId = findBullIdFromLine(line);
+              if (formerBullId) {
+                return `<span class="bull-note-line"><a href="bull.html?id=${encodeURIComponent(formerBullId)}">${safeLine}</a></span>`;
+              }
+            }
 
-        return `<span class="bull-note-line">${safeLine}</span>`;
-      }).join("")}
-    </div>
-  `;
-}
+            return `<span class="bull-note-line">${safeLine}</span>`;
+          }).join("")}
+        </div>
+      `;
+    }
+
     function formatRank(rank){
       const text = String(rank || "").trim();
       if(!text) return "VS";
@@ -654,6 +682,36 @@ function makeRecordHtml(name, text, bulls){
       `;
     }
 
+    function formatBullName(name){
+      if(!name) return "";
+
+      let safe = escapeHtml(name);
+
+      safe = safe.replace(/([^\s])\((.*?)\)([^\s])/g,
+        '$1<br><span class="bull-small">($2)</span><br>$3'
+      );
+
+      safe = safe.replace(/([^\s])〜(.*?)〜([^\s])/g,
+        '$1<br><span class="bull-small">〜$2〜</span><br>$3'
+      );
+
+      safe = safe.replace(/ /g,"<br>");
+
+      const lines = safe.split("<br>").filter(Boolean);
+
+      if(lines.length >= 2){
+        const first = `<div class="bull-top">${lines[0]}</div>`;
+        const last = `<div class="bull-main">${lines[lines.length - 1]}</div>`;
+        const middle = lines.slice(1, -1).map(line => {
+          const cls = line.includes('bull-small') ? 'bull-middle' : 'bull-middle';
+          return `<div class="${cls}">${line}</div>`;
+        }).join("");
+        return first + middle + last;
+      }
+
+      return `<div class="bull-main">${safe}</div>`;
+    }
+
     Promise.all([
       fetch("data/programs.json").then(res => res.json()),
       fetch("data/matches.json").then(res => res.json()),
@@ -688,7 +746,7 @@ function makeRecordHtml(name, text, bulls){
           <td class="area">${escapeHtml(match.east_area || "")}</td>
           <td class="east">
             ${(match.east_sub || "") ? `<div class="subtext">${escapeHtml(match.east_sub)}</div>` : ``}
-            <div class="bull-name">${escapeHtml(match.east || "")}</div>
+            <div class="bull-name">${formatBullName(match.east || "")}</div>
             ${makeRecordHtml(match.east || "", match.east_note || "", bulls)}
           </td>
           <td class="rank">
@@ -697,7 +755,7 @@ function makeRecordHtml(name, text, bulls){
           </td>
           <td class="west">
             ${(match.west_sub || "") ? `<div class="subtext">${escapeHtml(match.west_sub)}</div>` : ``}
-            <div class="bull-name">${escapeHtml(match.west || "")}</div>
+            <div class="bull-name">${formatBullName(match.west || "")}</div>
             ${makeRecordHtml(match.west || "", match.west_note || "", bulls)}
           </td>
           <td class="area">${escapeHtml(match.west_area || "")}</td>
