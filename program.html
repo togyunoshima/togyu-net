@@ -15,7 +15,6 @@
       position:relative;
       min-height:100vh;
     }
-
     .bg-overlay{
       position:fixed;
       inset:0;
@@ -27,12 +26,10 @@
       filter:grayscale(100%);
       z-index:-1;
     }
-
     .container{
       max-width:1100px;
       margin:0 auto;
     }
-
     .top-nav{
       max-width:1100px;
       margin:0 auto 18px;
@@ -40,7 +37,6 @@
       grid-template-columns:repeat(4,1fr);
       gap:8px;
     }
-
     .top-nav a{
       display:block;
       text-align:center;
@@ -53,17 +49,12 @@
       font-weight:800;
       font-size:0.92rem;
     }
-
-    .top-nav a:hover{
-      background:#e60000;
-    }
-
+    .top-nav a:hover{ background:#e60000; }
     .top-nav a.active{
       background:#1a1a1a;
       border-color:#f1c40f;
       color:#f1c40f;
     }
-
     h1{
       text-align:center;
       font-family:'Yuji Syuku', serif;
@@ -82,23 +73,17 @@
       overflow-wrap:anywhere;
       letter-spacing:0.02em;
     }
-
     .event-meta{
       background:rgba(20,20,20,0.8);
       border:1px solid #222;
       margin-bottom:20px;
     }
-
     .meta-row{
       display:grid;
       grid-template-columns:92px 1fr;
       border-bottom:1px solid #333;
     }
-
-    .meta-row:last-child{
-      border-bottom:none;
-    }
-
+    .meta-row:last-child{ border-bottom:none; }
     .meta-label{
       background:rgba(20,20,20,0.72);
       backdrop-filter:blur(4px);
@@ -107,7 +92,6 @@
       padding:12px;
       font-size:0.9rem;
     }
-
     .meta-value{
       padding:12px;
       color:#fff;
@@ -116,26 +100,22 @@
       white-space:normal;
       word-break:break-word;
     }
-
     .program-table-wrap{
       background:rgba(20,20,20,0.8);
       border:1px solid #222;
       overflow-x:hidden;
     }
-
     table{
       width:100%;
       border-collapse:collapse;
       table-layout:fixed;
     }
-
     th, td{
       border:1px solid #333;
       text-align:center;
       vertical-align:top;
       padding:0;
     }
-
     th{
       background:rgba(20,20,20,0.72);
       backdrop-filter:blur(4px);
@@ -144,29 +124,10 @@
       padding:12px 2px;
       font-size:0.92rem;
     }
-
-    th.area-head{
-      background:#222;
-      color:#fff;
-      width:8.5%;
-    }
-
-    th.east-head{
-      background:#b60000;
-      width:37%;
-    }
-
-    th.rank-head{
-      background:#222;
-      color:#f1c40f;
-      width:9%;
-    }
-
-    th.west-head{
-      background:#d9d9d9;
-      color:#222;
-      width:37%;
-    }
+    th.area-head{ background:#222; color:#fff; width:8.5%; }
+    th.east-head{ background:#b60000; width:37%; }
+    th.rank-head{ background:#222; color:#f1c40f; width:9%; }
+    th.west-head{ background:#d9d9d9; color:#222; width:37%; }
 
     td.area{
       background:#0a0a0a;
@@ -178,13 +139,11 @@
       line-height:1.2;
       word-break:break-word;
     }
-
     td.east, td.west{
       width:37%;
       background:#050505;
       padding:8px 4px 10px;
     }
-
     td.rank{
       width:9%;
       background:#0f0f0f;
@@ -199,13 +158,11 @@
       line-height:1.05;
       letter-spacing:0.02em;
     }
-
     .side-tag.east{
       color:#e60000;
       text-align:left;
       font-size:0.58rem;
     }
-
     .side-tag.west{
       color:#4da3ff;
       text-align:right;
@@ -229,25 +186,21 @@
       white-space:normal;
       word-break:break-word;
     }
-
     .bull-top{
       font-size:0.98rem;
       line-height:1.05;
       font-weight:700;
     }
-
     .bull-middle{
       font-size:0.88rem;
       line-height:1.05;
       font-weight:700;
     }
-
     .bull-main{
       font-size:1.40rem;
       line-height:1.05;
       font-weight:800;
     }
-
     .bull-small{
       font-size:0.72em;
       opacity:0.95;
@@ -260,23 +213,19 @@
       font-size:0.78rem;
       line-height:1.14;
     }
-
     .bull-note.note-small{
       font-size:0.70rem;
       line-height:1.12;
     }
-
     .bull-note.note-xsmall{
       font-size:0.63rem;
       line-height:1.10;
     }
-
     .bull-note-line{
       display:block;
       white-space:normal;
       word-break:break-word;
     }
-
     .bull-note a{
       color:#ddd;
       text-decoration:underline;
@@ -292,7 +241,6 @@
       margin-bottom:3px;
       padding:0 1px;
     }
-
     .match-time-placeholder{
       color:#bbb;
       font-size:0.74rem;
@@ -309,13 +257,11 @@
       width:fit-content;
       max-width:100%;
     }
-
     .season-table{
       border-collapse:collapse;
       margin:auto;
       background:rgba(255,255,255,0.04);
     }
-
     .season-table td{
       border:1px solid #333;
       padding:10px 14px;
@@ -323,153 +269,115 @@
       vertical-align:middle;
       background:rgba(255,255,255,0.03);
     }
-
     .season-title{
       font-weight:800;
       color:#fff;
       line-height:1.5;
       min-width:90px;
     }
-
     .season-link{
       color:#7fb3ff;
       text-decoration:underline;
       font-weight:700;
     }
-
     .season-current{
       color:#fff;
       font-weight:800;
     }
-
     .error{
       text-align:center;
       color:#ff8080;
       margin-top:24px;
     }
 
-    .note{
-      color:#888;
-      text-align:center;
-      margin-top:14px;
-      font-size:0.8rem;
-    }
-
     @media (max-width:700px){
-      body{
-        padding:10px 2px 24px;
-      }
-
+      body{ padding:10px 2px 24px; }
       .top-nav{
         gap:4px;
         margin:0 auto 12px;
       }
-
       .top-nav a{
         padding:9px 4px;
         font-size:0.62rem;
       }
-
       h1{
         font-size:1rem;
         line-height:1.7;
         margin:8px 0 16px;
       }
-
-      .meta-row{
-        grid-template-columns:58px 1fr;
-      }
-
+      .meta-row{ grid-template-columns:58px 1fr; }
       .meta-label{
         font-size:0.68rem;
         padding:8px 6px;
       }
-
       .meta-value{
         font-size:0.66rem;
         padding:8px 6px;
         line-height:1.45;
       }
-
       th{
         font-size:0.58rem;
         padding:8px 0;
       }
-
       td.area{
         font-size:0.48rem;
         padding:7px 1px 5px;
         line-height:1.06;
       }
-
       td.east, td.west{
         padding:5px 1px 6px;
       }
-
       td.rank{
         padding:6px 0 5px;
       }
-
       .side-tag{
         min-height:0.45rem;
         margin-bottom:2px;
       }
-
       .side-tag.east,
       .side-tag.west{
         font-size:0.34rem;
       }
-
       .subtext{
         font-size:0.42rem;
         line-height:1.05;
         margin-bottom:2px;
       }
-
       .bull-top{
         font-size:0.50rem;
         line-height:1.02;
       }
-
       .bull-middle{
         font-size:0.44rem;
         line-height:1.02;
       }
-
       .bull-main{
         font-size:0.80rem;
         line-height:1.04;
       }
-
       .bull-note{
         font-size:0.40rem;
         line-height:1.04;
       }
-
       .bull-note.note-small{
         font-size:0.36rem;
       }
-
       .bull-note.note-xsmall{
         font-size:0.32rem;
       }
-
       .rank-name{
         font-size:0.58rem;
         line-height:0.98;
         margin-bottom:2px;
       }
-
       .match-time-placeholder{
         font-size:0.42rem;
         line-height:1.0;
       }
-
       .season-table td{
         padding:8px 10px;
         font-size:0.72rem;
       }
-
       .season-title{
         min-width:72px;
       }
@@ -513,9 +421,7 @@
     </div>
 
     <div id="seasonLinks" class="season-links"></div>
-
     <div class="error" id="error"></div>
-    <div class="note">※ 今の徳之島闘牛サイトの対戦表に近い形で表示しています。</div>
   </div>
 
   <script>
@@ -543,13 +449,13 @@
     function formatJapaneseDate(dateStr){
       if(!dateStr) return "";
       const [y, m, d] = dateStr.split("-");
-      return `${Number(y)}年${Number(m)}月${Number(d)}日`;
+      return Number(y) + "年" + Number(m) + "月" + Number(d) + "日";
     }
 
     function formatDateTime(program){
       const dateText = formatJapaneseDate(program.date || "");
       const start = program.start_time || program.start || "";
-      return start ? `${dateText}　${start}` : dateText;
+      return start ? dateText + "　" + start : dateText;
     }
 
     function splitHostSupport(hostText){
@@ -572,7 +478,10 @@
     }
 
     function normalize(str) {
-      return String(str || "").replace(/\s+/g, "").replace(/[（）()]/g, "").trim();
+      return String(str || "")
+        .replace(/\s+/g, "")
+        .replace(/[（）()]/g, "")
+        .trim();
     }
 
     function normalizeRankKey(rank){
@@ -700,8 +609,8 @@
     }
 
     function formatMonthDay(date){
-      const [,m,d] = date.split("-");
-      return `${Number(m)}月${Number(d)}日`;
+      const parts = date.split("-");
+      return Number(parts[1]) + "月" + Number(parts[2]) + "日";
     }
 
     function renderSeasonLinks(program, programs, pageType){
@@ -710,12 +619,15 @@
         return;
       }
 
-      const [year,month] = program.date.split("-");
+      const ym = program.date.split("-");
+      const year = ym[0];
+      const month = ym[1];
+
       const season = programs
         .filter(p=>{
           if(!p.date) return false;
-          const [y,m] = p.date.split("-");
-          return y===year && m===month;
+          const parts = p.date.split("-");
+          return parts[0] === year && parts[1] === month;
         })
         .sort((a,b)=>a.date.localeCompare(b.date));
 
@@ -727,15 +639,15 @@
       const header = `<td class="season-title" rowspan="2">${year}年<br>${Number(month)}月場所</td>`;
 
       const programRow = season.map(p=>{
-        const label = `${formatMonthDay(p.date)}`;
-        const current = String(p.id)===String(program.id) && pageType==="program";
+        const label = formatMonthDay(p.date);
+        const current = String(p.id) === String(program.id) && pageType === "program";
         return current
           ? `<td><span class="season-current">${label}</span></td>`
           : `<td><a class="season-link" href="program.html?id=${encodeURIComponent(p.id)}">${label}</a></td>`;
       }).join("");
 
       const resultRow = season.map(p=>{
-        const current = String(p.id)===String(program.id) && pageType==="result";
+        const current = String(p.id) === String(program.id) && pageType === "result";
         return current
           ? `<td><span class="season-current">結果</span></td>`
           : `<td><a class="season-link" href="result.html?id=${encodeURIComponent(p.id)}">結果</a></td>`;
@@ -766,18 +678,9 @@
 
       let safe = escapeHtml(name);
 
-      safe = safe.replace(/([^\s])\((.*?)\)([^\s])/g,
-        '$1<br><span class="bull-small">($2)</span><br>$3'
-      );
-
-      safe = safe.replace(/([^\s])[〜~](.*?)[〜~]([^\s])/g,
-        '$1<br><span class="bull-small">〜$2〜</span><br>$3'
-      );
-
-      safe = safe.replace(/([^\s])\s+([A-Za-z0-9★☆'&.\-]+)\s+([^\s])/g,
-        '$1<br><span class="bull-small">$2</span><br>$3'
-      );
-
+      safe = safe.replace(/([^\s])\((.*?)\)([^\s])/g, '$1<br><span class="bull-small">($2)</span><br>$3');
+      safe = safe.replace(/([^\s])[〜~](.*?)[〜~]([^\s])/g, '$1<br><span class="bull-small">〜$2〜</span><br>$3');
+      safe = safe.replace(/([^\s])\s+([A-Za-z0-9★☆'&.\-]+)\s+([^\s])/g, '$1<br><span class="bull-small">$2</span><br>$3');
       safe = safe.replace(/ /g, "<br>");
 
       const lines = safe.split("<br>").filter(Boolean);
@@ -816,49 +719,35 @@
         metaPriceEl.textContent = program.price || "未設定";
       }
 
-      renderSeasonLinks(program, programs, "result");
+      renderSeasonLinks(program, programs, "program");
 
       if (list.length === 0) {
-        bodyEl.innerHTML = `<tr><td colspan="5" style="padding:20px;color:#ff8080;">この大会の結果データはまだありません。</td></tr>`;
+        bodyEl.innerHTML = `<tr><td colspan="5" style="padding:20px;color:#ff8080;">この大会の対戦データはまだありません。</td></tr>`;
         return;
       }
 
-      bodyEl.innerHTML = list.map(match => {
-        const eastName = match.east || "";
-        const westName = match.west || "";
-        const winner = match.winner || "";
-        const isDraw = match.draw === true || match.result === "draw";
-
-        let winnerSide = "";
-        if (!isDraw && normalize(winner) === normalize(eastName)) {
-          winnerSide = "east";
-        } else if (!isDraw && normalize(winner) === normalize(westName)) {
-          winnerSide = "west";
-        }
-
-        return `
-          <tr>
-            <td class="area">${escapeHtml(match.east_area || "")}</td>
-            <td class="east">
-              ${renderSideTag(match.rank || "", "east")}
-              ${(match.east_sub || "") ? `<div class="subtext">${escapeHtml(match.east_sub)}</div>` : ``}
-              <div class="bull-name">${formatBullName(eastName)}</div>
-              ${makeRecordHtml(eastName, match.east_note || "", bulls)}
-            </td>
-            <td class="rank">
-              <div class="rank-name">${formatRank(match.rank || "VS")}</div>
-              ${formatCenterLine(match.time || "不戦勝", winnerSide, isDraw)}
-            </td>
-            <td class="west">
-              ${renderSideTag(match.rank || "", "west")}
-              ${(match.west_sub || "") ? `<div class="subtext">${escapeHtml(match.west_sub)}</div>` : ``}
-              <div class="bull-name">${formatBullName(westName)}</div>
-              ${makeRecordHtml(westName, match.west_note || "", bulls)}
-            </td>
-            <td class="area">${escapeHtml(match.west_area || "")}</td>
-          </tr>
-        `;
-      }).join("");
+      bodyEl.innerHTML = list.map(match => `
+        <tr>
+          <td class="area">${escapeHtml(match.east_area || "")}</td>
+          <td class="east">
+            ${renderSideTag(match.rank || "", "east")}
+            ${(match.east_sub || "") ? `<div class="subtext">${escapeHtml(match.east_sub)}</div>` : ``}
+            <div class="bull-name">${formatBullName(match.east || "")}</div>
+            ${makeRecordHtml(match.east || "", match.east_note || "", bulls)}
+          </td>
+          <td class="rank">
+            <div class="rank-name">${formatRank(match.rank || "VS")}</div>
+            <div class="match-time-placeholder">│ --:-- │</div>
+          </td>
+          <td class="west">
+            ${renderSideTag(match.rank || "", "west")}
+            ${(match.west_sub || "") ? `<div class="subtext">${escapeHtml(match.west_sub)}</div>` : ``}
+            <div class="bull-name">${formatBullName(match.west || "")}</div>
+            ${makeRecordHtml(match.west || "", match.west_note || "", bulls)}
+          </td>
+          <td class="area">${escapeHtml(match.west_area || "")}</td>
+        </tr>
+      `).join("");
     })
     .catch(err => {
       errorEl.textContent = "データの読み込みに失敗しました。";
