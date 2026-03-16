@@ -177,6 +177,7 @@
       padding:12px 2px 8px;
       line-height:1.18;
       word-break:break-word;
+      overflow-wrap:anywhere;
     }
 
     td.east, td.west{
@@ -192,7 +193,7 @@
     }
 
     .cell-inner{
-      min-height:148px;
+      min-height:150px;
       display:flex;
       flex-direction:column;
       justify-content:flex-start;
@@ -232,6 +233,7 @@
       font-weight:700;
       white-space:normal;
       word-break:break-word;
+      overflow-wrap:anywhere;
       min-height:2.35em;
     }
 
@@ -241,8 +243,9 @@
       line-height:1.05;
       white-space:normal;
       word-break:break-word;
+      overflow-wrap:anywhere;
+      min-height:3.4em;
       overflow:visible;
-      min-height:3.35em;
     }
 
     .bull-top{
@@ -274,7 +277,7 @@
       color:#ddd;
       font-size:0.78rem;
       line-height:1.14;
-      min-height:2.5em;
+      min-height:2.6em;
     }
 
     .bull-note.note-small{
@@ -291,6 +294,7 @@
       display:block;
       white-space:normal;
       word-break:break-word;
+      overflow-wrap:anywhere;
       overflow:visible;
     }
 
@@ -300,7 +304,7 @@
     }
 
     .rank-inner{
-      min-height:148px;
+      min-height:150px;
       display:flex;
       flex-direction:column;
       justify-content:center;
@@ -315,6 +319,7 @@
       line-height:1.02;
       white-space:normal;
       word-break:break-word;
+      overflow-wrap:anywhere;
       margin-bottom:3px;
       width:100%;
     }
@@ -432,7 +437,7 @@
 
       .cell-inner,
       .rank-inner{
-        min-height:106px;
+        min-height:112px;
       }
 
       .side-tag{
@@ -453,7 +458,7 @@
       }
 
       .bull-name{
-        min-height:3.1em;
+        min-height:3.15em;
       }
 
       .bull-top{
@@ -474,7 +479,7 @@
       .bull-note{
         font-size:0.40rem;
         line-height:1.04;
-        min-height:2.4em;
+        min-height:2.45em;
       }
 
       .bull-note.note-small{
@@ -844,41 +849,55 @@
         metaPriceEl.textContent = program.price || "未設定";
       }
 
-      renderSeasonLinks(program, programs, "program");
+      renderSeasonLinks(program, programs, "result");
 
       if (list.length === 0) {
-        bodyEl.innerHTML = `<tr><td colspan="5" style="padding:20px;color:#ff8080;">この大会の対戦データはまだありません。</td></tr>`;
+        bodyEl.innerHTML = `<tr><td colspan="5" style="padding:20px;color:#ff8080;">この大会の結果データはまだありません。</td></tr>`;
         return;
       }
 
-      bodyEl.innerHTML = list.map(match => `
-        <tr>
-          <td class="area">${escapeHtml(match.east_area || "")}</td>
-          <td class="east">
-            <div class="cell-inner">
-              ${renderSideTag(match.rank || "", "east")}
-              ${(match.east_sub || "") ? `<div class="subtext">${escapeHtml(match.east_sub)}</div>` : `<div class="subtext"></div>`}
-              <div class="bull-name">${formatBullName(match.east || "")}</div>
-              ${makeRecordHtml(match.east || "", match.east_note || "", bulls)}
-            </div>
-          </td>
-          <td class="rank">
-            <div class="rank-inner">
-              <div class="rank-name">${formatRank(match.rank || "VS")}</div>
-              <div class="match-time-placeholder">│ --:-- │</div>
-            </div>
-          </td>
-          <td class="west">
-            <div class="cell-inner">
-              ${renderSideTag(match.rank || "", "west")}
-              ${(match.west_sub || "") ? `<div class="subtext">${escapeHtml(match.west_sub)}</div>` : `<div class="subtext"></div>`}
-              <div class="bull-name">${formatBullName(match.west || "")}</div>
-              ${makeRecordHtml(match.west || "", match.west_note || "", bulls)}
-            </div>
-          </td>
-          <td class="area">${escapeHtml(match.west_area || "")}</td>
-        </tr>
-      `).join("");
+      bodyEl.innerHTML = list.map(match => {
+        const eastName = match.east || "";
+        const westName = match.west || "";
+        const winner = match.winner || "";
+        const isDraw = match.draw === true || match.result === "draw";
+
+        let winnerSide = "";
+        if (!isDraw && normalize(winner) === normalize(eastName)) {
+          winnerSide = "east";
+        } else if (!isDraw && normalize(winner) === normalize(westName)) {
+          winnerSide = "west";
+        }
+
+        return `
+          <tr>
+            <td class="area">${escapeHtml(match.east_area || "")}</td>
+            <td class="east">
+              <div class="cell-inner">
+                ${renderSideTag(match.rank || "", "east")}
+                ${(match.east_sub || "") ? `<div class="subtext">${escapeHtml(match.east_sub)}</div>` : `<div class="subtext"></div>`}
+                <div class="bull-name">${formatBullName(eastName)}</div>
+                ${makeRecordHtml(eastName, match.east_note || "", bulls)}
+              </div>
+            </td>
+            <td class="rank">
+              <div class="rank-inner">
+                <div class="rank-name">${formatRank(match.rank || "VS")}</div>
+                ${formatCenterLine(match.time || "不戦勝", winnerSide, isDraw)}
+              </div>
+            </td>
+            <td class="west">
+              <div class="cell-inner">
+                ${renderSideTag(match.rank || "", "west")}
+                ${(match.west_sub || "") ? `<div class="subtext">${escapeHtml(match.west_sub)}</div>` : `<div class="subtext"></div>`}
+                <div class="bull-name">${formatBullName(westName)}</div>
+                ${makeRecordHtml(westName, match.west_note || "", bulls)}
+              </div>
+            </td>
+            <td class="area">${escapeHtml(match.west_area || "")}</td>
+          </tr>
+        `;
+      }).join("");
     })
     .catch(err => {
       errorEl.textContent = "データの読み込みに失敗しました。";
