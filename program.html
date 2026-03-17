@@ -647,7 +647,7 @@
       return "";
     }
 
-    function makeRecordHtml(name, text, bulls){
+function makeRecordHtml(name, text, bulls){
   const parts = splitNoteParts(text);
   if(!parts.record && !parts.former && !parts.owner) return "";
 
@@ -734,57 +734,6 @@
     </div>
   `;
 }
-
-      function findBullIdFromText(line){
-        const cleaned = String(line || "")
-          .replace(/[()（）]/g, "")
-          .replace(/牛主[:：].*$/, "")
-          .trim();
-
-        const found = bulls.find(bull => {
-          const targets = getBullSearchTargets(bull);
-          return targets.some(target =>
-            cleaned.includes(target) || target.includes(cleaned)
-          );
-        });
-
-        return found ? found.id : null;
-      }
-
-      const rows = [];
-
-      if(parts.record){
-        const safeRecord = escapeHtml(parts.record);
-        const hasRecord =
-          /[0-9０-９]+勝/.test(parts.record) ||
-          /[0-9０-９]+敗/.test(parts.record) ||
-          /引分/.test(parts.record);
-
-        if(hasRecord && currentBullId){
-          rows.push(`<span class="bull-note-line"><a href="bull.html?id=${encodeURIComponent(currentBullId)}">${safeRecord}</a></span>`);
-        }else{
-          rows.push(`<span class="bull-note-line">${safeRecord}</span>`);
-        }
-      }
-
-      if(parts.former){
-        const safeFormer = escapeHtml(parts.former);
-        const formerBullId = findBullIdFromText(parts.former);
-
-        if(!parts.record && formerBullId){
-          rows.push(`<span class="bull-note-line"><a href="bull.html?id=${encodeURIComponent(formerBullId)}">${safeFormer}</a></span>`);
-        }else{
-          rows.push(`<span class="bull-note-line">${safeFormer}</span>`);
-        }
-      }
-
-      if(parts.owner){
-        rows.push(`<span class="bull-note-line">${escapeHtml(parts.owner)}</span>`);
-      }
-
-      return `<div class="bull-note ${noteClass}">${rows.join("")}</div>`;
-    }
-
     function formatRank(rank){
       const text = String(rank || "").trim();
       if(!text) return "VS";
