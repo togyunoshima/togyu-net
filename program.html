@@ -257,18 +257,18 @@
 
     .bull-note{
       color:#ddd;
-      font-size:0.90rem;
+      font-size:0.86rem;
       line-height:1.04;
-      margin-top:-2px;
+      margin-top:-4px;
     }
 
     .bull-note.note-small{
-      font-size:0.82rem;
+      font-size:0.79rem;
       line-height:1.03;
     }
 
     .bull-note.note-xsmall{
-      font-size:0.74rem;
+      font-size:0.71rem;
       line-height:1.02;
     }
 
@@ -447,13 +447,13 @@
       }
 
       .bull-note{
-        font-size:0.44rem;
+        font-size:0.43rem;
         line-height:1.04;
-        margin-top:-1px
+        margin-top:-2px
       }
 
       .bull-note.note-small{
-        font-size:0.40rem;
+        font-size:0.39rem;
       }
 
       .bull-note.note-xsmall{
@@ -642,19 +642,98 @@
 
     function getNoteClass(text){
       const len = String(text || "").replace(/\s+/g, "").length;
-      if(len >= 34) return "note-xsmall";
-      if(len >= 22) return "note-small";
+      if(len >= 44) return "note-xsmall";
+      if(len >= 28) return "note-small";
       return "";
     }
 
     function makeRecordHtml(name, text, bulls){
-      const parts = splitNoteParts(text);
-      if(!parts.record && !parts.former && !parts.owner) return "";
+  const parts = splitNoteParts(text);
+  if(!parts.record && !parts.former && !parts.owner) return "";
 
-      const joined = [parts.record, parts.former, parts.owner].filter(Boolean).join(" ");
-      const noteClass = getNoteClass(joined);
+  const currentBullId = findBullIdByName(name, bulls);
 
-      const currentBullId = findBullIdByName(name, bulls);
+  function findBullIdFromText(line){
+    const cleaned = String(line || "")
+      .replace(/[()（）]/g, "")
+      .replace(/牛主[:：].*$/, "")
+      .replace(/^元\s*/, "")
+      .trim();
+
+    const found = bulls.find(bull => {
+      const targets = getBullSearchTargets(bull);
+      return targets.some(target =>
+        cleaned.includes(target) || target.includes(cleaned)
+      );
+    });
+
+    return found ? found.id : null;
+  }
+
+  const recordSafe = parts.record ? escapeHtml(parts.record) : "";
+  const formerSafe = parts.former ? escapeHtml(parts.former) : "";
+  const ownerSafe = parts.owner ? escapeHtml(parts.owner) : "";
+
+  let recordHtml = "";
+  let formerHtml = "";
+  let ownerHtml = "";
+
+  const hasRecord =
+    /[0-9０-９]+勝/.test(parts.record || "") ||
+    /[0-9０-９]+敗/.test(parts.record || "") ||
+    /引分/.test(parts.record || "");
+
+  if(parts.record){
+    if(hasRecord && currentBullId){
+      recordHtml = `<a href="bull.html?id=${encodeURIComponent(currentBullId)}">${recordSafe}</a>`;
+    }else{
+      recordHtml = recordSafe;
+    }
+  }
+
+  if(parts.former){
+    const formerBullId = findBullIdFromText(parts.former);
+    if(!parts.record && formerBullId){
+      formerHtml = `<a href="bull.html?id=${encodeURIComponent(formerBullId)}">${formerSafe}</a>`;
+    }else{
+      formerHtml = formerSafe;
+    }
+  }
+
+  if(parts.owner){
+    ownerHtml = ownerSafe;
+  }
+
+  const topLine = [recordHtml, formerHtml].filter(Boolean).join(" ");
+  const oneLine = [topLine, ownerHtml].filter(Boolean).join(" ");
+
+  const noteClass = getNoteClass(oneLine);
+
+  const totalLen = String(parts.record || "").length + String(parts.former || "").length + String(parts.owner || "").length;
+
+  if(totalLen <= 26){
+    return `
+      <div class="bull-note ${noteClass}">
+        <span class="bull-note-line">${oneLine}</span>
+      </div>
+    `;
+  }
+
+  if(topLine && ownerHtml){
+    return `
+      <div class="bull-note ${noteClass}">
+        <span class="bull-note-line">${topLine}</span>
+        <span class="bull-note-line">${ownerHtml}</span>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="bull-note ${noteClass}">
+      <span class="bull-note-line">${oneLine}</span>
+    </div>
+  `;
+}
 
       function findBullIdFromText(line){
         const cleaned = String(line || "")
