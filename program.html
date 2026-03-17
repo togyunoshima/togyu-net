@@ -423,8 +423,8 @@
       }
 
       .bull-name{
-        margin-bottom:0px;
-        min-height:1.95em;
+        margin-bottom:1px;
+        min-height:1.9em;
       }
 
       .bull-top{
@@ -438,7 +438,7 @@
       }
 
       .bull-main{
-        font-size:0.78rem;
+        font-size:0.75rem;
         line-height:1.04;
       }
 
@@ -610,27 +610,26 @@
       return found ? found.id : null;
     }
 
-    function splitNoteParts(text){
+   function splitNoteParts(text){
   const raw = String(text || "").trim();
   if(!raw) return {record:"", former:"", owner:""};
 
-  const normalized = raw.replaceAll("/", " ").replace(/\s+/g, " ").trim();
+  let normalized = raw.replaceAll("/", " ").replace(/\s+/g, " ").trim();
 
-  const ownerMatch = normalized.match(/\(?牛主[:：][^)]+\)?/);
-  const owner = ownerMatch ? ownerMatch[0].trim() : "";
-
-  let remain = normalized;
-  if(owner){
-    remain = remain.replace(owner, "").trim();
+  let owner = "";
+  const ownerMatch = normalized.match(/\(?(牛主[:：][^)]+)\)?/);
+  if(ownerMatch){
+    owner = ownerMatch[0].trim();
+    normalized = normalized.replace(ownerMatch[0], "").trim();
   }
 
   let former = "";
-  let record = remain;
+  let record = normalized;
 
-  const formerMatch = remain.match(/(元\s*(?:沖縄\s*)?[^ ]+(?:\s+[^ ]+)*)$/);
+  const formerMatch = normalized.match(/(元\s*(?:沖縄\s*)?[^ ]+(?:\s+[^ ]+)*)$/);
   if(formerMatch){
     former = formerMatch[1].trim();
-    record = remain.replace(formerMatch[1], "").trim();
+    record = normalized.slice(0, normalized.length - formerMatch[1].length).trim();
   }
 
   return {
@@ -639,7 +638,6 @@
     owner: owner || ""
   };
 }
-
     function getNoteClass(text){
       const len = String(text || "").replace(/\s+/g, "").length;
       if(len >= 44) return "note-xsmall";
@@ -670,10 +668,6 @@ function makeRecordHtml(name, text, bulls){
     return found ? found.id : null;
   }
 
-  const recordSafe = parts.record ? escapeHtml(parts.record) : "";
-  const formerSafe = parts.former ? escapeHtml(parts.former) : "";
-  const ownerSafe = parts.owner ? escapeHtml(parts.owner) : "";
-
   let recordHtml = "";
   let formerHtml = "";
   let ownerHtml = "";
@@ -681,37 +675,46 @@ function makeRecordHtml(name, text, bulls){
   const hasRecord =
     /[0-9０-９]+勝/.test(parts.record || "") ||
     /[0-9０-９]+敗/.test(parts.record || "") ||
-    /引分/.test(parts.record || "");
+    /引分/.test(parts.record || "") ||
+    /デビュー戦/.test(parts.record || "");
 
   if(parts.record){
+    const safe = escapeHtml(parts.record);
     if(hasRecord && currentBullId){
-      recordHtml = `<a href="bull.html?id=${encodeURIComponent(currentBullId)}">${recordSafe}</a>`;
+      recordHtml = `<a href="bull.html?id=${encodeURIComponent(currentBullId)}">${safe}</a>`;
     }else{
-      recordHtml = recordSafe;
+      recordHtml = safe;
     }
   }
 
   if(parts.former){
+    const safe = escapeHtml(parts.former);
     const formerBullId = findBullIdFromText(parts.former);
+
     if(!parts.record && formerBullId){
-      formerHtml = `<a href="bull.html?id=${encodeURIComponent(formerBullId)}">${formerSafe}</a>`;
+      formerHtml = `<a href="bull.html?id=${encodeURIComponent(formerBullId)}">${safe}</a>`;
     }else{
-      formerHtml = formerSafe;
+      formerHtml = safe;
     }
   }
 
   if(parts.owner){
-    ownerHtml = ownerSafe;
+    ownerHtml = escapeHtml(parts.owner);
   }
 
   const topLine = [recordHtml, formerHtml].filter(Boolean).join(" ");
   const oneLine = [topLine, ownerHtml].filter(Boolean).join(" ");
 
-  const noteClass = getNoteClass(oneLine);
+  const plainLen =
+    String(parts.record || "").length +
+    String(parts.former || "").length +
+    String(parts.owner || "").length;
 
-  const totalLen = String(parts.record || "").length + String(parts.former || "").length + String(parts.owner || "").length;
+  let noteClass = "";
+  if(plainLen >= 40) noteClass = "note-xsmall";
+  else if(plainLen >= 26) noteClass = "note-small";
 
-  if(totalLen <= 26){
+  if(plainLen <= 24){
     return `
       <div class="bull-note ${noteClass}">
         <span class="bull-note-line">${oneLine}</span>
@@ -744,32 +747,32 @@ function makeRecordHtml(name, text, bulls){
     }
 
     function getRankScore(rank){
-      const tokens = String(rank || "").trim().split(/\s+/).filter(Boolean);
-      const longest = tokens.reduce((m, t) => Math.max(m, t.length), 0);
-      const total = tokens.join("").length;
-      return longest * 2.4 + total;
-    }
+  const tokens = String(rank || "").trim().split(/\s+/).filter(Boolean);
+  const longest = tokens.reduce((m, t) => Math.max(m, t.length), 0);
+  const total = tokens.join("").length;
+  const lines = tokens.length || 1;
+  return longest * 2 + total * 0.75 + lines * 1.2;
+}
 
-    function adjustRankColumnWidth(list){
-      let maxScore = 0;
-      list.forEach(match => {
-        maxScore = Math.max(maxScore, getRankScore(match.rank || ""));
-      });
+function adjustRankColumnWidth(list){
+  let maxScore = 0;
+  list.forEach(match => {
+    maxScore = Math.max(maxScore, getRankScore(match.rank || ""));
+  });
 
-      let rankWidth = 22;
-      if(maxScore >= 38) rankWidth = 30;
-      else if(maxScore >= 32) rankWidth = 28;
-      else if(maxScore >= 26) rankWidth = 26;
-      else if(maxScore >= 20) rankWidth = 24;
-      else rankWidth = 22;
+  let rankWidth = 20;
+  if(maxScore >= 30) rankWidth = 24;
+  else if(maxScore >= 25) rankWidth = 22;
+  else if(maxScore >= 20) rankWidth = 21;
+  else rankWidth = 20;
 
-      const areaWidth = 10;
-      const sideWidth = (100 - areaWidth * 2 - rankWidth) / 2;
+  const areaWidth = 10;
+  const sideWidth = (100 - areaWidth * 2 - rankWidth) / 2;
 
-      document.documentElement.style.setProperty("--area-col", areaWidth + "%");
-      document.documentElement.style.setProperty("--rank-col", rankWidth + "%");
-      document.documentElement.style.setProperty("--side-col", sideWidth + "%");
-    }
+  document.documentElement.style.setProperty("--area-col", areaWidth + "%");
+  document.documentElement.style.setProperty("--rank-col", rankWidth + "%");
+  document.documentElement.style.setProperty("--side-col", sideWidth + "%");
+}
 
     function formatMonthDay(date){
       const [,m,d] = date.split("-");
@@ -893,6 +896,7 @@ function isPrefixSmallToken(token){
     /^.+会$/.test(t) ||
     /^.+同志会$/.test(t) ||
     /^.+従業員$/.test(t) ||
+    /^.Bar shinka$/.test(t) ||
     /^.+友人会$/.test(t)
   );
 }
