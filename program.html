@@ -668,7 +668,7 @@
     }
 
     function formatCenterLine(time, side, isDraw){
-      const t = time ? escapeHtml(time) : "--:--";
+      const t = "VS";
 
       if (isDraw) {
         return `
@@ -867,17 +867,6 @@
       }
 
       bodyEl.innerHTML = list.map(match => {
-        const eastName = match.east || "";
-        const westName = match.west || "";
-        const winner = match.winner || "";
-        const isDraw = match.draw === true || match.result === "draw";
-
-        let winnerSide = "";
-        if (!isDraw && normalize(winner) === normalize(eastName)) {
-          winnerSide = "east";
-        } else if (!isDraw && normalize(winner) === normalize(westName)) {
-          winnerSide = "west";
-        }
 
         return `
           <tr>
@@ -890,7 +879,7 @@
             </td>
             <td class="rank">
               <div class="rank-name">${formatRank(match.rank || "VS")}</div>
-              ${formatCenterLine(match.time || "不戦勝", winnerSide, isDraw)}
+              ${formatCenterLine("", "", false)}
             </td>
             <td class="west">
               ${renderSideTag(match.rank || "", "west")}
