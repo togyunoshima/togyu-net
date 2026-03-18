@@ -551,6 +551,10 @@
     const errorEl = document.getElementById("error");
     const seasonLinksEl = document.getElementById("seasonLinks");
 
+
+    function makeRecordHtml(name, text, bulls){
+      return `<div class="bull-note">${text || ""}</div>`;
+    }
     function isRealRecord(text){
       return (
         /[0-9０-９]+勝/.test(text) ||
