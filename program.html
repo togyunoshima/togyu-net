@@ -89,16 +89,17 @@ a {
 <div id="program-container"></div>
 
 <script>
-fetch("data/programs.json")
-.then(res => res.json())
-.then(data => {
+Promise.all([
+  fetch("data/programs.json").then(res => res.json()),
+  fetch("data/matches.json").then(res => res.json())
+])
+.then(([programs, matches]) => {
 
   const container = document.getElementById("program-container");
   container.innerHTML = "";
 
-  data.forEach(event => {
+  programs.forEach(event => {
 
-    // ===== 基本情報 =====
     const header = document.createElement("div");
     header.className = "program-header";
     header.innerHTML = `
@@ -112,7 +113,10 @@ fetch("data/programs.json")
     const table = document.createElement("div");
     table.className = "match-table";
 
-    event.matches.forEach(match => {
+    // 🔥 ここが重要：日付で一致させる
+    const eventMatches = matches.filter(m => m.date === event.date);
+
+    eventMatches.forEach(match => {
 
       const east = match.east || {};
       const west = match.west || {};
@@ -120,21 +124,14 @@ fetch("data/programs.json")
       const row = document.createElement("div");
       row.className = "match-row";
 
-      // ===== 戦歴リンク =====
       function makeRecord(record) {
         if (!record) return "";
-
-        if (
-          record.includes("勝") ||
-          record.includes("敗") ||
-          record.includes("連勝")
-        ) {
+        if (record.includes("勝") || record.includes("連勝")) {
           return `<a href="#">${record}</a>`;
         }
         return record;
       }
 
-      // ===== 改行＆サイズ調整 =====
       function format(record, owner) {
         const text = (record || "") + (owner || "");
 
@@ -177,9 +174,6 @@ fetch("data/programs.json")
     container.appendChild(table);
   });
 
-})
-.catch(err => {
-  console.log("エラー:", err);
 });
 </script>
 
