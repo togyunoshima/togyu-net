@@ -657,65 +657,29 @@
       return "";
     }
 
-function makeRecordHtml(name, text, bulls){
-  const parts = splitNoteParts(text);
+function splitNoteParts(text){
+  const t = String(text || "").trim();
 
-  let recordHtml = "";
-  let ownerHtml = "";
+  let record = "";
+  let former = "";
+  let owner = "";
 
-  // 牛のID取得
-  const currentBullId = findBullIdByName(name, bulls);
-
-  // 戦歴リンク判定
-  function isRealRecord(text){
-    return (
-      /[0-9０-９]+勝/.test(text) ||
-      /[0-9０-９]+敗/.test(text) ||
-      /連勝/.test(text) ||
-      /引分/.test(text)
-    );
+  const ownerMatch = t.match(/（?牛主[:：][^）)]*）?/);
+  if(ownerMatch){
+    owner = ownerMatch[0];
   }
 
-  // 戦歴
-  if(parts.record){
-    const safe = escapeHtml(parts.record);
-
-    const shouldLink =
-      isRealRecord(parts.record) && currentBullId;
-
-    // 👇これが一番重要（絶対この形）
-    recordHtml = shouldLink
-      ? `<a href="bull.html?id=${encodeURIComponent(currentBullId)}">${safe}</a>`
-      : safe;
+  const formerMatch = t.match(/元[^（(]+/);
+  if(formerMatch){
+    former = formerMatch[0];
   }
 
-  // 牛主（リンクなし）
-  if(parts.owner){
-    ownerHtml = escapeHtml(parts.owner);
-  }
+  record = t
+    .replace(owner, "")
+    .replace(former, "")
+    .trim();
 
-  // 改行判定
-  const totalLength =
-    (parts.record || "").length +
-    (parts.owner || "").length;
-
-  const forceSplit = totalLength >= 18;
-
-  // 表示
-  if(!forceSplit){
-    return `
-      <div class="bull-note">
-        <span>${recordHtml} ${ownerHtml}</span>
-      </div>
-    `;
-  }
-
-  return `
-    <div class="bull-note">
-      <span>${recordHtml}</span>
-      <span class="owner-line">${ownerHtml}</span>
-    </div>
-  `;
+  return {record, former, owner};
 }
 
   if(parts.former){
