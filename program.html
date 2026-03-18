@@ -1003,7 +1003,7 @@ window.addEventListener("error", function(e){
 function safeMakeRecord(name, text, bulls){
   try{
     if(typeof makeRecordHtml === "function"){
-      return makeRecordHtml(name, text, bulls);
+      return safeMakeRecord(name, text, bulls);
     }
   }catch(e){}
   return `<div class="bull-note">${text || ""}</div>`;
