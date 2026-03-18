@@ -225,7 +225,7 @@
       color:#fff;
       margin:0px;
       line-height:1.01;
-      min-height:2em;
+      min-height:2.5em;
       word-break:break-word;
       overflow-wrap:anywhere;
     }
@@ -613,32 +613,31 @@
     }
 
    function splitNoteParts(text){
-  const raw = String(text || "").trim();
-  if(!raw) return {record:"", former:"", owner:""};
+  const t = String(text || "").trim();
 
-  let normalized = raw.replaceAll("/", " ").replace(/\s+/g, " ").trim();
-
-  let owner = "";
-  const ownerMatch = normalized.match(/\(?(牛主[:：][^)]+)\)?/);
-  if(ownerMatch){
-    owner = ownerMatch[0].trim();
-    normalized = normalized.replace(ownerMatch[0], "").trim();
-  }
-
+  let record = "";
   let former = "";
-  let record = normalized;
+  let owner = "";
 
-  const formerMatch = normalized.match(/(元\s*(?:沖縄\s*)?[^ ]+(?:\s+[^ ]+)*)$/);
-  if(formerMatch){
-    former = formerMatch[1].trim();
-    record = normalized.slice(0, normalized.length - formerMatch[1].length).trim();
+  // 牛主
+  const ownerMatch = t.match(/（?牛主[:：][^）)]*）?/);
+  if(ownerMatch){
+    owner = ownerMatch[0];
   }
 
-  return {
-    record: record || "",
-    former: former || "",
-    owner: owner || ""
-  };
+  // 元〇〇
+  const formerMatch = t.match(/元[^（(]+/);
+  if(formerMatch){
+    former = formerMatch[0];
+  }
+
+  // 戦歴（牛主と元を除いた残り）
+  record = t
+    .replace(owner, "")
+    .replace(former, "")
+    .trim();
+
+  return {record, former, owner};
 }
     function getNoteClass(text){
       const len = String(text || "").replace(/\s+/g, "").length;
