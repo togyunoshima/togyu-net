@@ -996,6 +996,18 @@ function formatBullName(name){
       errorEl.textContent = "データの読み込みに失敗しました。";
       console.error(err);
     });
+window.addEventListener("error", function(e){
+  console.log("エラー止まってる:", e.message);
+});
+
+function safeMakeRecord(name, text, bulls){
+  try{
+    if(typeof makeRecordHtml === "function"){
+      return makeRecordHtml(name, text, bulls);
+    }
+  }catch(e){}
+  return `<div class="bull-note">${text || ""}</div>`;
+}    
   </script>
 </body>
 </html>
