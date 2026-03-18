@@ -668,34 +668,29 @@ function makeRecordHtml(name, text, bulls){
     return found ? found.id : null;
   }
 
-  let recordHtml = "";
-  let formerHtml = "";
-  let ownerHtml = "";
-
   const hasRecord =
     /[0-9０-９]+勝/.test(parts.record || "") ||
     /[0-9０-９]+敗/.test(parts.record || "") ||
     /引分/.test(parts.record || "") ||
     /デビュー戦/.test(parts.record || "");
 
+  let recordHtml = "";
+  let formerHtml = "";
+  let ownerHtml = "";
+
   if(parts.record){
     const safe = escapeHtml(parts.record);
-    if(hasRecord && currentBullId){
-      recordHtml = `<a href="bull.html?id=${encodeURIComponent(currentBullId)}">${safe}</a>`;
-    }else{
-      recordHtml = safe;
-    }
+    recordHtml = (hasRecord && currentBullId)
+      ? `<a href="bull.html?id=${encodeURIComponent(currentBullId)}">${safe}</a>`
+      : safe;
   }
 
   if(parts.former){
     const safe = escapeHtml(parts.former);
     const formerBullId = findBullIdFromText(parts.former);
-
-    if(!parts.record && formerBullId){
-      formerHtml = `<a href="bull.html?id=${encodeURIComponent(formerBullId)}">${safe}</a>`;
-    }else{
-      formerHtml = safe;
-    }
+    formerHtml = (!parts.record && formerBullId)
+      ? `<a href="bull.html?id=${encodeURIComponent(formerBullId)}">${safe}</a>`
+      : safe;
   }
 
   if(parts.owner){
@@ -711,10 +706,16 @@ function makeRecordHtml(name, text, bulls){
     String(parts.owner || "").length;
 
   let noteClass = "";
-  if(plainLen >= 40) noteClass = "note-xsmall";
-  else if(plainLen >= 26) noteClass = "note-small";
+  if(plainLen >= 42) noteClass = "note-xsmall";
+  else if(plainLen >= 28) noteClass = "note-small";
 
-  if(plainLen <= 24){
+  const shouldSplit =
+    plainLen >= 22 ||
+    String(parts.owner || "").length >= 12 ||
+    /調教師/.test(parts.record || "") ||
+    /代表/.test(parts.record || "");
+
+  if(!shouldSplit){
     return `
       <div class="bull-note ${noteClass}">
         <span class="bull-note-line">${oneLine}</span>
