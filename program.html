@@ -481,6 +481,17 @@
       .season-title{
         min-width:72px;
       }
+      .owner-line{
+        display:block;
+        font-size:0.85em;
+        overflow-wrap:anywhere;
+     }
+
+      .owner-line{
+        transform:scale(0.95);
+        transform-origin:left;
+     }   
+      
     }
   </style>
 </head>
@@ -545,6 +556,14 @@
     const errorEl = document.getElementById("error");
     const seasonLinksEl = document.getElementById("seasonLinks");
 
+    function isRealRecord(text){
+      return (
+        /[0-9０-９]+勝/.test(text) ||
+        /[0-9０-９]+敗/.test(text) ||
+        /連勝/.test(text) ||
+        /引分/.test(text)
+      );
+    }
     function escapeHtml(str) {
       return String(str || "")
         .replaceAll("&", "&amp;")
@@ -668,23 +687,19 @@ function makeRecordHtml(name, text, bulls){
 
     return found ? found.id : null;
   }
-
-  const hasRecord =
-    /[0-9０-９]+勝/.test(parts.record || "") ||
-    /[0-9０-９]+敗/.test(parts.record || "") ||
-    /引分/.test(parts.record || "") ||
-    /デビュー戦/.test(parts.record || "");
-
+  
   let recordHtml = "";
   let formerHtml = "";
   let ownerHtml = "";
 
-  if(parts.record){
-    const safe = escapeHtml(parts.record);
-    recordHtml = (hasRecord && currentBullId)
-      ? `<a href="bull.html?id=${encodeURIComponent(currentBullId)}">${safe}</a>`
-      : safe;
-  }
+  function isRealRecord(text){
+  return (
+    /[0-9０-９]+勝/.test(text) ||
+    /[0-9０-９]+敗/.test(text) ||
+    /連勝/.test(text) ||
+    /引分/.test(text)
+  );
+}
 
   if(parts.former){
     const safe = escapeHtml(parts.former);
@@ -697,7 +712,10 @@ function makeRecordHtml(name, text, bulls){
   if(parts.owner){
     ownerHtml = escapeHtml(parts.owner);
   }
-
+  const totalLength =
+   (parts.record || "").length +
+   (parts.owner || "").length;
+  const forceSplit = totalLength >= 18;
   const topLine = [recordHtml, formerHtml].filter(Boolean).join(" ");
   const oneLine = [topLine, ownerHtml].filter(Boolean).join(" ");
 
