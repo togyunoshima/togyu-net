@@ -503,6 +503,8 @@
 
     <h1 id="pageTitle">対戦表</h1>
 
+    <div id="program-container"></div>
+    
     <div class="event-meta">
       <div class="meta-row"><div class="meta-label">日時</div><div class="meta-value" id="metaDate">読み込み中...</div></div>
       <div class="meta-row"><div class="meta-label">場所</div><div class="meta-value" id="metaPlace">読み込み中...</div></div>
@@ -542,21 +544,72 @@
 fetch("data/programs.json")
   .then(res => res.json())
   .then(data => {
+
     const container = document.getElementById("program-container");
-    if(!container) return;
+    if (!container) return;
 
     container.innerHTML = "";
 
     data.forEach(event => {
-      const div = document.createElement("div");
-      div.innerHTML = `
-        <h2>${event.title || ""}</h2>
+
+      const block = document.createElement("div");
+      block.className = "program-block";
+
+      // 基本情報
+      block.innerHTML = `
+        <div class="program-header">
+          <div>日時：${event.date || ""}</div>
+          <div>場所：${event.place || ""}</div>
+          <div>主催：${event.host || ""}</div>
+          <div>入場料：${event.price || ""}</div>
+        </div>
       `;
-      container.appendChild(div);
+
+      // 試合
+      if (event.matches && event.matches.length > 0) {
+
+        const table = document.createElement("div");
+        table.className = "match-table";
+
+        event.matches.forEach(match => {
+
+          const row = document.createElement("div");
+          row.className = "match-row";
+
+          // 東
+          const east = match.east || {};
+          const west = match.west || {};
+
+          row.innerHTML = `
+            <div class="east">
+              <div class="name">${east.name || ""}</div>
+              <div class="record">${east.record || ""}</div>
+              <div class="owner">${east.owner || ""}</div>
+            </div>
+
+            <div class="rank">
+              ${match.rank || ""}
+            </div>
+
+            <div class="west">
+              <div class="name">${west.name || ""}</div>
+              <div class="record">${west.record || ""}</div>
+              <div class="owner">${west.owner || ""}</div>
+            </div>
+          `;
+
+          table.appendChild(row);
+        });
+
+        block.appendChild(table);
+      }
+
+      container.appendChild(block);
     });
+
   })
   .catch(err => {
-    console.log("読み込みエラー", err);
+    console.log("エラー:", err);
   });
 </script>
 </body>
