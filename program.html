@@ -486,11 +486,6 @@
         font-size:0.85em;
         overflow-wrap:anywhere;
      }
-
-      .owner-line{
-        transform:scale(0.95);
-        transform-origin:left;
-     }   
       
     }
   </style>
@@ -638,19 +633,16 @@
   let former = "";
   let owner = "";
 
-  // 牛主
   const ownerMatch = t.match(/（?牛主[:：][^）)]*）?/);
   if(ownerMatch){
     owner = ownerMatch[0];
   }
 
-  // 元〇〇
   const formerMatch = t.match(/元[^（(]+/);
   if(formerMatch){
     former = formerMatch[0];
   }
 
-  // 戦歴（牛主と元を除いた残り）
   record = t
     .replace(owner, "")
     .replace(former, "")
@@ -667,38 +659,63 @@
 
 function makeRecordHtml(name, text, bulls){
   const parts = splitNoteParts(text);
-  if(!parts.record && !parts.former && !parts.owner) return "";
 
-  const currentBullId = findBullIdByName(name, bulls);
-
-  function findBullIdFromText(line){
-    const cleaned = String(line || "")
-      .replace(/[()（）]/g, "")
-      .replace(/牛主[:：].*$/, "")
-      .replace(/^元\s*/, "")
-      .trim();
-
-    const found = bulls.find(bull => {
-      const targets = getBullSearchTargets(bull);
-      return targets.some(target =>
-        cleaned.includes(target) || target.includes(cleaned)
-      );
-    });
-
-    return found ? found.id : null;
-  }
-  
   let recordHtml = "";
-  let formerHtml = "";
   let ownerHtml = "";
 
+  // 牛のID取得
+  const currentBullId = findBullIdByName(name, bulls);
+
+  // 戦歴リンク判定
   function isRealRecord(text){
-  return (
-    /[0-9０-９]+勝/.test(text) ||
-    /[0-9０-９]+敗/.test(text) ||
-    /連勝/.test(text) ||
-    /引分/.test(text)
-  );
+    return (
+      /[0-9０-９]+勝/.test(text) ||
+      /[0-9０-９]+敗/.test(text) ||
+      /連勝/.test(text) ||
+      /引分/.test(text)
+    );
+  }
+
+  // 戦歴
+  if(parts.record){
+    const safe = escapeHtml(parts.record);
+
+    const shouldLink =
+      isRealRecord(parts.record) && currentBullId;
+
+    // 👇これが一番重要（絶対この形）
+    recordHtml = shouldLink
+      ? `<a href="bull.html?id=${encodeURIComponent(currentBullId)}">${safe}</a>`
+      : safe;
+  }
+
+  // 牛主（リンクなし）
+  if(parts.owner){
+    ownerHtml = escapeHtml(parts.owner);
+  }
+
+  // 改行判定
+  const totalLength =
+    (parts.record || "").length +
+    (parts.owner || "").length;
+
+  const forceSplit = totalLength >= 18;
+
+  // 表示
+  if(!forceSplit){
+    return `
+      <div class="bull-note">
+        <span>${recordHtml} ${ownerHtml}</span>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="bull-note">
+      <span>${recordHtml}</span>
+      <span class="owner-line">${ownerHtml}</span>
+    </div>
+  `;
 }
 
   if(parts.former){
