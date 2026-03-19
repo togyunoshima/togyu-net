@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>対戦表 | 徳之島闘牛サイト</title>
-<link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Yuji+Syuku&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>対戦表 | 徳之島闘牛サイト</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@700;800&family=Yuji+Syuku&display=swap" rel="stylesheet">
 
-<style>
-/* ← CSSはそのまま使ってOK（今のresult.htmlのstyle全部コピペでOK） */
-</style>
+  <!-- ⚠️ CSSは今のresult.htmlの<style>全部そのまま貼って -->
 </head>
 
 <body>
 <div class="bg-overlay"></div>
 
 <div class="container">
-
 <nav class="top-nav">
   <a href="index.html">ホーム</a>
-  <a href="program.html" class="active">対戦表</a>
+  <a href="programitiran.html" class="active">対戦表</a>
   <a href="search.html">戦歴検索</a>
   <a href="prediction.html">予想</a>
 </nav>
@@ -26,8 +23,10 @@
 <h1 id="pageTitle">対戦表</h1>
 
 <div class="event-meta">
-  <div class="meta-row"><div class="meta-label">日時</div><div class="meta-value" id="metaDate"></div></div>
-  <div class="meta-row"><div class="meta-label">場所</div><div class="meta-value" id="metaPlace"></div></div>
+  <div class="meta-row"><div class="meta-label">日時</div><div class="meta-value" id="metaDate">読み込み中...</div></div>
+  <div class="meta-row"><div class="meta-label">場所</div><div class="meta-value" id="metaPlace">読み込み中...</div></div>
+  <div class="meta-row"><div class="meta-label">主催</div><div class="meta-value" id="metaHost">未設定</div></div>
+  <div class="meta-row"><div class="meta-label">入場料</div><div class="meta-value" id="metaPrice">未設定</div></div>
 </div>
 
 <div class="result-table-wrap">
@@ -54,78 +53,84 @@
 const params = new URLSearchParams(location.search);
 const programId = String(params.get("id") || "");
 
-const bodyEl = document.getElementById("resultBody");
-const errorEl = document.getElementById("error");
+const pageTitleEl = document.getElementById("pageTitle");
 const metaDateEl = document.getElementById("metaDate");
 const metaPlaceEl = document.getElementById("metaPlace");
-const pageTitleEl = document.getElementById("pageTitle");
+const metaHostEl = document.getElementById("metaHost");
+const metaPriceEl = document.getElementById("metaPrice");
+const bodyEl = document.getElementById("resultBody");
+const errorEl = document.getElementById("error");
 
-function escapeHtml(str){
+function escapeHtml(str) {
   return String(str || "")
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;");
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;");
 }
 
-function formatDate(date){
-  if(!date) return "";
-  const [y,m,d] = date.split("-");
-  return `${y}年${Number(m)}月${Number(d)}日`;
+function formatJapaneseDate(dateStr){
+  if(!dateStr) return "";
+  const [y, m, d] = dateStr.split("-");
+  return `${Number(y)}年${Number(m)}月${Number(d)}日`;
 }
 
 Promise.all([
-  fetch("data/programs.json").then(r=>r.json()),
-  fetch("data/matches.json").then(r=>r.json())
+  fetch("data/programs.json").then(res => res.json()),
+  fetch("data/matches.json").then(res => res.json())
 ])
-.then(([programs,matches])=>{
+.then(([programs, matches]) => {
 
-  const program = programs.find(p=>String(p.id)===programId);
-  const list = matches.filter(m=>String(m.program)===programId);
+  const program = programs.find(p => String(p.id) === programId);
+  const list = matches.filter(m => String(m.program) === programId);
 
-  if(!programId){
-    errorEl.textContent="大会IDなし";
+  if (!programId) {
+    errorEl.textContent = "大会IDがありません。";
     return;
   }
 
-  if(program){
+  if (program) {
     pageTitleEl.textContent = program.title || "対戦表";
-    metaDateEl.textContent = formatDate(program.date);
-    metaPlaceEl.textContent = program.place || "";
+    metaDateEl.textContent = formatJapaneseDate(program.date);
+    metaPlaceEl.textContent = program.location || program.place || "未設定";
+    metaHostEl.textContent = program.host || "未設定";
+    metaPriceEl.textContent = program.price || "未設定";
   }
 
-  if(list.length===0){
-    bodyEl.innerHTML="<tr><td colspan='5'>対戦データなし</td></tr>";
+  if (list.length === 0) {
+    bodyEl.innerHTML = `<tr><td colspan="5">この大会の対戦データはありません。</td></tr>`;
     return;
   }
 
-  bodyEl.innerHTML = list.map(match=>{
+  bodyEl.innerHTML = list.map(match => {
 
     return `
-    <tr>
-      <td class="area">${escapeHtml(match.east_area||"")}</td>
+      <tr>
+        <td class="area">${escapeHtml(match.east_area || "")}</td>
 
-      <td class="east">
-        <div class="bull-name">${escapeHtml(match.east||"")}</div>
-      </td>
+        <td class="east">
+          ${(match.east_sub || "") ? `<div class="subtext">${escapeHtml(match.east_sub)}</div>` : ``}
+          <div class="bull-name">${escapeHtml(match.east || "")}</div>
+        </td>
 
-      <td class="rank">
-        <div class="rank-name">${escapeHtml(match.rank||"VS")}</div>
-        <div class="match-line">｜VS｜</div>
-      </td>
+        <td class="rank">
+          <div class="rank-name">${escapeHtml(match.rank || "VS")}</div>
+          <div class="match-line">｜VS｜</div>
+        </td>
 
-      <td class="west">
-        <div class="bull-name">${escapeHtml(match.west||"")}</div>
-      </td>
+        <td class="west">
+          ${(match.west_sub || "") ? `<div class="subtext">${escapeHtml(match.west_sub)}</div>` : ``}
+          <div class="bull-name">${escapeHtml(match.west || "")}</div>
+        </td>
 
-      <td class="area">${escapeHtml(match.west_area||"")}</td>
-    </tr>
+        <td class="area">${escapeHtml(match.west_area || "")}</td>
+      </tr>
     `;
-
   }).join("");
 
 })
-.catch(()=>{
-  errorEl.textContent="データの読み込み失敗";
+.catch(err => {
+  errorEl.textContent = "データの読み込みに失敗しました。";
+  console.error(err);
 });
 </script>
 
