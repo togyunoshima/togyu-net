@@ -824,15 +824,18 @@
     }
 
     function isChampionMatch(rank){
-      const text = normalizeRankForJudge(rank);
-      return (
-        text.includes("全島一優勝旗争奪戦") ||
-        text.includes("中量級優勝旗争奪戦") ||
-        text.includes("軽量級優勝旗争奪戦") ||
-        text.includes("ミニ軽量級優勝旗争奪戦")
-      );
-    }
+  const text = String(rank || "")
+    .replace(/<br\s*\/?>/gi, "")
+    .replace(/[ 　\t\r\n]+/g, "")
+    .trim();
 
+  return (
+    text.includes("全島一優勝旗争奪戦") ||
+    text.includes("中量級優勝旗争奪戦") ||
+    text.includes("軽量級優勝旗争奪戦") ||
+    text.includes("ミニ軽量級優勝旗争奪戦")
+  );
+}
     function renderSideTag(rank, side){
       if(!isChampionMatch(rank)) return "";
       if(side === "east"){
