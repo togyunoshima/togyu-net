@@ -209,8 +209,8 @@
     .subtext{
       color:#f1c40f;
       font-size:0.78rem;
-      line-height:1.05;
-      margin-bottom:0;
+      line-height:1.08;
+      margin-bottom:4px;
       font-weight:700;
       white-space:normal;
       overflow:visible;
@@ -418,12 +418,12 @@
 
       .subtext{
         font-size:0.38rem;
-        line-height:1.01;
-        margin-bottom:0;
+        line-height:1.02;
+        margin-bottom:3px;
       }
 
       .bull-name{
-        margin-bottom:1px;
+        margin-bottom:0px;
         min-height:1.95em;
       }
 
@@ -447,16 +447,17 @@
       }
 
       .bull-note{
-        font-size:0.42rem;
-        line-height:1.05;
+        font-size:0.44rem;
+        line-height:1.04;
+        margin-top:-1px;
       }
 
       .bull-note.note-small{
-        font-size:0.38rem;
+        font-size:0.40rem;
       }
 
       .bull-note.note-xsmall{
-        font-size:0.34rem;
+        font-size:0.35rem;
       }
 
       .rank-name{
@@ -610,34 +611,34 @@
     }
 
     function splitNoteParts(text){
-      const raw = String(text || "").trim();
-      if(!raw) return {record:"", former:"", owner:""};
+  const raw = String(text || "").trim();
+  if(!raw) return {record:"", former:"", owner:""};
 
-      const normalized = raw.replaceAll("/", " ").replace(/\s+/g, " ").trim();
+  const normalized = raw.replaceAll("/", " ").replace(/\s+/g, " ").trim();
 
-      const ownerMatch = normalized.match(/\(?牛主[:：][^)]+\)?/);
-      const owner = ownerMatch ? ownerMatch[0].trim() : "";
+  const ownerMatch = normalized.match(/\(?牛主[:：][^)]+\)?/);
+  const owner = ownerMatch ? ownerMatch[0].trim() : "";
 
-      let remain = normalized;
-      if(owner){
-        remain = remain.replace(owner, "").trim();
-      }
+  let remain = normalized;
+  if(owner){
+    remain = remain.replace(owner, "").trim();
+  }
 
-      let former = "";
-      let record = remain;
+  let former = "";
+  let record = remain;
 
-      const formerMatch = remain.match(/(元\s*[^ ]+(?:\s+[^ ]+)*)$/);
-      if(formerMatch){
-        former = formerMatch[1].trim();
-        record = remain.replace(formerMatch[1], "").trim();
-      }
+  const formerMatch = remain.match(/(元\s*(?:沖縄\s*)?[^ ]+(?:\s+[^ ]+)*)$/);
+  if(formerMatch){
+    former = formerMatch[1].trim();
+    record = remain.replace(formerMatch[1], "").trim();
+  }
 
-      return {
-        record: record || "",
-        former: former || "",
-        owner: owner || ""
-      };
-    }
+  return {
+    record: record || "",
+    former: former || "",
+    owner: owner || ""
+  };
+}
 
     function getNoteClass(text){
       const len = String(text || "").replace(/\s+/g, "").length;
@@ -715,33 +716,32 @@
     }
 
     function getRankScore(rank){
-      const tokens = String(rank || "").trim().split(/\s+/).filter(Boolean);
-      const longest = tokens.reduce((m, t) => Math.max(m, t.length), 0);
-      const total = tokens.join("").length;
-      return longest * 2.4 + total;
-    }
+  const tokens = String(rank || "").trim().split(/\s+/).filter(Boolean);
+  const longest = tokens.reduce((m, t) => Math.max(m, t.length), 0);
+  const total = tokens.join("").length;
+  const lines = tokens.length || 1;
+  return longest * 2 + total * 0.75 + lines * 1.2;
+}
 
-    function adjustRankColumnWidth(list){
-      let maxScore = 0;
-      list.forEach(match => {
-        maxScore = Math.max(maxScore, getRankScore(match.rank || ""));
-      });
+function adjustRankColumnWidth(list){
+  let maxScore = 0;
+  list.forEach(match => {
+    maxScore = Math.max(maxScore, getRankScore(match.rank || ""));
+  });
 
-      let rankWidth = 22;
-      if(maxScore >= 38) rankWidth = 30;
-      else if(maxScore >= 32) rankWidth = 28;
-      else if(maxScore >= 26) rankWidth = 26;
-      else if(maxScore >= 20) rankWidth = 24;
-      else rankWidth = 22;
+  let rankWidth = 20;
+  if(maxScore >= 30) rankWidth = 24;
+  else if(maxScore >= 25) rankWidth = 22;
+  else if(maxScore >= 20) rankWidth = 21;
+  else rankWidth = 20;
 
-      const areaWidth = 10;
-      const sideWidth = (100 - areaWidth * 2 - rankWidth) / 2;
+  const areaWidth = 10;
+  const sideWidth = (100 - areaWidth * 2 - rankWidth) / 2;
 
-      document.documentElement.style.setProperty("--area-col", areaWidth + "%");
-      document.documentElement.style.setProperty("--rank-col", rankWidth + "%");
-      document.documentElement.style.setProperty("--side-col", sideWidth + "%");
-    }
-
+  document.documentElement.style.setProperty("--area-col", areaWidth + "%");
+  document.documentElement.style.setProperty("--rank-col", rankWidth + "%");
+  document.documentElement.style.setProperty("--side-col", sideWidth + "%");
+}
     function formatMonthDay(date){
       const [,m,d] = date.split("-");
       return `${Number(m)}月${Number(d)}日`;
@@ -824,14 +824,19 @@
     }
 
     function isChampionMatch(rank){
-      const text = normalizeRankForJudge(rank);
-      return (
-        text.includes("全島一優勝旗争奪戦") ||
-        text.includes("中量級優勝旗争奪戦") ||
-        text.includes("軽量級優勝旗争奪戦") ||
-        text.includes("ミニ軽量級優勝旗争奪戦")
-      );
-    }
+  const text = String(rank || "")
+    .replace(/<br\s*\/?>/gi, "")
+    .replace(/[ 　\t\r\n]+/g, "")
+    .replace(/[｜|]/g, "")
+    .trim();
+
+  return (
+    text.includes("全島一優勝旗争奪戦") ||
+    text.includes("中量級優勝旗争奪戦") ||
+    text.includes("軽量級優勝旗争奪戦") ||
+    text.includes("ミニ軽量級優勝旗争奪戦")
+  );
+}
 
     function renderSideTag(rank, side){
       if(!isChampionMatch(rank)) return "";
@@ -852,10 +857,13 @@
         /^三代目$/.test(t) ||
         /^四代目$/.test(t) ||
         /^五代目$/.test(t) ||
-        /^平成.+年生$/.test(t) ||
-        /^昭和.+年生$/.test(t) ||
-        /^令和.+年生$/.test(t) ||
-        /^.+年生$/.test(t)
+        /^+年生$/.test(t) ||
+        /^+組$/.test(t) ||
+        /^+従業員$/.test(t) ||
+        /^+友人会$/.test(t) ||
+        /^+同志会$/.test(t) ||
+        /^+会$/.test(t) ||
+        /^.+會$/.test(t)
       );
     }
 
