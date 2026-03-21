@@ -209,8 +209,8 @@
     .subtext{
       color:#f1c40f;
       font-size:0.78rem;
-      line-height:1.05;
-      margin-bottom:0;
+      line-height:1.08;
+      margin-bottom:4px;
       font-weight:700;
       white-space:normal;
       overflow:visible;
@@ -221,7 +221,7 @@
 
     .bull-name{
       color:#fff;
-      margin:0 0 1px;
+      margin:0 0 0px;
       line-height:1.02;
       min-height:2.02em;
       word-break:break-word;
@@ -257,19 +257,19 @@
 
     .bull-note{
       color:#ddd;
-      font-size:0.86rem;
-      line-height:1.06;
-      margin-top:0;
+      font-size:0.90rem;
+      line-height:1.04;
+      margin-top:-2;
     }
 
     .bull-note.note-small{
-      font-size:0.79rem;
-      line-height:1.05;
+      font-size:0.82rem;
+      line-height:1.03;
     }
 
     .bull-note.note-xsmall{
-      font-size:0.72rem;
-      line-height:1.04;
+      font-size:0.74rem;
+      line-height:1.02;
     }
 
     .bull-note-line{
@@ -418,12 +418,12 @@
 
       .subtext{
         font-size:0.38rem;
-        line-height:1.01;
-        margin-bottom:0;
+        line-height:1.02;
+        margin-bottom:3px;
       }
 
       .bull-name{
-        margin-bottom:1px;
+        margin-bottom:0px;
         min-height:1.95em;
       }
 
@@ -447,16 +447,17 @@
       }
 
       .bull-note{
-        font-size:0.42rem;
-        line-height:1.05;
+        font-size:0.44rem;
+        line-height:1.04;
+        marigin-top:-1px;
       }
 
       .bull-note.note-small{
-        font-size:0.38rem;
+        font-size:0.40rem;
       }
 
       .bull-note.note-xsmall{
-        font-size:0.34rem;
+        font-size:0.35rem;
       }
 
       .rank-name{
@@ -852,10 +853,11 @@
         /^三代目$/.test(t) ||
         /^四代目$/.test(t) ||
         /^五代目$/.test(t) ||
-        /^平成.+年生$/.test(t) ||
-        /^昭和.+年生$/.test(t) ||
-        /^令和.+年生$/.test(t) ||
-        /^.+年生$/.test(t)
+        /^+友人会$/.test(t) ||
+        /^+年生$/.test(t) ||
+        /^+組$/.test(t) ||
+        /^+会$/.test(t) ||
+        /^.+會$/.test(t)
       );
     }
 
