@@ -648,63 +648,138 @@
     }
 
     function makeRecordHtml(name, text, bulls){
-      const parts = splitNoteParts(text);
-      if(!parts.record && !parts.former && !parts.owner) return "";
+  try {
 
-      const joined = [parts.record, parts.former, parts.owner].filter(Boolean).join(" ");
-      const noteClass = getNoteClass(joined);
+    function splitNoteParts(text){
+      const raw = String(text || "").trim();
+      if(!raw) return {record:"", former:"", owner:""};
 
-      const currentBullId = findBullIdByName(name, bulls);
+      const normalized = raw.replaceAll("/", " ").replace(/\s+/g, " ").trim();
 
-      function findBullIdFromText(line){
-        const cleaned = String(line || "")
-          .replace(/[()（）]/g, "")
-          .replace(/牛主[:：].*$/, "")
-          .trim();
+      const ownerMatch = normalized.match(/\(?牛主[:：][^)]+\)?/);
+      const owner = ownerMatch ? ownerMatch[0].trim() : "";
 
-        const found = bulls.find(bull => {
-          const targets = getBullSearchTargets(bull);
-          return targets.some(target =>
-            cleaned.includes(target) || target.includes(cleaned)
-          );
-        });
-
-        return found ? found.id : null;
+      let remain = normalized;
+      if(owner){
+        remain = remain.replace(owner, "").trim();
       }
 
-      const rows = [];
+      let former = "";
+      let record = remain;
 
-      if(parts.record){
-        const safeRecord = escapeHtml(parts.record);
-        const hasRecord =
-          /[0-9０-９]+勝/.test(parts.record) ||
-          /[0-9０-９]+敗/.test(parts.record) ||
-          /引分/.test(parts.record);
-
-        if(hasRecord && currentBullId && !/デビュー戦/.test(parts.record)){
-          rows.push(`<span class="bull-note-line"><a href="bull.html?id=${encodeURIComponent(currentBullId)}">${safeRecord}</a></span>`);
-        }else{
-          rows.push(`<span class="bull-note-line">${safeRecord}</span>`);
-        }
+      const formerMatch = remain.match(/(元\s*[^ ]+(?:\s+[^ ]+)*)$/);
+      if(formerMatch){
+        former = formerMatch[1].trim();
+        record = remain.replace(formerMatch[1], "").trim();
       }
 
-      if(parts.former){
-        const safeFormer = escapeHtml(parts.former);
-        const formerBullId = findBullIdFromText(parts.former);
-
-        if(!parts.record && formerBullId){
-          rows.push(`<span class="bull-note-line"><a href="bull.html?id=${encodeURIComponent(formerBullId)}">${safeFormer}</a></span>`);
-        }else{
-          rows.push(`<span class="bull-note-line">${safeFormer}</span>`);
-        }
-      }
-
-      if(parts.owner){
-        rows.push(`<span class="bull-note-line">${escapeHtml(parts.owner)}</span>`);
-      }
-
-      return `<div class="bull-note ${noteClass}">${rows.join("")}</div>`;
+      return {
+        record: record || "",
+        former: former || "",
+        owner: owner || ""
+      };
     }
+
+    function normalize(str) {
+      return String(str || "").replace(/\s+/g, "").replace(/[（）()]/g, "").trim();
+    }
+
+    function getBullSearchTargets(bull) {
+      const targets = [];
+      if (bull.display_name) targets.push(bull.display_name);
+      if (bull.name) targets.push(bull.name);
+      if (bull.exact_title) targets.push(bull.exact_title);
+      if (Array.isArray(bull.former_names)) {
+        bull.former_names.forEach(name => {
+          if (name) {
+            targets.push(name);
+            targets.push("元 " + name);
+            targets.push("元" + name);
+          }
+        });
+      }
+      return [...new Set(targets.map(normalize).filter(Boolean))];
+    }
+
+    function findBullIdByName(name, bulls) {
+      const target = normalize(name);
+      const found = bulls.find(bull => getBullSearchTargets(bull).includes(target));
+      return found ? found.id : null;
+    }
+
+    function findBullIdFromText(line){
+      const cleaned = String(line || "")
+        .replace(/[()（）]/g, "")
+        .replace(/牛主[:：].*$/, "")
+        .trim();
+
+      const found = bulls.find(bull => {
+        const targets = getBullSearchTargets(bull);
+        return targets.some(target =>
+          cleaned.includes(target) || target.includes(cleaned)
+        );
+      });
+
+      return found ? found.id : null;
+    }
+
+    function getNoteClass(text){
+      const len = String(text || "").replace(/\s+/g, "").length;
+      if(len >= 34) return "note-xsmall";
+      if(len >= 22) return "note-small";
+      return "";
+    }
+
+    const parts = splitNoteParts(text);
+    if(!parts.record && !parts.former && !parts.owner) return "";
+
+    const joined = [parts.record, parts.former, parts.owner].filter(Boolean).join(" ");
+    const noteClass = getNoteClass(joined);
+
+    const currentBullId = findBullIdByName(name, bulls);
+
+    const rows = [];
+
+    // 🔥 戦歴（リンク判定）
+    if(parts.record){
+      const safeRecord = escapeHtml(parts.record);
+
+      const hasRecord =
+        /[0-9０-９]+勝/.test(parts.record) ||
+        /[0-9０-９]+敗/.test(parts.record) ||
+        /引分/.test(parts.record);
+
+      if(hasRecord && currentBullId && !/デビュー戦/.test(parts.record)){
+        rows.push(`<span class="bull-note-line"><a href="bull.html?id=${encodeURIComponent(currentBullId)}">${safeRecord}</a></span>`);
+      }else{
+        rows.push(`<span class="bull-note-line">${safeRecord}</span>`);
+      }
+    }
+
+    // 🔥 元名
+    if(parts.former){
+      const safeFormer = escapeHtml(parts.former);
+      const formerBullId = findBullIdFromText(parts.former);
+
+      if(!parts.record && formerBullId){
+        rows.push(`<span class="bull-note-line"><a href="bull.html?id=${encodeURIComponent(formerBullId)}">${safeFormer}</a></span>`);
+      }else{
+        rows.push(`<span class="bull-note-line">${safeFormer}</span>`);
+      }
+    }
+
+    // 🔥 牛主（絶対リンクつけない）
+    if(parts.owner){
+      rows.push(`<span class="bull-note-line">${escapeHtml(parts.owner)}</span>`);
+    }
+
+    return `<div class="bull-note ${noteClass}">${rows.join("")}</div>`;
+
+  } catch(e) {
+    console.error("note error", name, text, e);
+    return "";
+  }
+}
 
     function formatRank(rank){
       const text = String(rank || "").trim();
