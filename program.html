@@ -982,7 +982,7 @@
     ])
     .then(([programs, matches, bulls]) => {
       const program = programs.find(p => String(p.id) === programId);
-      const list = matches.filter(m => String(m.program) === String(programId));
+      const list = matches.filter(m => Number(m.program) === Number(programId));
 
       if (!programId) {
         errorEl.textContent = "大会IDがありません。";
