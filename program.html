@@ -835,47 +835,46 @@
     }
 
     function isPrefixSmallToken(token){
-  const t = String(token || "").trim();
-  if(!t) return false;
+      const t = String(token || "").trim();
+      if(!t) return false;
+      return (
+        /^二代目$/.test(t) ||
+        /^三代目$/.test(t) ||
+        /^四代目$/.test(t) ||
+        /^五代目$/.test(t) ||
+        /^平成.+年生$/.test(t) ||
+        /^昭和.+年生$/.test(t) ||
+        /^令和.+年生$/.test(t) ||
+        /^.+年生$/.test(t)
+      );
+    }
 
-  return (
-    /^二代目$/.test(t) ||
-    /^三代目$/.test(t) ||
-    /^四代目$/.test(t) ||
-    /^五代目$/.test(t) ||
-    /^.+年生$/.test(t) ||
-    /^.+年組$/.test(t) ||
-    /^.+組$/.test(t) ||
-    /^.+会$/.test(t)
-  );
-}
+    function formatBullName(name){
+      const raw = String(name || "").trim();
+      if(!raw) return `<div class="bull-main"></div>`;
 
-function formatBullName(name){
-  const raw = String(name || "").trim();
-  if(!raw) return `<div class="bull-main"></div>`;
+      const triple = raw.match(/^(.+?)\s+([A-Za-z0-9★☆'&.\-]+)\s+(.+)$/);
+      if(triple){
+        return `<div class="bull-main">${escapeHtml(triple[1])} <span class="bull-small-inline">${escapeHtml(triple[2])}</span> ${escapeHtml(triple[3])}</div>`;
+      }
 
-  const triple = raw.match(/^(.+?)\s+([A-Za-z0-9★☆'&.\-]+)\s+(.+)$/);
-  if(triple){
-    return `<div class="bull-main">${escapeHtml(triple[1])} <span class="bull-small-inline">${escapeHtml(triple[2])}</span> ${escapeHtml(triple[3])}</div>`;
-  }
+      const paren = raw.match(/^(.+?)(\([^)]+\))(.+)$/);
+      if(paren){
+        return `<div class="bull-main">${escapeHtml(paren[1])}<span class="bull-small-inline">${escapeHtml(paren[2])}</span>${escapeHtml(paren[3])}</div>`;
+      }
 
-  const paren = raw.match(/^(.+?)(\([^)]+\))(.+)$/);
-  if(paren){
-    return `<div class="bull-main">${escapeHtml(paren[1])}<span class="bull-small-inline">${escapeHtml(paren[2])}</span>${escapeHtml(paren[3])}</div>`;
-  }
+      const wave = raw.match(/^(.+?)([〜~][^〜~]+[〜~])(.+)$/);
+      if(wave){
+        return `<div class="bull-main">${escapeHtml(wave[1])}<span class="bull-small-inline">${escapeHtml(wave[2])}</span>${escapeHtml(wave[3])}</div>`;
+      }
 
-  const wave = raw.match(/^(.+?)([〜~][^〜~]+[〜~])(.+)$/);
-  if(wave){
-    return `<div class="bull-main">${escapeHtml(wave[1])}<span class="bull-small-inline">${escapeHtml(wave[2])}</span>${escapeHtml(wave[3])}</div>`;
-  }
+      const parts = raw.split(/\s+/).filter(Boolean);
+      if(parts.length >= 2 && isPrefixSmallToken(parts[0])){
+        return `<div class="bull-main"><span class="bull-small-inline">${escapeHtml(parts[0])}</span> ${escapeHtml(parts.slice(1).join(" "))}</div>`;
+      }
 
-  const parts = raw.split(/\s+/).filter(Boolean);
-  if(parts.length >= 2 && isPrefixSmallToken(parts[0])){
-    return `<div class="bull-main"><span class="bull-small-inline">${escapeHtml(parts[0])}</span> ${escapeHtml(parts.slice(1).join(" "))}</div>`;
-  }
-
-  return `<div class="bull-main">${escapeHtml(raw)}</div>`;
-}
+      return `<div class="bull-main">${escapeHtml(raw)}</div>`;
+    }
     
     Promise.all([
       fetch("data/programs.json").then(res => res.json()),
