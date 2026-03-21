@@ -740,7 +740,6 @@
 
     const rows = [];
 
-    // 🔥 戦歴（リンク判定）
     if(parts.record){
       const safeRecord = escapeHtml(parts.record);
 
@@ -755,8 +754,7 @@
         rows.push(`<span class="bull-note-line">${safeRecord}</span>`);
       }
     }
-
-    // 🔥 元名
+    
     if(parts.former){
       const safeFormer = escapeHtml(parts.former);
       const formerBullId = findBullIdFromText(parts.former);
@@ -768,7 +766,6 @@
       }
     }
 
-    // 🔥 牛主（絶対リンクつけない）
     if(parts.owner){
       rows.push(`<span class="bull-note-line">${escapeHtml(parts.owner)}</span>`);
     }
@@ -1000,7 +997,6 @@
       }
 
       renderSeasonLinks(program, programs, "program");
-      adjustRankColumnWidth(list);
 
       if (list.length === 0) {
         bodyEl.innerHTML = `<tr><td colspan="5" style="padding:20px;color:#ff8080;">この大会の対戦データはまだありません。</td></tr>`;
