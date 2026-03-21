@@ -959,8 +959,6 @@
         return `<div class="bull-main"><span class="bull-small-inline">${escapeHtml(parts[0])}</span> ${escapeHtml(parts.slice(1).join(" "))}</div>`;
       }
 
-      const parts = raw.split(/\s+/);
-
       if(parts.length === 3){
         return `<div class="bull-main">
           ${escapeHtml(parts[0])}
