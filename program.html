@@ -835,20 +835,20 @@
     }
 
     function isPrefixSmallToken(token){
-      const t = String(token || "").trim();
-      if(!t) return false;
+  const t = String(token || "").trim();
+  if(!t) return false;
 
-      return (
-        /^二代目$/.test(t) ||
-        /^三代目$/.test(t) ||
-        /^四代目$/.test(t) ||
-        /^五代目$/.test(t) ||
-        /^.+年生$/.test(t) ||
-        /^.+年組$/.test(t) ||
-        /^.+組$/.test(t) ||
-        /^.+会$/.test(t)
-      );
-    }
+  return (
+    /^二代目$/.test(t) ||
+    /^三代目$/.test(t) ||
+    /^四代目$/.test(t) ||
+    /^五代目$/.test(t) ||
+    /^.+年生$/.test(t) ||
+    /^.+年組$/.test(t) ||
+    /^.+組$/.test(t) ||
+    /^.+会$/.test(t)
+  );
+}
 
 function formatBullName(name){
   const raw = String(name || "").trim();
@@ -876,7 +876,7 @@ function formatBullName(name){
 
   return `<div class="bull-main">${escapeHtml(raw)}</div>`;
 }
-
+    
     Promise.all([
       fetch("data/programs.json").then(res => res.json()),
       fetch("data/matches.json").then(res => res.json()),
