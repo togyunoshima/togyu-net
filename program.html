@@ -440,6 +440,7 @@
       .bull-main{
         font-size:0.78rem;
         line-height:1.04;
+        white-space:nowrap;
       }
 
       .bull-small-inline{
@@ -680,7 +681,7 @@
           /[0-9０-９]+敗/.test(parts.record) ||
           /引分/.test(parts.record);
 
-        if(hasRecord && currentBullId){
+        if(hasRecord && currentBullId && !/デビュー戦/.test(parts.record)){
           rows.push(`<span class="bull-note-line"><a href="bull.html?id=${encodeURIComponent(currentBullId)}">${safeRecord}</a></span>`);
         }else{
           rows.push(`<span class="bull-note-line">${safeRecord}</span>`);
@@ -886,6 +887,16 @@
         return `<div class="bull-main"><span class="bull-small-inline">${escapeHtml(parts[0])}</span> ${escapeHtml(parts.slice(1).join(" "))}</div>`;
       }
 
+      const parts = raw.split(/\s+/);
+
+      if(parts.length === 3){
+        return `<div class="bull-main">
+          ${escapeHtml(parts[0])}
+          <span class="bull-small-inline">${escapeHtml(parts[1])}</span>
+          ${escapeHtml(parts[2])}
+        </div>`;
+      }
+      
       return `<div class="bull-main">${escapeHtml(raw)}</div>`;
     }
 
